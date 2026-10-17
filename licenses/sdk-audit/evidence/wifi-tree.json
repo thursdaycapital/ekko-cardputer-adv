@@ -1,0 +1,368 @@
+{
+  "sha": "f2aae4d44ec7908013066e69d29b9948846c335c",
+  "url": "https://api.github.com/repos/espressif/esp32-wifi-lib/git/trees/f2aae4d44ec7908013066e69d29b9948846c335c",
+  "tree": [
+    {
+      "path": ".gitlab-ci.yml",
+      "mode": "100755",
+      "type": "blob",
+      "sha": "a7ed4fa906d76f50896a39b521515b34b2b27dce",
+      "size": 3265,
+      "url": "https://api.github.com/repos/espressif/esp32-wifi-lib/git/blobs/a7ed4fa906d76f50896a39b521515b34b2b27dce"
+    },
+    {
+      "path": "LICENSE",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d645695673349e3947e8e5ae42332d0ac3164cd7",
+      "size": 11358,
+      "url": "https://api.github.com/repos/espressif/esp32-wifi-lib/git/blobs/d645695673349e3947e8e5ae42332d0ac3164cd7"
+    },
+    {
+      "path": "README.rst",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "68b0668bf06c13ca796f6ddb528c63f103c9fb3a",
+      "size": 569,
+      "url": "https://api.github.com/repos/espressif/esp32-wifi-lib/git/blobs/68b0668bf06c13ca796f6ddb528c63f103c9fb3a"
+    },
+    {
+      "path": "esp32",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "a23fd6234b7c784bd823af458339d667281f0426",
+      "url": "https://api.github.com/repos/espressif/esp32-wifi-lib/git/trees/a23fd6234b7c784bd823af458339d667281f0426"
+    },
+    {
+      "path": "esp32/libcoexist.a",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "83bfa54e43ebcbf0781695b4d76f35ad1f7f5ede",
+      "size": 111166,
+      "url": "https://api.github.com/repos/espressif/esp32-wifi-lib/git/blobs/83bfa54e43ebcbf0781695b4d76f35ad1f7f5ede"
+    },
+    {
+      "path": "esp32/libcore.a",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d3572318f0d0a89b4bcd9a8236348839f3c201dc",
+      "size": 4556,
+      "url": "https://api.github.com/repos/espressif/esp32-wifi-lib/git/blobs/d3572318f0d0a89b4bcd9a8236348839f3c201dc"
+    },
+    {
+      "path": "esp32/libespnow.a",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1cfb9be774f92df149e80ddf03684d683a1e9d5d",
+      "size": 49170,
+      "url": "https://api.github.com/repos/espressif/esp32-wifi-lib/git/blobs/1cfb9be774f92df149e80ddf03684d683a1e9d5d"
+    },
+    {
+      "path": "esp32/libmesh.a",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "dd4faa7eb1970f3db8cc9e43b39c899f34fe39d3",
+      "size": 980252,
+      "url": "https://api.github.com/repos/espressif/esp32-wifi-lib/git/blobs/dd4faa7eb1970f3db8cc9e43b39c899f34fe39d3"
+    },
+    {
+      "path": "esp32/libnet80211.a",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1b302c348b16de9b6cbc2bc0b7eb08592ff035b7",
+      "size": 1101516,
+      "url": "https://api.github.com/repos/espressif/esp32-wifi-lib/git/blobs/1b302c348b16de9b6cbc2bc0b7eb08592ff035b7"
+    },
+    {
+      "path": "esp32/libpp.a",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4d338d75d4b9c6ba5a7a781fb49a2757d32f41fd",
+      "size": 541058,
+      "url": "https://api.github.com/repos/espressif/esp32-wifi-lib/git/blobs/4d338d75d4b9c6ba5a7a781fb49a2757d32f41fd"
+    },
+    {
+      "path": "esp32/libsmartconfig.a",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "38a2e85972023ccc350c3e206adb4f2d7f76aca8",
+      "size": 187032,
+      "url": "https://api.github.com/repos/espressif/esp32-wifi-lib/git/blobs/38a2e85972023ccc350c3e206adb4f2d7f76aca8"
+    },
+    {
+      "path": "esp32/libwapi.a",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ba74a02f9369afadff8fd873ac81faeffd3b21c9",
+      "size": 53138,
+      "url": "https://api.github.com/repos/espressif/esp32-wifi-lib/git/blobs/ba74a02f9369afadff8fd873ac81faeffd3b21c9"
+    },
+    {
+      "path": "esp32c3",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "b806ca3babbaffbd4067c5823a4113f37e93c4ed",
+      "url": "https://api.github.com/repos/espressif/esp32-wifi-lib/git/trees/b806ca3babbaffbd4067c5823a4113f37e93c4ed"
+    },
+    {
+      "path": "esp32c3/libcoexist.a",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5bdbc6e51a3ff9aa338e8d4d28ad9480e92b626e",
+      "size": 70264,
+      "url": "https://api.github.com/repos/espressif/esp32-wifi-lib/git/blobs/5bdbc6e51a3ff9aa338e8d4d28ad9480e92b626e"
+    },
+    {
+      "path": "esp32c3/libcore.a",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "aa48119f324609ac9d0655fc69ad80b003ecb882",
+      "size": 3972,
+      "url": "https://api.github.com/repos/espressif/esp32-wifi-lib/git/blobs/aa48119f324609ac9d0655fc69ad80b003ecb882"
+    },
+    {
+      "path": "esp32c3/libespnow.a",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "24abe1b4d85afae4c5b96d1944b2e77a1f421921",
+      "size": 51766,
+      "url": "https://api.github.com/repos/espressif/esp32-wifi-lib/git/blobs/24abe1b4d85afae4c5b96d1944b2e77a1f421921"
+    },
+    {
+      "path": "esp32c3/libmesh.a",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4d8f68406df8637fdb11058fc5afe376e5ec8095",
+      "size": 1008968,
+      "url": "https://api.github.com/repos/espressif/esp32-wifi-lib/git/blobs/4d8f68406df8637fdb11058fc5afe376e5ec8095"
+    },
+    {
+      "path": "esp32c3/libnet80211.a",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "05f492fc6154228e934f5fff78767b3153640207",
+      "size": 968262,
+      "url": "https://api.github.com/repos/espressif/esp32-wifi-lib/git/blobs/05f492fc6154228e934f5fff78767b3153640207"
+    },
+    {
+      "path": "esp32c3/libpp.a",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "46ac368e3ba8a1fe64dac32eb4f4dc77858fc272",
+      "size": 451226,
+      "url": "https://api.github.com/repos/espressif/esp32-wifi-lib/git/blobs/46ac368e3ba8a1fe64dac32eb4f4dc77858fc272"
+    },
+    {
+      "path": "esp32c3/libsmartconfig.a",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "563b66099f58282e73d61711ea8c4eb3107a3256",
+      "size": 192836,
+      "url": "https://api.github.com/repos/espressif/esp32-wifi-lib/git/blobs/563b66099f58282e73d61711ea8c4eb3107a3256"
+    },
+    {
+      "path": "esp32c3/libwapi.a",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "172fb375cd36ceac1beb55bb2130d5a8f2f99d7e",
+      "size": 46522,
+      "url": "https://api.github.com/repos/espressif/esp32-wifi-lib/git/blobs/172fb375cd36ceac1beb55bb2130d5a8f2f99d7e"
+    },
+    {
+      "path": "esp32s2",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "3bd4b60eebc7e114bb316cd8758b3284c35ae2a9",
+      "url": "https://api.github.com/repos/espressif/esp32-wifi-lib/git/trees/3bd4b60eebc7e114bb316cd8758b3284c35ae2a9"
+    },
+    {
+      "path": "esp32s2/libcoexist.a",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4e2059707a014fec58c0afc2a76b1667fa0a2878",
+      "size": 81638,
+      "url": "https://api.github.com/repos/espressif/esp32-wifi-lib/git/blobs/4e2059707a014fec58c0afc2a76b1667fa0a2878"
+    },
+    {
+      "path": "esp32s2/libcore.a",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "81c36986a8a9663c608a86d5a3a00e664a161c35",
+      "size": 4540,
+      "url": "https://api.github.com/repos/espressif/esp32-wifi-lib/git/blobs/81c36986a8a9663c608a86d5a3a00e664a161c35"
+    },
+    {
+      "path": "esp32s2/libespnow.a",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fca566a3b09046786c30bb03eebacf5d366a22fd",
+      "size": 48962,
+      "url": "https://api.github.com/repos/espressif/esp32-wifi-lib/git/blobs/fca566a3b09046786c30bb03eebacf5d366a22fd"
+    },
+    {
+      "path": "esp32s2/libmesh.a",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "46d12103ca97151da6f70921bd044f7fbdcc5352",
+      "size": 971424,
+      "url": "https://api.github.com/repos/espressif/esp32-wifi-lib/git/blobs/46d12103ca97151da6f70921bd044f7fbdcc5352"
+    },
+    {
+      "path": "esp32s2/libnet80211.a",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "91e0431adc0e017bbf99d3636a61aa8b333480c4",
+      "size": 1144118,
+      "url": "https://api.github.com/repos/espressif/esp32-wifi-lib/git/blobs/91e0431adc0e017bbf99d3636a61aa8b333480c4"
+    },
+    {
+      "path": "esp32s2/libpp.a",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f8500767bdfe98f6a617f469ee995a8e398513a2",
+      "size": 570572,
+      "url": "https://api.github.com/repos/espressif/esp32-wifi-lib/git/blobs/f8500767bdfe98f6a617f469ee995a8e398513a2"
+    },
+    {
+      "path": "esp32s2/libsmartconfig.a",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4b41aaf974b2a2f36df077bad62dbb4f7e90bac4",
+      "size": 184636,
+      "url": "https://api.github.com/repos/espressif/esp32-wifi-lib/git/blobs/4b41aaf974b2a2f36df077bad62dbb4f7e90bac4"
+    },
+    {
+      "path": "esp32s2/libwapi.a",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "73db19b0b7d99c24997fc1905f2c368b3c2f55c4",
+      "size": 52794,
+      "url": "https://api.github.com/repos/espressif/esp32-wifi-lib/git/blobs/73db19b0b7d99c24997fc1905f2c368b3c2f55c4"
+    },
+    {
+      "path": "esp32s3",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "1aff4bee38dbf68314caad889856e158cfe61c23",
+      "url": "https://api.github.com/repos/espressif/esp32-wifi-lib/git/trees/1aff4bee38dbf68314caad889856e158cfe61c23"
+    },
+    {
+      "path": "esp32s3/libcoexist.a",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6960f1da37edd39927c5c0cf965f6bdce1b418d5",
+      "size": 85092,
+      "url": "https://api.github.com/repos/espressif/esp32-wifi-lib/git/blobs/6960f1da37edd39927c5c0cf965f6bdce1b418d5"
+    },
+    {
+      "path": "esp32s3/libcore.a",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "40d12ece09214d3497cf9e717851920ff709ea83",
+      "size": 4820,
+      "url": "https://api.github.com/repos/espressif/esp32-wifi-lib/git/blobs/40d12ece09214d3497cf9e717851920ff709ea83"
+    },
+    {
+      "path": "esp32s3/libespnow.a",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5814dbe9045cb6e09ffa751a8079fee6a7a96bde",
+      "size": 49110,
+      "url": "https://api.github.com/repos/espressif/esp32-wifi-lib/git/blobs/5814dbe9045cb6e09ffa751a8079fee6a7a96bde"
+    },
+    {
+      "path": "esp32s3/libmesh.a",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "adb9f2226310272f913cc58ad7b43502ed447256",
+      "size": 971720,
+      "url": "https://api.github.com/repos/espressif/esp32-wifi-lib/git/blobs/adb9f2226310272f913cc58ad7b43502ed447256"
+    },
+    {
+      "path": "esp32s3/libnet80211.a",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f9950825e7a6806133d16162b207be262c85886c",
+      "size": 1150738,
+      "url": "https://api.github.com/repos/espressif/esp32-wifi-lib/git/blobs/f9950825e7a6806133d16162b207be262c85886c"
+    },
+    {
+      "path": "esp32s3/libpp.a",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "19526baca9393b30a865390c050d00c918a2c510",
+      "size": 601344,
+      "url": "https://api.github.com/repos/espressif/esp32-wifi-lib/git/blobs/19526baca9393b30a865390c050d00c918a2c510"
+    },
+    {
+      "path": "esp32s3/libsmartconfig.a",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6455b8db956c6f8d0724ada99eb06b4a9c1712e6",
+      "size": 186040,
+      "url": "https://api.github.com/repos/espressif/esp32-wifi-lib/git/blobs/6455b8db956c6f8d0724ada99eb06b4a9c1712e6"
+    },
+    {
+      "path": "esp32s3/libwapi.a",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ea42fcd4d8cf2179b1501cd5c1eca9f312e0a131",
+      "size": 52806,
+      "url": "https://api.github.com/repos/espressif/esp32-wifi-lib/git/blobs/ea42fcd4d8cf2179b1501cd5c1eca9f312e0a131"
+    },
+    {
+      "path": "fix_printf.sh",
+      "mode": "100755",
+      "type": "blob",
+      "sha": "1d5fef61086f42bfa61caf206fba7f0390130cb3",
+      "size": 2702,
+      "url": "https://api.github.com/repos/espressif/esp32-wifi-lib/git/blobs/1d5fef61086f42bfa61caf206fba7f0390130cb3"
+    },
+    {
+      "path": "tools",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "16779c9ca494e44622a59f8be0425216e9b6682a",
+      "url": "https://api.github.com/repos/espressif/esp32-wifi-lib/git/trees/16779c9ca494e44622a59f8be0425216e9b6682a"
+    },
+    {
+      "path": "tools/ci",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "f81a90125f277cb4ca3a9418b5654be70ac226ca",
+      "url": "https://api.github.com/repos/espressif/esp32-wifi-lib/git/trees/f81a90125f277cb4ca3a9418b5654be70ac226ca"
+    },
+    {
+      "path": "tools/ci/build_app.sh",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7793f63b0f94e98a509bd3d11f8784136af2dc14",
+      "size": 1459,
+      "url": "https://api.github.com/repos/espressif/esp32-wifi-lib/git/blobs/7793f63b0f94e98a509bd3d11f8784136af2dc14"
+    },
+    {
+      "path": "tools/ci/config",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "c6a59ab7f2dac0bda5543680243cb27f719dea0e",
+      "url": "https://api.github.com/repos/espressif/esp32-wifi-lib/git/trees/c6a59ab7f2dac0bda5543680243cb27f719dea0e"
+    },
+    {
+      "path": "tools/ci/config/build.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "746a67226eab34d8bc05ec3c9321385ed81515cb",
+      "size": 1499,
+      "url": "https://api.github.com/repos/espressif/esp32-wifi-lib/git/blobs/746a67226eab34d8bc05ec3c9321385ed81515cb"
+    },
+    {
+      "path": "tools/ci/config/feature_test.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "98b4acbba6f3c2ede84729a0cfb897b79bbfcfd3",
+      "size": 113,
+      "url": "https://api.github.com/repos/espressif/esp32-wifi-lib/git/blobs/98b4acbba6f3c2ede84729a0cfb897b79bbfcfd3"
+    }
+  ],
+  "truncated": false
+}

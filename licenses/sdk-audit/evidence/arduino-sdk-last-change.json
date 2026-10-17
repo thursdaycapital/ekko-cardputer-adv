@@ -1,0 +1,84 @@
+[
+  {
+    "sha": "fd49a0abca2385a3c074c6ca5b8ad60f8b8c273d",
+    "node_id": "C_kwDOBC4OctoAKGZkNDlhMGFiY2EyMzg1YTNjMDc0YzZjYTViOGFkNjBmOGI4YzI3M2Q",
+    "commit": {
+      "author": {
+        "name": "Me No Dev",
+        "email": "me-no-dev@users.noreply.github.com",
+        "date": "2024-03-05T13:03:51Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2024-03-05T13:03:51Z"
+      },
+      "message": "IDF 38eeba213a (#9339)",
+      "tree": {
+        "sha": "1fad83ce2e2883817b33885730bf614e10000788",
+        "url": "https://api.github.com/repos/espressif/arduino-esp32/git/trees/1fad83ce2e2883817b33885730bf614e10000788"
+      },
+      "url": "https://api.github.com/repos/espressif/arduino-esp32/git/commits/fd49a0abca2385a3c074c6ca5b8ad60f8b8c273d",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJl5xg3CRC1aQ7uu5UhlAAAmQEQAJacR9NG1IRDpC972zlWVtqf\nFdrPIIOMmFGVPe+Uyb1Jpmab1o7H7dN212UTVCr6LTJkkSyVrRECvbJERDM9so3u\n6F3rXEATvBGo+ghQ9miZJvOWWJs9y2mDVoODy6KF8h8C6hO6yAv0k7rkWKKez0OP\nMV1AcqBv4dRCeSjhNz9vbwRQ5ltb3xqvzsF6SdpCO3MgnygKTMUAJWmUKd4Gh9RG\nUtnc2w3UxAyWsb4gJBFvJTTorLAsHv9rXKyNDrT3MvfsBrwRJe7ptOb/EaLvDaP0\nk4UcO8f0g00m79OjyZNTve4cWkmgE1quDSYNdZYH3z+Xsn8SAsn9FCkb6b9xESzi\nZit0m6o7FFAPlc5SDvv4nR3moci1Oe8dmBAoN4r9QNJGiTXWXTWBLPE3elIyZIAe\n3qCpdLy0desLhx8je30z9y0mRMSJlOhuePXZ24HEPLaA32Kazr97RZNdr+I50MW0\nCG1MpQUBWiFtmUZHUWqjkXgcC1YS452syQATCxG/ESEBFuXPijcyeN82/wtCrOdz\ncbKt6nhOD9Dl5TZsi5xPsjooQ3Dpe8qYuTVqhGRS8bC16xvjzF2ogVJwwBgDe626\nel8u4FCQBgCv4oAbcLXutWYeVuUztLIqi1+Naa+xBmQBWksYkca5Z9uigvvuXnLR\nJld/yu/zgTbyZays6A35\n=Sg4b\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree 1fad83ce2e2883817b33885730bf614e10000788\nparent d75795f5e27eac7afea33b27a22d826cb4556c99\nauthor Me No Dev <me-no-dev@users.noreply.github.com> 1709643831 +0200\ncommitter GitHub <noreply@github.com> 1709643831 +0200\n\nIDF 38eeba213a (#9339)\n\n",
+        "verified_at": "2024-11-08T09:06:13Z"
+      }
+    },
+    "url": "https://api.github.com/repos/espressif/arduino-esp32/commits/fd49a0abca2385a3c074c6ca5b8ad60f8b8c273d",
+    "html_url": "https://github.com/espressif/arduino-esp32/commit/fd49a0abca2385a3c074c6ca5b8ad60f8b8c273d",
+    "comments_url": "https://api.github.com/repos/espressif/arduino-esp32/commits/fd49a0abca2385a3c074c6ca5b8ad60f8b8c273d/comments",
+    "author": {
+      "login": "me-no-dev",
+      "id": 12663778,
+      "node_id": "MDQ6VXNlcjEyNjYzNzc4",
+      "avatar_url": "https://avatars.githubusercontent.com/u/12663778?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/me-no-dev",
+      "html_url": "https://github.com/me-no-dev",
+      "followers_url": "https://api.github.com/users/me-no-dev/followers",
+      "following_url": "https://api.github.com/users/me-no-dev/following{/other_user}",
+      "gists_url": "https://api.github.com/users/me-no-dev/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/me-no-dev/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/me-no-dev/subscriptions",
+      "organizations_url": "https://api.github.com/users/me-no-dev/orgs",
+      "repos_url": "https://api.github.com/users/me-no-dev/repos",
+      "events_url": "https://api.github.com/users/me-no-dev/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/me-no-dev/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "d75795f5e27eac7afea33b27a22d826cb4556c99",
+        "url": "https://api.github.com/repos/espressif/arduino-esp32/commits/d75795f5e27eac7afea33b27a22d826cb4556c99",
+        "html_url": "https://github.com/espressif/arduino-esp32/commit/d75795f5e27eac7afea33b27a22d826cb4556c99"
+      }
+    ]
+  }
+]

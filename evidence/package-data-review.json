@@ -1,0 +1,9 @@
+{
+  "filesScanned": 4859,
+  "binaryPatternMatchesReviewedAsSdkConstants": true,
+  "credentialPayloadsFound": 0,
+  "privateRawFlashIncluded": false,
+  "imageNvsAndUserDataBlank": true,
+  "sourceMaterial": "sanitized stable board snapshot + frozen factory source + corresponding Arduino source; no user Studio home or private backups",
+  "details": "public-release-validation.json"
+}

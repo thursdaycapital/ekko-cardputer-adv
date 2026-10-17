@@ -1,0 +1,16 @@
+/*!
+ *  @file Adafruit_TCA8418.h
+ *
+ * 	I2C Driver for the Adafruit TCA8418 Keypad Matrix / GPIO Expander
+ *Breakout
+ *
+ * 	This is a library for the Adafruit TCA8418 breakout:
+ * 	https://www.adafruit.com/products/4918
+ *
+ * 	Adafruit invests time and resources providing this open source code,
+ *  please support Adafruit and open-source hardware by purchasing products from
+ * 	Adafruit!
+ *
+ *
+ *	BSD license (see license.txt)
+ */

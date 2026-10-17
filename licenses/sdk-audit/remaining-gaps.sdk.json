@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "scope": "Remaining SDK source/notice correspondence gaps only; original release gaps remain separate and must not be removed by this supplement.",
+  "gaps": [
+    {
+      "id": "esp-diagnostics-external-ref",
+      "severity": "P2",
+      "confidence": 1.0,
+      "status": "open",
+      "components": [
+        "lib/libesp_diagnostics.a"
+      ],
+      "finding": "Actual archive matches Arduino 2.0.17, and installed esp_diagnostics.h Apache declaration matches that same official tree; DWARF paths identify esp-rainmaker/components/esp-insights/components/esp_diagnostics. Exact external esp-insights commit and its complete repository-level notice set are not established.",
+      "evidence": [
+        "link-audit.json",
+        "sdk-4.4.7/esp_diagnostics/esp_diagnostics.h.notice.txt"
+      ],
+      "not_claimed": "The IDF 4.4.7 base or its root license is not used to invent an external component source revision."
+    },
+    {
+      "id": "sdk-dirty-patch-correspondence",
+      "severity": "P2",
+      "confidence": 1.0,
+      "status": "open",
+      "finding": "Official SDK update commit names exact IDF base 38eeba213a and all 56 selected archives match Arduino 2.0.17. Actual ELF retains v4.4.7-dirty. This proves the distributed archive identity and base reference, not the absence or full set of source/build patches.",
+      "evidence": [
+        "link-audit.json",
+        "evidence/arduino-sdk-last-change.json"
+      ],
+      "not_claimed": "No assertion of reproducible rebuilding of the precompiled SDK from an unmodified IDF tag."
+    },
+    {
+      "id": "member-level-notice-inventory",
+      "severity": "P2",
+      "confidence": 1.0,
+      "status": "open_bounded_scope",
+      "finding": "Component original license files and selected source attributions are added, including the observed fastpbkdf2 CC0 and DES LibTomCrypt notices. Per-file notices for every selected SDK object have not been exhaustively enumerated; 33 archives currently receive only the existing IDF root-text reference in coverage.json. Root terms are not assigned wholesale to all embedded third-party code.",
+      "evidence": [
+        "coverage.json",
+        "source-manifest.sdk.json"
+      ],
+      "not_claimed": "No complete binary-component notice/SBOM claim. This bounded closure stops at the identified components."
+    },
+    {
+      "id": "final-build-section-snapshot",
+      "severity": "P2",
+      "confidence": 1.0,
+      "status": "open_final_build_review",
+      "finding": "Archive selection comes from the opening section of a specific candidate map, before --gc-sections. Some selected sections may be removed; subsequent source/relink changes require final map/ELF hash correspondence to be rechecked. No final section-level inventory is supplied.",
+      "evidence": [
+        "link-audit.json",
+        "coverage.json"
+      ],
+      "not_claimed": "Selected archive count is not the count of components proved retained in a future release binary."
+    }
+  ]
+}

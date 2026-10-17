@@ -1,0 +1,510 @@
+{
+  "schema_version": 1,
+  "map_sha256": "90ca50ed6ca481c828a1a0201976b0be9ab0e5712852e036103cf3726d2da683",
+  "idf_ref": "38eeba213aa695aabfd6d89aa9f5078dbe5a94c3",
+  "selected_sdk_archive_count": 56,
+  "sdk_archives_with_added_component_or_source_materials": 23,
+  "selected_toolchain_runtime_count": 4,
+  "scope": "All selected SDK archive paths are indexed, including those receiving only the existing root text reference. Neither archive selection nor a root license reference establishes exhaustive notices for a final firmware.",
+  "archives": [
+    {
+      "sdk_path": "tools/sdk/esp32s3/ld/libbtbb.a",
+      "selected_member_count": 1,
+      "added_materials": [
+        "sdk-4.4.7/esp-phy-lib/LICENSE"
+      ],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "added_component_or_source_notice_materials_not_member_exhaustive",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/ld/libbtdm_app.a",
+      "selected_member_count": 53,
+      "added_materials": [
+        "sdk-4.4.7/esp32c3-bt-lib/LICENSE"
+      ],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "added_component_or_source_notice_materials_not_member_exhaustive",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/ld/libphy.a",
+      "selected_member_count": 19,
+      "added_materials": [
+        "sdk-4.4.7/esp-phy-lib/LICENSE"
+      ],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "added_component_or_source_notice_materials_not_member_exhaustive",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libapp_update.a",
+      "selected_member_count": 2,
+      "added_materials": [],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "existing_root_license_reference_only_member_notice_inventory_open",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libbt.a",
+      "selected_member_count": 1,
+      "added_materials": [],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "existing_root_license_reference_only_member_notice_inventory_open",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libcoexist.a",
+      "selected_member_count": 5,
+      "added_materials": [
+        "sdk-4.4.7/esp32-wifi-lib/LICENSE"
+      ],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "added_component_or_source_notice_materials_not_member_exhaustive",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libcore.a",
+      "selected_member_count": 1,
+      "added_materials": [
+        "sdk-4.4.7/esp32-wifi-lib/LICENSE"
+      ],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "added_component_or_source_notice_materials_not_member_exhaustive",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libcxx.a",
+      "selected_member_count": 1,
+      "added_materials": [],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "existing_root_license_reference_only_member_notice_inventory_open",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libdriver.a",
+      "selected_member_count": 17,
+      "added_materials": [],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "existing_root_license_reference_only_member_notice_inventory_open",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libefuse.a",
+      "selected_member_count": 6,
+      "added_materials": [],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "existing_root_license_reference_only_member_notice_inventory_open",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libesp_adc_cal.a",
+      "selected_member_count": 2,
+      "added_materials": [],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "existing_root_license_reference_only_member_notice_inventory_open",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libesp_common.a",
+      "selected_member_count": 1,
+      "added_materials": [],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "existing_root_license_reference_only_member_notice_inventory_open",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libesp_diagnostics.a",
+      "selected_member_count": 4,
+      "added_materials": [
+        "sdk-4.4.7/esp_diagnostics/esp_diagnostics.h.notice.txt"
+      ],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "added_component_or_source_notice_materials_not_member_exhaustive",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libesp_eth.a",
+      "selected_member_count": 2,
+      "added_materials": [],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "existing_root_license_reference_only_member_notice_inventory_open",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libesp_event.a",
+      "selected_member_count": 3,
+      "added_materials": [],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "existing_root_license_reference_only_member_notice_inventory_open",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libesp_ipc.a",
+      "selected_member_count": 4,
+      "added_materials": [],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "existing_root_license_reference_only_member_notice_inventory_open",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libesp_lcd.a",
+      "selected_member_count": 3,
+      "added_materials": [],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "existing_root_license_reference_only_member_notice_inventory_open",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libesp_netif.a",
+      "selected_member_count": 6,
+      "added_materials": [],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "existing_root_license_reference_only_member_notice_inventory_open",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libesp_phy.a",
+      "selected_member_count": 3,
+      "added_materials": [],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "existing_root_license_reference_only_member_notice_inventory_open",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libesp_pm.a",
+      "selected_member_count": 2,
+      "added_materials": [],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "existing_root_license_reference_only_member_notice_inventory_open",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libesp_ringbuf.a",
+      "selected_member_count": 1,
+      "added_materials": [],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "existing_root_license_reference_only_member_notice_inventory_open",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libesp_rom.a",
+      "selected_member_count": 6,
+      "added_materials": [],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "existing_root_license_reference_only_member_notice_inventory_open",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libesp_timer.a",
+      "selected_member_count": 4,
+      "added_materials": [],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "existing_root_license_reference_only_member_notice_inventory_open",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libesp_wifi.a",
+      "selected_member_count": 7,
+      "added_materials": [],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "existing_root_license_reference_only_member_notice_inventory_open",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libespcoredump.a",
+      "selected_member_count": 5,
+      "added_materials": [],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "existing_root_license_reference_only_member_notice_inventory_open",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libhal.a",
+      "selected_member_count": 31,
+      "added_materials": [],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "existing_root_license_reference_only_member_notice_inventory_open",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libheap.a",
+      "selected_member_count": 7,
+      "added_materials": [],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "existing_root_license_reference_only_member_notice_inventory_open",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libjson.a",
+      "selected_member_count": 1,
+      "added_materials": [
+        "sdk-4.4.7/cJSON/LICENSE"
+      ],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "added_component_or_source_notice_materials_not_member_exhaustive",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/liblog.a",
+      "selected_member_count": 2,
+      "added_materials": [],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "existing_root_license_reference_only_member_notice_inventory_open",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/liblwip.a",
+      "selected_member_count": 45,
+      "added_materials": [
+        "sdk-4.4.7/lwip/COPYING"
+      ],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "added_component_or_source_notice_materials_not_member_exhaustive",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libmbedcrypto.a",
+      "selected_member_count": 50,
+      "added_materials": [
+        "sdk-4.4.7/mbedtls/LICENSE"
+      ],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "added_component_or_source_notice_materials_not_member_exhaustive",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libmbedtls.a",
+      "selected_member_count": 1,
+      "added_materials": [
+        "sdk-4.4.7/mbedtls/LICENSE"
+      ],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "added_component_or_source_notice_materials_not_member_exhaustive",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libmbedtls_2.a",
+      "selected_member_count": 6,
+      "added_materials": [
+        "sdk-4.4.7/mbedtls/LICENSE"
+      ],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "added_component_or_source_notice_materials_not_member_exhaustive",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libmbedx509.a",
+      "selected_member_count": 3,
+      "added_materials": [
+        "sdk-4.4.7/mbedtls/LICENSE"
+      ],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "added_component_or_source_notice_materials_not_member_exhaustive",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libmesh.a",
+      "selected_member_count": 14,
+      "added_materials": [
+        "sdk-4.4.7/esp32-wifi-lib/LICENSE"
+      ],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "added_component_or_source_notice_materials_not_member_exhaustive",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libnet80211.a",
+      "selected_member_count": 34,
+      "added_materials": [
+        "sdk-4.4.7/esp32-wifi-lib/LICENSE"
+      ],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "added_component_or_source_notice_materials_not_member_exhaustive",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libnewlib.a",
+      "selected_member_count": 10,
+      "added_materials": [
+        "sdk-4.4.7/newlib/COPYING.NEWLIB"
+      ],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "added_component_or_source_notice_materials_not_member_exhaustive",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libnvs_flash.a",
+      "selected_member_count": 10,
+      "added_materials": [],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "existing_root_license_reference_only_member_notice_inventory_open",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libpp.a",
+      "selected_member_count": 19,
+      "added_materials": [
+        "sdk-4.4.7/esp32-wifi-lib/LICENSE"
+      ],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "added_component_or_source_notice_materials_not_member_exhaustive",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libprotobuf-c.a",
+      "selected_member_count": 1,
+      "added_materials": [
+        "sdk-4.4.7/protobuf-c/LICENSE"
+      ],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "added_component_or_source_notice_materials_not_member_exhaustive",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libprotocomm.a",
+      "selected_member_count": 7,
+      "added_materials": [],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "existing_root_license_reference_only_member_notice_inventory_open",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libpthread.a",
+      "selected_member_count": 4,
+      "added_materials": [],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "existing_root_license_reference_only_member_notice_inventory_open",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libsmartconfig.a",
+      "selected_member_count": 7,
+      "added_materials": [
+        "sdk-4.4.7/esp32-wifi-lib/LICENSE"
+      ],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "added_component_or_source_notice_materials_not_member_exhaustive",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libsoc.a",
+      "selected_member_count": 12,
+      "added_materials": [],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "existing_root_license_reference_only_member_notice_inventory_open",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libspiffs.a",
+      "selected_member_count": 7,
+      "added_materials": [
+        "sdk-4.4.7/spiffs/LICENSE"
+      ],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "added_component_or_source_notice_materials_not_member_exhaustive",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libtcpip_adapter.a",
+      "selected_member_count": 1,
+      "added_materials": [],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "existing_root_license_reference_only_member_notice_inventory_open",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libvfs.a",
+      "selected_member_count": 4,
+      "added_materials": [],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "existing_root_license_reference_only_member_notice_inventory_open",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libwifi_provisioning.a",
+      "selected_member_count": 7,
+      "added_materials": [],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "existing_root_license_reference_only_member_notice_inventory_open",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libwpa_supplicant.a",
+      "selected_member_count": 51,
+      "added_materials": [
+        "sdk-4.4.7/wpa_supplicant/COPYING",
+        "sdk-4.4.7/wpa_supplicant/README",
+        "sdk-4.4.7/wpa_supplicant/CC0-1.0.txt",
+        "sdk-4.4.7/wpa_supplicant/des-internal.c.notice.txt",
+        "sdk-4.4.7/wpa_supplicant/fastpbkdf2.c.notice.txt"
+      ],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "added_component_or_source_notice_materials_not_member_exhaustive",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libxt_hal.a",
+      "selected_member_count": 5,
+      "added_materials": [
+        "sdk-4.4.7/xtensa/hal.h.notice.txt"
+      ],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "added_component_or_source_notice_materials_not_member_exhaustive",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libxtensa.a",
+      "selected_member_count": 2,
+      "added_materials": [
+        "sdk-4.4.7/xtensa/hal.h.notice.txt"
+      ],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "added_component_or_source_notice_materials_not_member_exhaustive",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/qio_qspi/libbootloader_support.a",
+      "selected_member_count": 10,
+      "added_materials": [],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "existing_root_license_reference_only_member_notice_inventory_open",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/qio_qspi/libesp_hw_support.a",
+      "selected_member_count": 22,
+      "added_materials": [],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "existing_root_license_reference_only_member_notice_inventory_open",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/qio_qspi/libesp_system.a",
+      "selected_member_count": 24,
+      "added_materials": [],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "existing_root_license_reference_only_member_notice_inventory_open",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/qio_qspi/libfreertos.a",
+      "selected_member_count": 13,
+      "added_materials": [
+        "sdk-4.4.7/freertos/LICENSE.md",
+        "sdk-4.4.7/freertos/FreeRTOS.h.notice.txt"
+      ],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "added_component_or_source_notice_materials_not_member_exhaustive",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/qio_qspi/libspi_flash.a",
+      "selected_member_count": 22,
+      "added_materials": [],
+      "existing_root_license": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "coverage_status": "existing_root_license_reference_only_member_notice_inventory_open",
+      "scope_note": "This is archive-level document coverage, not a conclusion about every source file or every retained section."
+    }
+  ]
+}

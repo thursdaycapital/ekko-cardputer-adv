@@ -1,0 +1,1506 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-10-16T16:27:43.522134+00:00",
+  "purpose": "Local release preparation: verbatim locally present notices and source metadata, not a ready firmware release or a legal determination.",
+  "privacy": "Only allowlisted source/license/provenance files; no NVS, full flash backup, account, password, target device code, runtime logs or firmware image copied.",
+  "candidate_repository": {
+    "url": "https://github.com/EKKOLearnAI/ekko-studio",
+    "base_commit": "1242ac63556491c92ba6dd49d89fd19c91a6bdd5",
+    "local_tree": "work/ekko-cardputer-stock-20261017",
+    "pins": {
+      "M5Unified": "0.2.26",
+      "M5Cardputer": "1.1.1",
+      "M5GFX": "0.2.33",
+      "IRremote": "4.7.1",
+      "U8g2": "2.36.18",
+      "ArduinoJson": "7.4.3"
+    },
+    "arduino_package": "3.20017.241212+sha.dcc1105b",
+    "arduino_sdk": "ESP-IDF 4.4.7"
+  },
+  "factory_repository": {
+    "url": "https://github.com/m5stack/M5Cardputer-UserDemo.git",
+    "base_commit": "b549eac0a3c65bc108186c276b8fac0a214aaa4e",
+    "local_tree": "work/m5-cardputer-adv-factory",
+    "factory_sdk": "ESP-IDF v5.4.2",
+    "component_pins": [
+      {
+        "directory": "components/M5GFX",
+        "git_commit": "c6f92dc03226cdc04d67c705a2020f62ad21ad01"
+      },
+      {
+        "directory": "components/M5Unified",
+        "git_commit": "5580ff6923a868cc71d5b30c962186bde2c85b67"
+      },
+      {
+        "directory": "components/mooncake",
+        "git_commit": "c1ab2adeca1b996cecf41f69e4f22d874b97f6ba"
+      },
+      {
+        "directory": "components/mooncake_log",
+        "git_commit": "fe97aafe5432a9f22c1414b45b59fad37a4bf27e"
+      },
+      {
+        "directory": "components/smooth_ui_toolkit",
+        "git_commit": "c0bd45116ab443b7ad29cdce6c36f9e954a513a4"
+      }
+    ]
+  },
+  "files": [
+    {
+      "component": "Ekko Studio firmware and associated repository files",
+      "source_path": "work/ekko-cardputer-stock-20261017/LICENSE",
+      "copied_path": "ekko-studio/LICENSE",
+      "kind": "original_full_file",
+      "sha256": "fe3e400361f80f14f5cf6024e890c05ab51600ec26d5fb2be97b24dc5868a876",
+      "bytes": 2650,
+      "source_file_sha256": "fe3e400361f80f14f5cf6024e890c05ab51600ec26d5fb2be97b24dc5868a876",
+      "version_or_ref": "1242ac63556491c92ba6dd49d89fd19c91a6bdd5 + local candidate changes"
+    },
+    {
+      "component": "Candidate build pins",
+      "source_path": "work/ekko-cardputer-stock-20261017/packages/esp32-s3/cardputer-adv/platformio.ini",
+      "copied_path": "ekko-studio/platformio.ini",
+      "kind": "build_pin_metadata",
+      "sha256": "7f47b82b6b0bd9f2b79ca41e9a72b4d1ed60b90bee12f826f42a382154d69c1d",
+      "bytes": 758,
+      "source_file_sha256": "7f47b82b6b0bd9f2b79ca41e9a72b4d1ed60b90bee12f826f42a382154d69c1d"
+    },
+    {
+      "component": "M5Unified",
+      "source_path": "work/ekko-cardputer-stock-20261017/packages/esp32-s3/cardputer-adv/.pio/libdeps/cardputer-adv/M5Unified/LICENSE",
+      "copied_path": "candidate/M5Unified/LICENSE",
+      "kind": "original_full_file",
+      "sha256": "44611d917bece311f5c8eeffce83d8bf9e9ca3f815d262f694ff4a7996af50ea",
+      "bytes": 1063,
+      "source_file_sha256": "44611d917bece311f5c8eeffce83d8bf9e9ca3f815d262f694ff4a7996af50ea",
+      "version_or_ref": "0.2.26"
+    },
+    {
+      "component": "M5GFX",
+      "source_path": "work/ekko-cardputer-stock-20261017/packages/esp32-s3/cardputer-adv/.pio/libdeps/cardputer-adv/M5GFX/LICENSE",
+      "copied_path": "candidate/M5GFX/LICENSE",
+      "kind": "original_full_file",
+      "sha256": "2076614535b2a8ea22d46dc9c5469a924e1a726e9d81a7cb2723a5e9833fe7a3",
+      "bytes": 1064,
+      "source_file_sha256": "2076614535b2a8ea22d46dc9c5469a924e1a726e9d81a7cb2723a5e9833fe7a3",
+      "version_or_ref": "0.2.33"
+    },
+    {
+      "component": "IRremote",
+      "source_path": "work/ekko-cardputer-stock-20261017/packages/esp32-s3/cardputer-adv/.pio/libdeps/cardputer-adv/IRremote/LICENSE",
+      "copied_path": "candidate/IRremote/LICENSE",
+      "kind": "original_full_file",
+      "sha256": "7e53f7b77b4ed079b6a0c195358c6b35c954c298e694b5dd3afc969dd4558332",
+      "bytes": 1227,
+      "source_file_sha256": "7e53f7b77b4ed079b6a0c195358c6b35c954c298e694b5dd3afc969dd4558332",
+      "version_or_ref": "4.7.1"
+    },
+    {
+      "component": "U8g2",
+      "source_path": "work/ekko-cardputer-stock-20261017/packages/esp32-s3/cardputer-adv/.pio/libdeps/cardputer-adv/U8g2/LICENSE",
+      "copied_path": "candidate/U8g2/LICENSE",
+      "kind": "original_full_file",
+      "sha256": "8cf13e2fabfb6665de2132f148011fcf4252106f464ea520c001647a71934f5e",
+      "bytes": 3750,
+      "source_file_sha256": "8cf13e2fabfb6665de2132f148011fcf4252106f464ea520c001647a71934f5e",
+      "version_or_ref": "2.36.18"
+    },
+    {
+      "component": "ArduinoJson",
+      "source_path": "work/ekko-cardputer-stock-20261017/packages/esp32-s3/cardputer-adv/.pio/libdeps/cardputer-adv/ArduinoJson/LICENSE.txt",
+      "copied_path": "candidate/ArduinoJson/LICENSE.txt",
+      "kind": "original_full_file",
+      "sha256": "4a7ee9c96b28cbf30c5bf7c2d211a0ef57179f0328e68ad7b7fa7d754b7da1a2",
+      "bytes": 1117,
+      "source_file_sha256": "4a7ee9c96b28cbf30c5bf7c2d211a0ef57179f0328e68ad7b7fa7d754b7da1a2",
+      "version_or_ref": "7.4.3"
+    },
+    {
+      "component": "M5Cardputer",
+      "source_path": "work/ekko-cardputer-stock-20261017/packages/esp32-s3/cardputer-adv/.pio/libdeps/cardputer-adv/M5Cardputer/src/M5Cardputer.h",
+      "copied_path": "candidate/M5Cardputer/M5Cardputer.h.notice.txt",
+      "kind": "verbatim_source_comment_excerpt",
+      "sha256": "78bf2528b3144c7a80d0f171bccea6f494d8d8c7d09eaf1ddfb12ca879b95978",
+      "bytes": 100,
+      "source_file_sha256": "e290a5eac38a274977ed63bfb911e149d694b6822e8b4b128d2aa5e3e37d7b91",
+      "source_lines": [
+        1,
+        5
+      ],
+      "version_or_ref": "1.1.1"
+    },
+    {
+      "component": "M5GFX component attribution index",
+      "source_path": "work/ekko-cardputer-stock-20261017/packages/esp32-s3/cardputer-adv/.pio/libdeps/cardputer-adv/M5GFX/README.md",
+      "copied_path": "candidate/M5GFX/README.md",
+      "kind": "upstream_attribution_document",
+      "sha256": "fb94bee86048d028fe39d6d8f51e62b63e6bc3936cb2f0f8aa4b3bd180c4e851",
+      "bytes": 2293,
+      "source_file_sha256": "fb94bee86048d028fe39d6d8f51e62b63e6bc3936cb2f0f8aa4b3bd180c4e851",
+      "version_or_ref": "0.2.33"
+    },
+    {
+      "component": "M5GFX bundled font notices",
+      "source_path": "work/ekko-cardputer-stock-20261017/packages/esp32-s3/cardputer-adv/.pio/libdeps/cardputer-adv/M5GFX/src/lgfx/Fonts/efont/COPYRIGHT.txt",
+      "copied_path": "candidate/M5GFX/src/lgfx/Fonts/efont/COPYRIGHT.txt",
+      "kind": "original_full_file",
+      "sha256": "27c2942bbe8da9d5a8128695763d9a1da8d1697683ece43d7197f32a2de5c731",
+      "bytes": 1486,
+      "source_file_sha256": "27c2942bbe8da9d5a8128695763d9a1da8d1697683ece43d7197f32a2de5c731",
+      "version_or_ref": "0.2.33"
+    },
+    {
+      "component": "M5GFX bundled font notices",
+      "source_path": "work/ekko-cardputer-stock-20261017/packages/esp32-s3/cardputer-adv/.pio/libdeps/cardputer-adv/M5GFX/src/lgfx/Fonts/GFXFF/license.txt",
+      "copied_path": "candidate/M5GFX/src/lgfx/Fonts/GFXFF/license.txt",
+      "kind": "original_full_file",
+      "sha256": "3e7bede50526352926c2283e640f2823d9f9f2165d1852044c4fb1bbac283106",
+      "bytes": 1344,
+      "source_file_sha256": "3e7bede50526352926c2283e640f2823d9f9f2165d1852044c4fb1bbac283106",
+      "version_or_ref": "0.2.33"
+    },
+    {
+      "component": "M5GFX bundled font notices",
+      "source_path": "work/ekko-cardputer-stock-20261017/packages/esp32-s3/cardputer-adv/.pio/libdeps/cardputer-adv/M5GFX/src/lgfx/Fonts/IPA/IPA_Font_License_Agreement_v1.0.txt",
+      "copied_path": "candidate/M5GFX/src/lgfx/Fonts/IPA/IPA_Font_License_Agreement_v1.0.txt",
+      "kind": "original_full_file",
+      "sha256": "272f7f805dfafd3cd9b7c5d99f38133664caacdf5b6ae1ed059f1b051ecad3c2",
+      "bytes": 20447,
+      "source_file_sha256": "272f7f805dfafd3cd9b7c5d99f38133664caacdf5b6ae1ed059f1b051ecad3c2",
+      "version_or_ref": "0.2.33"
+    },
+    {
+      "component": "M5GFX bundled code attribution",
+      "source_path": "work/ekko-cardputer-stock-20261017/packages/esp32-s3/cardputer-adv/.pio/libdeps/cardputer-adv/M5GFX/src/lgfx/v1/LGFXBase.hpp",
+      "copied_path": "candidate/M5GFX/src/lgfx/v1/LGFXBase.hpp.notice.txt",
+      "kind": "verbatim_source_comment_excerpt",
+      "sha256": "ed1d5d238a3f339f54411c66562c121b65c487100d797074bebb5a98b8950249",
+      "bytes": 545,
+      "source_file_sha256": "e595198f2a0872c55a854b78d8a1d48cb656c534b62da183e4334f148afa01c1",
+      "source_lines": [
+        1,
+        17
+      ],
+      "version_or_ref": "0.2.33"
+    },
+    {
+      "component": "M5GFX bundled code attribution",
+      "source_path": "work/ekko-cardputer-stock-20261017/packages/esp32-s3/cardputer-adv/.pio/libdeps/cardputer-adv/M5GFX/src/lgfx/utility/lgfx_tjpgd.c",
+      "copied_path": "candidate/M5GFX/src/lgfx/utility/lgfx_tjpgd.c.notice.txt",
+      "kind": "verbatim_source_comment_excerpt",
+      "sha256": "a9467049f488188f4e3d92774f1645e625681899992e037a9e821fedeab7885d",
+      "bytes": 1432,
+      "source_file_sha256": "a33ceadf4c47d6c58961789e39f568fccb0691edcc3a3eb6886d411cbfe71533",
+      "source_lines": [
+        1,
+        27
+      ],
+      "version_or_ref": "0.2.33"
+    },
+    {
+      "component": "M5GFX bundled code attribution",
+      "source_path": "work/ekko-cardputer-stock-20261017/packages/esp32-s3/cardputer-adv/.pio/libdeps/cardputer-adv/M5GFX/src/lgfx/utility/lgfx_pngle.h",
+      "copied_path": "candidate/M5GFX/src/lgfx/utility/lgfx_pngle.h.notice.txt",
+      "kind": "verbatim_source_comment_excerpt",
+      "sha256": "1167453e80abdc03f003eacc1c7a6178ccf95f54a8634b4b4201aa76206714c2",
+      "bytes": 1132,
+      "source_file_sha256": "d53757a618d9b44fe0bd152c1e497a04e71ed7d9b615ec611909662b63c82719",
+      "source_lines": [
+        1,
+        23
+      ],
+      "version_or_ref": "0.2.33"
+    },
+    {
+      "component": "M5GFX bundled code attribution",
+      "source_path": "work/ekko-cardputer-stock-20261017/packages/esp32-s3/cardputer-adv/.pio/libdeps/cardputer-adv/M5GFX/src/lgfx/utility/lgfx_qrcode.h",
+      "copied_path": "candidate/M5GFX/src/lgfx/utility/lgfx_qrcode.h.notice.txt",
+      "kind": "verbatim_source_comment_excerpt",
+      "sha256": "fafaad3f100058e7fc936c9cade6d7ee1361951cc55435ba5a961281ce33ce03",
+      "bytes": 1147,
+      "source_file_sha256": "a2658e4af1d9bbb1974a50868e177461498c35e6c1d12fadf7522b7b8281c720",
+      "source_lines": [
+        1,
+        23
+      ],
+      "version_or_ref": "0.2.33"
+    },
+    {
+      "component": "M5GFX bundled code attribution",
+      "source_path": "work/ekko-cardputer-stock-20261017/packages/esp32-s3/cardputer-adv/.pio/libdeps/cardputer-adv/M5GFX/src/lgfx/Fonts/glcdfont.h",
+      "copied_path": "candidate/M5GFX/src/lgfx/Fonts/glcdfont.h.notice.txt",
+      "kind": "verbatim_source_comment_excerpt",
+      "sha256": "29fd6677e64be9a328a0991f795af639d3f79d37ee03844360a37f41dc76f672",
+      "bytes": 1350,
+      "source_file_sha256": "f11beeaa06b8eb7605e9192636bbe6f9f810f7281aa24406f26109a7011e9ceb",
+      "source_lines": [
+        1,
+        26
+      ],
+      "version_or_ref": "0.2.33"
+    },
+    {
+      "component": "M5GFX bundled result.hpp MIT notice",
+      "source_path": "work/ekko-cardputer-stock-20261017/packages/esp32-s3/cardputer-adv/.pio/libdeps/cardputer-adv/M5GFX/src/lgfx/utility/result.hpp",
+      "copied_path": "candidate/M5GFX/src/lgfx/utility/result.hpp.notice.txt",
+      "kind": "verbatim_source_comment_excerpt",
+      "sha256": "9c87823f1600688bb18eb34a01c73fec8bff61338646ffc46e9c0624265dbce5",
+      "bytes": 1446,
+      "source_file_sha256": "98c43c787faac9b9be4f6489660b25cbc86a2cccca882cb861c4dbb020406a79",
+      "source_lines": [
+        1,
+        30
+      ],
+      "version_or_ref": "0.2.33"
+    },
+    {
+      "component": "Arduino ESP32 package license/version declaration",
+      "source_path": "<PLATFORMIO_CORE_DIR>/packages/framework-arduinoespressif32/package.json",
+      "copied_path": "arduino-esp32/package.json",
+      "kind": "package_metadata",
+      "sha256": "f35415c75f6f43755df92bbbf7ef10c9e65c2edb2569d512636a0477be64d5bf",
+      "bytes": 414,
+      "source_file_sha256": "f35415c75f6f43755df92bbbf7ef10c9e65c2edb2569d512636a0477be64d5bf",
+      "version_or_ref": "3.20017.241212+sha.dcc1105b"
+    },
+    {
+      "component": "Arduino ESP32 source notice",
+      "source_path": "<PLATFORMIO_CORE_DIR>/packages/framework-arduinoespressif32/cores/esp32/Arduino.h",
+      "copied_path": "arduino-esp32/cores/esp32/Arduino.h.notice.txt",
+      "kind": "verbatim_source_comment_excerpt",
+      "sha256": "856cc5bdc5a8a9d07c728f08f4c26ebbedeaa125cbac59794dc9c2c2ad8e4e76",
+      "bytes": 830,
+      "source_file_sha256": "e4e915bc49684ea58383eed7fcb0970ab7f713cfae0f03448aac03da9c09ae90",
+      "source_lines": [
+        1,
+        18
+      ],
+      "version_or_ref": "2.0.17 / PlatformIO 3.20017.241212+sha.dcc1105b"
+    },
+    {
+      "component": "Arduino ESP32 source notice",
+      "source_path": "<PLATFORMIO_CORE_DIR>/packages/framework-arduinoespressif32/libraries/WiFi/src/WiFi.h",
+      "copied_path": "arduino-esp32/libraries/WiFi/src/WiFi.h.notice.txt",
+      "kind": "verbatim_source_comment_excerpt",
+      "sha256": "cffcf4d21ea8a36cd6613af56d878db8581f6705bce3bed102fb6cc74ecbddf8",
+      "bytes": 899,
+      "source_file_sha256": "a34e3f6f3b224beff86b9c65fd07ca5ac653a99070c84772478349f97811da84",
+      "source_lines": [
+        1,
+        20
+      ],
+      "version_or_ref": "2.0.17 / PlatformIO 3.20017.241212+sha.dcc1105b"
+    },
+    {
+      "component": "Arduino ESP32 source notice",
+      "source_path": "<PLATFORMIO_CORE_DIR>/packages/framework-arduinoespressif32/libraries/WiFi/src/WiFiUdp.h",
+      "copied_path": "arduino-esp32/libraries/WiFi/src/WiFiUdp.h.notice.txt",
+      "kind": "verbatim_source_comment_excerpt",
+      "sha256": "401dc6e8eb2945a5d903e489179f0182d549715b868f68f06f8c5b060eb70aec",
+      "bytes": 1805,
+      "source_file_sha256": "a655d8fe671d797c6bcd663f23fa80c29cc95833abf21fe680219cef77528dc4",
+      "source_lines": [
+        1,
+        33
+      ],
+      "version_or_ref": "2.0.17 / PlatformIO 3.20017.241212+sha.dcc1105b"
+    },
+    {
+      "component": "Arduino ESP32 source notice",
+      "source_path": "<PLATFORMIO_CORE_DIR>/packages/framework-arduinoespressif32/libraries/HTTPClient/src/HTTPClient.h",
+      "copied_path": "arduino-esp32/libraries/HTTPClient/src/HTTPClient.h.notice.txt",
+      "kind": "verbatim_source_comment_excerpt",
+      "sha256": "d273dcec813c427eef6fdd498c16650983e1f3d2393d4585c7968945fbde5695",
+      "bytes": 1008,
+      "source_file_sha256": "cfeb3777dfa2fa7cb5b9caf59ae59331e4f4a9df810aaa2060e7817adb2ca375",
+      "source_lines": [
+        1,
+        25
+      ],
+      "version_or_ref": "2.0.17 / PlatformIO 3.20017.241212+sha.dcc1105b"
+    },
+    {
+      "component": "Arduino ESP32 source notice",
+      "source_path": "<PLATFORMIO_CORE_DIR>/packages/framework-arduinoespressif32/libraries/WiFiClientSecure/src/WiFiClientSecure.h",
+      "copied_path": "arduino-esp32/libraries/WiFiClientSecure/src/WiFiClientSecure.h.notice.txt",
+      "kind": "verbatim_source_comment_excerpt",
+      "sha256": "322c737b1ceb915d4c74ac830b88deed0478d43df68651b7acd64c201c56065d",
+      "bytes": 909,
+      "source_file_sha256": "5c1905ee52d2e9b7568a54e75f257918926997ac029e39d7410c17580a006852",
+      "source_lines": [
+        1,
+        19
+      ],
+      "version_or_ref": "2.0.17 / PlatformIO 3.20017.241212+sha.dcc1105b"
+    },
+    {
+      "component": "Arduino ESP32 source notice",
+      "source_path": "<PLATFORMIO_CORE_DIR>/packages/framework-arduinoespressif32/libraries/WebServer/src/WebServer.h",
+      "copied_path": "arduino-esp32/libraries/WebServer/src/WebServer.h.notice.txt",
+      "kind": "verbatim_source_comment_excerpt",
+      "sha256": "f5fa4b8a05fd9da6c5a3ffec91929ba7bd8f3777cb08a66050c4abea705c7120",
+      "bytes": 983,
+      "source_file_sha256": "7770ef659d332dee92947cf7d98097874c39583a9113fd66735ca329459c8e8b",
+      "source_lines": [
+        1,
+        21
+      ],
+      "version_or_ref": "2.0.17 / PlatformIO 3.20017.241212+sha.dcc1105b"
+    },
+    {
+      "component": "Arduino bundled libb64",
+      "source_path": "<PLATFORMIO_CORE_DIR>/packages/framework-arduinoespressif32/cores/esp32/libb64/LICENSE",
+      "copied_path": "arduino-esp32/cores/esp32/libb64/LICENSE",
+      "kind": "original_full_file",
+      "sha256": "834b7afa1b3c40289a3be775d3625016be1c0d7ea7a4a26c1eb207f53dc961d8",
+      "bytes": 1679,
+      "source_file_sha256": "834b7afa1b3c40289a3be775d3625016be1c0d7ea7a4a26c1eb207f53dc961d8"
+    },
+    {
+      "component": "Arduino bundled libb64",
+      "source_path": "<PLATFORMIO_CORE_DIR>/packages/framework-arduinoespressif32/cores/esp32/libb64/AUTHORS",
+      "copied_path": "arduino-esp32/cores/esp32/libb64/AUTHORS",
+      "kind": "original_full_file",
+      "sha256": "a876cb336b273ecc6c7089abf52c8f739183dcfae495f5dc4ef7f75341563af5",
+      "bytes": 166,
+      "source_file_sha256": "a876cb336b273ecc6c7089abf52c8f739183dcfae495f5dc4ef7f75341563af5"
+    },
+    {
+      "component": "Arduino bundled SDK version declaration",
+      "source_path": "<PLATFORMIO_CORE_DIR>/packages/framework-arduinoespressif32/tools/sdk/esp32s3/include/esp_common/include/esp_idf_version.h",
+      "copied_path": "arduino-esp32/esp_idf_version.h",
+      "kind": "source_version_metadata",
+      "sha256": "56be0b78266695b3b2a5fd8af5e8661e26e270f7ea35cf0961b9444712c09aaa",
+      "bytes": 2011,
+      "source_file_sha256": "56be0b78266695b3b2a5fd8af5e8661e26e270f7ea35cf0961b9444712c09aaa",
+      "version_or_ref": "ESP-IDF 4.4.7"
+    },
+    {
+      "component": "pinyin",
+      "source_path": "work/ekko-cardputer-stock-20261017/packages/esp32-s3/cardputer-adv/assets/pinyin/NOTICE",
+      "copied_path": "assets/pinyin/NOTICE",
+      "kind": "original_notice_or_provenance",
+      "sha256": "3095ba6c531ffbed36507541ac7e8294f1371983575a246bf76506eb9d0d8583",
+      "bytes": 1219,
+      "source_file_sha256": "3095ba6c531ffbed36507541ac7e8294f1371983575a246bf76506eb9d0d8583"
+    },
+    {
+      "component": "pinyin",
+      "source_path": "work/ekko-cardputer-stock-20261017/packages/esp32-s3/cardputer-adv/assets/pinyin/sources.json",
+      "copied_path": "assets/pinyin/sources.json",
+      "kind": "original_notice_or_provenance",
+      "sha256": "6c5157babc316a0668e5d6f63a2eaa2e01148d11900e29fc47a4ca968c88aa33",
+      "bytes": 534,
+      "source_file_sha256": "6c5157babc316a0668e5d6f63a2eaa2e01148d11900e29fc47a4ca968c88aa33"
+    },
+    {
+      "component": "chat-symbols",
+      "source_path": "work/ekko-cardputer-stock-20261017/packages/esp32-s3/cardputer-adv/assets/chat-symbols/NOTICE",
+      "copied_path": "assets/chat-symbols/NOTICE",
+      "kind": "original_notice_or_provenance",
+      "sha256": "28090d0ae04c1a7359912854cfb1a6e00733bc9e1b474cac1dda9817a4adcfc3",
+      "bytes": 797,
+      "source_file_sha256": "28090d0ae04c1a7359912854cfb1a6e00733bc9e1b474cac1dda9817a4adcfc3"
+    },
+    {
+      "component": "chat-symbols",
+      "source_path": "work/ekko-cardputer-stock-20261017/packages/esp32-s3/cardputer-adv/assets/chat-symbols/sources.json",
+      "copied_path": "assets/chat-symbols/sources.json",
+      "kind": "original_notice_or_provenance",
+      "sha256": "50c3803e3e745a1cbe5c318654b8b4640b4c549d9a3b10d927a2c4cc2d1181f9",
+      "bytes": 502,
+      "source_file_sha256": "50c3803e3e745a1cbe5c318654b8b4640b4c549d9a3b10d927a2c4cc2d1181f9"
+    },
+    {
+      "component": "Rime pinyin-simp",
+      "source_path": "work/ekko-cardputer-stock-20261017/packages/esp32-s3/cardputer-adv/assets/pinyin/upstream/LICENSE",
+      "copied_path": "assets/pinyin/upstream/LICENSE",
+      "kind": "original_full_file",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "bytes": 11358,
+      "source_file_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "version_or_ref": "0c6861ef7420ee780270ca6d993d18d4101049d0"
+    },
+    {
+      "component": "Rime pinyin-simp",
+      "source_path": "work/ekko-cardputer-stock-20261017/packages/esp32-s3/cardputer-adv/assets/pinyin/upstream/AUTHORS",
+      "copied_path": "assets/pinyin/upstream/AUTHORS",
+      "kind": "original_full_file",
+      "sha256": "f4cff0fcbca4668ac449c24a53be547e162bc60cce63fdc5d5906801a452edc4",
+      "bytes": 177,
+      "source_file_sha256": "f4cff0fcbca4668ac449c24a53be547e162bc60cce63fdc5d5906801a452edc4",
+      "version_or_ref": "0c6861ef7420ee780270ca6d993d18d4101049d0"
+    },
+    {
+      "component": "Unicode emoji property data",
+      "source_path": "work/ekko-cardputer-stock-20261017/packages/esp32-s3/cardputer-adv/assets/chat-symbols/upstream/LICENSE.txt",
+      "copied_path": "assets/chat-symbols/upstream/LICENSE.txt",
+      "kind": "original_full_file",
+      "sha256": "e7a93b009565cfce55919a381437ac4db883e9da2126fa28b91d12732bc53d96",
+      "bytes": 1995,
+      "source_file_sha256": "e7a93b009565cfce55919a381437ac4db883e9da2126fa28b91d12732bc53d96",
+      "version_or_ref": "Unicode 17.0.0 / Unicode-3.0"
+    },
+    {
+      "component": "16 Agent avatars",
+      "source_path": "work/ekko-cardputer-stock-20261017/packages/esp32-s3/cardputer-adv/assets/avatars/manifest.json",
+      "copied_path": "assets/avatars/manifest.json",
+      "kind": "existing_attribution_and_source_boundary",
+      "sha256": "a0d0052bf994b9f9bb30c21cee20585837956c0f9aaa87005eb6d99c81569c06",
+      "bytes": 13890,
+      "source_file_sha256": "a0d0052bf994b9f9bb30c21cee20585837956c0f9aaa87005eb6d99c81569c06"
+    },
+    {
+      "component": "16 Agent avatars",
+      "source_path": "work/ekko-cardputer-stock-20261017/packages/esp32-s3/cardputer-adv/assets/avatars/README.zh-CN.md",
+      "copied_path": "assets/avatars/README.zh-CN.md",
+      "kind": "existing_attribution_and_source_boundary",
+      "sha256": "127f6133d81ca8796602f13638510e9fdfbb39b6926407e42682bcee4a33dc01",
+      "bytes": 2418,
+      "source_file_sha256": "127f6133d81ca8796602f13638510e9fdfbb39b6926407e42682bcee4a33dc01"
+    },
+    {
+      "component": "User-provided boot video and Remotion conversion",
+      "source_path": "work/ekko-cardputer-stock-20261017/packages/esp32-s3/cardputer-adv/assets/boot-video/asset-manifest.json",
+      "copied_path": "assets/boot-video/asset-manifest.json",
+      "kind": "existing_provenance_or_tool_pin",
+      "sha256": "d515abf6c4fda1917b2dc773806b1beb3756fd9ecd499a994bca68148c69be22",
+      "bytes": 26375,
+      "source_file_sha256": "d515abf6c4fda1917b2dc773806b1beb3756fd9ecd499a994bca68148c69be22"
+    },
+    {
+      "component": "User-provided boot video and Remotion conversion",
+      "source_path": "work/ekko-cardputer-stock-20261017/packages/esp32-s3/cardputer-adv/assets/boot-video/source/README.zh-CN.md",
+      "copied_path": "assets/boot-video/source/README.zh-CN.md",
+      "kind": "existing_provenance_or_tool_pin",
+      "sha256": "2ff6fd8d3ddceb1672b836c3eb2da5d2d411ee25d0d096add3d3821296a17814",
+      "bytes": 3750,
+      "source_file_sha256": "2ff6fd8d3ddceb1672b836c3eb2da5d2d411ee25d0d096add3d3821296a17814"
+    },
+    {
+      "component": "User-provided boot video and Remotion conversion",
+      "source_path": "work/ekko-cardputer-stock-20261017/packages/esp32-s3/cardputer-adv/assets/boot-video/source/package.json",
+      "copied_path": "assets/boot-video/source/package.json",
+      "kind": "existing_provenance_or_tool_pin",
+      "sha256": "fb6a72697a8ab00c0144d04be7324acb51fdbc58514a375e2fe0387500dfa157",
+      "bytes": 1102,
+      "source_file_sha256": "fb6a72697a8ab00c0144d04be7324acb51fdbc58514a375e2fe0387500dfa157"
+    },
+    {
+      "component": "M5Cardputer UserDemo",
+      "source_path": "work/m5-cardputer-adv-factory/README.md",
+      "copied_path": "factory/README.md",
+      "kind": "source_pin_or_attribution_metadata",
+      "sha256": "50060d93abdf2caef41f16f1b149d1b5b9bdf76f0420a4f29e8940ac4dafa362",
+      "bytes": 983,
+      "source_file_sha256": "50060d93abdf2caef41f16f1b149d1b5b9bdf76f0420a4f29e8940ac4dafa362",
+      "version_or_ref": "b549eac0a3c65bc108186c276b8fac0a214aaa4e + local changes"
+    },
+    {
+      "component": "M5Cardputer UserDemo",
+      "source_path": "work/m5-cardputer-adv-factory/repos.json",
+      "copied_path": "factory/repos.json",
+      "kind": "source_pin_or_attribution_metadata",
+      "sha256": "c3978cb252c4d30be8e463e62b664abb1cce6deecfbc122e4c0ce548e7776d70",
+      "bytes": 721,
+      "source_file_sha256": "c3978cb252c4d30be8e463e62b664abb1cce6deecfbc122e4c0ce548e7776d70",
+      "version_or_ref": "b549eac0a3c65bc108186c276b8fac0a214aaa4e + local changes"
+    },
+    {
+      "component": "M5Cardputer UserDemo",
+      "source_path": "work/m5-cardputer-adv-factory/dependencies.lock",
+      "copied_path": "factory/dependencies.lock",
+      "kind": "source_pin_or_attribution_metadata",
+      "sha256": "f0225a8d9ac5ca76e5b6706d66be45142ec2abb0c9192eeae399b500992684e5",
+      "bytes": 2057,
+      "source_file_sha256": "f0225a8d9ac5ca76e5b6706d66be45142ec2abb0c9192eeae399b500992684e5",
+      "version_or_ref": "b549eac0a3c65bc108186c276b8fac0a214aaa4e + local changes"
+    },
+    {
+      "component": "Factory dependency notice",
+      "source_path": "work/m5-cardputer-adv-factory/components/M5GFX/LICENSE",
+      "copied_path": "factory/components/M5GFX/LICENSE",
+      "kind": "original_full_file",
+      "sha256": "2076614535b2a8ea22d46dc9c5469a924e1a726e9d81a7cb2723a5e9833fe7a3",
+      "bytes": 1064,
+      "source_file_sha256": "2076614535b2a8ea22d46dc9c5469a924e1a726e9d81a7cb2723a5e9833fe7a3"
+    },
+    {
+      "component": "Factory dependency notice",
+      "source_path": "work/m5-cardputer-adv-factory/components/M5GFX/src/lgfx/Fonts/GFXFF/license.txt",
+      "copied_path": "factory/components/M5GFX/src/lgfx/Fonts/GFXFF/license.txt",
+      "kind": "original_full_file",
+      "sha256": "3e7bede50526352926c2283e640f2823d9f9f2165d1852044c4fb1bbac283106",
+      "bytes": 1344,
+      "source_file_sha256": "3e7bede50526352926c2283e640f2823d9f9f2165d1852044c4fb1bbac283106"
+    },
+    {
+      "component": "Factory dependency notice",
+      "source_path": "work/m5-cardputer-adv-factory/components/M5GFX/src/lgfx/Fonts/efont/COPYRIGHT.txt",
+      "copied_path": "factory/components/M5GFX/src/lgfx/Fonts/efont/COPYRIGHT.txt",
+      "kind": "original_full_file",
+      "sha256": "27c2942bbe8da9d5a8128695763d9a1da8d1697683ece43d7197f32a2de5c731",
+      "bytes": 1486,
+      "source_file_sha256": "27c2942bbe8da9d5a8128695763d9a1da8d1697683ece43d7197f32a2de5c731"
+    },
+    {
+      "component": "Factory dependency notice",
+      "source_path": "work/m5-cardputer-adv-factory/components/M5Unified/LICENSE",
+      "copied_path": "factory/components/M5Unified/LICENSE",
+      "kind": "original_full_file",
+      "sha256": "44611d917bece311f5c8eeffce83d8bf9e9ca3f815d262f694ff4a7996af50ea",
+      "bytes": 1063,
+      "source_file_sha256": "44611d917bece311f5c8eeffce83d8bf9e9ca3f815d262f694ff4a7996af50ea"
+    },
+    {
+      "component": "Factory dependency notice",
+      "source_path": "work/m5-cardputer-adv-factory/components/mooncake/LICENSE",
+      "copied_path": "factory/components/mooncake/LICENSE",
+      "kind": "original_full_file",
+      "sha256": "4633fd988ed98812f2ca0b2a42e2bfd5a02e5364a4af6bc65191e05b92e5a0b4",
+      "bytes": 1068,
+      "source_file_sha256": "4633fd988ed98812f2ca0b2a42e2bfd5a02e5364a4af6bc65191e05b92e5a0b4"
+    },
+    {
+      "component": "Factory dependency notice",
+      "source_path": "work/m5-cardputer-adv-factory/components/mooncake_log/LICENSE",
+      "copied_path": "factory/components/mooncake_log/LICENSE",
+      "kind": "original_full_file",
+      "sha256": "30515f6ce6f59a3f0986e3103e487a8b5ca298a5c0a113a0d5a88d837f421ba2",
+      "bytes": 1066,
+      "source_file_sha256": "30515f6ce6f59a3f0986e3103e487a8b5ca298a5c0a113a0d5a88d837f421ba2"
+    },
+    {
+      "component": "Factory dependency notice",
+      "source_path": "work/m5-cardputer-adv-factory/components/smooth_ui_toolkit/LICENSE",
+      "copied_path": "factory/components/smooth_ui_toolkit/LICENSE",
+      "kind": "original_full_file",
+      "sha256": "f9db7ea7026e1ec808bab58868bc949d62a081c1727b17f842e907a3757c5476",
+      "bytes": 1089,
+      "source_file_sha256": "f9db7ea7026e1ec808bab58868bc949d62a081c1727b17f842e907a3757c5476"
+    },
+    {
+      "component": "Factory dependency notice",
+      "source_path": "work/m5-cardputer-adv-factory/managed_components/espressif__cmake_utilities/license.txt",
+      "copied_path": "factory/managed_components/espressif__cmake_utilities/license.txt",
+      "kind": "original_full_file",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "bytes": 11358,
+      "source_file_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "component": "Factory dependency notice",
+      "source_path": "work/m5-cardputer-adv-factory/managed_components/espressif__esp-now/LICENSE",
+      "copied_path": "factory/managed_components/espressif__esp-now/LICENSE",
+      "kind": "original_full_file",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "bytes": 11358,
+      "source_file_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "component": "Factory dependency notice",
+      "source_path": "work/m5-cardputer-adv-factory/managed_components/espressif__esp_tinyusb/LICENSE",
+      "copied_path": "factory/managed_components/espressif__esp_tinyusb/LICENSE",
+      "kind": "original_full_file",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "bytes": 11358,
+      "source_file_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "component": "Factory dependency notice",
+      "source_path": "work/m5-cardputer-adv-factory/managed_components/espressif__tinyusb/LICENSE",
+      "copied_path": "factory/managed_components/espressif__tinyusb/LICENSE",
+      "kind": "original_full_file",
+      "sha256": "b171720e8a442e7a3957d83c62cd3299dbb29da3db534cc626f9dded0de2ca44",
+      "bytes": 1089,
+      "source_file_sha256": "b171720e8a442e7a3957d83c62cd3299dbb29da3db534cc626f9dded0de2ca44"
+    },
+    {
+      "component": "Factory dependency notice",
+      "source_path": "work/m5-cardputer-adv-factory/managed_components/espressif__tinyusb/hw/bsp/espressif/components/led_strip/LICENSE",
+      "copied_path": "factory/managed_components/espressif__tinyusb/hw/bsp/espressif/components/led_strip/LICENSE",
+      "kind": "original_full_file",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "bytes": 11358,
+      "source_file_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "component": "Factory dependency notice",
+      "source_path": "work/m5-cardputer-adv-factory/managed_components/jgromes__radiolib/license.txt",
+      "copied_path": "factory/managed_components/jgromes__radiolib/license.txt",
+      "kind": "original_full_file",
+      "sha256": "025378110a5679f82e8a59c19cf91b8ed760dc8752e5504596ef0c0592b8a3e8",
+      "bytes": 1068,
+      "source_file_sha256": "025378110a5679f82e8a59c19cf91b8ed760dc8752e5504596ef0c0592b8a3e8"
+    },
+    {
+      "component": "Factory source MIT SPDX",
+      "source_path": "work/m5-cardputer-adv-factory/main/main.cpp",
+      "copied_path": "factory/main/main.cpp.notice.txt",
+      "kind": "verbatim_source_comment_excerpt",
+      "sha256": "78bf2528b3144c7a80d0f171bccea6f494d8d8c7d09eaf1ddfb12ca879b95978",
+      "bytes": 100,
+      "source_file_sha256": "2edb0227be4c29a5aa3ac0ab3b102cc89bedafcbe2e6be2fffc69d9b3049ef3c",
+      "source_lines": [
+        1,
+        5
+      ]
+    },
+    {
+      "component": "esp32s3-keyboard GPL-3.0-or-later notice",
+      "source_path": "work/m5-cardputer-adv-factory/main/hal/keyboard/keymap.h",
+      "copied_path": "factory/main/hal/keyboard/keymap.h.notice.txt",
+      "kind": "verbatim_source_comment_excerpt",
+      "sha256": "a5276a9a5f0ba42b5825f5c4842783fcd403d18bdadb95de6267c785fe8292db",
+      "bytes": 852,
+      "source_file_sha256": "2b85e7fc7ae7d0b7d83baf7f26a3fcd7632276bd1aad9f7a4fad2d62681d1953",
+      "source_lines": [
+        1,
+        19
+      ]
+    },
+    {
+      "component": "TinyGPS++ 1.1.0 LGPL-2.1-or-later notice",
+      "source_path": "work/m5-cardputer-adv-factory/main/hal/cap_lora868/TinyGPSPlus/TinyGPS++.h",
+      "copied_path": "factory/main/hal/cap_lora868/TinyGPSPlus/TinyGPS++.h.notice.txt",
+      "kind": "verbatim_source_comment_excerpt",
+      "sha256": "21682e23b0e4497066a3ef42885bdf0b2ca6719c72be1dc17105d1f700bbc91c",
+      "bytes": 1054,
+      "source_file_sha256": "42954b431e1f358a5e257a51892ded4fab0115c00d50a46701740c2b459fcc44",
+      "source_lines": [
+        1,
+        22
+      ]
+    },
+    {
+      "component": "PikaScript MIT notice",
+      "source_path": "work/m5-cardputer-adv-factory/main/apps/app_repl/PikaScript/pikascript-core/TinyObj.h",
+      "copied_path": "factory/main/apps/app_repl/PikaScript/pikascript-core/TinyObj.h.notice.txt",
+      "kind": "verbatim_source_comment_excerpt",
+      "sha256": "0b910016076a5677e8a6989810d7109c7ef00b82760a3ffdd64b701467b813c7",
+      "bytes": 1249,
+      "source_file_sha256": "0d04616a9a8d0992e07921ee4b76f17b27220845f401fae3431614df10651e64",
+      "source_lines": [
+        1,
+        26
+      ]
+    },
+    {
+      "component": "fmt MIT notice and optional compiled-object exception",
+      "source_path": "work/m5-cardputer-adv-factory/components/mooncake_log/src/fmt/format.h",
+      "copied_path": "factory/components/mooncake_log/src/fmt/format.h.notice.txt",
+      "kind": "verbatim_source_comment_excerpt",
+      "sha256": "8c3e4e95f31180a161449d6cfef6a66628bcf5c32a04aba78fbd226c1aa6e099",
+      "bytes": 1489,
+      "source_file_sha256": "03dc48e94f619aa26aebab3f7dfac2965efa801fe9932ffcca910606d3ca6da0",
+      "source_lines": [
+        1,
+        31
+      ]
+    },
+    {
+      "component": "Adafruit TCA8418 BSD license pointer",
+      "source_path": "work/m5-cardputer-adv-factory/main/hal/utils/adafruit_tca8418/Adafruit_TCA8418.h",
+      "copied_path": "factory/main/hal/utils/adafruit_tca8418/Adafruit_TCA8418.h.notice.txt",
+      "kind": "verbatim_source_comment_excerpt",
+      "sha256": "67bb501dc16a25a75f6cfd68cfd69ccec4508c55b3b7a6218e944f1e885177c9",
+      "bytes": 434,
+      "source_file_sha256": "f70c9f114010f99f552855676b1a4f3b9a824d8e64f9003c37573d0c2da55a7d",
+      "source_lines": [
+        1,
+        16
+      ]
+    },
+    {
+      "component": "Factory raylib-related adapter MIT SPDX",
+      "source_path": "work/m5-cardputer-adv-factory/main/apps/utils/raylib/raylib.h",
+      "copied_path": "factory/main/apps/utils/raylib/raylib.h.notice.txt",
+      "kind": "verbatim_source_comment_excerpt",
+      "sha256": "78bf2528b3144c7a80d0f171bccea6f494d8d8c7d09eaf1ddfb12ca879b95978",
+      "bytes": 100,
+      "source_file_sha256": "88072925aa2436d6b64d9884db430a4dedfebb32633fafb1f25003d9adb116f4",
+      "source_lines": [
+        1,
+        5
+      ]
+    },
+    {
+      "component": "Espressif Unlicense OR CC0-1.0 SPDX",
+      "source_path": "work/m5-cardputer-adv-factory/main/hal/utils/ble_hid_device/ble_hid_gap.h",
+      "copied_path": "factory/main/hal/utils/ble_hid_device/ble_hid_gap.h.notice.txt",
+      "kind": "verbatim_source_comment_excerpt",
+      "sha256": "ede8c1e5ba88b9667bfc3281a4cfe3092f97fd92522c893657d5ff17f6253f3d",
+      "bytes": 132,
+      "source_file_sha256": "9ac2dbe65ce4454b969af692f2bef04c3260b73272012e507818fec3a8062169",
+      "source_lines": [
+        1,
+        5
+      ]
+    },
+    {
+      "component": "Espressif Apache-2.0 SPDX",
+      "source_path": "work/m5-cardputer-adv-factory/main/hal/utils/ir_nec/ir_nec_encoder.h",
+      "copied_path": "factory/main/hal/utils/ir_nec/ir_nec_encoder.h.notice.txt",
+      "kind": "verbatim_source_comment_excerpt",
+      "sha256": "7377af178611ce9ec88c91cbb72f4541bc7131454c1ef2c71d128acc4a154d28",
+      "bytes": 122,
+      "source_file_sha256": "704e113b3401a2bd8cbe275b71808597d76ef1376d9ce554dd305f726b6a4685",
+      "source_lines": [
+        1,
+        5
+      ]
+    },
+    {
+      "component": "Ekko launcher icon",
+      "source_path": "work/m5-cardputer-adv-factory/main/apps/app_ekko/assets/provenance.json",
+      "copied_path": "factory/main/apps/app_ekko/assets/provenance.json",
+      "kind": "existing_provenance_metadata",
+      "sha256": "e1566581030167dffca0948ef35700d94c715035344c31fbd502afddd4503b9f",
+      "bytes": 1002,
+      "source_file_sha256": "e1566581030167dffca0948ef35700d94c715035344c31fbd502afddd4503b9f"
+    },
+    {
+      "component": "Factory ESP-IDF dependency notice",
+      "source_path": "work/esp-idf-v5.4.2/LICENSE",
+      "copied_path": "factory-esp-idf-5.4.2/LICENSE",
+      "kind": "original_full_file",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "bytes": 11358,
+      "source_file_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "version_or_ref": "v5.4.2"
+    },
+    {
+      "component": "Factory ESP-IDF dependency notice",
+      "source_path": "work/esp-idf-v5.4.2/components/esp_wifi/lib/LICENSE",
+      "copied_path": "factory-esp-idf-5.4.2/components/esp_wifi/lib/LICENSE",
+      "kind": "original_full_file",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "bytes": 11358,
+      "source_file_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "version_or_ref": "v5.4.2"
+    },
+    {
+      "component": "Factory ESP-IDF dependency notice",
+      "source_path": "work/esp-idf-v5.4.2/components/esp_phy/lib/LICENSE",
+      "copied_path": "factory-esp-idf-5.4.2/components/esp_phy/lib/LICENSE",
+      "kind": "original_full_file",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "bytes": 11358,
+      "source_file_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "version_or_ref": "v5.4.2"
+    },
+    {
+      "component": "Factory ESP-IDF dependency notice",
+      "source_path": "work/esp-idf-v5.4.2/components/esp_coex/lib/LICENSE",
+      "copied_path": "factory-esp-idf-5.4.2/components/esp_coex/lib/LICENSE",
+      "kind": "original_full_file",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "bytes": 11358,
+      "source_file_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "version_or_ref": "v5.4.2"
+    },
+    {
+      "component": "Factory ESP-IDF dependency notice",
+      "source_path": "work/esp-idf-v5.4.2/components/wpa_supplicant/COPYING",
+      "copied_path": "factory-esp-idf-5.4.2/components/wpa_supplicant/COPYING",
+      "kind": "original_full_file",
+      "sha256": "a87ac4e333d0f120408a9d814e40c3672cd27f365af89b4f2f6631f7a9338953",
+      "bytes": 965,
+      "source_file_sha256": "a87ac4e333d0f120408a9d814e40c3672cd27f365af89b4f2f6631f7a9338953",
+      "version_or_ref": "v5.4.2"
+    },
+    {
+      "component": "Factory ESP-IDF dependency notice",
+      "source_path": "work/esp-idf-v5.4.2/components/freertos/FreeRTOS-Kernel/LICENSE.md",
+      "copied_path": "factory-esp-idf-5.4.2/components/freertos/FreeRTOS-Kernel/LICENSE.md",
+      "kind": "original_full_file",
+      "sha256": "508a77d2e7b51d98adeed32648ad124b7b30241a8e70b2e72c99f92d8e5874d1",
+      "bytes": 1036,
+      "source_file_sha256": "508a77d2e7b51d98adeed32648ad124b7b30241a8e70b2e72c99f92d8e5874d1",
+      "version_or_ref": "v5.4.2"
+    },
+    {
+      "component": "Factory ESP-IDF dependency notice",
+      "source_path": "work/esp-idf-v5.4.2/components/lwip/lwip/COPYING",
+      "copied_path": "factory-esp-idf-5.4.2/components/lwip/lwip/COPYING",
+      "kind": "original_full_file",
+      "sha256": "ef4aac92e05e87cd1cdc140870ed52206ba03d4a7fe46c1e11d7ffa6c87d252b",
+      "bytes": 1425,
+      "source_file_sha256": "ef4aac92e05e87cd1cdc140870ed52206ba03d4a7fe46c1e11d7ffa6c87d252b",
+      "version_or_ref": "v5.4.2"
+    },
+    {
+      "component": "Factory ESP-IDF dependency notice",
+      "source_path": "work/esp-idf-v5.4.2/components/mbedtls/mbedtls/LICENSE",
+      "copied_path": "factory-esp-idf-5.4.2/components/mbedtls/mbedtls/LICENSE",
+      "kind": "original_full_file",
+      "sha256": "9b405ef4c89342f5eae1dd828882f931747f71001cfba7d114801039b52ad09b",
+      "bytes": 29852,
+      "source_file_sha256": "9b405ef4c89342f5eae1dd828882f931747f71001cfba7d114801039b52ad09b",
+      "version_or_ref": "v5.4.2"
+    },
+    {
+      "component": "Factory ESP-IDF dependency notice",
+      "source_path": "work/esp-idf-v5.4.2/components/json/cJSON/LICENSE",
+      "copied_path": "factory-esp-idf-5.4.2/components/json/cJSON/LICENSE",
+      "kind": "original_full_file",
+      "sha256": "a36dda207c36db5818729c54e7ad4e8b0c6fba847491ba64f372c1a2037b6d5c",
+      "bytes": 1084,
+      "source_file_sha256": "a36dda207c36db5818729c54e7ad4e8b0c6fba847491ba64f372c1a2037b6d5c",
+      "version_or_ref": "v5.4.2"
+    },
+    {
+      "component": "Factory ESP-IDF dependency notice",
+      "source_path": "work/esp-idf-v5.4.2/components/bt/host/nimble/nimble/LICENSE",
+      "copied_path": "factory-esp-idf-5.4.2/components/bt/host/nimble/nimble/LICENSE",
+      "kind": "original_full_file",
+      "sha256": "0deb15bc7df50b1d009c644b008f92e1062909e9521328d337c5fad3a5d4921c",
+      "bytes": 12514,
+      "source_file_sha256": "0deb15bc7df50b1d009c644b008f92e1062909e9521328d337c5fad3a5d4921c",
+      "version_or_ref": "v5.4.2"
+    },
+    {
+      "component": "Factory ESP-IDF dependency notice",
+      "source_path": "work/esp-idf-v5.4.2/components/bt/host/nimble/nimble/NOTICE",
+      "copied_path": "factory-esp-idf-5.4.2/components/bt/host/nimble/nimble/NOTICE",
+      "kind": "original_full_file",
+      "sha256": "b838c4733a5020cd8e2bafbe70842acd8c8dc7816012965b77d10c1f4c0727f6",
+      "bytes": 321,
+      "source_file_sha256": "b838c4733a5020cd8e2bafbe70842acd8c8dc7816012965b77d10c1f4c0727f6",
+      "version_or_ref": "v5.4.2"
+    },
+    {
+      "component": "Actual complete efontCN_16 font declaration",
+      "source_path": "work/ekko-cardputer-stock-20261017/packages/esp32-s3/cardputer-adv/.pio/libdeps/cardputer-adv/M5GFX/src/lgfx/Fonts/efont/lgfx_efont_cn.c",
+      "copied_path": "candidate/M5GFX/src/lgfx/Fonts/efont/efontCN_16.declaration.notice.txt",
+      "kind": "verbatim_source_declaration_excerpt",
+      "source_lines": [
+        83505,
+        83512
+      ],
+      "sha256": "74d969d1d5d51c83514d78c18ad702cd70558237ab95a8c3405dd0c806847222",
+      "bytes": 280,
+      "source_file_sha256": "ceb7bae98279b5b196a4742b0814970d095ddcaabea8a9ac3cebe1e1f7add873",
+      "version_or_ref": "M5GFX 0.2.33 / lgfx_efont_cn_16"
+    },
+    {
+      "component": "minimp3 streaming MP3 decoder",
+      "source_path": "work/ekko-cardputer-stock-20261017/packages/esp32-s3/cardputer-adv/include/third_party/minimp3/LICENSE",
+      "copied_path": "minimp3/LICENSE",
+      "kind": "original_full_file",
+      "sha256": "6a1ee543e5282cd9061881edf462e6fdab181f328da71fc2c9a6950a80e94d01",
+      "bytes": 6556,
+      "source_file_sha256": "6a1ee543e5282cd9061881edf462e6fdab181f328da71fc2c9a6950a80e94d01",
+      "version_or_ref": "ea99364f61c14656440e8d77e9c233ccf3124633 / CC0-1.0"
+    },
+    {
+      "component": "minimp3 streaming MP3 decoder",
+      "source_path": "work/ekko-cardputer-stock-20261017/packages/esp32-s3/cardputer-adv/include/third_party/minimp3/PROVENANCE.md",
+      "copied_path": "minimp3/PROVENANCE.md",
+      "kind": "pinned_provenance",
+      "sha256": "714d12c66f03945b2b37328545d759bc236ce5beff9932bda3ab7cfda2884361",
+      "bytes": 497,
+      "source_file_sha256": "714d12c66f03945b2b37328545d759bc236ce5beff9932bda3ab7cfda2884361",
+      "version_or_ref": "ea99364f61c14656440e8d77e9c233ccf3124633 / CC0-1.0"
+    },
+    {
+      "component": "GPL-3.0 official license text",
+      "copied_path": "supplemental/gnu/GPL-3.0.txt",
+      "kind": "upstream_full_license_file",
+      "version_or_ref": "Version 3, 29 June 2007",
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+      "bytes": 35149,
+      "source_url": "https://www.gnu.org/licenses/gpl-3.0.txt",
+      "declaration_references": [
+        "work/m5-cardputer-adv-factory/main/hal/keyboard/keymap.h"
+      ],
+      "scope_note": "Original keymap notice says GPL version 3 or later. This file supplies version 3 license text; it does not determine the combined image license."
+    },
+    {
+      "component": "LGPL-2.1 official license text",
+      "copied_path": "supplemental/gnu/LGPL-2.1.txt",
+      "kind": "upstream_full_license_file",
+      "version_or_ref": "Version 2.1, February 1999",
+      "sha256": "20e50fe7aae3e56378ebf0417d9de904f55a0e61e4df315333e632a4d3555d95",
+      "bytes": 26419,
+      "source_url": "https://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt",
+      "declaration_references": [
+        "work/m5-cardputer-adv-factory/main/hal/cap_lora868/TinyGPSPlus/TinyGPS++.h",
+        "<PLATFORMIO_CORE_DIR>/packages/framework-arduinoespressif32/cores/esp32/Arduino.h"
+      ],
+      "scope_note": "Original declarations allow LGPL 2.1 or later. License text does not substitute for corresponding source/link/replacement materials."
+    },
+    {
+      "component": "Arduino ESP32 repository license",
+      "copied_path": "supplemental/arduino-esp32-2.0.17/LICENSE.md",
+      "kind": "upstream_full_license_file",
+      "version_or_ref": "2.0.17 / 5e19e086c43d0fa5e5a596497ff8f11a0a43f6c2",
+      "sha256": "994ce1902a23c74519b5d118c6bbb657edabce91dd6b7cc825d86bb8f5c9780f",
+      "bytes": 26338,
+      "source_url": "https://raw.githubusercontent.com/espressif/arduino-esp32/5e19e086c43d0fa5e5a596497ff8f11a0a43f6c2/LICENSE.md",
+      "declaration_references": [
+        "<PLATFORMIO_CORE_DIR>/packages/framework-arduinoespressif32/package.json"
+      ],
+      "scope_note": "Exact upstream Arduino 2.0.17 LICENSE.md, supplemental to the PlatformIO package 3.20017.241212+sha.dcc1105b source declarations. Other bundled components retain their own notices."
+    },
+    {
+      "component": "LovyanGFX upstream license referenced by M5GFX",
+      "copied_path": "supplemental/LovyanGFX/license.txt",
+      "kind": "upstream_full_license_file",
+      "version_or_ref": "license file last changed at b62ea8b8a84b8735ddf0fa3c72ec5e1ee03241ac (2020-04-12)",
+      "sha256": "ec7c22d763503f016c1e743e6089042e780fbb1c118ebcc0b1eb72232e8903b3",
+      "bytes": 5952,
+      "source_url": "https://raw.githubusercontent.com/lovyan03/LovyanGFX/b62ea8b8a84b8735ddf0fa3c72ec5e1ee03241ac/license.txt",
+      "declaration_references": [
+        "work/ekko-cardputer-stock-20261017/packages/esp32-s3/cardputer-adv/.pio/libdeps/cardputer-adv/M5GFX/README.md",
+        "work/ekko-cardputer-stock-20261017/packages/esp32-s3/cardputer-adv/.pio/libdeps/cardputer-adv/M5GFX/src/lgfx/v1/LGFXBase.hpp",
+        "work/m5-cardputer-adv-factory/components/M5GFX/README.md"
+      ],
+      "scope_note": "Contains original attribution plus Adafruit_GFX BSD, Bodmer FreeBSD and lovyan03 FreeBSD text. It is the fixed text behind the embedded source pointer; the exact imported LovyanGFX code revision is not established by this license file."
+    },
+    {
+      "component": "TFT_eSPI upstream font/license reference",
+      "copied_path": "supplemental/TFT_eSPI/license.2023.txt",
+      "kind": "upstream_full_license_file",
+      "version_or_ref": "d506a3c49d55480e22bbecec7e2b45346ae66222 (2023-12-07)",
+      "sha256": "f79bffc86315004815e4e7f11a23e757de0f25793022e6020938e2db1a495a9d",
+      "bytes": 6243,
+      "source_url": "https://raw.githubusercontent.com/Bodmer/TFT_eSPI/d506a3c49d55480e22bbecec7e2b45346ae66222/license.txt",
+      "declaration_references": [
+        "work/ekko-cardputer-stock-20261017/packages/esp32-s3/cardputer-adv/.pio/libdeps/cardputer-adv/M5GFX/README.md",
+        "work/m5-cardputer-adv-factory/components/M5GFX/README.md"
+      ],
+      "scope_note": "Historical complete upstream license file predating the factory import, preserving 2023 Bodmer notice and other attributions. M5GFX points here for fonts 2/4/6/7/8; the precise original font import revision remains unpinned."
+    },
+    {
+      "component": "Adafruit TCA8418 original license",
+      "copied_path": "supplemental/Adafruit_TCA8418/license.txt",
+      "kind": "upstream_full_license_file",
+      "version_or_ref": "license file commit d38d9e27da9c2c39a4aa6f3436a7195e199af6d6 (2022-02-23)",
+      "sha256": "39dfc394bfd96f038e4629076ecf0a094275473fac1cafe45b25420978d4a320",
+      "bytes": 1512,
+      "source_url": "https://raw.githubusercontent.com/adafruit/Adafruit_TCA8418/d38d9e27da9c2c39a4aa6f3436a7195e199af6d6/license.txt",
+      "declaration_references": [
+        "work/m5-cardputer-adv-factory/main/hal/utils/adafruit_tca8418/Adafruit_TCA8418.h",
+        "work/ekko-cardputer-stock-20261017/packages/esp32-s3/cardputer-adv/.pio/libdeps/cardputer-adv/M5Cardputer/src/utility/Adafruit_TCA8418/Adafruit_TCA8418.h"
+      ],
+      "scope_note": "Official Adafruit component BSD text, including its original copyright. The local driver is adapted and its exact upstream import commit is not declared; no new attribution is invented."
+    },
+    {
+      "component": "Candidate ESP-IDF source root license",
+      "copied_path": "supplemental/esp-idf-v4.4.7/LICENSE",
+      "kind": "upstream_full_license_file",
+      "version_or_ref": "v4.4.7",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "bytes": 11358,
+      "source_url": "https://raw.githubusercontent.com/espressif/esp-idf/v4.4.7/LICENSE",
+      "declaration_references": [
+        "<PLATFORMIO_CORE_DIR>/packages/framework-arduinoespressif32/tools/sdk/esp32s3/include/esp_common/include/esp_idf_version.h"
+      ],
+      "scope_note": "Only the ESP-IDF 4.4.7 repository root license. Not a complete component notice/SBOM set for the Arduino package precompiled archives."
+    },
+    {
+      "component": "Hermes avatar source repository license",
+      "copied_path": "supplemental/assets/hermes-agent/LICENSE",
+      "kind": "upstream_full_license_file",
+      "version_or_ref": "60f56a6b13c8eb9a9e088c6fc1165257c92f7e11",
+      "sha256": "821556e6336796450ab852d375117b48a4887e71d255794fd6318d99982a5ab6",
+      "bytes": 1070,
+      "source_url": "https://raw.githubusercontent.com/NousResearch/hermes-agent/60f56a6b13c8eb9a9e088c6fc1165257c92f7e11/LICENSE",
+      "declaration_references": [
+        "assets/avatars/manifest.json:hermes"
+      ],
+      "scope_note": "Original pinned repository license referenced by the existing asset manifest. Does not establish separate trademark permission or endorsement."
+    },
+    {
+      "component": "Kimi avatar source repository license",
+      "copied_path": "supplemental/assets/kimi-code/LICENSE",
+      "kind": "upstream_full_license_file",
+      "version_or_ref": "ef727e517923cb312cb48d42825c49dfacd528e7",
+      "sha256": "23cc68e17992e0b512ae2e80afc5787d7d8e0fbfbdb4fff54ec0245508fa400e",
+      "bytes": 1068,
+      "source_url": "https://raw.githubusercontent.com/MoonshotAI/kimi-code/ef727e517923cb312cb48d42825c49dfacd528e7/LICENSE",
+      "declaration_references": [
+        "assets/avatars/manifest.json:kimi"
+      ],
+      "scope_note": "Original pinned repository license referenced by the existing asset manifest. Does not establish separate trademark permission or endorsement."
+    },
+    {
+      "component": "Copilot avatar source repository license",
+      "copied_path": "supplemental/assets/octicons/LICENSE",
+      "kind": "upstream_full_license_file",
+      "version_or_ref": "6dbe38e4e9b4987b2c9332d719c57fbbdd083e2d",
+      "sha256": "da259c8bd0de62713ccdcf88910aebca810644f98c2c912bad814fc79ea778df",
+      "bytes": 1068,
+      "source_url": "https://raw.githubusercontent.com/primer/octicons/6dbe38e4e9b4987b2c9332d719c57fbbdd083e2d/LICENSE",
+      "declaration_references": [
+        "assets/avatars/manifest.json:copilot"
+      ],
+      "scope_note": "Existing floating source pinned at retrieval; icons/copilot-24.svg SHA-256 matches the existing asset eeafb3c2f333e04ccf7d031ae215f7adafaed4c6352556b0bf79496e048bcdd7. Repository MIT text is not separate trademark permission."
+    },
+    {
+      "component": "TomThumb original complete BSD notice and modification attributions",
+      "copied_path": "supplemental/candidate/TomThumb.h.notice.txt",
+      "kind": "complete_license_in_verbatim_source_comment",
+      "version_or_ref": "M5GFX 0.2.33",
+      "sha256": "fcca05d45c70147baf582092b2bcb2b4924c19b3e9a3062ca4aecd51cc941bc6",
+      "bytes": 2328,
+      "source_path": "work/ekko-cardputer-stock-20261017/packages/esp32-s3/cardputer-adv/.pio/libdeps/cardputer-adv/M5GFX/src/lgfx/Fonts/GFXFF/TomThumb.h",
+      "source_file_sha256": "a887f5cabf1510c33c484aed79f3716ef690b38992bc0b6c2fce84d570f49af9",
+      "source_lines": [
+        1,
+        47
+      ],
+      "scope_note": "Verbatim opening source comment, including full three-clause terms and source attribution. No font bitmap copied."
+    },
+    {
+      "component": "TomThumb original complete BSD notice and modification attributions",
+      "copied_path": "supplemental/factory/TomThumb.h.notice.txt",
+      "kind": "complete_license_in_verbatim_source_comment",
+      "version_or_ref": "M5GFX 0.2.15 / c6f92dc03226cdc04d67c705a2020f62ad21ad01",
+      "sha256": "fcca05d45c70147baf582092b2bcb2b4924c19b3e9a3062ca4aecd51cc941bc6",
+      "bytes": 2328,
+      "source_path": "work/m5-cardputer-adv-factory/components/M5GFX/src/lgfx/Fonts/GFXFF/TomThumb.h",
+      "source_file_sha256": "a887f5cabf1510c33c484aed79f3716ef690b38992bc0b6c2fce84d570f49af9",
+      "source_lines": [
+        1,
+        47
+      ],
+      "scope_note": "Verbatim opening source comment, including full three-clause terms and source attribution. No font bitmap copied."
+    },
+    {
+      "component": "FreeRTOS SDK component",
+      "copied_path": "sdk-4.4.7/freertos/LICENSE.md",
+      "kind": "upstream_full_original_file",
+      "version_or_ref": "38eeba213aa695aabfd6d89aa9f5078dbe5a94c3",
+      "source_url": "https://raw.githubusercontent.com/espressif/esp-idf/38eeba213aa695aabfd6d89aa9f5078dbe5a94c3/components/freertos/LICENSE.md",
+      "source_repository_path": "components/freertos/LICENSE.md",
+      "upstream_git_blob_sha1": "9cf106272ac3b56b0c4c80218e8fc10a664ca5f4",
+      "sha256": "508a77d2e7b51d98adeed32648ad124b7b30241a8e70b2e72c99f92d8e5874d1",
+      "bytes": 1036,
+      "selected_sdk_archives": [
+        "qio_qspi/libfreertos.a"
+      ],
+      "scope_note": "Root MIT terms; copyright-bearing actual FreeRTOS header notice is also preserved."
+    },
+    {
+      "component": "ESP-IDF Newlib support",
+      "copied_path": "sdk-4.4.7/newlib/COPYING.NEWLIB",
+      "kind": "upstream_full_original_file",
+      "version_or_ref": "38eeba213aa695aabfd6d89aa9f5078dbe5a94c3",
+      "source_url": "https://raw.githubusercontent.com/espressif/esp-idf/38eeba213aa695aabfd6d89aa9f5078dbe5a94c3/components/newlib/COPYING.NEWLIB",
+      "source_repository_path": "components/newlib/COPYING.NEWLIB",
+      "upstream_git_blob_sha1": "86827de4bcecbe78b0ae77d1e381588f9d4effc7",
+      "sha256": "0681089a556e93791da82718d68011ba452de245f7f59c3846936304756ac0c0",
+      "bytes": 46295,
+      "selected_sdk_archives": [
+        "lib/libnewlib.a"
+      ],
+      "scope_note": "IDF component original; actual toolchain runtime ships a different COPYING.NEWLIB and is recorded separately."
+    },
+    {
+      "component": "WPA attribution and licensing history",
+      "copied_path": "sdk-4.4.7/wpa_supplicant/COPYING",
+      "kind": "upstream_full_original_file",
+      "version_or_ref": "38eeba213aa695aabfd6d89aa9f5078dbe5a94c3",
+      "source_url": "https://raw.githubusercontent.com/espressif/esp-idf/38eeba213aa695aabfd6d89aa9f5078dbe5a94c3/components/wpa_supplicant/COPYING",
+      "source_repository_path": "components/wpa_supplicant/COPYING",
+      "upstream_git_blob_sha1": "7efce0dee1a727319eb172ff67236e0e6eaf2447",
+      "sha256": "e9f84e02bb9ba965464e21604014f13d0f3c9299a1b5f7882574a9b4a261abe7",
+      "bytes": 965,
+      "selected_sdk_archives": [
+        "lib/libwpa_supplicant.a"
+      ],
+      "scope_note": "Points to README for current terms; not by itself the complete license text."
+    },
+    {
+      "component": "WPA current BSD terms",
+      "copied_path": "sdk-4.4.7/wpa_supplicant/README",
+      "kind": "upstream_full_original_file",
+      "version_or_ref": "38eeba213aa695aabfd6d89aa9f5078dbe5a94c3",
+      "source_url": "https://raw.githubusercontent.com/espressif/esp-idf/38eeba213aa695aabfd6d89aa9f5078dbe5a94c3/components/wpa_supplicant/README",
+      "source_repository_path": "components/wpa_supplicant/README",
+      "upstream_git_blob_sha1": "ce871f52841bb7d5af1a0bf110439843c66b1f60",
+      "sha256": "17ccbcf4b17a910795292fb4a95f4742d2ecda37d06fcf20d60ffbd70cfbc609",
+      "bytes": 1803,
+      "selected_sdk_archives": [
+        "lib/libwpa_supplicant.a"
+      ],
+      "scope_note": "Original full README including current BSD terms and copyright; individual crypto file notices remain separate."
+    },
+    {
+      "component": "lwIP",
+      "copied_path": "sdk-4.4.7/lwip/COPYING",
+      "kind": "upstream_full_original_file",
+      "version_or_ref": "a45be9e438f6cf9c54ec150581819c3b95d5af6b",
+      "source_url": "https://raw.githubusercontent.com/espressif/esp-lwip/a45be9e438f6cf9c54ec150581819c3b95d5af6b/COPYING",
+      "source_repository_path": "COPYING",
+      "upstream_git_blob_sha1": "e23898b5e8feaec5b3d7e5066bab64fd82bf99a6",
+      "sha256": "8fb15ebdb19eb669e1d37fcd8e57a44c477fcc0e93a9ab0d181760965f94d5ed",
+      "bytes": 1611,
+      "selected_sdk_archives": [
+        "lib/liblwip.a"
+      ],
+      "scope_note": "Submodule commit pinned by exact ESP-IDF 4.4.7 tree."
+    },
+    {
+      "component": "Mbed TLS",
+      "copied_path": "sdk-4.4.7/mbedtls/LICENSE",
+      "kind": "upstream_full_original_file",
+      "version_or_ref": "2b8e772fc1cb0732cda3bae7d1e9d6f4cfaf63d9",
+      "source_url": "https://raw.githubusercontent.com/espressif/mbedtls/2b8e772fc1cb0732cda3bae7d1e9d6f4cfaf63d9/LICENSE",
+      "source_repository_path": "LICENSE",
+      "upstream_git_blob_sha1": "776ac77eaf5a0da545f95ad7386b9954378fa8ae",
+      "sha256": "9b405ef4c89342f5eae1dd828882f931747f71001cfba7d114801039b52ad09b",
+      "bytes": 29852,
+      "selected_sdk_archives": [
+        "lib/libmbedtls.a",
+        "lib/libmbedtls_2.a",
+        "lib/libmbedcrypto.a",
+        "lib/libmbedx509.a"
+      ],
+      "scope_note": "Complete upstream dual-license text preserved as written; this record does not choose or alter license options."
+    },
+    {
+      "component": "cJSON",
+      "copied_path": "sdk-4.4.7/cJSON/LICENSE",
+      "kind": "upstream_full_original_file",
+      "version_or_ref": "87d8f0961a01bf09bef98ff89bae9fdec42181ee",
+      "source_url": "https://raw.githubusercontent.com/DaveGamble/cJSON/87d8f0961a01bf09bef98ff89bae9fdec42181ee/LICENSE",
+      "source_repository_path": "LICENSE",
+      "upstream_git_blob_sha1": "78deb0406d713ab9730e3c2447be1abdbd70b9a2",
+      "sha256": "a36dda207c36db5818729c54e7ad4e8b0c6fba847491ba64f372c1a2037b6d5c",
+      "bytes": 1084,
+      "selected_sdk_archives": [
+        "lib/libjson.a"
+      ],
+      "scope_note": "Submodule commit pinned by exact ESP-IDF 4.4.7 tree."
+    },
+    {
+      "component": "SPIFFS",
+      "copied_path": "sdk-4.4.7/spiffs/LICENSE",
+      "kind": "upstream_full_original_file",
+      "version_or_ref": "0dbb3f71c5f6fae3747a9d935372773762baf852",
+      "source_url": "https://raw.githubusercontent.com/pellepl/spiffs/0dbb3f71c5f6fae3747a9d935372773762baf852/LICENSE",
+      "source_repository_path": "LICENSE",
+      "upstream_git_blob_sha1": "5fb2427b41ac6efc9ffd9cdfcd79d38d3e3cda1f",
+      "sha256": "d19257540156a51ed50c2378e7159066415d8bbbe147779f8deb0d3e73f1b0a7",
+      "bytes": 1117,
+      "selected_sdk_archives": [
+        "lib/libspiffs.a"
+      ],
+      "scope_note": "Submodule commit pinned by exact ESP-IDF 4.4.7 tree."
+    },
+    {
+      "component": "protobuf-c",
+      "copied_path": "sdk-4.4.7/protobuf-c/LICENSE",
+      "kind": "upstream_full_original_file",
+      "version_or_ref": "abc67a11c6db271bedbb9f58be85d6f4e2ea8389",
+      "source_url": "https://raw.githubusercontent.com/protobuf-c/protobuf-c/abc67a11c6db271bedbb9f58be85d6f4e2ea8389/LICENSE",
+      "source_repository_path": "LICENSE",
+      "upstream_git_blob_sha1": "c84ada6d02889703c44750ec95d04db7f5df0ca4",
+      "sha256": "b8999cb392cc5bbe8cd679de59584ad8d2f26033123e76f1d662fa14b9d4f287",
+      "bytes": 1613,
+      "selected_sdk_archives": [
+        "lib/libprotobuf-c.a"
+      ],
+      "scope_note": "Submodule commit pinned by exact ESP-IDF 4.4.7 tree."
+    },
+    {
+      "component": "ESP32 Wi-Fi precompiled libraries",
+      "copied_path": "sdk-4.4.7/esp32-wifi-lib/LICENSE",
+      "kind": "upstream_full_original_file",
+      "version_or_ref": "f2aae4d44ec7908013066e69d29b9948846c335c",
+      "source_url": "https://raw.githubusercontent.com/espressif/esp32-wifi-lib/f2aae4d44ec7908013066e69d29b9948846c335c/LICENSE",
+      "source_repository_path": "LICENSE",
+      "upstream_git_blob_sha1": "d645695673349e3947e8e5ae42332d0ac3164cd7",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "bytes": 11358,
+      "selected_sdk_archives": [
+        "lib/libcoexist.a",
+        "lib/libcore.a",
+        "lib/libmesh.a",
+        "lib/libnet80211.a",
+        "lib/libpp.a",
+        "lib/libsmartconfig.a"
+      ],
+      "scope_note": "All six corresponding local ESP32-S3 binary archive Git blob hashes also match this exact submodule. Preserve upstream license without inferring combined-image terms."
+    },
+    {
+      "component": "ESP PHY precompiled libraries",
+      "copied_path": "sdk-4.4.7/esp-phy-lib/LICENSE",
+      "kind": "upstream_full_original_file",
+      "version_or_ref": "dcfdccf6cc2fc02d0886624b7998c890d1a19b28",
+      "source_url": "https://raw.githubusercontent.com/espressif/esp-phy-lib/dcfdccf6cc2fc02d0886624b7998c890d1a19b28/LICENSE",
+      "source_repository_path": "LICENSE",
+      "upstream_git_blob_sha1": "d645695673349e3947e8e5ae42332d0ac3164cd7",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "bytes": 11358,
+      "selected_sdk_archives": [
+        "ld/libphy.a",
+        "ld/libbtbb.a"
+      ],
+      "scope_note": "Both local ESP32-S3 binary archive Git blob hashes also match this exact submodule."
+    },
+    {
+      "component": "ESP32-S3 Bluetooth controller library",
+      "copied_path": "sdk-4.4.7/esp32c3-bt-lib/LICENSE",
+      "kind": "upstream_full_original_file",
+      "version_or_ref": "e5c0f7256ecf5b5f8eb28c1793051a6b88f95124",
+      "source_url": "https://raw.githubusercontent.com/espressif/esp32c3-bt-lib/e5c0f7256ecf5b5f8eb28c1793051a6b88f95124/LICENSE",
+      "source_repository_path": "LICENSE",
+      "upstream_git_blob_sha1": "d645695673349e3947e8e5ae42332d0ac3164cd7",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "bytes": 11358,
+      "selected_sdk_archives": [
+        "ld/libbtdm_app.a"
+      ],
+      "scope_note": "The local ESP32-S3 controller archive Git blob hash also matches this exact submodule; no claim that all Bluetooth hosts are linked."
+    },
+    {
+      "component": "fastpbkdf2 referenced CC0 1.0 legal code",
+      "copied_path": "sdk-4.4.7/wpa_supplicant/CC0-1.0.txt",
+      "kind": "official_full_license_text",
+      "version_or_ref": "CC0 1.0 Universal",
+      "source_url": "https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt",
+      "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
+      "bytes": 7048,
+      "selected_sdk_archives": [
+        "lib/libwpa_supplicant.a"
+      ],
+      "scope_note": "License referenced by the exact IDF fastpbkdf2.c source notice; complete original notice retained separately. Does not relicense other WPA files."
+    },
+    {
+      "component": "FreeRTOS Kernel V10.4.3 copyright and MIT terms",
+      "copied_path": "sdk-4.4.7/freertos/FreeRTOS.h.notice.txt",
+      "kind": "verbatim_source_comment_excerpt",
+      "source_path": "<PLATFORMIO_CORE_DIR>/packages/framework-arduinoespressif32/tools/sdk/esp32s3/include/freertos/include/freertos/FreeRTOS.h",
+      "source_url": "https://raw.githubusercontent.com/espressif/esp-idf/38eeba213aa695aabfd6d89aa9f5078dbe5a94c3/components/freertos/include/freertos/FreeRTOS.h",
+      "version_or_ref": "38eeba213aa695aabfd6d89aa9f5078dbe5a94c3",
+      "source_file_sha256": "244b71930fc5b1a9e3cd48ee9a2707d441b73f1f55884ae34dbb554b265b1c55",
+      "upstream_source_git_blob_sha1": "296b2878377a15eeecd5a8c0657a98c2196175fd",
+      "source_lines": [
+        1,
+        25
+      ],
+      "sha256": "a1bd102a542acdb8bdd1b17607891c1b3247273de438cda97c6ce26230b6bfee",
+      "bytes": 1251,
+      "selected_sdk_archives": [
+        "qio_qspi/libfreertos.a"
+      ],
+      "scope_note": "Actual installed header matches exact IDF whole-file Git blob; full opening copyright and MIT comment retained."
+    },
+    {
+      "component": "Xtensa HAL Cadence copyright and MIT terms",
+      "copied_path": "sdk-4.4.7/xtensa/hal.h.notice.txt",
+      "kind": "verbatim_source_comment_excerpt",
+      "source_path": "<PLATFORMIO_CORE_DIR>/packages/framework-arduinoespressif32/tools/sdk/esp32s3/include/xtensa/include/xtensa/hal.h",
+      "source_url": "https://raw.githubusercontent.com/espressif/esp-idf/38eeba213aa695aabfd6d89aa9f5078dbe5a94c3/components/xtensa/include/xtensa/hal.h",
+      "version_or_ref": "38eeba213aa695aabfd6d89aa9f5078dbe5a94c3",
+      "source_file_sha256": "2e54b026691b4c3b166500f011d99fec5f0824a08dff489dff75c43311010f89",
+      "upstream_source_git_blob_sha1": "11120ec1c377be49fffc0151580d6acbf872af72",
+      "source_lines": [
+        1,
+        38
+      ],
+      "sha256": "274cb732d5292ab3fe9a58a7149b447fd3fb43517d9640f074d64dc485c24c98",
+      "bytes": 1797,
+      "selected_sdk_archives": [
+        "lib/libxt_hal.a",
+        "lib/libxtensa.a"
+      ],
+      "scope_note": "Actual installed header matches exact IDF whole-file Git blob; local libxt_hal.a also matches IDF components/xtensa/esp32s3/libxt_hal.a. The header notice is not asserted to cover every archive member."
+    },
+    {
+      "component": "esp_diagnostics actual installed header declaration",
+      "copied_path": "sdk-4.4.7/esp_diagnostics/esp_diagnostics.h.notice.txt",
+      "kind": "verbatim_source_comment_excerpt",
+      "source_path": "<PLATFORMIO_CORE_DIR>/packages/framework-arduinoespressif32/tools/sdk/esp32s3/include/esp_diagnostics/include/esp_diagnostics.h",
+      "source_url": "https://raw.githubusercontent.com/espressif/arduino-esp32/5e19e086c43d0fa5e5a596497ff8f11a0a43f6c2/tools/sdk/esp32s3/include/esp_diagnostics/include/esp_diagnostics.h",
+      "version_or_ref": "Arduino 2.0.17 / 5e19e086c43d0fa5e5a596497ff8f11a0a43f6c2",
+      "source_file_sha256": "5da4329c9db455e6b6d5cc78e3c81cb492e47c47fddb333c6a52868f36a12e28",
+      "upstream_source_git_blob_sha1": "682f316db7b86bd9f70d3484657ac088d9246664",
+      "source_lines": [
+        1,
+        13
+      ],
+      "sha256": "6ad05078f352a12a5640d6e89f01da60f140fda2fbbffe669902b3052dcd919a",
+      "bytes": 613,
+      "selected_sdk_archives": [
+        "lib/libesp_diagnostics.a"
+      ],
+      "scope_note": "Actual installed source notice and Arduino 2.0.17 whole-file blob match; the external esp-insights source commit remains unproven. This is an Apache declaration excerpt, not a complete component license."
+    },
+    {
+      "component": "WPA DES LibTomCrypt and Jouni source attributions",
+      "copied_path": "sdk-4.4.7/wpa_supplicant/des-internal.c.notice.txt",
+      "kind": "verbatim_source_excerpt",
+      "version_or_ref": "38eeba213aa695aabfd6d89aa9f5078dbe5a94c3",
+      "source_url": "https://raw.githubusercontent.com/espressif/esp-idf/38eeba213aa695aabfd6d89aa9f5078dbe5a94c3/components/wpa_supplicant/src/crypto/des-internal.c",
+      "source_file_sha256": "fceaf2566eeced040cca07fb795b56f6f08ec73ddbab0e73a0f287ba5934c142",
+      "upstream_source_git_blob_sha1": "5d7cddae1fc8aeddb79d073e75d086a02f67ac7d",
+      "source_lines": [
+        1,
+        37
+      ],
+      "sha256": "5a80641f4aa8c72eb60fd391ac6f6adccda460193712e742e80f190d8aca1e1e",
+      "bytes": 889,
+      "selected_sdk_archives": [
+        "lib/libwpa_supplicant.a"
+      ],
+      "scope_note": "Opening source excerpt including the original per-file attributions. The excerpt is not a claim of a complete file-level notice inventory for all WPA archive members."
+    },
+    {
+      "component": "WPA fastpbkdf2 original CC0 dedication",
+      "copied_path": "sdk-4.4.7/wpa_supplicant/fastpbkdf2.c.notice.txt",
+      "kind": "verbatim_source_excerpt",
+      "version_or_ref": "38eeba213aa695aabfd6d89aa9f5078dbe5a94c3",
+      "source_url": "https://raw.githubusercontent.com/espressif/esp-idf/38eeba213aa695aabfd6d89aa9f5078dbe5a94c3/components/wpa_supplicant/src/crypto/fastpbkdf2.c",
+      "source_file_sha256": "152a561b9dc9f3e65598978ec9f4bcd1dc08a001c6789313de33f10ff47294f2",
+      "upstream_source_git_blob_sha1": "9084eef09c1882136aa80c44e0bc1d94c0d4a5a8",
+      "source_lines": [
+        1,
+        19
+      ],
+      "sha256": "1433d7e65aa9df41aa201eca61783e62b6e589225f12e9adb503dfa07acaa9c0",
+      "bytes": 633,
+      "selected_sdk_archives": [
+        "lib/libwpa_supplicant.a"
+      ],
+      "scope_note": "Opening source excerpt including the original per-file attributions. The excerpt is not a claim of a complete file-level notice inventory for all WPA archive members."
+    },
+    {
+      "component": "Actual toolchain Newlib runtime license notices",
+      "copied_path": "toolchain-8.4.0-2021r2-patch5/newlib/COPYING.NEWLIB",
+      "kind": "original_full_bundled_file",
+      "version_or_ref": "8.4.0+2021r2-patch5",
+      "source_path": "<PLATFORMIO_CORE_DIR>/packages/toolchain-xtensa-esp32s3/share/licenses/newlib/COPYING.NEWLIB",
+      "source_package_repository": "https://github.com/espressif/crosstool-NG",
+      "sha256": "dec5d419a7a4b27c064c8367a21e5d7b58aefc162719dc169bc4f82a88994859",
+      "bytes": 59777,
+      "selected_toolchain_archives": [
+        "libc.a",
+        "libm.a"
+      ],
+      "scope_note": "Different bytes from the IDF component COPYING.NEWLIB; preserved independently for the actual linked libc/libm package."
+    },
+    {
+      "component": "Actual toolchain libgloss bundled notices",
+      "copied_path": "toolchain-8.4.0-2021r2-patch5/newlib/COPYING.LIBGLOSS",
+      "kind": "original_full_bundled_file",
+      "version_or_ref": "8.4.0+2021r2-patch5",
+      "source_path": "<PLATFORMIO_CORE_DIR>/packages/toolchain-xtensa-esp32s3/share/licenses/newlib/COPYING.LIBGLOSS",
+      "source_package_repository": "https://github.com/espressif/crosstool-NG",
+      "sha256": "334f3446894be102933b75f3fea18690dd967c2e9c2782f24f4f944ec1ad7496",
+      "bytes": 22261,
+      "selected_toolchain_archives": [
+        "libc.a",
+        "libm.a"
+      ],
+      "scope_note": "Original accompanying newlib/libgloss notices; not a claim that every described platform or copyright item contributes to this firmware."
+    },
+    {
+      "component": "Actual toolchain GCC GPL v3 text",
+      "copied_path": "toolchain-8.4.0-2021r2-patch5/gcc/COPYING3",
+      "kind": "original_full_bundled_file",
+      "version_or_ref": "8.4.0+2021r2-patch5",
+      "source_path": "<PLATFORMIO_CORE_DIR>/packages/toolchain-xtensa-esp32s3/share/licenses/gcc/COPYING3",
+      "source_package_repository": "https://github.com/espressif/crosstool-NG",
+      "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+      "bytes": 35147,
+      "selected_toolchain_archives": [
+        "libgcc.a",
+        "libstdc++.a"
+      ],
+      "scope_note": "Original bundled text paired with COPYING.RUNTIME; no claim that the combined firmware must adopt this license."
+    },
+    {
+      "component": "Actual toolchain GCC Runtime Library Exception",
+      "copied_path": "toolchain-8.4.0-2021r2-patch5/gcc/COPYING.RUNTIME",
+      "kind": "original_full_bundled_file",
+      "version_or_ref": "8.4.0+2021r2-patch5",
+      "source_path": "<PLATFORMIO_CORE_DIR>/packages/toolchain-xtensa-esp32s3/share/licenses/gcc/COPYING.RUNTIME",
+      "source_package_repository": "https://github.com/espressif/crosstool-NG",
+      "sha256": "9d6b43ce4d8de0c878bf16b54d8e7a10d9bd42b75178153e3af6a815bdc90f74",
+      "bytes": 3324,
+      "selected_toolchain_archives": [
+        "libgcc.a",
+        "libstdc++.a"
+      ],
+      "scope_note": "Original GCC Runtime Library Exception v3.1; actual runtime header declarations preserved separately."
+    },
+    {
+      "component": "GCC actual runtime header declaration",
+      "copied_path": "toolchain-8.4.0-2021r2-patch5/gcc/unwind.h.notice.txt",
+      "kind": "verbatim_source_comment_excerpt",
+      "version_or_ref": "8.4.0+2021r2-patch5",
+      "source_path": "<PLATFORMIO_CORE_DIR>/packages/toolchain-xtensa-esp32s3/lib/gcc/xtensa-esp32s3-elf/8.4.0/include/unwind.h",
+      "source_lines": [
+        1,
+        23
+      ],
+      "source_file_sha256": "41cca0b4491b059e7d2768c079684fae1bae9b01d9d53a09be843c7f43e87f63",
+      "sha256": "8e999c8d7ac3f52b0f42178dce66ecfeb3c189e38c80228134fcf7cf2190cdd0",
+      "bytes": 1070,
+      "scope_note": "Actual installed header GPL-3.0-or-later and GCC Runtime Library Exception 3.1 declaration; excerpt does not replace complete license texts."
+    },
+    {
+      "component": "GNU ISO C++ actual runtime header declaration",
+      "copied_path": "toolchain-8.4.0-2021r2-patch5/gcc/c++config.h.notice.txt",
+      "kind": "verbatim_source_comment_excerpt",
+      "version_or_ref": "8.4.0+2021r2-patch5",
+      "source_path": "<PLATFORMIO_CORE_DIR>/packages/toolchain-xtensa-esp32s3/xtensa-esp32s3-elf/include/c++/8.4.0/xtensa-esp32s3-elf/no-rtti/bits/c++config.h",
+      "source_lines": [
+        1,
+        23
+      ],
+      "source_file_sha256": "c02281218d95237cb9caa90957cbc210c997bbf29b745f1e58d2297ae03d2379",
+      "sha256": "1efa3f9441134d3de4915bc66aab650f16ad5dce5c1590530b3f6256996c3099",
+      "bytes": 1085,
+      "scope_note": "Actual installed header GPL-3.0-or-later and GCC Runtime Library Exception 3.1 declaration; excerpt does not replace complete license texts."
+    },
+    {
+      "component": "Actual linked Xtensa ESP32-S3 toolchain package metadata",
+      "copied_path": "toolchain-8.4.0-2021r2-patch5/package.json",
+      "kind": "package_metadata",
+      "version_or_ref": "8.4.0+2021r2-patch5",
+      "source_path": "<PLATFORMIO_CORE_DIR>/packages/toolchain-xtensa-esp32s3/package.json",
+      "sha256": "40b436b30848b52f0a66cb28b4a6c0118afb7ee242558078f4c2460b3bd70f8d",
+      "bytes": 455,
+      "scope_note": "Package metadata describes the toolchain; its aggregate license field is not assigned to the output firmware or to every runtime component."
+    }
+  ],
+  "supplement_merge": {
+    "merged_at": "2026-10-16T17:28:53.904609+00:00",
+    "base_manifest_sha256": "5a278af020e9073e87cf87d52567f55cd161ffda3f782a3fdbbb61c1636002b9",
+    "preserved_original_record_count": 80,
+    "added_record_count": 12,
+    "total_record_count": 92,
+    "supplement_manifest": {
+      "path": "source-manifest.supplement.json",
+      "sha256": "6ce7a49e64a6749d3b799751793eaf34ca6d62942e67a8e24d7c54229948bafe"
+    },
+    "source_audit": {
+      "path": "source-audit.json",
+      "sha256": "9ab61fbd1d1dc21318f2d20c252658ae211a3bb5007f18f8c29aeda5f643c3dc"
+    },
+    "remaining_gaps": {
+      "path": "remaining-gaps.json",
+      "sha256": "6cd04f73966f0ed809969ada64ccdc11df7d90ce5fdef8e51188f2fe8e50f32b"
+    },
+    "verification": "All 92 copied_path files verified against recorded SHA-256 and byte count after merge. Original 80 record values and copied file bytes preserved.",
+    "scope": "Verbatim license/source/provenance materials only; no determination of the license of a combined firmware image; no binaries or private device data copied."
+  },
+  "sdk_supplement_merge": {
+    "baselineManifestSha256": "ca4c1fd6add7ff99388db05e2ca98251cd3fc7e0795f301943f92fd4aeaaaf81",
+    "baselineRecords": 92,
+    "appendedRecords": 25,
+    "totalRecords": 117,
+    "supplementManifest": "sdk-audit/source-manifest.sdk.json",
+    "supplementSha256": "9fd79dc0237389b49a065a0d57ce3de264086703e8305c77ebf70a25b1f8e9d3",
+    "internalSupplementShaChecks": 44,
+    "currentCandidateMapAndElfMatched": true,
+    "scope": "Selected archive-level originals and notices; not final section inventory or full license determination"
+  }
+}

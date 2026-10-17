@@ -1,0 +1,3 @@
+Render policy: static/bitmap/navigation/errors/throttle/wrap/memory passed
+Chat status: connection, audio pause, ACK/protocol and recording cases passed
+Locked LGFX RGB565: all 65,536 colors, 16 avatars and interaction rows passed

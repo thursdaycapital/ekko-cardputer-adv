@@ -1,0 +1,21 @@
+{
+  "reason": "privacy-only README/image metadata cleanup; no compiled source changes",
+  "updates": [
+    {
+      "file": "source/factory-cardputer-adv/managed_components/espressif__tinyusb/CHECKSUMS.json",
+      "changedEntries": [
+        "examples/device/audio_4_channel_mic_freertos/README.md",
+        "examples/device/audio_test_freertos/README.md"
+      ],
+      "originalManifestRetained": "CHECKSUMS.upstream.json"
+    },
+    {
+      "file": "source/factory-cardputer-adv/managed_components/espressif__esp-now/CHECKSUMS.json",
+      "changedEntries": [
+        "examples/coin_cell_demo/switch/docs/img/coin_cell_button_back.png",
+        "examples/coin_cell_demo/switch/docs/img/coin_cell_button_front.png"
+      ],
+      "originalManifestRetained": "CHECKSUMS.upstream.json"
+    }
+  ]
+}

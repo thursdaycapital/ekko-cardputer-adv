@@ -1,0 +1,15 @@
+
+> ekko-studio@0.7.36-cardputer.5 harness:check
+> node scripts/harness-check.mjs && npm --prefix packages/ekko-agent run api:docs:check
+
+Harness check passed
+
+> ekko-agent@0.1.0 api:docs:check
+> node scripts/api-doc-harness.mjs
+
+Ekko public API documentation is current.
+npm notice
+npm notice New minor version of npm available! 11.13.0 -> 11.21.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.21.1
+npm notice To update run: npm install -g npm@11.21.1
+npm notice

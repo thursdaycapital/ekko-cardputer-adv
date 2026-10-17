@@ -1,0 +1,55 @@
+{
+  "version": "cardputer-adv-v8.2.4.1-fusion12",
+  "baseline": "accepted v8.2.4-cleartext",
+  "chip": "ESP32-S3",
+  "flashSizeBytes": 8388608,
+  "appOffset": "0x10000",
+  "appPartitionBytes": 3342336,
+  "appBytes": 3185392,
+  "appSha256": "1840130458d4329a055f5981b76ec9805958e0f6191ccccfaacd634cf4923e4f",
+  "font": {
+    "family": "Fusion Pixel 12px monospaced zh_hans",
+    "nativePixels": 12,
+    "bodyRowHeight": 14,
+    "glyphs": 24025,
+    "fusionGlyphs": 23845,
+    "efont12CompatibilityGlyphs": 180,
+    "dataBytes": 654185,
+    "dataSha256": "6b6ecb63da33f40e18c8839a9a9909f823886f1baa40a736f19e178a8dba9eac",
+    "oldEfontCoveragePreserved": 7545,
+    "pinyinCandidateCharactersCovered": 6749,
+    "pinyinCandidateRecordsCovered": 38072,
+    "missingCandidateCharacters": 0
+  },
+  "changes": [
+    "menus/Agent names/body/input/status/candidates use native12",
+    "header shows Chinese or English + Ctrl+Space",
+    "consistent scroll/wrap measurements",
+    "original raster envelope + vertical native12 clip"
+  ],
+  "hostChecks": {
+    "chatPrograms": 6,
+    "policyPrograms": 8,
+    "renderPrograms": 3,
+    "sanitizers": [
+      "address",
+      "undefined"
+    ],
+    "realFontGlyphs": 24025,
+    "realFontNativeCellPixels": 9225600,
+    "repositoryHarness": "passed"
+  },
+  "physicalFlash": "verified app readback",
+  "physicalFontAcceptance": {
+    "confirmedBy": "user",
+    "result": "显示正常，字号和提示符合要求",
+    "scope": "M5 physical chat body/input/status font and Chinese Ctrl+Space header",
+    "firmware": "cardputer-adv-v8.2.4.1-fusion12"
+  },
+  "backendCodeChanged": false,
+  "wifiSelectionChanged": false,
+  "fullFlashBackupsIncluded": false,
+  "allBytesOutsideApp0Unchanged": true,
+  "productionBackendSha256": "44fe07ef50a9bae95ed095d12a3793a4a37c91621bf0ed95ace137dbfa4ef432",
+  "firmwareStartupObserved": true
+}

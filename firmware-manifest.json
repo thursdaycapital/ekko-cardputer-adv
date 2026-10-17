@@ -1,0 +1,38 @@
+{
+  "package": "EkkoStudio-CardputerADV-v8.2.4.1",
+  "date": "2026-10-17",
+  "hardware": "M5Stack Cardputer-Adv / ESP32-S3 /8MiB",
+  "appVersion": "cardputer-adv-v8.2.4.1-fusion12",
+  "factoryVersion": "factory-ekko-v1.4",
+  "appPhysicalAcceptance": true,
+  "newBlankNvsFirstInstallPhysicalAcceptance": false,
+  "firstInstallValidation": "offline input byte-match, full image/gap/NVS/OTA/FS verification",
+  "currentDeviceModifiedForPackaging": false,
+  "privateDeviceDumpIncluded": false,
+  "studioCompatibility": {
+    "testedLocalVersion": "0.7.36-cardputer.5",
+    "needsAgentAck": true,
+    "chatProtocol": 1,
+    "unmodifiedOfficialStudioCompatibilityPromised": false
+  },
+  "artifacts": {
+    "firmware/ekko-update-0x10000.bin": {
+      "address": "0x10000",
+      "preservesSettings": true
+    },
+    "firmware/first-install-dual-8MiB-0x0000.bin": {
+      "address": "0x0000",
+      "clearsSettings": true
+    }
+  },
+  "guides": [
+    "安装教程.html",
+    "安装教程.zh-CN.md",
+    "README-先读我.txt"
+  ],
+  "desktopFolderName": "EkkoStudio-CardputerADV-v8.2.4.1",
+  "publicRepository": "https://github.com/thursdaycapital/ekko-cardputer-adv",
+  "publicSanitizedRevision": 1,
+  "imageMetadataRemoved": true,
+  "releasePrerelease": true
+}

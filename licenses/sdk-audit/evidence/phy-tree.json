@@ -1,0 +1,194 @@
+{
+  "sha": "dcfdccf6cc2fc02d0886624b7998c890d1a19b28",
+  "url": "https://api.github.com/repos/espressif/esp-phy-lib/git/trees/dcfdccf6cc2fc02d0886624b7998c890d1a19b28",
+  "tree": [
+    {
+      "path": ".gitlab-ci.yml",
+      "mode": "100755",
+      "type": "blob",
+      "sha": "88e1cb8124ffe53b5e3f51774d8f077f2d121c9a",
+      "size": 436,
+      "url": "https://api.github.com/repos/espressif/esp-phy-lib/git/blobs/88e1cb8124ffe53b5e3f51774d8f077f2d121c9a"
+    },
+    {
+      "path": "LICENSE",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d645695673349e3947e8e5ae42332d0ac3164cd7",
+      "size": 11358,
+      "url": "https://api.github.com/repos/espressif/esp-phy-lib/git/blobs/d645695673349e3947e8e5ae42332d0ac3164cd7"
+    },
+    {
+      "path": "README.rst",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bccbb94afe1b321722ee63cec012f707cccf08e5",
+      "size": 560,
+      "url": "https://api.github.com/repos/espressif/esp-phy-lib/git/blobs/bccbb94afe1b321722ee63cec012f707cccf08e5"
+    },
+    {
+      "path": "esp32",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "22c8f46a474477d2d9f6e8b43cd44bde49995fee",
+      "url": "https://api.github.com/repos/espressif/esp-phy-lib/git/trees/22c8f46a474477d2d9f6e8b43cd44bde49995fee"
+    },
+    {
+      "path": "esp32/libphy.a",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c6dfd0d7c7bc747ecaa96658b2df4652e2ade6a0",
+      "size": 847298,
+      "url": "https://api.github.com/repos/espressif/esp-phy-lib/git/blobs/c6dfd0d7c7bc747ecaa96658b2df4652e2ade6a0"
+    },
+    {
+      "path": "esp32/librtc.a",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b3336451534b8507c0049b8350912340a1a76077",
+      "size": 184058,
+      "url": "https://api.github.com/repos/espressif/esp-phy-lib/git/blobs/b3336451534b8507c0049b8350912340a1a76077"
+    },
+    {
+      "path": "esp32c3",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "3337bf1e975e7320d2de6a43b33a27ef2172a5b9",
+      "url": "https://api.github.com/repos/espressif/esp-phy-lib/git/trees/3337bf1e975e7320d2de6a43b33a27ef2172a5b9"
+    },
+    {
+      "path": "esp32c3/libbtbb.a",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7dc22225c2dd275d287f13da73e91587cf9a2a28",
+      "size": 9862,
+      "url": "https://api.github.com/repos/espressif/esp-phy-lib/git/blobs/7dc22225c2dd275d287f13da73e91587cf9a2a28"
+    },
+    {
+      "path": "esp32c3/libbttestmode.a",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3bcef4c7442836b6530eb379b4da927a89653917",
+      "size": 169076,
+      "url": "https://api.github.com/repos/espressif/esp-phy-lib/git/blobs/3bcef4c7442836b6530eb379b4da927a89653917"
+    },
+    {
+      "path": "esp32c3/libphy.a",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ba6d4cc634de7a61272febf681ced0c9af418019",
+      "size": 193794,
+      "url": "https://api.github.com/repos/espressif/esp-phy-lib/git/blobs/ba6d4cc634de7a61272febf681ced0c9af418019"
+    },
+    {
+      "path": "esp32c3/librfate.a",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "29905c042160de4577ab9a882f20d01426f56596",
+      "size": 20666,
+      "url": "https://api.github.com/repos/espressif/esp-phy-lib/git/blobs/29905c042160de4577ab9a882f20d01426f56596"
+    },
+    {
+      "path": "esp32c3/librftest.a",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ed9446e06638c27e6d5dc54d90c3511cbe6cc696",
+      "size": 235618,
+      "url": "https://api.github.com/repos/espressif/esp-phy-lib/git/blobs/ed9446e06638c27e6d5dc54d90c3511cbe6cc696"
+    },
+    {
+      "path": "esp32h2",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "26f0fcfa80f7bc024bdf6b8128f4ef9e079ef041",
+      "url": "https://api.github.com/repos/espressif/esp-phy-lib/git/trees/26f0fcfa80f7bc024bdf6b8128f4ef9e079ef041"
+    },
+    {
+      "path": "esp32h2/libbtbb.a",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ad1c3b5eeae0d4cceedf1a7c287560bed05b26da",
+      "size": 10052,
+      "url": "https://api.github.com/repos/espressif/esp-phy-lib/git/blobs/ad1c3b5eeae0d4cceedf1a7c287560bed05b26da"
+    },
+    {
+      "path": "esp32h2/libphy.a",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d66e76ae92467fceb3c01ebfdb800c4fe770a60d",
+      "size": 149494,
+      "url": "https://api.github.com/repos/espressif/esp-phy-lib/git/blobs/d66e76ae92467fceb3c01ebfdb800c4fe770a60d"
+    },
+    {
+      "path": "esp32s2",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "6f46bb8f45bdf9fe87c22b6a803a296a89d2d45a",
+      "url": "https://api.github.com/repos/espressif/esp-phy-lib/git/trees/6f46bb8f45bdf9fe87c22b6a803a296a89d2d45a"
+    },
+    {
+      "path": "esp32s2/libphy.a",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "33184ed2811c5f28bec7a7244cbffadda528543c",
+      "size": 176964,
+      "url": "https://api.github.com/repos/espressif/esp-phy-lib/git/blobs/33184ed2811c5f28bec7a7244cbffadda528543c"
+    },
+    {
+      "path": "esp32s3",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "5911ea94cf88f04b6b18f6029c27de095db8ea5c",
+      "url": "https://api.github.com/repos/espressif/esp-phy-lib/git/trees/5911ea94cf88f04b6b18f6029c27de095db8ea5c"
+    },
+    {
+      "path": "esp32s3/libbtbb.a",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "591b374667c2d143b3c536e36e8b847300a41ca5",
+      "size": 19818,
+      "url": "https://api.github.com/repos/espressif/esp-phy-lib/git/blobs/591b374667c2d143b3c536e36e8b847300a41ca5"
+    },
+    {
+      "path": "esp32s3/libbttestmode.a",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8a1912235e2b1e40ce90d6ad7d5a71c7795c61b7",
+      "size": 228980,
+      "url": "https://api.github.com/repos/espressif/esp-phy-lib/git/blobs/8a1912235e2b1e40ce90d6ad7d5a71c7795c61b7"
+    },
+    {
+      "path": "esp32s3/libphy.a",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3456589ba86f6093f818ac186894d01d488acfdf",
+      "size": 241614,
+      "url": "https://api.github.com/repos/espressif/esp-phy-lib/git/blobs/3456589ba86f6093f818ac186894d01d488acfdf"
+    },
+    {
+      "path": "esp32s3/librfate.a",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "05dc4b69e02dac8e6c75ab8f9dc49c1d33d66c32",
+      "size": 23238,
+      "url": "https://api.github.com/repos/espressif/esp-phy-lib/git/blobs/05dc4b69e02dac8e6c75ab8f9dc49c1d33d66c32"
+    },
+    {
+      "path": "esp32s3/librftest.a",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "351fc7adc5bedf4c5dffc7caf18dd5829da9452b",
+      "size": 253066,
+      "url": "https://api.github.com/repos/espressif/esp-phy-lib/git/blobs/351fc7adc5bedf4c5dffc7caf18dd5829da9452b"
+    },
+    {
+      "path": "fix_printf.sh",
+      "mode": "100755",
+      "type": "blob",
+      "sha": "53ea5472d2d16fb6b2f9371346412a85ae979df9",
+      "size": 2292,
+      "url": "https://api.github.com/repos/espressif/esp-phy-lib/git/blobs/53ea5472d2d16fb6b2f9371346412a85ae979df9"
+    }
+  ],
+  "truncated": false
+}

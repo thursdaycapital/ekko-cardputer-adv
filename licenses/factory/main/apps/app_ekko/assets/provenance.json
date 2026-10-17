@@ -1,0 +1,28 @@
+{
+  "source": "Ekko Studio packages/client/public/logo.png",
+  "sha256": "7751f4d07155e217ba9d85e6a791597e142190c3a4dec89c0577132dd720be5d",
+  "conversion": "Source unchanged; Lanczos 56x56 and 40x40, RGB565 quantization, then swap the two bytes of every stored uint16_t for UserDemo raw pushImage; no redesign",
+  "storage": "Byte-swapped RGB565 numeric words; e.g. canonical 0xef7d is stored as 0x7def. Original Mooncake canvas swapBytes remains false.",
+  "assets": [
+    {
+      "file": "ekko_big.h",
+      "dimensions": [
+        56,
+        56
+      ],
+      "pixels": 3136,
+      "sha256": "768fd8db2510025e2fc8260a25a580e4f676b3316ade42bcc35fb0843f321dab",
+      "inverse_storage_swap_matches_source_conversion": true
+    },
+    {
+      "file": "ekko_small.h",
+      "dimensions": [
+        40,
+        40
+      ],
+      "pixels": 1600,
+      "sha256": "b06e0d9d7ee4f27ad7255bf2ab3a4b6331545535da83555a437ff4c3765b6f86",
+      "inverse_storage_swap_matches_source_conversion": true
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+native 16-agent selection tests passed
+Four arrows: physical legends, modifier layers, edges, FIFO, counters and 16-agent wrap passed
+Remote fallback: 13 scenarios passed (identity, backoff, native handshakes, Engine.IO liveness, Wi-Fi/desktop recovery, rollover)
+MCU reauth: 19 scenarios passed (retry, identity, cached startup, namespace errors, staged rejection/replacement, stale audio cleanup)
+OK chat: ready/waiting/ACK/errors/Back/profile/reconnect and all 16 Agents passed
+Physical keyboard: typing, modifiers, mode edges, repeat and overflow passed
+key click: waveform and input tests passed
+native envelope, remote wire/payload and stale-event tests passed
+Canonical catalog: all 16 IDs, names and order match

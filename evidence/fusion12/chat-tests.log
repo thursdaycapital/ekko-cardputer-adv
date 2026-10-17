@@ -1,0 +1,6 @@
+Chat input: UTF8/edit/cursor/newline/space/capacity/aliasing passed; sizeof=524
+Chat model: stream/offset/routes/session/window/history/LRU/dirty-draft/zero-heap passed; sizeof=34312 (context=1200, message=1252)
+Chat layout: measured UTF8 wrap/newlines/bounds/viewport passed
+Chat renderer: bounded drawing/real text/composer/notice/cursor/visible-window metrics passed (canvas spy)
+Chat browser: physical scroll/render movement, both page focus edges, long windows and latest return passed
+Pixel font: 12px metrics, baseline/clip intersection/restore passed (canvas spy)

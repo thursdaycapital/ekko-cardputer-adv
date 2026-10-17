@@ -1,0 +1,367 @@
+{
+  "version": "cardputer-adv-v8.2.4.1-fusion12",
+  "appSha256": "1840130458d4329a055f5981b76ec9805958e0f6191ccccfaacd634cf4923e4f",
+  "elfSha256": "ce6db8b360115409e7bdb795512f688fe6afdfccbb0329193b67722054b537e0",
+  "mapSha256": "42517ed5555f112a152c05800602063103b21255f17a90581d1ae349d66a635c",
+  "sdkArchiveCount": 55,
+  "archives": [
+    {
+      "sdk_path": "tools/sdk/esp32s3/ld/libbtbb.a",
+      "bytes": 19818,
+      "sha256": "9ce018fb5d7753318ccf1e8386ced5d45a0b0d90f07352946a03c8689539073f",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/ld/libbtdm_app.a",
+      "bytes": 541800,
+      "sha256": "3a766cbdf78cde3d2d0eee40bf601c09be88c6589a629815e8d59b91b271d1dc",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/ld/libphy.a",
+      "bytes": 241614,
+      "sha256": "c8f6c6821c7e8e28c97f3a797e322d9987a0f3fd5f5da5e971ab0111ba513160",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libapp_update.a",
+      "bytes": 146988,
+      "sha256": "63b0e765f044b9c4f58e8b4c5643daa902bb243210747e8b1df88c67c4520f9d",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libbt.a",
+      "bytes": 21780332,
+      "sha256": "48fe8a1427a6476e2a8671bc893bd0e346d1658f3714b97d25ca091487748365",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libcoexist.a",
+      "bytes": 85092,
+      "sha256": "0c61713a461511973e0d4270bcf6c75587fb5da361f0636c8346c960516ef05a",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libcore.a",
+      "bytes": 4820,
+      "sha256": "193092d7be420934e1a865fccfa50f223e6829cd0f47ebbc6b0d4940c7bfb981",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libcxx.a",
+      "bytes": 59530,
+      "sha256": "295951e87b7152a7364d45f5435ac24408a80dbe32fedf326e97edda8fc60412",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libdriver.a",
+      "bytes": 5359990,
+      "sha256": "b8ab992d477263dba3306c057af7cb08f2808a22bc6aeec668c3a0d20e189773",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libefuse.a",
+      "bytes": 505220,
+      "sha256": "c65c8266bfa4170e534f9e3a9c744566f09f1f8e71da6bdf60ce9488be5a1ff2",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libesp_adc_cal.a",
+      "bytes": 63256,
+      "sha256": "36de51bcb789367a734fc0bec4ffc1fc375efeb94382a6c420bf239654d6128e",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libesp_common.a",
+      "bytes": 57798,
+      "sha256": "aa3b7a5f964bc7c7bfae623e64b15b695db268dd704b1fa7f967dad519f67b5f",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libesp_diagnostics.a",
+      "bytes": 361766,
+      "sha256": "69f28fb584e5a44cab0739d53679e78304e45d42ebd76f3e12eb8cf5d973007a",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libesp_eth.a",
+      "bytes": 812314,
+      "sha256": "ae4966a227553730bd9ab1bf19bfc5179aa1c13ae09374670c2b831215d9b3d1",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libesp_event.a",
+      "bytes": 268676,
+      "sha256": "32b0bdae4f59c6f09fab85c221cd459b4a44567ca4ad753807f9f7172eac70b2",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libesp_ipc.a",
+      "bytes": 90608,
+      "sha256": "2bdbbe5e2669143738b2bbd89203eda25476960b5d4f6ce15c512513ae36fcc5",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libesp_lcd.a",
+      "bytes": 737246,
+      "sha256": "941461c7062cdd9eedcf018563a8b3009867c8241bb55659265b6a58804b96aa",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libesp_netif.a",
+      "bytes": 445516,
+      "sha256": "0d67fa2f45582ae11364fce8237146c9db9ead20cf5bf19cb15cd47d93a9c4de",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libesp_phy.a",
+      "bytes": 151588,
+      "sha256": "b63a6ce02ad6490c3351964f2d901c2d468f3865a7d64187a287ae66eba7b3e1",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libesp_pm.a",
+      "bytes": 171180,
+      "sha256": "60529aeaf1cd94b41983383ceec240d1f43256f86faf8d9357f9e7d6050d9191",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libesp_ringbuf.a",
+      "bytes": 154618,
+      "sha256": "71dedf0f14aa64031c973b73279a88f9c4ec83ccfef331fe01e3532183cafc8c",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libesp_rom.a",
+      "bytes": 113716,
+      "sha256": "fd3ad8b4552687a2722288fdf8069e43ab01440196dbf3cd6c77cb994be2fbd6",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libesp_timer.a",
+      "bytes": 176508,
+      "sha256": "b09bd4231f011c0dc6f09900aa05f6df48f237d34b78965c746f777f5e9fc7bc",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libesp_wifi.a",
+      "bytes": 468002,
+      "sha256": "cb06edb694b149bed9b9691be7942281549868e5e59624036da4ccaeb7d72175",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libespcoredump.a",
+      "bytes": 478456,
+      "sha256": "8f8b9e9d1e7853232b113cff78c0e62f8939fc4026abd190512134d985695392",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libhal.a",
+      "bytes": 2792896,
+      "sha256": "ba8f1f141062b0b567029d0bf21ed4981426870f8ae2d33ba1bfd91d32bf5fc7",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libheap.a",
+      "bytes": 557948,
+      "sha256": "8108f23266178230dc27c03ac62b538a990a2a90d638503e3a1f3c482ea41513",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libjson.a",
+      "bytes": 364144,
+      "sha256": "04a1df04bb1e0dce3326f511ed68f317081e08caf4f094d6cb4eab172119e2f6",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/liblog.a",
+      "bytes": 94876,
+      "sha256": "6ebbc908c98f6dca8a03533e95877d217b21a8a7777bfe0cded98dc228f4a2fc",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/liblwip.a",
+      "bytes": 4288608,
+      "sha256": "8d9f1c6ef5abcf086759e3032938ef8df2c06125c0735242a0a079d277ef593d",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libmbedcrypto.a",
+      "bytes": 4302698,
+      "sha256": "abdaf759ee17aa697468427b55a86c6c0082ac4cdeb643a63d8b3ac2df324633",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libmbedtls.a",
+      "bytes": 113914,
+      "sha256": "a0f331245feb5cf4fe8d9f99b03d34d64f10e38d8a8d680e35b34ec82aa3cf9e",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libmbedtls_2.a",
+      "bytes": 1252150,
+      "sha256": "9a580d2ff7c885e1bf59479a14422e3d10a485ae9083acb5db943df714c0ac35",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libmbedx509.a",
+      "bytes": 676590,
+      "sha256": "3d56277224b066118b6c48a973ae18fdf8078448bf54b482ac5557699e52f223",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libmesh.a",
+      "bytes": 971720,
+      "sha256": "48a17163c2234af955f7d93f21ad219baf11c1353ecb41ca36323db34e3164a6",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libnet80211.a",
+      "bytes": 1150738,
+      "sha256": "6aae206c85e9009a24cd1f28ce535e2a2d578d9687fe2dc77d4697d45ebc8d0f",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libnewlib.a",
+      "bytes": 428740,
+      "sha256": "dbac7546c93c387a82f3a83cf6985468ad0c26177c391251bde37dac7725511f",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libnvs_flash.a",
+      "bytes": 1455040,
+      "sha256": "f4163a6e3bb66867d06c5e7f33226f1941f123b77f358cc02e30021b1a2bf983",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libpp.a",
+      "bytes": 601344,
+      "sha256": "369fa64aefd5d147062fd11288f3933b192dc5d9adfbefcafdd94ae9ac9de32e",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libprotobuf-c.a",
+      "bytes": 279264,
+      "sha256": "572cd13dc4da5164bd18f1591e3c94731148566ddc0de98aa6c90132f493bacd",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libprotocomm.a",
+      "bytes": 605970,
+      "sha256": "3858c1b234129522a6bbbbdb07537fa0d6b619ef44725d290beedef238b79eb3",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libpthread.a",
+      "bytes": 225166,
+      "sha256": "c99c47275fdf44c290e154b83b16cc0a62427a82d2875409e0eafe2945088ab1",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libsmartconfig.a",
+      "bytes": 186040,
+      "sha256": "abd9da8b00c3440452c0386f3cee1a16886d9ece3bbecc7cf7e8eea2b94a355c",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libsoc.a",
+      "bytes": 604598,
+      "sha256": "a484ab659effaaecbd5fe75d20d4ef293e1a54de5034f10add071d597c7fae45",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libtcpip_adapter.a",
+      "bytes": 105660,
+      "sha256": "624b198973b01d0df08d758fd1911ab221f006650f40e46c955c8e394fa2c09a",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libvfs.a",
+      "bytes": 639414,
+      "sha256": "b70865ab418f4f4cc516e234e0011e975164f70b3282df197fd325b061308ed9",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libwifi_provisioning.a",
+      "bytes": 808520,
+      "sha256": "ee55767957e3bb116f670f1ba0a46f0ceadc4c5292884dcc6f7c5ab63c08f7e9",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libwpa_supplicant.a",
+      "bytes": 4858426,
+      "sha256": "fdef973bbfa85c926c5a8266c34cfe0f4aab83d6a835522b24356afe31f52b31",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libxt_hal.a",
+      "bytes": 240506,
+      "sha256": "4823e6c657199a6726f3163f15e1222edb85a8a33eeaafd2aad0cc06150cc4ec",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libxtensa.a",
+      "bytes": 52616,
+      "sha256": "42eda0b774a63e71e4b3b4ea983aa2a45374779eae270786272d93cfc30f1293",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/qio_qspi/libbootloader_support.a",
+      "bytes": 769328,
+      "sha256": "569a073995d954de64877037de9f211c9f711d3bbe4755b316f8bcf6aab3fc6d",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/qio_qspi/libesp_hw_support.a",
+      "bytes": 1863798,
+      "sha256": "b9b412df462a8eed8a4bd5e4ed6bf13c0c0271cec5fed97ff08bf9a0bf922308",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/qio_qspi/libesp_system.a",
+      "bytes": 1574894,
+      "sha256": "2a58caf364f9417c0c81ed0509fc21b3db4a23b6bd75940937de8d10dc8d048a",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/qio_qspi/libfreertos.a",
+      "bytes": 1063058,
+      "sha256": "258c4cc7c1d878cfb2a0a5a76344e4b4e8db326da95b4471f99430c8557c82f8",
+      "matchesCollectedPinnedSdkRecord": true
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/qio_qspi/libspi_flash.a",
+      "bytes": 1465194,
+      "sha256": "82287e5db87de68cd2fac77d144607cf0af5a871f3c4a9c80865b7a1c98d5666",
+      "matchesCollectedPinnedSdkRecord": true
+    }
+  ],
+  "scope": "archive selection provenance before garbage collection; not a full per-section SBOM",
+  "toolchainRuntime": {
+    "package_version": "8.4.0+2021r2-patch5",
+    "compiler_version": "xtensa-esp32s3-elf-gcc (crosstool-NG esp-2021r2-patch5) 8.4.0",
+    "archives": [
+      {
+        "package_relative_path": "xtensa-esp32s3-elf/lib/no-rtti/libc.a",
+        "bytes": 10897852,
+        "sha256": "b8b1e4a6c23f42c32bbf48dbc50b35cbd8e7d62afdcbb497096280b2c6826d58"
+      },
+      {
+        "package_relative_path": "xtensa-esp32s3-elf/lib/no-rtti/libm.a",
+        "bytes": 4642848,
+        "sha256": "64ced61f0cb9cd94f60f6a2bf307284e6e6a1de0dd99a4e18c579dd645dba178"
+      },
+      {
+        "package_relative_path": "xtensa-esp32s3-elf/lib/no-rtti/libstdc++.a",
+        "bytes": 20592856,
+        "sha256": "46cbd877255439cee2b048b42b1fda0612e54180d88ede86f489e61a5cec103c"
+      },
+      {
+        "package_relative_path": "lib/gcc/xtensa-esp32s3-elf/8.4.0/no-rtti/libgcc.a",
+        "bytes": 1172470,
+        "sha256": "c07c00fdc56ce449f8051f3bbaa4e5b870e7dea7bf433b67609e0d06edaa6150"
+      }
+    ],
+    "scope": "Actual selected runtime archives; host compiler executables and their build dependencies are not distributed here."
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "browserObserved": true,
+  "title": "EkkoStudio · Cardputer-Adv 固件安装教程",
+  "tableAddresses": [
+    "0x10000",
+    "0x0000"
+  ],
+  "allTocTargetsExist": true,
+  "brokenImages": 0,
+  "horizontalOverflow": false,
+  "literalBoldMarkers": false,
+  "offlineImageRelativePath": "preview/Fusion12-chat-preview.png",
+  "softwareCommandsExecutedForPackaging": "version/help/image_info/merge_bin only; no device flash command"
+}

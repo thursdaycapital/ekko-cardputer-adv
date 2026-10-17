@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-10-16T17:18:08.557845+00:00",
+  "audits": [
+    {
+      "component": "Copilot existing floating avatar reference",
+      "source_url": "https://api.github.com/repos/primer/octicons/commits/main",
+      "resolved_commit": "6dbe38e4e9b4987b2c9332d719c57fbbdd083e2d",
+      "api_response_sha256": "0a2d15af56cb503d8df100d2cfe6621f5fb9002eed62c179dcbe334845c0a341",
+      "matched_asset_sha256": "eeafb3c2f333e04ccf7d031ae215f7adafaed4c6352556b0bf79496e048bcdd7"
+    },
+    {
+      "component": "m5stack/M5Cardputer",
+      "source_url": "https://api.github.com/repos/m5stack/M5Cardputer/git/trees/e0232804763d3e42d7e9be90e43cf6e1c9e7565b?recursive=1",
+      "ref": "e0232804763d3e42d7e9be90e43cf6e1c9e7565b",
+      "api_response_sha256": "4013f279e9f230ea8b1f65496e5443bc897620f27a48f35b5c8b0fb97f5b3ada",
+      "recursive_tree_truncated": false,
+      "entries": 56,
+      "standalone_license_filename_matches": [],
+      "scope_note": "Only verifies these conventional standalone filenames are absent. Existing per-file MIT SPDX notices remain the permission declarations; absence is not a new license determination."
+    },
+    {
+      "component": "m5stack/M5Cardputer-UserDemo",
+      "source_url": "https://api.github.com/repos/m5stack/M5Cardputer-UserDemo/git/trees/b549eac0a3c65bc108186c276b8fac0a214aaa4e?recursive=1",
+      "ref": "b549eac0a3c65bc108186c276b8fac0a214aaa4e",
+      "api_response_sha256": "9bc1a331e65db7f1b68a90125b05668c66a75d34de64f0f913ce891e3c667fe8",
+      "recursive_tree_truncated": false,
+      "entries": 294,
+      "standalone_license_filename_matches": [],
+      "scope_note": "Only verifies these conventional standalone filenames are absent. Existing per-file MIT SPDX notices remain the permission declarations; absence is not a new license determination."
+    }
+  ]
+}

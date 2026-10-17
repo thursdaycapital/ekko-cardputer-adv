@@ -1,0 +1,61 @@
+{
+  "sha": "e5c0f7256ecf5b5f8eb28c1793051a6b88f95124",
+  "url": "https://api.github.com/repos/espressif/esp32c3-bt-lib/git/trees/e5c0f7256ecf5b5f8eb28c1793051a6b88f95124",
+  "tree": [
+    {
+      "path": ".gitlab-ci.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1c701e57436ed796592b4483b1f79e16797a678e",
+      "size": 1417,
+      "url": "https://api.github.com/repos/espressif/esp32c3-bt-lib/git/blobs/1c701e57436ed796592b4483b1f79e16797a678e"
+    },
+    {
+      "path": "LICENSE",
+      "mode": "100755",
+      "type": "blob",
+      "sha": "d645695673349e3947e8e5ae42332d0ac3164cd7",
+      "size": 11358,
+      "url": "https://api.github.com/repos/espressif/esp32c3-bt-lib/git/blobs/d645695673349e3947e8e5ae42332d0ac3164cd7"
+    },
+    {
+      "path": "README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "36e3ffec289af43fb5d83da5d1537aa4c9a2cd98",
+      "size": 607,
+      "url": "https://api.github.com/repos/espressif/esp32c3-bt-lib/git/blobs/36e3ffec289af43fb5d83da5d1537aa4c9a2cd98"
+    },
+    {
+      "path": "esp32c3",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "20fddfbd35d95a074c3767f96a0cb937b98cdbdc",
+      "url": "https://api.github.com/repos/espressif/esp32c3-bt-lib/git/trees/20fddfbd35d95a074c3767f96a0cb937b98cdbdc"
+    },
+    {
+      "path": "esp32c3/libbtdm_app.a",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c9774edd1d05d2fc76d29879b9c819f8c9028ec0",
+      "size": 469100,
+      "url": "https://api.github.com/repos/espressif/esp32c3-bt-lib/git/blobs/c9774edd1d05d2fc76d29879b9c819f8c9028ec0"
+    },
+    {
+      "path": "esp32s3",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "5f13a638101496a1dc2f1ac2e79d1d6d532304b1",
+      "url": "https://api.github.com/repos/espressif/esp32c3-bt-lib/git/trees/5f13a638101496a1dc2f1ac2e79d1d6d532304b1"
+    },
+    {
+      "path": "esp32s3/libbtdm_app.a",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "35adfbb07c648750ec55679413a68f547ae63d97",
+      "size": 541800,
+      "url": "https://api.github.com/repos/espressif/esp32c3-bt-lib/git/blobs/35adfbb07c648750ec55679413a68f547ae63d97"
+    }
+  ],
+  "truncated": false
+}

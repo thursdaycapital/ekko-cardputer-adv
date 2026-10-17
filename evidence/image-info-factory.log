@@ -1,0 +1,47 @@
+esptool.py v4.11.0
+File size: 2668304 (bytes)
+
+ESP32S3 image header
+====================
+Image version: 1
+Entry point: 0x403757d4
+Segments: 6
+Flash size: 8MB
+Flash freq: 80m
+Flash mode: DIO
+
+ESP32S3 extended image header
+=============================
+WP pin: 0xee (disabled)
+Flash pins drive settings: clk_drv: 0x0, q_drv: 0x0, d_drv: 0x0, cs0_drv: 0x0, hd_drv: 0x0, wp_drv: 0x0
+Chip ID: 9 (ESP32-S3)
+Minimal chip revision: v0.0, (legacy min_rev = 0)
+Maximal chip revision: v0.99
+
+Segments information
+====================
+Segment   Length   Load addr   File offs  Memory types
+-------  -------  ----------  ----------  ------------
+      0  0x119364  0x3c150020  0x00000018  DROM
+      1  0x058d8  0x3fca2900  0x00119384  BYTE_ACCESSIBLE, MEM_INTERNAL, DRAM
+      2  0x013ac  0x40374000  0x0011ec64  MEM_INTERNAL, IRAM
+      3  0x14e15c  0x42000020  0x00120018  IROM
+      4  0x1d540  0x403753ac  0x0026e17c  MEM_INTERNAL, IRAM
+      5  0x0001c  0x600fe000  0x0028b6c4  RTC_DRAM, RTC_IRAM
+
+ESP32S3 image footer
+====================
+Checksum: 0xd6 (valid)
+Validation hash: 2adb1049c8c89bcf02c7e91a1bccdd2b030deb6e081659c2ec30f1734bf65ae6 (valid)
+
+Application information
+=======================
+Project name: cardputer-adv
+App version: factory-ekko-v1.4
+Compile time: Oct 16 2026 15:47:18
+ELF file SHA256: 1d3e388d2b43a56fdaab55a9e7c329887f5ea5e253922fa6d3321d425c4006e7
+ESP-IDF: v5.4.2
+Minimal eFuse block revision: 0.0
+Maximal eFuse block revision: 1.99
+MMU page size: 64 KB
+Secure version: 0

@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "scope": "Factual source/text/provenance gaps; not a legal determination for a combined firmware image.",
+  "gaps": [
+    {
+      "id": "m5-standalone-mit",
+      "severity": "P2",
+      "confidence": 1.0,
+      "category": "source_declaration",
+      "status": "open",
+      "components": [
+        "M5Cardputer 1.1.1",
+        "M5Cardputer-UserDemo b549eac0"
+      ],
+      "remaining": "固定版本官方全树未找到独立LICENSE/COPYING；保留2025 M5Stack MIT SPDX原头。未从其他组件搬用版权行，也未把只有SPDX的头节称为组件全文。",
+      "evidence": "source-audit.json",
+      "next_check": "如需组件单独授权文件，应向该上游确认；本目录不作整仓或合并镜像许可结论。"
+    },
+    {
+      "id": "copyleft-source-materials",
+      "severity": "P2",
+      "confidence": 1.0,
+      "category": "release_corresponding_materials",
+      "status": "open_final_build_review",
+      "components": [
+        "esp32s3-keyboard keymap.h",
+        "TinyGPS++ 1.1.0 adapted copy",
+        "Arduino ESP32 2.0.17"
+      ],
+      "remaining": "原厂对应固定源码/修改patch/依赖与标准全量构建材料已补入源码包；最终GPL/LGPL编译链接/替换材料仍须按最终发布产物核对，正文与一次构建不能替代全部材料。",
+      "evidence": [
+        "supplemental/gnu/GPL-3.0.txt",
+        "supplemental/gnu/LGPL-2.1.txt",
+        "supplemental/arduino-esp32-2.0.17/LICENSE.md"
+      ]
+    },
+    {
+      "id": "sdk-447-components",
+      "severity": "P2",
+      "confidence": 1.0,
+      "category": "binary_component_notices",
+      "status": "component-originals-added-final-correspondence-open",
+      "components": [
+        "Arduino package bundled ESP-IDF 4.4.7"
+      ],
+      "remaining": "新增25条实际SDK/工具链原文与声明，56个选入archive均匹配固定官方Arduino版本，23项有组件原文、33项仍仅引用IDF根文件；external esp_diagnostics准确commit、dirty补丁、逐成员notices与最终GC快照仍待闭合。",
+      "evidence": [
+        "sdk-audit/README.zh-CN.md",
+        "sdk-audit/link-audit.json",
+        "sdk-audit/remaining-gaps.sdk.json"
+      ]
+    },
+    {
+      "id": "unrecorded-vendored-import-refs",
+      "severity": "P3",
+      "confidence": 1.0,
+      "category": "version_mapping",
+      "status": "license_bodies_added_import_revision_open",
+      "components": [
+        "M5GFX bundled LovyanGFX",
+        "M5GFX TFT fonts 2/4/6/7/8",
+        "Adapted Adafruit_TCA8418"
+      ],
+      "remaining": "官方原链接的完整license已按固定历史commit补入；嵌入源码未记录原始导入commit，不能把许可文件commit误写为该嵌入代码的精确版本。",
+      "evidence": [
+        "supplemental/LovyanGFX/license.txt",
+        "supplemental/TFT_eSPI/license.2023.txt",
+        "supplemental/Adafruit_TCA8418/license.txt"
+      ]
+    },
+    {
+      "id": "brand-assets",
+      "severity": "P3",
+      "confidence": 1.0,
+      "category": "asset_attribution",
+      "status": "existing_permission_boundary_retained",
+      "components": [
+        "16 Agent avatars",
+        "User supplied boot video"
+      ],
+      "remaining": "Hermes/Kimi/Octicons仓库许可正文补入；其余素材沿用原manifest来源与未建立的资产特定授权边界。代码MIT、官方图标URL、用户要求转换均不自动变成商标许可或品牌背书。视频保留原用户指定复用记录，不复制原片或扩展其授权范围。",
+      "evidence": "Existing licenses/assets/avatars/manifest.json and assets/boot-video provenance"
+    }
+  ]
+}

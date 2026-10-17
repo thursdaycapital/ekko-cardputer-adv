@@ -1,0 +1,8 @@
+/*
+  Fontname: -Efont-Biwidth-Medium-R-Normal--16-160-75-75-P-80-ISO10646-1
+  Copyright: (c) Copyright 2000-2003 /efont/ The Electronic Font Open Laboratory.
+  Glyphs: 7545/24618
+  BBX Build Mode: 0
+*/
+#ifdef U8G2_USE_LARGE_FONTS
+PROGMEM const uint8_t lgfx_efont_cn_16[318199] = 

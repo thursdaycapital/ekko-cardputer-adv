@@ -1,0 +1,32 @@
+esptool.py v4.11.0
+File size: 15104 (bytes)
+
+ESP32S3 image header
+====================
+Image version: 1
+Entry point: 0x403c98d0
+Segments: 3
+Flash size: 8MB
+Flash freq: 80m
+Flash mode: DIO
+
+ESP32S3 extended image header
+=============================
+WP pin: 0xee (disabled)
+Flash pins drive settings: clk_drv: 0x0, q_drv: 0x0, d_drv: 0x0, cs0_drv: 0x0, hd_drv: 0x0, wp_drv: 0x0
+Chip ID: 9 (ESP32-S3)
+Minimal chip revision: v0.0, (legacy min_rev = 0)
+Maximal chip revision: v655.35
+
+Segments information
+====================
+Segment   Length   Load addr   File offs  Memory types
+-------  -------  ----------  ----------  ------------
+      0  0x004bc  0x3fce3808  0x00000018  BYTE_ACCESSIBLE, MEM_INTERNAL, DRAM
+      1  0x00bd8  0x403c9700  0x000004dc  MEM_INTERNAL, IRAM
+      2  0x02a0c  0x403cc700  0x000010bc  MEM_INTERNAL, IRAM
+
+ESP32S3 image footer
+====================
+Checksum: 0x1b (valid)
+Validation hash: 27accf466d6a3ffbdd2fe4a9dcdf2a85d67a20eb4b1f2dced8b0c8a88771aee2 (valid)

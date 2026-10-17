@@ -1,0 +1,14 @@
+# Licenses and source correspondence
+
+This repository combines separate applications and third-party materials. No single MIT/Apache declaration is assigned to the entire distribution.
+
+* `source/ekko-cardputer-adv/` derives from Ekko Studio (baseline `1242ac63556491c92ba6dd49d89fd19c91a6bdd5`). Preserve the upstream Business Source License 1.1 in `LICENSE` and `licenses/ekko-studio/LICENSE`, including its Additional Use Grant and Change Date. This is source-available firmware, not a claim of an unrestricted OSI license.
+* `source/factory-cardputer-adv/` derives from M5Cardputer-UserDemo CardputerADV (`b549eac0a3c65bc108186c276b8fac0a214aaa4e`). Preserve all file-level notices, including GPL-3.0-or-later `main/hal/keyboard/keymap.h` and LGPL-2.1-or-later TinyGPS++. The GPL file in this independent app does not relabel the separate Ekko partition. Corresponding full source, fixed dependencies, configuration and change patch are included.
+* Actual Arduino ESP32 2.0.17 core/library/variant sources and its PlatformIO build script are included under `source/arduino-esp32-2.0.17/`; see `RELINK.md`. Its LGPL text and original notices remain intact. Toolchain runtime exceptions remain in `licenses/`.
+* Fusion-derived Ekko Pixel12 Compatible retains its OFL1.1 and original efont conditions, 180 compatibility glyphs and original/derived BDF provenance under `source/ekko-cardputer-adv/assets/fusion-pixel/`. No glyph scaling is applied. Other original components/avatars keep their notices and attribution.
+
+`licenses/` carries the existing 117 source/license/provenance records plus their raw notices. The SDK notice collection is reused as a conservative superset: the actual accepted Fusion build selects55 SDK archives; their archive identities match the collected pinned SDK records, while the earlier56-archive candidate additionally usedSPIFFS. This is archive-level provenance, not an exhaustive per-section SBOM. Exact external esp_diagnostics revision and full reconstruction of the vendor SDK dirty build remain source-reproducibility boundaries; no blanket license claim is invented from root notices.
+
+The factory historical app in this release is SHA`32ea754e4c85cefacec90d4da7e7bede166518b1d1dfe3695cd5d0d1fa3a54c1`; its complete frozen source state and build dependencies are included. A separate clean rebuild produced different image bytes; byte-for-byte reproducibility is not claimed. The current accepted Ekko app SHA is`1840130458d4329a055f5981b76ec9805958e0f6191ccccfaacd634cf4923e4f`.
+
+M5Stack source files which carry MIT SPDX retain the actual copyright/SPDX headers; no replacement copyright owner or unobserved upstream standalone LICENSE is invented. Public copyright-author names/emails and CA certificate subjects are intentional third-party attribution, not device account credentials.

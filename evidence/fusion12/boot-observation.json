@@ -1,0 +1,8 @@
+{
+  "passiveSerialBytes": 14600,
+  "newFirmwareStartupLines": [
+    "Firmware=cardputer-adv-v8.2.4.1-fusion12 chat_font=FusionPixel12 body=12 status=12 row=14"
+  ],
+  "physicalFontAcceptance": "confirmed by user",
+  "serialCommandsSent": 0
+}

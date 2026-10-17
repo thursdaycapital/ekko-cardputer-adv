@@ -1,0 +1,10 @@
+{
+  "appExactReadback": true,
+  "appBytes": 3185392,
+  "appSha256": "1840130458d4329a055f5981b76ec9805958e0f6191ccccfaacd634cf4923e4f",
+  "fullReadbackBytes": 8388608,
+  "allBytesOutsideApp0Unchanged": true,
+  "factoryNvsOtadataSpiffsPreserved": true,
+  "flashOffset": "0x10000",
+  "physicalFontAcceptance": "confirmed by user"
+}

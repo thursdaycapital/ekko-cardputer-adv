@@ -1,0 +1,46 @@
+{
+  "textFilesAnonymized": [
+    "安装教程.zh-CN.md",
+    "安装教程.html",
+    "evidence/packaging-issues.zh-CN.md",
+    "source/factory-cardputer-adv/SOURCE-REBUILD.zh-CN.md",
+    "source/ekko-cardputer-adv/README.md",
+    "source/ekko-cardputer-adv/assets/fusion-pixel/evidence/bdfconv.log",
+    "source/ekko-cardputer-adv/assets/fusion-pixel/evidence/conversion-command.json",
+    "source/factory-cardputer-adv/managed_components/espressif__tinyusb/examples/device/audio_test_freertos/README.md",
+    "source/factory-cardputer-adv/managed_components/espressif__tinyusb/examples/device/audio_4_channel_mic_freertos/README.md",
+    "evidence/fusion12/source-promotion.json"
+  ],
+  "categories": [
+    "local workspace/home prefixes",
+    "real test Wi-Fi/hotspot names",
+    "upstream personal example home directory"
+  ],
+  "copyrightAttributionPreserved": true,
+  "firmwareBytesModified": false,
+  "privateGitHistoryPublished": false,
+  "imageMetadataCleanup": "completed",
+  "images": [
+    {
+      "file": "source/factory-cardputer-adv/managed_components/espressif__esp-now/examples/coin_cell_demo/switch/docs/img/coin_cell_button_back.png",
+      "oldSha256": "bd34033203847ba908190cfccbb8c248b069f8bb7003cc554d5f9e46842f416a",
+      "newSha256": "0c50c5f357a24fbf6720258178967f7749c9246ce5e1a8e8101d48b8368e11c5",
+      "decodedPixelsUnchanged": true,
+      "personalMetadataRemaining": false
+    },
+    {
+      "file": "source/factory-cardputer-adv/managed_components/espressif__esp-now/examples/coin_cell_demo/switch/docs/img/coin_cell_button_front.png",
+      "oldSha256": "94eb2cdda397b2a80c93708937df7a0915b5b5d282790af1c1041c95900c333e",
+      "newSha256": "d11faeed45be79572305c0360d07f5b38789300bbd8a6316a6ec88b965df91a5",
+      "decodedPixelsUnchanged": true,
+      "personalMetadataRemaining": false
+    },
+    {
+      "file": "source/factory-cardputer-adv/components/M5GFX/docs/M5PaperS3.jpg",
+      "oldSha256": "fc5504ec7f0c32ab5b977685654b23f3e96f710a104b5cc81d894d032a2e9328",
+      "newSha256": "6c768c2c53c83c5ffe39a612c7b74d9777b009d21865650c4f4370784bbe30f9",
+      "decodedPixelsUnchanged": true,
+      "personalMetadataRemaining": false
+    }
+  ]
+}

@@ -1,0 +1,1280 @@
+{
+  "schema_version": 1,
+  "scope": "SDK archive members selected in the opening linker map section; some individual sections may subsequently be removed by --gc-sections. A conservative selected-archive notice set, not a final section-level SBOM or a claim of reconstructible binary source.",
+  "candidate_map": {
+    "path": "work/ekko-cardputer-stock-20261017/packages/esp32-s3/cardputer-adv/.pio/build/cardputer-adv/firmware.map",
+    "sha256": "90ca50ed6ca481c828a1a0201976b0be9ab0e5712852e036103cf3726d2da683",
+    "bytes": 18921187
+  },
+  "candidate_elf": {
+    "path": "work/ekko-cardputer-stock-20261017/packages/esp32-s3/cardputer-adv/.pio/build/cardputer-adv/firmware.elf",
+    "sha256": "34e654f4cf3e9a65e9eb2f293fd95566933d138a129c7c602d82e519824bf99f",
+    "bytes": 31056064,
+    "embedded_idf_version": "v4.4.7-dirty"
+  },
+  "platformio_package": {
+    "version": "3.20017.241212+sha.dcc1105b",
+    "metadata_sha256": "f35415c75f6f43755df92bbbf7ef10c9e65c2edb2569d512636a0477be64d5bf"
+  },
+  "official_arduino_ref": "5e19e086c43d0fa5e5a596497ff8f11a0a43f6c2",
+  "official_tree_evidence": "evidence/arduino-2.0.17-tree.json",
+  "selected_sdk_archive_count": 56,
+  "all_selected_archives_match_official_arduino_blobs": true,
+  "archives": [
+    {
+      "sdk_path": "tools/sdk/esp32s3/ld/libbtbb.a",
+      "bytes": 19818,
+      "sha256": "9ce018fb5d7753318ccf1e8386ced5d45a0b0d90f07352946a03c8689539073f",
+      "git_blob_sha1": "591b374667c2d143b3c536e36e8b847300a41ca5",
+      "official_arduino_tree_blob_sha1": "591b374667c2d143b3c536e36e8b847300a41ca5",
+      "selected_member_count": 1,
+      "selected_members": [
+        "bt_bb_v2.o"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/ld/libbtdm_app.a",
+      "bytes": 541800,
+      "sha256": "3a766cbdf78cde3d2d0eee40bf601c09be88c6589a629815e8d59b91b271d1dc",
+      "git_blob_sha1": "35adfbb07c648750ec55679413a68f547ae63d97",
+      "official_arduino_tree_blob_sha1": "35adfbb07c648750ec55679413a68f547ae63d97",
+      "selected_member_count": 53,
+      "selected_members": [
+        "aes.o",
+        "arch_main.o",
+        "ble_util_buf.o",
+        "bt_rw_v9.o",
+        "emi.o",
+        "flash.o",
+        "hci.o",
+        "hci_msg.o",
+        "hci_tl.o",
+        "hl_itf.o",
+        "intc.o",
+        "ip_funcs.o",
+        "ke_task.o",
+        "llc.o",
+        "llc_chmap_upd.o",
+        "llc_con_upd.o",
+        "llc_dl_upd.o",
+        "llc_encrypt.o",
+        "llc_hci.o",
+        "llc_llcp.o",
+        "llc_phy_upd.o",
+        "lld.o",
+        "lld_adv.o",
+        "lld_cca.o",
+        "lld_con.o",
+        "lld_init.o",
+        "lld_per_adv.o",
+        "lld_scan.o",
+        "lld_sync.o",
+        "lld_test.o",
+        "llm.o",
+        "llm_adv.o",
+        "llm_hci.o",
+        "llm_init.o",
+        "llm_scan.o",
+        "modules_funcs.o",
+        "nvds.o",
+        "osi.o",
+        "plf_funcs.o",
+        "rf_coexist.o",
+        "rf_coexist_hook.o",
+        "rf_espressif.o",
+        "rf_txpwr.o",
+        "rwble.o",
+        "rwip.o",
+        "rwip_driver.o",
+        "sch_arb.o",
+        "sch_plan.o",
+        "sch_prog.o",
+        "sdk_config.o",
+        "task.o",
+        "vhci.o",
+        "vshci_task.o"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/ld/libphy.a",
+      "bytes": 241614,
+      "sha256": "c8f6c6821c7e8e28c97f3a797e322d9987a0f3fd5f5da5e971ab0111ba513160",
+      "git_blob_sha1": "3456589ba86f6093f818ac186894d01d488acfdf",
+      "official_arduino_tree_blob_sha1": "3456589ba86f6093f818ac186894d01d488acfdf",
+      "selected_member_count": 19,
+      "selected_members": [
+        "phy_analog_cal.o",
+        "phy_api.o",
+        "phy_basic.o",
+        "phy_debug.o",
+        "phy_feature.o",
+        "phy_hw_freq.o",
+        "phy_i2c.o",
+        "phy_init.o",
+        "phy_pbus.o",
+        "phy_pwdet.o",
+        "phy_reg.o",
+        "phy_rfpll.o",
+        "phy_rx_cal.o",
+        "phy_rx_gain.o",
+        "phy_tester_cali.o",
+        "phy_track.o",
+        "phy_tsens.o",
+        "phy_tx_cal.o",
+        "phy_tx_gain.o"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libapp_update.a",
+      "bytes": 146988,
+      "sha256": "63b0e765f044b9c4f58e8b4c5643daa902bb243210747e8b1df88c67c4520f9d",
+      "git_blob_sha1": "ee48b0618efeeb32cd673d8b20144444e67155ae",
+      "official_arduino_tree_blob_sha1": "ee48b0618efeeb32cd673d8b20144444e67155ae",
+      "selected_member_count": 2,
+      "selected_members": [
+        "esp_app_desc.c.obj",
+        "esp_ota_ops.c.obj"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libbt.a",
+      "bytes": 21780332,
+      "sha256": "48fe8a1427a6476e2a8671bc893bd0e346d1658f3714b97d25ca091487748365",
+      "git_blob_sha1": "f3dd3742f12708e5305bb1bdc3272e80c2e5f71e",
+      "official_arduino_tree_blob_sha1": "f3dd3742f12708e5305bb1bdc3272e80c2e5f71e",
+      "selected_member_count": 1,
+      "selected_members": [
+        "bt.c.obj"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libcoexist.a",
+      "bytes": 85092,
+      "sha256": "0c61713a461511973e0d4270bcf6c75587fb5da361f0636c8346c960516ef05a",
+      "git_blob_sha1": "6960f1da37edd39927c5c0cf965f6bdce1b418d5",
+      "official_arduino_tree_blob_sha1": "6960f1da37edd39927c5c0cf965f6bdce1b418d5",
+      "selected_member_count": 5,
+      "selected_members": [
+        "coexist_api.o",
+        "coexist_core.o",
+        "coexist_hw.o",
+        "coexist_param.o",
+        "coexist_scheme.o"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libcore.a",
+      "bytes": 4820,
+      "sha256": "193092d7be420934e1a865fccfa50f223e6829cd0f47ebbc6b0d4940c7bfb981",
+      "git_blob_sha1": "40d12ece09214d3497cf9e717851920ff709ea83",
+      "official_arduino_tree_blob_sha1": "40d12ece09214d3497cf9e717851920ff709ea83",
+      "selected_member_count": 1,
+      "selected_members": [
+        "misc_nvs.o"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libcxx.a",
+      "bytes": 59530,
+      "sha256": "295951e87b7152a7364d45f5435ac24408a80dbe32fedf326e97edda8fc60412",
+      "git_blob_sha1": "3ffb5633ca0db2ac2f2931668418c5c6d93fcc98",
+      "official_arduino_tree_blob_sha1": "3ffb5633ca0db2ac2f2931668418c5c6d93fcc98",
+      "selected_member_count": 1,
+      "selected_members": [
+        "cxx_guards.cpp.obj"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libdriver.a",
+      "bytes": 5359990,
+      "sha256": "b8ab992d477263dba3306c057af7cb08f2808a22bc6aeec668c3a0d20e189773",
+      "git_blob_sha1": "ed34c1c5b0e9d65cb085e7169109244e4ebaf0af",
+      "official_arduino_tree_blob_sha1": "ed34c1c5b0e9d65cb085e7169109244e4ebaf0af",
+      "selected_member_count": 17,
+      "selected_members": [
+        "adc.c.obj",
+        "adc_common.c.obj",
+        "gdma.c.obj",
+        "gpio.c.obj",
+        "i2c.c.obj",
+        "i2s.c.obj",
+        "ledc.c.obj",
+        "periph_ctrl.c.obj",
+        "rtc_io.c.obj",
+        "rtc_module.c.obj",
+        "rtc_tempsensor.c.obj",
+        "spi_bus_lock.c.obj",
+        "spi_common.c.obj",
+        "spi_master.c.obj",
+        "touch_sensor_common.c.obj",
+        "uart.c.obj",
+        "usb_serial_jtag.c.obj"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libefuse.a",
+      "bytes": 505220,
+      "sha256": "c65c8266bfa4170e534f9e3a9c744566f09f1f8e71da6bdf60ce9488be5a1ff2",
+      "git_blob_sha1": "4918c1aee92bd5b388e3795c065676c8bbb1ac33",
+      "official_arduino_tree_blob_sha1": "4918c1aee92bd5b388e3795c065676c8bbb1ac33",
+      "selected_member_count": 6,
+      "selected_members": [
+        "esp_efuse_api.c.obj",
+        "esp_efuse_api_key_esp32xx.c.obj",
+        "esp_efuse_fields.c.obj",
+        "esp_efuse_rtc_calib.c.obj",
+        "esp_efuse_table.c.obj",
+        "esp_efuse_utility.c.obj"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libesp_adc_cal.a",
+      "bytes": 63256,
+      "sha256": "36de51bcb789367a734fc0bec4ffc1fc375efeb94382a6c420bf239654d6128e",
+      "git_blob_sha1": "dc773a131dd277f07b13967801c7c991e8f665cf",
+      "official_arduino_tree_blob_sha1": "dc773a131dd277f07b13967801c7c991e8f665cf",
+      "selected_member_count": 2,
+      "selected_members": [
+        "esp_adc_cal.c.obj",
+        "esp_adc_cal_common.c.obj"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libesp_common.a",
+      "bytes": 57798,
+      "sha256": "aa3b7a5f964bc7c7bfae623e64b15b695db268dd704b1fa7f967dad519f67b5f",
+      "git_blob_sha1": "575221fbe67afca64f65a8de2243fa2f3e978904",
+      "official_arduino_tree_blob_sha1": "575221fbe67afca64f65a8de2243fa2f3e978904",
+      "selected_member_count": 1,
+      "selected_members": [
+        "esp_err_to_name.c.obj"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libesp_diagnostics.a",
+      "bytes": 361766,
+      "sha256": "69f28fb584e5a44cab0739d53679e78304e45d42ebd76f3e12eb8cf5d973007a",
+      "git_blob_sha1": "339599aa3150980c3dc956ac185362b0c7169807",
+      "official_arduino_tree_blob_sha1": "339599aa3150980c3dc956ac185362b0c7169807",
+      "selected_member_count": 4,
+      "selected_members": [
+        "esp_diagnostics_log_hook.c.obj",
+        "esp_diagnostics_metrics.c.obj",
+        "esp_diagnostics_utils.c.obj",
+        "esp_diagnostics_variables.c.obj"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libesp_eth.a",
+      "bytes": 812314,
+      "sha256": "ae4966a227553730bd9ab1bf19bfc5179aa1c13ae09374670c2b831215d9b3d1",
+      "git_blob_sha1": "37205a0e0ebe510147f9db6d76a4cb87a5281028",
+      "official_arduino_tree_blob_sha1": "37205a0e0ebe510147f9db6d76a4cb87a5281028",
+      "selected_member_count": 2,
+      "selected_members": [
+        "esp_eth.c.obj",
+        "esp_eth_netif_glue.c.obj"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libesp_event.a",
+      "bytes": 268676,
+      "sha256": "32b0bdae4f59c6f09fab85c221cd459b4a44567ca4ad753807f9f7172eac70b2",
+      "git_blob_sha1": "7027d46cfc1f5fd768aff2612e11da67d1ac1194",
+      "official_arduino_tree_blob_sha1": "7027d46cfc1f5fd768aff2612e11da67d1ac1194",
+      "selected_member_count": 3,
+      "selected_members": [
+        "default_event_loop.c.obj",
+        "esp_event.c.obj",
+        "event_send.c.obj"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libesp_ipc.a",
+      "bytes": 90608,
+      "sha256": "2bdbbe5e2669143738b2bbd89203eda25476960b5d4f6ce15c512513ae36fcc5",
+      "git_blob_sha1": "1005018a6d3366a6f17f1942eaacd52b9889c014",
+      "official_arduino_tree_blob_sha1": "1005018a6d3366a6f17f1942eaacd52b9889c014",
+      "selected_member_count": 4,
+      "selected_members": [
+        "esp_ipc.c.obj",
+        "esp_ipc_isr.c.obj",
+        "esp_ipc_isr_handler.S.obj",
+        "esp_ipc_isr_routines.S.obj"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libesp_lcd.a",
+      "bytes": 737246,
+      "sha256": "941461c7062cdd9eedcf018563a8b3009867c8241bb55659265b6a58804b96aa",
+      "git_blob_sha1": "75ddce6de91aa091390dd6930f94607e78934b57",
+      "official_arduino_tree_blob_sha1": "75ddce6de91aa091390dd6930f94607e78934b57",
+      "selected_member_count": 3,
+      "selected_members": [
+        "esp_lcd_common.c.obj",
+        "esp_lcd_panel_io.c.obj",
+        "esp_lcd_panel_io_i80.c.obj"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libesp_netif.a",
+      "bytes": 445516,
+      "sha256": "0d67fa2f45582ae11364fce8237146c9db9ead20cf5bf19cb15cd47d93a9c4de",
+      "git_blob_sha1": "b1481954803af28c6b62a55e55d59302ea946105",
+      "official_arduino_tree_blob_sha1": "b1481954803af28c6b62a55e55d59302ea946105",
+      "selected_member_count": 6,
+      "selected_members": [
+        "esp_netif_defaults.c.obj",
+        "esp_netif_handlers.c.obj",
+        "esp_netif_lwip.c.obj",
+        "esp_netif_lwip_defaults.c.obj",
+        "esp_netif_objects.c.obj",
+        "esp_netif_sta_list.c.obj"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libesp_phy.a",
+      "bytes": 151588,
+      "sha256": "b63a6ce02ad6490c3351964f2d901c2d468f3865a7d64187a287ae66eba7b3e1",
+      "git_blob_sha1": "03d3c390f631c01e9ec1160582c339db10a21bee",
+      "official_arduino_tree_blob_sha1": "03d3c390f631c01e9ec1160582c339db10a21bee",
+      "selected_member_count": 3,
+      "selected_members": [
+        "lib_printf.c.obj",
+        "phy_init.c.obj",
+        "phy_override.c.obj"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libesp_pm.a",
+      "bytes": 171180,
+      "sha256": "60529aeaf1cd94b41983383ceec240d1f43256f86faf8d9357f9e7d6050d9191",
+      "git_blob_sha1": "501f8d27349a9b5aefaa69dd95a7f8d16a350997",
+      "official_arduino_tree_blob_sha1": "501f8d27349a9b5aefaa69dd95a7f8d16a350997",
+      "selected_member_count": 2,
+      "selected_members": [
+        "pm_impl.c.obj",
+        "pm_locks.c.obj"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libesp_ringbuf.a",
+      "bytes": 154618,
+      "sha256": "71dedf0f14aa64031c973b73279a88f9c4ec83ccfef331fe01e3532183cafc8c",
+      "git_blob_sha1": "0cba9972d261b8d91091f9e202dc6a5234f9e1f0",
+      "official_arduino_tree_blob_sha1": "0cba9972d261b8d91091f9e202dc6a5234f9e1f0",
+      "selected_member_count": 1,
+      "selected_members": [
+        "ringbuf.c.obj"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libesp_rom.a",
+      "bytes": 113716,
+      "sha256": "fd3ad8b4552687a2722288fdf8069e43ab01440196dbf3cd6c77cb994be2fbd6",
+      "git_blob_sha1": "55a07a4101b8e3e90a61bf815bd3926ec6984154",
+      "official_arduino_tree_blob_sha1": "55a07a4101b8e3e90a61bf815bd3926ec6984154",
+      "selected_member_count": 6,
+      "selected_members": [
+        "esp_rom_cache.c.obj",
+        "esp_rom_cache_writeback_esp32s3.S.obj",
+        "esp_rom_efuse.c.obj",
+        "esp_rom_mmap.c.obj",
+        "esp_rom_sys.c.obj",
+        "esp_rom_uart.c.obj"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libesp_timer.a",
+      "bytes": 176508,
+      "sha256": "b09bd4231f011c0dc6f09900aa05f6df48f237d34b78965c746f777f5e9fc7bc",
+      "git_blob_sha1": "04e3f43e234d2bbeeed2af8996ca1c69a0dc7ca6",
+      "official_arduino_tree_blob_sha1": "04e3f43e234d2bbeeed2af8996ca1c69a0dc7ca6",
+      "selected_member_count": 4,
+      "selected_members": [
+        "esp_timer.c.obj",
+        "esp_timer_impl_systimer.c.obj",
+        "ets_timer_legacy.c.obj",
+        "system_time.c.obj"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libesp_wifi.a",
+      "bytes": 468002,
+      "sha256": "cb06edb694b149bed9b9691be7942281549868e5e59624036da4ccaeb7d72175",
+      "git_blob_sha1": "b91cdc53fd3c9ad130b1671abb14226bbf274fd5",
+      "official_arduino_tree_blob_sha1": "b91cdc53fd3c9ad130b1671abb14226bbf274fd5",
+      "selected_member_count": 7,
+      "selected_members": [
+        "esp_adapter.c.obj",
+        "mesh_event.c.obj",
+        "smartconfig.c.obj",
+        "smartconfig_ack.c.obj",
+        "wifi_default.c.obj",
+        "wifi_init.c.obj",
+        "wifi_netif.c.obj"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libespcoredump.a",
+      "bytes": 478456,
+      "sha256": "8f8b9e9d1e7853232b113cff78c0e62f8939fc4026abd190512134d985695392",
+      "git_blob_sha1": "dd6a878fa1c4d97142b94bf342cb58ce971aedff",
+      "official_arduino_tree_blob_sha1": "dd6a878fa1c4d97142b94bf342cb58ce971aedff",
+      "selected_member_count": 5,
+      "selected_members": [
+        "core_dump_checksum.c.obj",
+        "core_dump_common.c.obj",
+        "core_dump_elf.c.obj",
+        "core_dump_flash.c.obj",
+        "core_dump_port.c.obj"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libhal.a",
+      "bytes": 2792896,
+      "sha256": "ba8f1f141062b0b567029d0bf21ed4981426870f8ae2d33ba1bfd91d32bf5fc7",
+      "git_blob_sha1": "ba709fd22390447db7a0331b78d5080e2fe5626b",
+      "official_arduino_tree_blob_sha1": "ba709fd22390447db7a0331b78d5080e2fe5626b",
+      "selected_member_count": 31,
+      "selected_members": [
+        "adc_hal.c.obj",
+        "aes_hal.c.obj",
+        "brownout_hal.c.obj",
+        "cpu_hal.c.obj",
+        "efuse_hal.c.obj",
+        "gdma_hal.c.obj",
+        "gpio_hal.c.obj",
+        "i2c_hal.c.obj",
+        "i2c_hal_iram.c.obj",
+        "i2s_hal.c.obj",
+        "interrupt_controller_hal.c.obj",
+        "interrupt_descriptor_table.c.obj",
+        "lcd_hal.c.obj",
+        "ledc_hal.c.obj",
+        "ledc_hal_iram.c.obj",
+        "mpu_hal.c.obj",
+        "rtc_cntl_hal.c.obj",
+        "rtc_io_hal.c.obj",
+        "sha_hal.c.obj",
+        "soc_hal.c.obj",
+        "spi_flash_encrypt_hal_iram.c.obj",
+        "spi_flash_hal.c.obj",
+        "spi_flash_hal_gpspi.c.obj",
+        "spi_flash_hal_iram.c.obj",
+        "spi_hal.c.obj",
+        "spi_hal_iram.c.obj",
+        "systimer_hal.c.obj",
+        "touch_sensor_hal.c.obj",
+        "uart_hal.c.obj",
+        "uart_hal_iram.c.obj",
+        "wdt_hal_iram.c.obj"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libheap.a",
+      "bytes": 557948,
+      "sha256": "8108f23266178230dc27c03ac62b538a990a2a90d638503e3a1f3c482ea41513",
+      "git_blob_sha1": "d72d4f920cb796b622942642bc7b69b7c7829ec4",
+      "official_arduino_tree_blob_sha1": "d72d4f920cb796b622942642bc7b69b7c7829ec4",
+      "selected_member_count": 7,
+      "selected_members": [
+        "heap_caps.c.obj",
+        "heap_caps_init.c.obj",
+        "heap_tlsf.c.obj",
+        "memory_layout.c.obj",
+        "memory_layout_utils.c.obj",
+        "multi_heap.c.obj",
+        "multi_heap_poisoning.c.obj"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libjson.a",
+      "bytes": 364144,
+      "sha256": "04a1df04bb1e0dce3326f511ed68f317081e08caf4f094d6cb4eab172119e2f6",
+      "git_blob_sha1": "23bae8743251b53ffe15a46b5132abd1b1b42314",
+      "official_arduino_tree_blob_sha1": "23bae8743251b53ffe15a46b5132abd1b1b42314",
+      "selected_member_count": 1,
+      "selected_members": [
+        "cJSON.c.obj"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/liblog.a",
+      "bytes": 94876,
+      "sha256": "6ebbc908c98f6dca8a03533e95877d217b21a8a7777bfe0cded98dc228f4a2fc",
+      "git_blob_sha1": "377409a943f0178bb3d71f749b5f25c94122c00d",
+      "official_arduino_tree_blob_sha1": "377409a943f0178bb3d71f749b5f25c94122c00d",
+      "selected_member_count": 2,
+      "selected_members": [
+        "log.c.obj",
+        "log_freertos.c.obj"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/liblwip.a",
+      "bytes": 4288608,
+      "sha256": "8d9f1c6ef5abcf086759e3032938ef8df2c06125c0735242a0a079d277ef593d",
+      "git_blob_sha1": "22ade98d512ce97208ec611d92a44fba8b6f1e56",
+      "official_arduino_tree_blob_sha1": "22ade98d512ce97208ec611d92a44fba8b6f1e56",
+      "selected_member_count": 45,
+      "selected_members": [
+        "api_lib.c.obj",
+        "api_msg.c.obj",
+        "def.c.obj",
+        "dhcp.c.obj",
+        "dhcp_state.c.obj",
+        "dhcpserver.c.obj",
+        "dns.c.obj",
+        "err.c.obj",
+        "etharp.c.obj",
+        "ethernet.c.obj",
+        "ethernetif.c.obj",
+        "ethip6.c.obj",
+        "icmp.c.obj",
+        "icmp6.c.obj",
+        "igmp.c.obj",
+        "inet_chksum.c.obj",
+        "init.c.obj",
+        "ip.c.obj",
+        "ip4.c.obj",
+        "ip4_addr.c.obj",
+        "ip4_frag.c.obj",
+        "ip6.c.obj",
+        "ip6_addr.c.obj",
+        "ip6_frag.c.obj",
+        "mem.c.obj",
+        "memp.c.obj",
+        "mld6.c.obj",
+        "nd6.c.obj",
+        "netbuf.c.obj",
+        "netdb.c.obj",
+        "netif.c.obj",
+        "pbuf.c.obj",
+        "raw.c.obj",
+        "sntp.c.obj",
+        "sockets.c.obj",
+        "sys_arch.c.obj",
+        "tcp.c.obj",
+        "tcp_in.c.obj",
+        "tcp_isn_default.c.obj",
+        "tcp_out.c.obj",
+        "tcpip.c.obj",
+        "timeouts.c.obj",
+        "udp.c.obj",
+        "vfs_lwip.c.obj",
+        "wlanif.c.obj"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libmbedcrypto.a",
+      "bytes": 4302698,
+      "sha256": "abdaf759ee17aa697468427b55a86c6c0082ac4cdeb643a63d8b3ac2df324633",
+      "git_blob_sha1": "17f9231d16be89aa9ee54d7fbe2956a1fa705f0b",
+      "official_arduino_tree_blob_sha1": "17f9231d16be89aa9ee54d7fbe2956a1fa705f0b",
+      "selected_member_count": 50,
+      "selected_members": [
+        "asn1parse.c.obj",
+        "asn1write.c.obj",
+        "base64.c.obj",
+        "bignum.c.obj",
+        "camellia.c.obj",
+        "ccm.c.obj",
+        "cipher.c.obj",
+        "cipher_wrap.c.obj",
+        "constant_time.c.obj",
+        "ctr_drbg.c.obj",
+        "dhm.c.obj",
+        "ecdh.c.obj",
+        "ecdsa.c.obj",
+        "ecp.c.obj",
+        "ecp_curves.c.obj",
+        "entropy.c.obj",
+        "error.c.obj",
+        "esp_aes.c.obj",
+        "esp_aes_common.c.obj",
+        "esp_aes_gcm.c.obj",
+        "esp_aes_gdma_impl.c.obj",
+        "esp_aes_xts.c.obj",
+        "esp_bignum.c.obj",
+        "esp_crypto_shared_gdma.c.obj",
+        "esp_hardware.c.obj",
+        "esp_md.c.obj",
+        "esp_mem.c.obj",
+        "esp_sha1.c.obj",
+        "esp_sha256.c.obj",
+        "esp_sha512.c.obj",
+        "esp_sha_gdma_impl.c.obj",
+        "hmac_drbg.c.obj",
+        "md.c.obj",
+        "md5.c.obj",
+        "oid.c.obj",
+        "pem.c.obj",
+        "pk.c.obj",
+        "pk_wrap.c.obj",
+        "pkcs12.c.obj",
+        "pkcs5.c.obj",
+        "pkparse.c.obj",
+        "pkwrite.c.obj",
+        "platform.c.obj",
+        "platform_util.c.obj",
+        "rsa.c.obj",
+        "rsa_internal.c.obj",
+        "sha.c.obj",
+        "sha1.c.obj",
+        "sha256.c.obj",
+        "sha512.c.obj"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libmbedtls.a",
+      "bytes": 113914,
+      "sha256": "a0f331245feb5cf4fe8d9f99b03d34d64f10e38d8a8d680e35b34ec82aa3cf9e",
+      "git_blob_sha1": "e4ed2bb02327b4dad0a846da61e040dde7c42b5c",
+      "official_arduino_tree_blob_sha1": "e4ed2bb02327b4dad0a846da61e040dde7c42b5c",
+      "selected_member_count": 1,
+      "selected_members": [
+        "x509_crt_bundle.S.obj"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libmbedtls_2.a",
+      "bytes": 1252150,
+      "sha256": "9a580d2ff7c885e1bf59479a14422e3d10a485ae9083acb5db943df714c0ac35",
+      "git_blob_sha1": "2809e0aaf0eed00002ad40ac03722ceca387467b",
+      "official_arduino_tree_blob_sha1": "2809e0aaf0eed00002ad40ac03722ceca387467b",
+      "selected_member_count": 6,
+      "selected_members": [
+        "net_sockets.c.obj",
+        "ssl_ciphersuites.c.obj",
+        "ssl_cli.c.obj",
+        "ssl_msg.c.obj",
+        "ssl_srv.c.obj",
+        "ssl_tls.c.obj"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libmbedx509.a",
+      "bytes": 676590,
+      "sha256": "3d56277224b066118b6c48a973ae18fdf8078448bf54b482ac5557699e52f223",
+      "git_blob_sha1": "59e581cd4d36629555484f0d0790b23a989710c6",
+      "official_arduino_tree_blob_sha1": "59e581cd4d36629555484f0d0790b23a989710c6",
+      "selected_member_count": 3,
+      "selected_members": [
+        "certs.c.obj",
+        "x509.c.obj",
+        "x509_crt.c.obj"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libmesh.a",
+      "bytes": 971720,
+      "sha256": "48a17163c2234af955f7d93f21ad219baf11c1353ecb41ca36323db34e3164a6",
+      "git_blob_sha1": "adb9f2226310272f913cc58ad7b43502ed447256",
+      "official_arduino_tree_blob_sha1": "adb9f2226310272f913cc58ad7b43502ed447256",
+      "selected_member_count": 14,
+      "selected_members": [
+        "mesh.o",
+        "mesh_common.o",
+        "mesh_config.o",
+        "mesh_io.o",
+        "mesh_main.o",
+        "mesh_network.o",
+        "mesh_parent.o",
+        "mesh_quick.o",
+        "mesh_route.o",
+        "mesh_schedule.o",
+        "mesh_sleep.o",
+        "mesh_timer.o",
+        "mesh_utilities.o",
+        "mesh_wifi.o"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libnet80211.a",
+      "bytes": 1150738,
+      "sha256": "6aae206c85e9009a24cd1f28ce535e2a2d578d9687fe2dc77d4697d45ebc8d0f",
+      "git_blob_sha1": "f9950825e7a6806133d16162b207be262c85886c",
+      "official_arduino_tree_blob_sha1": "f9950825e7a6806133d16162b207be262c85886c",
+      "selected_member_count": 34,
+      "selected_members": [
+        "ieee80211.o",
+        "ieee80211_action.o",
+        "ieee80211_action_vendor.o",
+        "ieee80211_api.o",
+        "ieee80211_crypto.o",
+        "ieee80211_crypto_ccmp.o",
+        "ieee80211_crypto_gcmp.o",
+        "ieee80211_crypto_sms4.o",
+        "ieee80211_crypto_tkip.o",
+        "ieee80211_crypto_wep.o",
+        "ieee80211_debug.o",
+        "ieee80211_ets.o",
+        "ieee80211_ftm.o",
+        "ieee80211_hostap.o",
+        "ieee80211_ht.o",
+        "ieee80211_ie_vendor.o",
+        "ieee80211_input.o",
+        "ieee80211_ioctl.o",
+        "ieee80211_mesh_quick.o",
+        "ieee80211_nvs.o",
+        "ieee80211_output.o",
+        "ieee80211_phy.o",
+        "ieee80211_power.o",
+        "ieee80211_proto.o",
+        "ieee80211_reg_db.o",
+        "ieee80211_regdomain.o",
+        "ieee80211_rfid.o",
+        "ieee80211_scan.o",
+        "ieee80211_sta.o",
+        "ieee80211_supplicant.o",
+        "ieee80211_timer.o",
+        "wl_chm.o",
+        "wl_cnx.o",
+        "wl_offchan.o"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libnewlib.a",
+      "bytes": 428740,
+      "sha256": "dbac7546c93c387a82f3a83cf6985468ad0c26177c391251bde37dac7725511f",
+      "git_blob_sha1": "465e12c6d8d29d984ea312c7464251fd1011bf80",
+      "official_arduino_tree_blob_sha1": "465e12c6d8d29d984ea312c7464251fd1011bf80",
+      "selected_member_count": 10,
+      "selected_members": [
+        "abort.c.obj",
+        "assert.c.obj",
+        "esp_time_impl.c.obj",
+        "heap.c.obj",
+        "locks.c.obj",
+        "newlib_init.c.obj",
+        "pthread.c.obj",
+        "reent_init.c.obj",
+        "syscalls.c.obj",
+        "time.c.obj"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libnvs_flash.a",
+      "bytes": 1455040,
+      "sha256": "f4163a6e3bb66867d06c5e7f33226f1941f123b77f358cc02e30021b1a2bf983",
+      "git_blob_sha1": "1bfc4e272d279237eee3c1ee1b570450f2ec50fe",
+      "official_arduino_tree_blob_sha1": "1bfc4e272d279237eee3c1ee1b570450f2ec50fe",
+      "selected_member_count": 10,
+      "selected_members": [
+        "nvs_api.cpp.obj",
+        "nvs_handle_simple.cpp.obj",
+        "nvs_item_hash_list.cpp.obj",
+        "nvs_page.cpp.obj",
+        "nvs_pagemanager.cpp.obj",
+        "nvs_partition.cpp.obj",
+        "nvs_partition_lookup.cpp.obj",
+        "nvs_partition_manager.cpp.obj",
+        "nvs_storage.cpp.obj",
+        "nvs_types.cpp.obj"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libpp.a",
+      "bytes": 601344,
+      "sha256": "369fa64aefd5d147062fd11288f3933b192dc5d9adfbefcafdd94ae9ac9de32e",
+      "git_blob_sha1": "19526baca9393b30a865390c050d00c918a2c510",
+      "official_arduino_tree_blob_sha1": "19526baca9393b30a865390c050d00c918a2c510",
+      "selected_member_count": 19,
+      "selected_members": [
+        "esf_buf.o",
+        "hal_ampdu.o",
+        "hal_coex.o",
+        "hal_crypto.o",
+        "hal_mac.o",
+        "hal_mac_rx.o",
+        "hal_mac_tx.o",
+        "hal_sniffer.o",
+        "hal_tsf.o",
+        "if_hwctrl.o",
+        "lmac.o",
+        "pm.o",
+        "pm_for_bcn_only_mode.o",
+        "pp.o",
+        "pp_debug.o",
+        "pp_timer.o",
+        "rate_control.o",
+        "trc.o",
+        "wdev.o"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libprotobuf-c.a",
+      "bytes": 279264,
+      "sha256": "572cd13dc4da5164bd18f1591e3c94731148566ddc0de98aa6c90132f493bacd",
+      "git_blob_sha1": "6813ef350af1dd363fa6249ad8e0cc5b595d11a0",
+      "official_arduino_tree_blob_sha1": "6813ef350af1dd363fa6249ad8e0cc5b595d11a0",
+      "selected_member_count": 1,
+      "selected_members": [
+        "protobuf-c.c.obj"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libprotocomm.a",
+      "bytes": 605970,
+      "sha256": "3858c1b234129522a6bbbbdb07537fa0d6b619ef44725d290beedef238b79eb3",
+      "git_blob_sha1": "8a0e1b289394e8beaa415978c362be0a8432f442",
+      "official_arduino_tree_blob_sha1": "8a0e1b289394e8beaa415978c362be0a8432f442",
+      "selected_member_count": 7,
+      "selected_members": [
+        "constants.pb-c.c.obj",
+        "protocomm.c.obj",
+        "sec0.pb-c.c.obj",
+        "sec1.pb-c.c.obj",
+        "security0.c.obj",
+        "security1.c.obj",
+        "session.pb-c.c.obj"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libpthread.a",
+      "bytes": 225166,
+      "sha256": "c99c47275fdf44c290e154b83b16cc0a62427a82d2875409e0eafe2945088ab1",
+      "git_blob_sha1": "15546900cb5e2b502691a9d192ea489870d28eff",
+      "official_arduino_tree_blob_sha1": "15546900cb5e2b502691a9d192ea489870d28eff",
+      "selected_member_count": 4,
+      "selected_members": [
+        "pthread.c.obj",
+        "pthread_cond_var.c.obj",
+        "pthread_local_storage.c.obj",
+        "pthread_rwlock.c.obj"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libsmartconfig.a",
+      "bytes": 186040,
+      "sha256": "abd9da8b00c3440452c0386f3cee1a16886d9ece3bbecc7cf7e8eea2b94a355c",
+      "git_blob_sha1": "6455b8db956c6f8d0724ada99eb06b4a9c1712e6",
+      "official_arduino_tree_blob_sha1": "6455b8db956c6f8d0724ada99eb06b4a9c1712e6",
+      "selected_member_count": 7,
+      "selected_members": [
+        "sc_airkiss.o",
+        "sc_broadcast.o",
+        "sc_crypt.o",
+        "sc_esptouch.o",
+        "sc_esptouch_v2.o",
+        "sc_ieee80211.o",
+        "sc_sniffer.o"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libsoc.a",
+      "bytes": 604598,
+      "sha256": "a484ab659effaaecbd5fe75d20d4ef293e1a54de5034f10add071d597c7fae45",
+      "git_blob_sha1": "dd478a6ce9949052c0cd7ebdfe4a96f7fed33a73",
+      "official_arduino_tree_blob_sha1": "dd478a6ce9949052c0cd7ebdfe4a96f7fed33a73",
+      "selected_member_count": 12,
+      "selected_members": [
+        "adc_periph.c.obj",
+        "gdma_periph.c.obj",
+        "gpio_periph.c.obj",
+        "i2c_periph.c.obj",
+        "i2s_periph.c.obj",
+        "lcd_periph.c.obj",
+        "ledc_periph.c.obj",
+        "lldesc.c.obj",
+        "rtc_io_periph.c.obj",
+        "spi_periph.c.obj",
+        "touch_sensor_periph.c.obj",
+        "uart_periph.c.obj"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libspiffs.a",
+      "bytes": 764324,
+      "sha256": "1df938532105275f2a9e90984e1d8d6b22a3914a8112d78750722b1e0255c904",
+      "git_blob_sha1": "43933b9c8393992111327b7cac50920afb2e2cab",
+      "official_arduino_tree_blob_sha1": "43933b9c8393992111327b7cac50920afb2e2cab",
+      "selected_member_count": 7,
+      "selected_members": [
+        "esp_spiffs.c.obj",
+        "spiffs_api.c.obj",
+        "spiffs_cache.c.obj",
+        "spiffs_check.c.obj",
+        "spiffs_gc.c.obj",
+        "spiffs_hydrogen.c.obj",
+        "spiffs_nucleus.c.obj"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libtcpip_adapter.a",
+      "bytes": 105660,
+      "sha256": "624b198973b01d0df08d758fd1911ab221f006650f40e46c955c8e394fa2c09a",
+      "git_blob_sha1": "3fc6c7200ce58dba123db7262c3e21929f4d3e58",
+      "official_arduino_tree_blob_sha1": "3fc6c7200ce58dba123db7262c3e21929f4d3e58",
+      "selected_member_count": 1,
+      "selected_members": [
+        "tcpip_adapter_compat.c.obj"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libvfs.a",
+      "bytes": 639414,
+      "sha256": "b70865ab418f4f4cc516e234e0011e975164f70b3282df197fd325b061308ed9",
+      "git_blob_sha1": "fefb07b662a7e3edad687673cbaf3dc8f24be525",
+      "official_arduino_tree_blob_sha1": "fefb07b662a7e3edad687673cbaf3dc8f24be525",
+      "selected_member_count": 4,
+      "selected_members": [
+        "vfs.c.obj",
+        "vfs_console.c.obj",
+        "vfs_uart.c.obj",
+        "vfs_usb_serial_jtag.c.obj"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libwifi_provisioning.a",
+      "bytes": 808520,
+      "sha256": "ee55767957e3bb116f670f1ba0a46f0ceadc4c5292884dcc6f7c5ab63c08f7e9",
+      "git_blob_sha1": "98ca1d53463cf099511a1479402a6e6ae4dff5f5",
+      "official_arduino_tree_blob_sha1": "98ca1d53463cf099511a1479402a6e6ae4dff5f5",
+      "selected_member_count": 7,
+      "selected_members": [
+        "handlers.c.obj",
+        "manager.c.obj",
+        "wifi_config.c.obj",
+        "wifi_config.pb-c.c.obj",
+        "wifi_constants.pb-c.c.obj",
+        "wifi_scan.c.obj",
+        "wifi_scan.pb-c.c.obj"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libwpa_supplicant.a",
+      "bytes": 4858426,
+      "sha256": "fdef973bbfa85c926c5a8266c34cfe0f4aab83d6a835522b24356afe31f52b31",
+      "git_blob_sha1": "b49fb967cb1e77edd547a871ca315c97e0fb7401",
+      "official_arduino_tree_blob_sha1": "b49fb967cb1e77edd547a871ca315c97e0fb7401",
+      "selected_member_count": 51,
+      "selected_members": [
+        "aes-ccm.c.obj",
+        "aes-omac1.c.obj",
+        "aes-unwrap.c.obj",
+        "aes-wrap.c.obj",
+        "ap_config.c.obj",
+        "ccmp.c.obj",
+        "chap.c.obj",
+        "common.c.obj",
+        "crypto_mbedtls-bignum.c.obj",
+        "crypto_mbedtls-ec.c.obj",
+        "crypto_mbedtls.c.obj",
+        "crypto_ops.c.obj",
+        "des-internal.c.obj",
+        "dh_groups.c.obj",
+        "dragonfly.c.obj",
+        "eap.c.obj",
+        "eap_common.c.obj",
+        "eap_mschapv2.c.obj",
+        "eap_peap.c.obj",
+        "eap_peap_common.c.obj",
+        "eap_tls.c.obj",
+        "eap_tls_common.c.obj",
+        "eap_ttls.c.obj",
+        "esp_common.c.obj",
+        "esp_hostap.c.obj",
+        "esp_wpa2.c.obj",
+        "esp_wpa3.c.obj",
+        "esp_wpa_main.c.obj",
+        "esp_wpas_glue.c.obj",
+        "fastpbkdf2.c.obj",
+        "md4-internal.c.obj",
+        "ms_funcs.c.obj",
+        "mschapv2.c.obj",
+        "os_xtensa.c.obj",
+        "pmksa_cache.c.obj",
+        "rc4.c.obj",
+        "sae.c.obj",
+        "sha1-prf.c.obj",
+        "sha1-tlsprf.c.obj",
+        "sha256-kdf.c.obj",
+        "sha256-prf.c.obj",
+        "sha256-tlsprf.c.obj",
+        "sha384-tlsprf.c.obj",
+        "tls_mbedtls.c.obj",
+        "wpa.c.obj",
+        "wpa_auth.c.obj",
+        "wpa_auth_ie.c.obj",
+        "wpa_common.c.obj",
+        "wpa_debug.c.obj",
+        "wpa_ie.c.obj",
+        "wpabuf.c.obj"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libxt_hal.a",
+      "bytes": 240506,
+      "sha256": "4823e6c657199a6726f3163f15e1222edb85a8a33eeaafd2aad0cc06150cc4ec",
+      "git_blob_sha1": "c4554e93e872304ca5d9ac01e26533760791182c",
+      "official_arduino_tree_blob_sha1": "c4554e93e872304ca5d9ac01e26533760791182c",
+      "selected_member_count": 5,
+      "selected_members": [
+        "int_asm--set_intclear.o",
+        "interrupts--intlevel.o",
+        "state_asm--restore_extra_nw.o",
+        "state_asm--save_extra_nw.o",
+        "windowspill_asm.o"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libxtensa.a",
+      "bytes": 52616,
+      "sha256": "42eda0b774a63e71e4b3b4ea983aa2a45374779eae270786272d93cfc30f1293",
+      "git_blob_sha1": "aec68b349613a5d4bd42e376af12159c421cd924",
+      "official_arduino_tree_blob_sha1": "aec68b349613a5d4bd42e376af12159c421cd924",
+      "selected_member_count": 2,
+      "selected_members": [
+        "xtensa_intr.c.obj",
+        "xtensa_intr_asm.S.obj"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/qio_qspi/libbootloader_support.a",
+      "bytes": 769328,
+      "sha256": "569a073995d954de64877037de9f211c9f711d3bbe4755b316f8bcf6aab3fc6d",
+      "git_blob_sha1": "c9390ce5247b27091238c512d47e1b11cb2eb833",
+      "official_arduino_tree_blob_sha1": "c9390ce5247b27091238c512d47e1b11cb2eb833",
+      "selected_member_count": 10,
+      "selected_members": [
+        "bootloader_common.c.obj",
+        "bootloader_common_loader.c.obj",
+        "bootloader_flash.c.obj",
+        "bootloader_flash_config_esp32s3.c.obj",
+        "bootloader_mem.c.obj",
+        "bootloader_random_esp32s3.c.obj",
+        "bootloader_sha.c.obj",
+        "bootloader_utility.c.obj",
+        "esp_image_format.c.obj",
+        "flash_partitions.c.obj"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/qio_qspi/libesp_hw_support.a",
+      "bytes": 1863798,
+      "sha256": "b9b412df462a8eed8a4bd5e4ed6bf13c0c0271cec5fed97ff08bf9a0bf922308",
+      "git_blob_sha1": "3ba5f70123321fe5461607458686b626f36c78c6",
+      "official_arduino_tree_blob_sha1": "3ba5f70123321fe5461607458686b626f36c78c6",
+      "selected_member_count": 22,
+      "selected_members": [
+        "chip_info.c.obj",
+        "clk_ctrl_os.c.obj",
+        "compare_set.c.obj",
+        "cpu_util.c.obj",
+        "dport_access.c.obj",
+        "esp_clk.c.obj",
+        "esp_crypto_lock.c.obj",
+        "hw_random.c.obj",
+        "intr_alloc.c.obj",
+        "mac_addr.c.obj",
+        "regi2c_ctrl.c.obj",
+        "rtc_clk.c.obj",
+        "rtc_init.c.obj",
+        "rtc_sleep.c.obj",
+        "rtc_time.c.obj",
+        "sar_periph_ctrl.c.obj",
+        "sleep_console.c.obj",
+        "sleep_gpio.c.obj",
+        "sleep_modes.c.obj",
+        "sleep_retention.c.obj",
+        "spiram.c.obj",
+        "spiram_psram.c.obj"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/qio_qspi/libesp_system.a",
+      "bytes": 1574894,
+      "sha256": "2a58caf364f9417c0c81ed0509fc21b3db4a23b6bd75940937de8d10dc8d048a",
+      "git_blob_sha1": "898ae6c9f8e140f70fac0aecac793501ef690daa",
+      "official_arduino_tree_blob_sha1": "898ae6c9f8e140f70fac0aecac793501ef690daa",
+      "selected_member_count": 24,
+      "selected_members": [
+        "apb_backup_dma.c.obj",
+        "brownout.c.obj",
+        "cache_err_int.c.obj",
+        "clk.c.obj",
+        "cpu_start.c.obj",
+        "crosscore_int.c.obj",
+        "debug_helpers.c.obj",
+        "debug_helpers_asm.S.obj",
+        "esp_err.c.obj",
+        "esp_system.c.obj",
+        "freertos_hooks.c.obj",
+        "highint_hdl.S.obj",
+        "int_wdt.c.obj",
+        "panic.c.obj",
+        "panic_arch.c.obj",
+        "panic_handler.c.obj",
+        "panic_handler_asm.S.obj",
+        "reset_reason.c.obj",
+        "stack_check.c.obj",
+        "startup.c.obj",
+        "system_internal.c.obj",
+        "system_time.c.obj",
+        "task_wdt.c.obj",
+        "ubsan.c.obj"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/qio_qspi/libfreertos.a",
+      "bytes": 1063058,
+      "sha256": "258c4cc7c1d878cfb2a0a5a76344e4b4e8db326da95b4471f99430c8557c82f8",
+      "git_blob_sha1": "eaadf1c4caa199371af6fa66329b9f23d5215b6c",
+      "official_arduino_tree_blob_sha1": "eaadf1c4caa199371af6fa66329b9f23d5215b6c",
+      "selected_member_count": 13,
+      "selected_members": [
+        "FreeRTOS-openocd.c.obj",
+        "event_groups.c.obj",
+        "list.c.obj",
+        "port.c.obj",
+        "port_common.c.obj",
+        "port_systick.c.obj",
+        "portasm.S.obj",
+        "queue.c.obj",
+        "task_snapshot.c.obj",
+        "tasks.c.obj",
+        "xtensa_context.S.obj",
+        "xtensa_vector_defaults.S.obj",
+        "xtensa_vectors.S.obj"
+      ]
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/qio_qspi/libspi_flash.a",
+      "bytes": 1465194,
+      "sha256": "82287e5db87de68cd2fac77d144607cf0af5a871f3c4a9c80865b7a1c98d5666",
+      "git_blob_sha1": "3ad3f6f0b1ec9eb5501c12d421297851ca979597",
+      "official_arduino_tree_blob_sha1": "3ad3f6f0b1ec9eb5501c12d421297851ca979597",
+      "selected_member_count": 22,
+      "selected_members": [
+        "cache_utils.c.obj",
+        "esp_flash_api.c.obj",
+        "esp_flash_spi_init.c.obj",
+        "flash_mmap.c.obj",
+        "flash_ops.c.obj",
+        "flash_ops_esp32s3.c.obj",
+        "memspi_host_driver.c.obj",
+        "partition.c.obj",
+        "spi_flash_chip_boya.c.obj",
+        "spi_flash_chip_drivers.c.obj",
+        "spi_flash_chip_gd.c.obj",
+        "spi_flash_chip_generic.c.obj",
+        "spi_flash_chip_issi.c.obj",
+        "spi_flash_chip_mxic.c.obj",
+        "spi_flash_chip_mxic_opi.c.obj",
+        "spi_flash_chip_th.c.obj",
+        "spi_flash_chip_winbond.c.obj",
+        "spi_flash_hpm_enable.c.obj",
+        "spi_flash_os_func_app.c.obj",
+        "spi_flash_os_func_noos.c.obj",
+        "spi_flash_timing_tuning.c.obj",
+        "spi_timing_config.c.obj"
+      ]
+    }
+  ],
+  "direct_idf_submodule_or_embedded_binary_matches": [
+    {
+      "sdk_path": "tools/sdk/esp32s3/ld/libbtbb.a",
+      "submodule_evidence": "evidence/phy-tree.json",
+      "submodule_path": "esp32s3/libbtbb.a",
+      "git_blob_sha1": "591b374667c2d143b3c536e36e8b847300a41ca5"
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/ld/libbtdm_app.a",
+      "submodule_evidence": "evidence/bt-tree.json",
+      "submodule_path": "esp32s3/libbtdm_app.a",
+      "git_blob_sha1": "35adfbb07c648750ec55679413a68f547ae63d97"
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/ld/libphy.a",
+      "submodule_evidence": "evidence/phy-tree.json",
+      "submodule_path": "esp32s3/libphy.a",
+      "git_blob_sha1": "3456589ba86f6093f818ac186894d01d488acfdf"
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libcoexist.a",
+      "submodule_evidence": "evidence/wifi-tree.json",
+      "submodule_path": "esp32s3/libcoexist.a",
+      "git_blob_sha1": "6960f1da37edd39927c5c0cf965f6bdce1b418d5"
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libcore.a",
+      "submodule_evidence": "evidence/wifi-tree.json",
+      "submodule_path": "esp32s3/libcore.a",
+      "git_blob_sha1": "40d12ece09214d3497cf9e717851920ff709ea83"
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libmesh.a",
+      "submodule_evidence": "evidence/wifi-tree.json",
+      "submodule_path": "esp32s3/libmesh.a",
+      "git_blob_sha1": "adb9f2226310272f913cc58ad7b43502ed447256"
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libnet80211.a",
+      "submodule_evidence": "evidence/wifi-tree.json",
+      "submodule_path": "esp32s3/libnet80211.a",
+      "git_blob_sha1": "f9950825e7a6806133d16162b207be262c85886c"
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libpp.a",
+      "submodule_evidence": "evidence/wifi-tree.json",
+      "submodule_path": "esp32s3/libpp.a",
+      "git_blob_sha1": "19526baca9393b30a865390c050d00c918a2c510"
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libsmartconfig.a",
+      "submodule_evidence": "evidence/wifi-tree.json",
+      "submodule_path": "esp32s3/libsmartconfig.a",
+      "git_blob_sha1": "6455b8db956c6f8d0724ada99eb06b4a9c1712e6"
+    },
+    {
+      "sdk_path": "tools/sdk/esp32s3/lib/libxt_hal.a",
+      "submodule_evidence": "evidence/esp-idf-v4.4.7-tree.json",
+      "submodule_path": "components/xtensa/esp32s3/libxt_hal.a",
+      "git_blob_sha1": "c4554e93e872304ca5d9ac01e26533760791182c"
+    }
+  ],
+  "selected_toolchain_runtime": {
+    "package_version": "8.4.0+2021r2-patch5",
+    "compiler_version": "xtensa-esp32s3-elf-gcc (crosstool-NG esp-2021r2-patch5) 8.4.0",
+    "archives": [
+      {
+        "package_relative_path": "xtensa-esp32s3-elf/lib/no-rtti/libc.a",
+        "bytes": 10897852,
+        "sha256": "b8b1e4a6c23f42c32bbf48dbc50b35cbd8e7d62afdcbb497096280b2c6826d58"
+      },
+      {
+        "package_relative_path": "xtensa-esp32s3-elf/lib/no-rtti/libm.a",
+        "bytes": 4642848,
+        "sha256": "64ced61f0cb9cd94f60f6a2bf307284e6e6a1de0dd99a4e18c579dd645dba178"
+      },
+      {
+        "package_relative_path": "xtensa-esp32s3-elf/lib/no-rtti/libstdc++.a",
+        "bytes": 20592856,
+        "sha256": "46cbd877255439cee2b048b42b1fda0612e54180d88ede86f489e61a5cec103c"
+      },
+      {
+        "package_relative_path": "lib/gcc/xtensa-esp32s3-elf/8.4.0/no-rtti/libgcc.a",
+        "bytes": 1172470,
+        "sha256": "c07c00fdc56ce449f8051f3bbaa4e5b870e7dea7bf433b67609e0d06edaa6150"
+      }
+    ],
+    "scope": "Actual selected runtime archives; host compiler executables and their build dependencies are not distributed here."
+  },
+  "sdk_last_update": {
+    "source_url": "https://api.github.com/repos/espressif/arduino-esp32/commits?sha=5e19e086c43d0fa5e5a596497ff8f11a0a43f6c2&path=tools/sdk/esp32s3/lib/libesp_common.a&per_page=1",
+    "commit": "fd49a0abca2385a3c074c6ca5b8ad60f8b8c273d",
+    "commit_title": "IDF 38eeba213a (#9339)",
+    "commit_date": "2024-03-05T13:03:51Z",
+    "evidence": "evidence/arduino-sdk-last-change.json",
+    "idfrevision_matches_pinned_tree": true,
+    "scope": "Official SDK update explicitly identifies IDF base 38eeba213a; embedded version retains -dirty, so arbitrary build patches are not claimed absent."
+  },
+  "idf_base": {
+    "commit": "38eeba213aa695aabfd6d89aa9f5078dbe5a94c3",
+    "tag": "v4.4.7",
+    "tree_evidence": "evidence/esp-idf-v4.4.7-tree.json",
+    "submodule_urls_evidence": "evidence/esp-idf-v4.4.7.gitmodules"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "date": "2026-10-17",
+  "scope": "sanitized public staging snapshot, source + binary + images",
+  "firmwareBytesChanged": false,
+  "privateRawFlashIncluded": false,
+  "localUserPathsAndRealTestNetworkNamesRemaining": 0,
+  "imagesScanned": 122,
+  "personalImageMetadataRemaining": 0,
+  "actualPrivateKeyOrApiTokenMaterialFound": false,
+  "binaryPatternReview": {
+    "perEkkoApp": {
+      "pemParserMarkers": 3,
+      "caseInsensitiveSkPatternTlsCipherNames": 14
+    },
+    "wholeImageContainsSameAppConstants": true,
+    "pemSource": "official pinned SDK libmbedcrypto.a :: pkparse.c.obj",
+    "cipherSource": "official pinned SDK libmbedtls_2.a :: ssl_ciphersuites.c.obj",
+    "libmbedcryptoSha256": "abdaf759ee17aa697468427b55a86c6c0082ac4cdeb643a63d8b3ac2df324633",
+    "libmbedtls2Sha256": "9a580d2ff7c885e1bf59479a14422e3d10a485ae9083acb5db943df714c0ac35",
+    "resolution": "NUL-terminated public parsing markers/cipher names; not credential payloads; all matched official archive objects byte-for-byte"
+  },
+  "reviewers": "independent privacy review + packaging consistency review + primary-agent binary/whole-image verification",
+  "findings": [
+    {
+      "severity": "P2",
+      "confidence": 1.0,
+      "finding": "Local user paths and actual test SSIDs in earlier local packaging copy",
+      "status": "removed from public copy"
+    },
+    {
+      "severity": "P3",
+      "confidence": 1.0,
+      "finding": "Three upstream documentation images held GPS/author metadata",
+      "status": "removed losslessly; decoded RGB unchanged"
+    },
+    {
+      "severity": "P3",
+      "confidence": 1.0,
+      "finding": "Broad binary secret patterns match SDK parser markers and PSK cipher names",
+      "status": "verified false positives against SDK objects"
+    },
+    {
+      "severity": "P3",
+      "confidence": 1.0,
+      "finding": "Two upstream ESP-NOW documentation PNGs trigger ExifTool minor warning for text/EXIF chunks after IDAT",
+      "status": "retained; no requested private metadata fields present and images decode; cross-reader display not separately tested"
+    },
+    {
+      "severity": "P2",
+      "confidence": 1.0,
+      "finding": "Root checksum list predates public additions",
+      "status": "regenerated for all current release files"
+    },
+    {
+      "severity": "P3",
+      "confidence": 1.0,
+      "finding": "Public installation guide inherited wording addressing the development device owner",
+      "status": "reworded for public readers"
+    }
+  ]
+}

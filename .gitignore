@@ -1,0 +1,9 @@
+**/.pio/
+**/build/
+**/__pycache__/
+.DS_Store
+.env
+.env.*
+*.private.*
+M5-before-install-PRIVATE.bin
+work/

@@ -1,0 +1,2 @@
+esptool.py v4.11.0
+Wrote 0x800000 bytes to file firmware/first-install-dual-8MiB-0x0000.bin, ready to flash to offset 0x0
