@@ -1,0 +1,15 @@
+{
+  "change": "原厂侧栏 大小 → Aa",
+  "productionSourceFilesChanged": 1,
+  "sourceChangeOnlyLabelLiteral": true,
+  "buildPassed": true,
+  "factoryBytes": 3002448,
+  "factorySha256": "76fc88d8ad7408b377978c132049fea06d1c89aa698b090ff8e446cf805771df",
+  "freshPrivateFullBackupSaved": true,
+  "full8MiBReadbackMatchesExpected": true,
+  "ekkoAndAllNonFactoryBytesUnchanged": true,
+  "fixedUiMissingGlyphs": [],
+  "softwareCanvasAfterRevision": "not captured; serial query returned no factory diagnostic data",
+  "physicalDisplayAfterRevision": "not claimed; previous user acceptance covers unchanged font/layout",
+  "completedAt": "2026-10-17T14:27:33.059025+08:00"
+}

@@ -16,6 +16,21 @@
 
 using namespace mooncake;
 
+// Keep the receiver's protocol values separate from translated display labels.
+static const char* display_style_name(const std::string& style)
+{
+    if (style == "Normal") {
+        return "普通";
+    }
+    if (style == "Fade") {
+        return "渐变";
+    }
+    if (style == "Stream") {
+        return "流动";
+    }
+    return style.c_str();
+}
+
 AppStringIRToolKit::AppStringIRToolKit()
 {
     setAppInfo().name     = "StringIR";
@@ -90,9 +105,14 @@ void AppStringIRToolKit::onClose()
 void AppStringIRToolKit::render_main_interface()
 {
     GetHAL().canvas.setBaseColor(THEME_COLOR_BG);
+    GetHAL().canvas.setFont(FONT_BASIC);
+    GetHAL().canvas.setTextDatum(textdatum_t::top_left);
     GetHAL().canvas.setTextScroll(false);
     GetHAL().canvas.fillScreen(THEME_COLOR_BG);
     GetHAL().canvas.setTextSize(1);
+    GetHAL().canvas.setTextColor(TFT_WHITE, THEME_COLOR_BG);
+    GetHAL().canvas.setCursor(5, 0);
+    GetHAL().canvas.print("待发文字");
 
     render_text_input_line();
     render_style_line();
@@ -103,7 +123,7 @@ void AppStringIRToolKit::render_main_interface()
 
 void AppStringIRToolKit::render_text_input_line()
 {
-    const int line_y      = 10;
+    const int line_y      = 16;
     const int line_height = 20;
 
     // Clear line area
@@ -118,7 +138,12 @@ void AppStringIRToolKit::render_text_input_line()
     }
 
     GetHAL().canvas.setCursor(5, line_y);
-    GetHAL().canvas.print(_input_text.c_str());
+    std::string visible_text = _input_text;
+    const int available_width = GetHAL().canvas.width() - 16;
+    while (!visible_text.empty() && GetHAL().canvas.textWidth(visible_text.c_str()) > available_width) {
+        visible_text.erase(0, 1);
+    }
+    GetHAL().canvas.print(visible_text.c_str());
 
     // Draw cursor if focused
     if (_focus_line == FocusLine::TextInput && _cursor_state) {
@@ -146,7 +171,7 @@ void AppStringIRToolKit::render_style_line()
     }
 
     GetHAL().canvas.setCursor(5, line_y);
-    GetHAL().canvas.printf("< %s >", _style_options[_style_index].c_str());
+    GetHAL().canvas.printf("样式: < %s >", display_style_name(_style_options[_style_index]));
 }
 
 void AppStringIRToolKit::render_help_line()
@@ -155,9 +180,11 @@ void AppStringIRToolKit::render_help_line()
 
     GetHAL().canvas.setTextColor(TFT_DARKGREY, THEME_COLOR_BG);
     GetHAL().canvas.setCursor(5, line_y);
-    GetHAL().canvas.println("FN+Arrow: navigate");
-    GetHAL().canvas.setCursor(5, line_y + 16);
-    GetHAL().canvas.print("Enter: send");
+    GetHAL().canvas.println("Fn+上下: 选择文字或样式");
+    GetHAL().canvas.setCursor(5, line_y + 13);
+    GetHAL().canvas.print("Fn+左右: 切换样式");
+    GetHAL().canvas.setCursor(5, line_y + 26);
+    GetHAL().canvas.print("Enter: 发送");
 }
 
 void AppStringIRToolKit::update_cursor()
@@ -288,13 +315,17 @@ void AppStringIRToolKit::handle_input()
 
 void AppStringIRToolKit::start_sending()
 {
+    if (!GetHAL().irInit()) {
+        show_error_message("红外初始化失败");
+        return;
+    }
     // Prepare JSON data and encode with RS
     std::string json_data = prepare_json_data();
 
     // Encode data with RS error correction
     if (!RSEncoder::encode(json_data, _encoded_data)) {
         mclog::tagError(getAppInfo().name, "Failed to encode data");
-        show_error_message("Encode failed");
+        show_error_message("数据编码失败");
         return;
     }
 
@@ -302,14 +333,14 @@ void AppStringIRToolKit::start_sending()
     std::string decoded_data;
     if (!RSDecoder::decode(_encoded_data, decoded_data)) {
         mclog::tagError(getAppInfo().name, "Self-check decode failed");
-        show_error_message("Decode self-check failed");
+        show_error_message("解码自检失败");
         _encoded_data.clear();
         return;
     }
 
     if (decoded_data != json_data) {
         mclog::tagError(getAppInfo().name, "Self-check mismatch");
-        show_error_message("Decode mismatch");
+        show_error_message("解码结果与原文不符");
         _encoded_data.clear();
         return;
     }
@@ -351,7 +382,7 @@ void AppStringIRToolKit::render_sending_animation()
     // Title
     GetHAL().canvas.setCursor(60, 30);
     GetHAL().canvas.setTextColor(TFT_CYAN, THEME_COLOR_BG);
-    GetHAL().canvas.print("Sending");
+    GetHAL().canvas.print("正在发送");
 
     // Animated dots
     for (int i = 0; i < (_sending_dots % 4); i++) {
@@ -361,15 +392,16 @@ void AppStringIRToolKit::render_sending_animation()
     // Show what's being sent
     GetHAL().canvas.setCursor(20, 50);
     GetHAL().canvas.setTextColor(TFT_WHITE, THEME_COLOR_BG);
-    GetHAL().canvas.printf("Text: %s", _input_text.c_str());
+    const std::string text_preview = fmt::format("文字: {}", _input_text);
+    GetHAL().canvas.drawString(text_preview.c_str(), 20, 50);
 
     GetHAL().canvas.setCursor(20, 65);
-    GetHAL().canvas.printf("Style: %s", _style_options[_style_index].c_str());
+    GetHAL().canvas.printf("样式: %s", display_style_name(_style_options[_style_index]));
 
     const size_t total_packets = _encoded_data.size();
     const size_t sent_packets  = (_send_index > total_packets) ? total_packets : _send_index;
     GetHAL().canvas.setCursor(20, 80);
-    GetHAL().canvas.printf("Packet: %u/%u", static_cast<unsigned>(sent_packets), static_cast<unsigned>(total_packets));
+    GetHAL().canvas.printf("数据包: %u/%u", static_cast<unsigned>(sent_packets), static_cast<unsigned>(total_packets));
 
     GetHAL().pushCanvas();
 }
@@ -382,12 +414,12 @@ void AppStringIRToolKit::render_send_complete()
     // Success message
     GetHAL().canvas.setCursor(40, 40);
     GetHAL().canvas.setTextColor(TFT_GREEN, THEME_COLOR_BG);
-    GetHAL().canvas.print("Send Complete!");
+    GetHAL().canvas.print("发送完成");
 
     // Show bytes sent
     GetHAL().canvas.setCursor(30, 60);
     GetHAL().canvas.setTextColor(TFT_WHITE, THEME_COLOR_BG);
-    GetHAL().canvas.printf("Sent %d bytes", _encoded_data.size());
+    GetHAL().canvas.printf("已发送 %u 字节", static_cast<unsigned>(_encoded_data.size()));
 
     GetHAL().pushCanvas();
 }
@@ -399,7 +431,7 @@ void AppStringIRToolKit::render_error_screen()
 
     GetHAL().canvas.setCursor(40, 40);
     GetHAL().canvas.setTextColor(TFT_RED, THEME_COLOR_BG);
-    GetHAL().canvas.print("Send Error");
+    GetHAL().canvas.print("发送失败");
 
     GetHAL().canvas.setCursor(15, 60);
     GetHAL().canvas.setTextColor(TFT_WHITE, THEME_COLOR_BG);
@@ -436,13 +468,19 @@ void AppStringIRToolKit::send_ir_data()
         // First packet: send 5 times for better reliability
         if (_send_index == 0) {
             for (int i = 0; i < 5; i++) {
-                GetHAL().irSend(addr, cmd);
+                if (!GetHAL().irSend(addr, cmd)) {
+                    show_error_message("红外发送失败");
+                    return;
+                }
                 mclog::tagDebug(getAppInfo().name, "Sent first packet (repeat {}): addr=0x{:02X}, cmd=0x{:02X}", i + 1,
                                 addr, cmd);
             }
         } else {
             // Other packets: send once
-            GetHAL().irSend(addr, cmd);
+            if (!GetHAL().irSend(addr, cmd)) {
+                show_error_message("红外发送失败");
+                return;
+            }
             mclog::tagDebug(getAppInfo().name, "Sent byte #{}: 0x{:02X} ({}/{})", addr, cmd, _send_index + 1,
                             _encoded_data.size());
         }

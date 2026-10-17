@@ -34,6 +34,7 @@ void AppImu::onOpen()
     // Clear screen
     GetHAL().canvas.setBaseColor(THEME_COLOR_BG);
     GetHAL().canvas.setFont(FONT_REPL);
+    GetHAL().canvas.setTextDatum(textdatum_t::top_left);
     GetHAL().canvas.setTextSize(1);
 
     GetHAL().imu.begin();
@@ -73,20 +74,22 @@ void AppImu::onClose()
 void AppImu::render_imu_data_label()
 {
     GetHAL().canvas.setTextColor((uint32_t)0x8FC8AA);
-    _str_buffer = fmt::format("AX: {: .1f}", _imu_data.accel.x);
-    GetHAL().canvas.drawString(_str_buffer.c_str(), 6, +2);
-    _str_buffer = fmt::format("AY: {: .1f}", _imu_data.accel.y);
-    GetHAL().canvas.drawString(_str_buffer.c_str(), 6, 16 + 2);
-    _str_buffer = fmt::format("AZ: {: .1f}", _imu_data.accel.z);
-    GetHAL().canvas.drawString(_str_buffer.c_str(), 6, 32 + 2);
+    GetHAL().canvas.drawString("加速度(倍重力)", 5, 0);
+    _str_buffer = fmt::format("X: {: .1f}", _imu_data.accel.x);
+    GetHAL().canvas.drawString(_str_buffer.c_str(), 6, 14);
+    _str_buffer = fmt::format("Y: {: .1f}", _imu_data.accel.y);
+    GetHAL().canvas.drawString(_str_buffer.c_str(), 6, 26);
+    _str_buffer = fmt::format("Z: {: .1f}", _imu_data.accel.z);
+    GetHAL().canvas.drawString(_str_buffer.c_str(), 6, 38);
 
     GetHAL().canvas.setTextColor((uint32_t)0x88AED9);
-    _str_buffer = fmt::format("GX: {: .1f}", _imu_data.gyro.x);
-    GetHAL().canvas.drawString(_str_buffer.c_str(), 6, 56 - 2);
-    _str_buffer = fmt::format("GY: {: .1f}", _imu_data.gyro.y);
-    GetHAL().canvas.drawString(_str_buffer.c_str(), 6, 72 - 2);
-    _str_buffer = fmt::format("GZ: {: .1f}", _imu_data.gyro.z);
-    GetHAL().canvas.drawString(_str_buffer.c_str(), 6, 88 - 2);
+    GetHAL().canvas.drawString("角速度(度/秒)", 5, 53);
+    _str_buffer = fmt::format("X: {: .1f}", _imu_data.gyro.x);
+    GetHAL().canvas.drawString(_str_buffer.c_str(), 6, 67);
+    _str_buffer = fmt::format("Y: {: .1f}", _imu_data.gyro.y);
+    GetHAL().canvas.drawString(_str_buffer.c_str(), 6, 79);
+    _str_buffer = fmt::format("Z: {: .1f}", _imu_data.gyro.z);
+    GetHAL().canvas.drawString(_str_buffer.c_str(), 6, 91);
 
     _str_buffer.clear();
 }

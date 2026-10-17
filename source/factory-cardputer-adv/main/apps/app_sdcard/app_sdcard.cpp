@@ -71,17 +71,27 @@ void AppSdcard::probe_sd_card()
     GetHAL().canvas.fillScreen(THEME_COLOR_BG);
     GetHAL().canvas.setCursor(0, 0);
     GetHAL().canvas.setTextColor(TFT_ORANGE);
-    GetHAL().canvas.println("SD Card Info:");
+    GetHAL().canvas.println("存储卡信息");
 
     GetHAL().canvas.setCursor(0, 24);
     if (result.is_mounted) {
         GetHAL().canvas.setTextColor(TFT_CYAN);
-        GetHAL().canvas.println(result.name.c_str());
-        GetHAL().canvas.println(result.size.c_str());
-        GetHAL().canvas.println(result.type.c_str());
+        const std::string card_name = result.name.compare(0, 6, "Name: ") == 0 ? result.name.substr(6) : result.name;
+        const std::string card_type = result.type.compare(0, 6, "Type: ") == 0 ? result.type.substr(6) : result.type;
+        GetHAL().canvas.printf("名称: %s\n", card_name.c_str());
+        if (result.size == "Write Failed") {
+            GetHAL().canvas.setTextColor(TFT_RED);
+            GetHAL().canvas.println("写入测试失败");
+            GetHAL().canvas.setTextColor(TFT_CYAN);
+        } else if (result.size.compare(0, 6, "Size: ") == 0) {
+            GetHAL().canvas.printf("容量: %s\n", result.size.substr(6).c_str());
+        } else {
+            GetHAL().canvas.println(result.size.c_str());
+        }
+        GetHAL().canvas.printf("类型: %s\n", card_type.c_str());
     } else {
         GetHAL().canvas.setTextColor(TFT_RED);
-        GetHAL().canvas.println("SD Card Not Found");
+        GetHAL().canvas.println("未检测到存储卡");
     }
     GetHAL().pushCanvas();
 }

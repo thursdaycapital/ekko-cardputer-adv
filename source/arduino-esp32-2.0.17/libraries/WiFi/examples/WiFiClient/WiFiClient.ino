@@ -22,8 +22,8 @@ const char* password = "your-password"; // Change this to your WiFi password
 const char* host = "api.thingspeak.com"; // This should not be changed
 const int httpPort = 80; // This should not be changed
 const String channelID   = "2005329"; // Change this to your channel ID
-const String writeApiKey = "V6YOTILH9I7D51F9"; // Change this to your Write API key
-const String readApiKey = "34W6LGLIFXD56MPM"; // Change this to your Read API key
+const String writeApiKey = "EXAMPLE_WRITE_API_KEY"; // Change this to your Write API key
+const String readApiKey = "EXAMPLE_READ_API_KEY"; // Change this to your Read API key
 
 // The default example accepts one data filed named "field1"
 // For your own server you can ofcourse create more of them.

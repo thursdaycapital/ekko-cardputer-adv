@@ -629,19 +629,20 @@ namespace m5
         int ch_diff = ch_info->diff;
         size_t ch_index = ch_info->index;
 
-        wav_info_t* current_wav = &(ch_info->wavinfo[!ch_info->flip]);
-        wav_info_t* next_wav    = &(ch_info->wavinfo[ ch_info->flip]);
+        const bool flip = __atomic_load_n(&ch_info->flip, __ATOMIC_ACQUIRE);
+        wav_info_t* current_wav = &(ch_info->wavinfo[!flip]);
+        wav_info_t* next_wav    = &(ch_info->wavinfo[ flip]);
 
         size_t idx = 0;
 
-        if (current_wav->repeat == 0 || next_wav->stop_current)
+        if (__atomic_load_n(&current_wav->repeat, __ATOMIC_ACQUIRE) == 0 || next_wav->stop_current)
         {
 label_next_wav:
-          bool clear_idx = (next_wav->repeat == 0
+          bool clear_idx = (__atomic_load_n(&next_wav->repeat, __ATOMIC_ACQUIRE) == 0
                         || !next_wav->no_clear_index
                         || (next_wav->data != current_wav->data));
           current_wav->clear();
-          ch_info->flip = !ch_info->flip;
+          __atomic_store_n(&ch_info->flip, !__atomic_load_n(&ch_info->flip, __ATOMIC_RELAXED), __ATOMIC_RELEASE);
 #if !defined (SDL_h_)
           xSemaphoreGive(self->_task_semaphore);
 #endif
@@ -650,10 +651,10 @@ label_next_wav:
           if (clear_idx)
           {
             ch_index = 0;
-            if (current_wav->repeat == 0)
+            if (__atomic_load_n(&current_wav->repeat, __ATOMIC_ACQUIRE) == 0)
             {
               self->_play_channel_bits.fetch_and(~(1 << ch));
-              if (current_wav->repeat == 0)
+              if (__atomic_load_n(&current_wav->repeat, __ATOMIC_ACQUIRE) == 0)
               {
                 ch_info->diff = 0;
                 ch_info->index = 0;
@@ -681,10 +682,10 @@ label_next_wav:
         {
 label_wav_end:
           ch_index -= current_wav->length;
-          auto repeat = current_wav->repeat;
+          auto repeat = __atomic_load_n(&current_wav->repeat, __ATOMIC_RELAXED);
           if (repeat != ~0u)
           {
-            current_wav->repeat = --repeat;
+            __atomic_store_n(&current_wav->repeat, --repeat, __ATOMIC_RELEASE);
             if (repeat == 0)
             {
               goto label_next_wav;
@@ -915,31 +916,53 @@ label_continue_sample:
 
 #if !defined (SDL_h_)
     if (_task_semaphore == nullptr) { _task_semaphore = xSemaphoreCreateBinary(); }
+    if (_task_semaphore == nullptr) { return false; }
 #endif
 
     bool res = true;
     if (_cb_set_enabled) { res = _cb_set_enabled(_cb_set_enabled_args, true); }
 
-    res = (ESP_OK == _setup_i2s()) && res;
+    const auto setup_result = _setup_i2s();
+    res = (ESP_OK == setup_result) && res;
+    if (!res) {
+#if !defined (SDL_h_)
+      if (setup_result == ESP_OK) { _i2s_driver_uninstall(_cfg.i2s_port); }
+#endif
+      if (_cb_set_enabled) { _cb_set_enabled(_cb_set_enabled_args, false); }
+      return false;
+    }
     if (res)
     {
       _task_running = true;
+      bool task_created;
 #if defined (SDL_h_)
       _task_handle = SDL_CreateThread(reinterpret_cast<SDL_ThreadFunction>(spk_task), "spk_task", this);
+      task_created = _task_handle != nullptr;
 #else
       size_t stack_size = 1280 + (_cfg.dma_buf_len * sizeof(uint32_t));
+      BaseType_t created;
 
 #if portNUM_PROCESSORS > 1
       if (_cfg.task_pinned_core < portNUM_PROCESSORS)
       {
-        xTaskCreatePinnedToCore(spk_task, "spk_task", stack_size, this, _cfg.task_priority, &_task_handle, _cfg.task_pinned_core);
+        created = xTaskCreatePinnedToCore(spk_task, "spk_task", stack_size, this, _cfg.task_priority, &_task_handle, _cfg.task_pinned_core);
       }
       else
 #endif
       {
-        xTaskCreate(spk_task, "spk_task", stack_size, this, _cfg.task_priority, &_task_handle);
+        created = xTaskCreate(spk_task, "spk_task", stack_size, this, _cfg.task_priority, &_task_handle);
       }
+      task_created = created == pdPASS;
 #endif
+      if (!task_created) {
+        _task_running = false;
+        _task_handle = nullptr;
+#if !defined (SDL_h_)
+        _i2s_driver_uninstall(_cfg.i2s_port);
+#endif
+        if (_cb_set_enabled) { _cb_set_enabled(_cb_set_enabled_args, false); }
+        res = false;
+      }
     }
 
     return res;
@@ -982,7 +1005,8 @@ label_continue_sample:
     for (size_t ch = 0; ch < sound_channel_max; ++ch)
     {
       auto chinfo = &_ch_info[ch];
-      chinfo->wavinfo[chinfo->flip] = tmp;
+      const bool flip = __atomic_load_n(&chinfo->flip, __ATOMIC_ACQUIRE);
+      chinfo->wavinfo[flip].assign(tmp);
     }
   }
 
@@ -997,7 +1021,8 @@ label_continue_sample:
       wav_info_t tmp;
       tmp.stop_current = 1;
       auto chinfo = &_ch_info[ch];
-      chinfo->wavinfo[chinfo->flip] = tmp;
+      const bool flip = __atomic_load_n(&chinfo->flip, __ATOMIC_ACQUIRE);
+      chinfo->wavinfo[flip].assign(tmp);
     }
   }
 
@@ -1007,26 +1032,38 @@ label_continue_sample:
     data = nullptr;
     sample_rate_x256 = 0;
     flg = 0;
-    repeat = 0;
+    __atomic_store_n(&repeat, uint32_t(0), __ATOMIC_RELEASE);
+  }
+
+  void Speaker_Class::wav_info_t::assign(const wav_info_t& source)
+  {
+    // Publish the buffer metadata before exposing a nonzero queue marker.
+    data = source.data;
+    length = source.length;
+    sample_rate_x256 = source.sample_rate_x256;
+    flg = source.flg;
+    __atomic_store_n(&repeat, __atomic_load_n(&source.repeat, __ATOMIC_ACQUIRE), __ATOMIC_RELEASE);
   }
 
   bool Speaker_Class::_set_next_wav(size_t ch, const wav_info_t& wav)
   {
     auto chinfo = &_ch_info[ch];
     uint8_t chmask = 1 << ch;
+    bool flip = __atomic_load_n(&chinfo->flip, __ATOMIC_ACQUIRE);
     if (!wav.stop_current)
     {
-      while ((_play_channel_bits.load() & chmask) && (chinfo->wavinfo[chinfo->flip].repeat))
+      while ((_play_channel_bits.load() & chmask) && (__atomic_load_n(&chinfo->wavinfo[flip].repeat, __ATOMIC_ACQUIRE)))
       {
-        if (chinfo->wavinfo[!chinfo->flip].repeat == ~0u) { return false; }
+        if (__atomic_load_n(&chinfo->wavinfo[!flip].repeat, __ATOMIC_ACQUIRE) == ~0u) { return false; }
 #if !defined (SDL_h_)
         xSemaphoreTake(_task_semaphore, 1);
 #else
         SDL_Delay(1);
 #endif
+        flip = __atomic_load_n(&chinfo->flip, __ATOMIC_ACQUIRE);
       }
     }
-    chinfo->wavinfo[chinfo->flip] = wav;
+    chinfo->wavinfo[flip].assign(wav);
     _play_channel_bits.fetch_or(chmask);
 
 #if !defined (SDL_h_)
@@ -1037,7 +1074,7 @@ label_continue_sample:
 
   bool Speaker_Class::_play_raw(const void* data, size_t array_len, bool flg_16bit, bool flg_signed, float sample_rate, bool flg_stereo, uint32_t repeat_count, int channel, bool stop_current_sound, bool no_clear_index)
   {
-    if (!begin() || (_task_handle == nullptr)) { return true; }
+    if (!begin() || (_task_handle == nullptr)) { return false; }
     if (array_len == 0 || data == nullptr) { return true; }
     size_t ch = (size_t)channel;
     if (ch >= sound_channel_max)

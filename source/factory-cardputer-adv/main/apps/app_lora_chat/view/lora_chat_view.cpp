@@ -21,7 +21,7 @@ void LoraChatView::update()
 void LoraChatView::render_lora_config_panel()
 {
     GetHAL().canvas.fillRect(0, 0, GetHAL().canvas.width(), LORA_CONFIG_PANEL_HEIGHT, THEME_COLOR_BG);
-    GetHAL().canvas.setFont(&fonts::Font0);
+    GetHAL().canvas.setFont(FONT_BASIC);
     GetHAL().canvas.setTextSize(1);
     GetHAL().canvas.setTextColor((uint32_t)(0xFFFFFF));
     GetHAL().canvas.setTextDatum(textdatum_t::middle_left);
@@ -30,20 +30,20 @@ void LoraChatView::render_lora_config_panel()
     std::string buffer;
 
     GetHAL().canvas.fillRect(2, 5, 3, 4, brick_color);
-    buffer = fmt::format("Freq:{:.0f}MHz", CapLoRa868::lora_config::ferq);
+    buffer = fmt::format("频率:{:.0f}兆赫", CapLoRa868::lora_config::ferq);
     GetHAL().canvas.drawString(buffer.c_str(), 9, 7);
 
-    GetHAL().canvas.fillRect(81, 5, 3, 4, brick_color);
-    buffer = fmt::format("BW:{:.0f}", CapLoRa868::lora_config::bw);
-    GetHAL().canvas.drawString(buffer.c_str(), 88, 7);
+    GetHAL().canvas.fillRect(101, 5, 3, 4, brick_color);
+    buffer = fmt::format("带宽:{:.0f}千赫", CapLoRa868::lora_config::bw);
+    GetHAL().canvas.drawString(buffer.c_str(), 108, 7);
 
-    GetHAL().canvas.fillRect(132, 5, 3, 4, brick_color);
-    buffer = fmt::format("SF:{}", CapLoRa868::lora_config::sf);
-    GetHAL().canvas.drawString(buffer.c_str(), 139, 7);
+    GetHAL().canvas.fillRect(2, 19, 3, 4, brick_color);
+    buffer = fmt::format("扩频因子:{}", CapLoRa868::lora_config::sf);
+    GetHAL().canvas.drawString(buffer.c_str(), 9, 21);
 
-    GetHAL().canvas.fillRect(170, 5, 3, 4, brick_color);
-    buffer = fmt::format("CR:{}", CapLoRa868::lora_config::cr);
-    GetHAL().canvas.drawString(buffer.c_str(), 177, 7);
+    GetHAL().canvas.fillRect(101, 19, 3, 4, brick_color);
+    buffer = fmt::format("编码率:4/{}", CapLoRa868::lora_config::cr);
+    GetHAL().canvas.drawString(buffer.c_str(), 108, 21);
 
     GetHAL().canvas.setTextDatum(textdatum_t::top_left);
     GetHAL().canvas.setFont(FONT_REPL);
@@ -73,12 +73,19 @@ void LoraChatView::render_input_panel()
     GetHAL().canvas.setCursor(5, LORA_CONFIG_PANEL_HEIGHT);
     GetHAL().canvas.setTextSize(1);
 
-    std::string display_text = ">>> " + _input_buffer;
-    if (_cursor_state) {
-        display_text += "_";
-    } else {
-        display_text += " ";
+    const std::string prefix = ">>> ";
+    const std::string cursor = _cursor_state ? "_" : " ";
+    std::string visible_input = _input_buffer;
+    bool trimmed = false;
+    const int available_width = GetHAL().canvas.width() - 10;
+    while (!visible_input.empty() &&
+           GetHAL().canvas.textWidth((prefix + (trimmed ? "…" : "") + visible_input + cursor).c_str()) > available_width) {
+        size_t next = 1;
+        while (next < visible_input.size() && (static_cast<unsigned char>(visible_input[next]) & 0xc0) == 0x80) ++next;
+        visible_input.erase(0, next);
+        trimmed = true;
     }
+    const std::string display_text = prefix + (trimmed ? "…" : "") + visible_input + cursor;
 
     GetHAL().canvas.print(display_text.c_str());
 
@@ -103,7 +110,7 @@ void LoraChatView::render_gps_broadcast_panel()
     GetHAL().canvas.setCursor(0, LORA_CONFIG_PANEL_HEIGHT);
 
     GetHAL().canvas.setTextColor(TFT_WHITE);
-    GetHAL().canvas.print("Device ID: ");
+    GetHAL().canvas.print("设备编号: ");
 
     GetHAL().canvas.setTextColor(TFT_GREENYELLOW);
     GetHAL().canvas.print(_device_id.c_str());
@@ -129,15 +136,15 @@ void LoraChatView::render_chat_interface()
 
     GetHAL().canvas.setTextColor(TFT_DARKGRAY);
     if (_is_gps_mode) {
-        GetHAL().canvas.println("Start broadcasting GPS\nlocation...");
+        GetHAL().canvas.println("正在广播 GPS 定位...");
     } else {
-        GetHAL().canvas.print("Chat ready...\nSend \"");
+        GetHAL().canvas.print("电台聊天已就绪\n输入 \"");
 
         GetHAL().canvas.setTextColor((uint32_t)(0x7FD5CF));
         GetHAL().canvas.print("gps");
 
         GetHAL().canvas.setTextColor(TFT_DARKGRAY);
-        GetHAL().canvas.println("\" to broadcast\nlocation");
+        GetHAL().canvas.println("\" 并按 Enter\n广播 GPS 位置");
     }
 
     render_input_panel();

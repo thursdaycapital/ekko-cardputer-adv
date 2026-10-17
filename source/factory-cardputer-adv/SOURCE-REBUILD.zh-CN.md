@@ -1,52 +1,45 @@
-# 原厂菜单部分：固定源码与重建说明
+# 原厂 v1.7.0：源码、修改与重新链接
 
-这份目录是 M5Stack Cardputer ADV UserDemo 的适配源码，负责原厂应用、`EkkoStudio` 入口、共享 Wi-Fi 和北京时间。它不是 Ekko 的 Arduino 应用，也不是完整 8 MiB 安装镜像。只在 work 中准备，尚未发布、未向设备写入。
+这份目录对应发布的 `factory-ekko-v1.7.0-ac` 应用，包含应用、板级驱动、字体、测试、完整依赖源码、构建配置及 IRremoteESP8266 协议适配。它负责原厂菜单及 EkkoStudio 入口；EkkoStudio 是另一套独立应用，源码见相邻的 `../ekko-cardputer-adv/`。
 
-## 固定来源
+## 固定来源与保留材料
 
-- 项目：`https://github.com/m5stack/M5Cardputer-UserDemo.git`，`CardputerADV` 基线 `b549eac0a3c65bc108186c276b8fac0a214aaa4e`。
-- 原基线的 18 个 tracked 文件改动见 `UPSTREAM-CHANGES.patch`；新增原厂 Ekko 应用、共享存储、诊断和测试已直接包含。
-- 依赖源码直接包含在 `components/`、`managed_components/`，各自许可保留，具体版本/提交见 `SOURCE-PROVENANCE.json` 和 `dependencies.lock`。
-- ESP-IDF **5.4.2**，提交 `f5c3654a1c2d2a01f7f67def7a0dc48e691f63c0`，SDK/工具链不包含在此目录，使用官方安装。不能用候选 Ekko 的 Arduino/ESP-IDF 4.4.7 工具链代替。
-- 此副本不含 `.git`；**不要运行原始 README 的 `fetch_repos.py`**。它会对已包含的无 Git 元数据依赖尝试 `git fetch`，而且 `repos.json` 是 tag 名；本副本的完整固定依赖源码已齐全。需要从网上重新获取时，应按 `SOURCE-PROVENANCE.json` 的完整 commit 核对，而不只依赖可变 tag。
+- 原厂基线：`m5stack/M5Cardputer-UserDemo` 的 CardputerADV 分支，提交 `b549eac0a3c65bc108186c276b8fac0a214aaa4e`。完整修改后的源码直接在本目录；旧版的 18 文件补丁不代表 v1.7.0 的完整改动。
+- SDK：ESP-IDF **5.4.2**，提交 `f5c3654a1c2d2a01f7f67def7a0dc48e691f63c0`，由官方仓库安装，包括 esp32s3 工具链和匹配的 Python 环境。本包不附 SDK 或主机工具链。
+- `components/` 是已经保存的依赖源码。基线标签为 M5GFX 0.2.15、M5Unified 0.2.10、mooncake v2.2.0、mooncake_log v1.3.0、smooth_ui_toolkit v2.4.0。M5Unified 有本地音频生命周期及队列修补，完整修改版与 `patches/m5unified-audio-lifecycle.patch` 均保留；不要用同标签原版覆盖。
+- `managed_components/` 完整保留；版本和组件哈希以 `dependencies.lock` 为准。保留 `sdkconfig`、`sdkconfig.defaults`、`partitions.csv` 和全部 CMake 文件。
+- `main/apps/app_remote/ac_protocol.h` 是 LGPL-2.1-only 的可修改便携库。来源固定为 IRremoteESP8266 提交 `1e2f0f3ef0a93cbf2a8ddb2e95130f8f4c584b3f`，原始参考、许可证全文和 SHA 在 `third_party/irremoteesp8266-reference/`。
+- 保留文件内原始署名及 `fonts/fusion-pixel/` 的 OFL、efont 条款与来源。发行包根 `LICENSE` 对应 Ekko 的 BSL 条款，不替代原厂文件及各依赖的许可证；完整许可集合见发行包根 `licenses/` 和 `THIRD_PARTY_NOTICES.md`。
 
-## 标准构建
+此发布副本不含 `.git`。**不要执行 `python3 fetch_repos.py`**：它会对已经包含、没有 Git 元数据的依赖调用 `git fetch`；重新获取依赖也可能丢失本地音频修补。本目录的依赖已齐全。
 
-先安装/激活上述官方 ESP-IDF 5.4.2 的 esp32s3 工具链与其 Python 虚拟环境，然后在本目录执行：
+## 构建与修改
+
+先安装并激活上述官方 ESP-IDF 5.4.2 及其 esp32s3 工具链。在本目录执行：
 
 ```sh
 . /path/to/esp-idf-v5.4.2/export.sh
-idf.py build
+idf.py -B build-relinked build
 ```
 
-本机系统 Python 为 3.14，已有 IDF 环境为 3.12，因此本次实际采用以下环境后运行标准构建；其他电脑应换成本机 SDK/工具路径，不能照抄绝对路径：
+可以修改 `ac_protocol.h`、TinyGPS++ 或其他可修改库，然后使用同一命令重新编译和链接整个应用；配套应用源码也已提供。新的 ELF、map 和 app 位于 `build-relinked/`。无需使用预编译的原厂 app，项目未增加禁止为调试库修改而逆向分析、重新链接或替换库的限制。各文件原有许可条件继续适用。
+
+普通 SDK/工具依赖在首次安装时需要联网；这不是完整的离线工具链包。路径、编译时刻、ELF 哈希和文档修改会影响重建信息，不承诺重建得到逐字节相同的发布镜像。发布说明和协议头日期注释在验收后补充，已验收的 app 没有重新构建或改写；素材及 SDK 示例的发布脱敏另见发行包根的隐私与验证说明。
+
+可在本目录运行配套主机回归：
 
 ```sh
-export IDF_PATH=<WORKSPACE>/work/esp-idf-v5.4.2
-export IDF_TOOLS_PATH=<WORKSPACE>/work/idf542-tools
-export IDF_PYTHON_ENV_PATH="$IDF_TOOLS_PATH/python_env/idf5.4_py3.12_env"
-. "$IDF_PYTHON_ENV_PATH/bin/activate"
-. "$IDF_PATH/export.sh"
-idf.py -B <WORKSPACE>/work/ekko-stock-compat-20261017/factory-release-build build
+python3 tests/run_ac_protocol_tests.py
+python3 tests/run_app_remote_tests.py
+python3 tests/run_keyboard_tests.py
 ```
 
-这里使用干净的独立 build 目录完成全量构建，不复用原工程旧 object。`sdkconfig` 是不含运行时凭据的完整编译配置，刻意保留以固定开关；`sdkconfig.defaults` 是原工程最小配置。编译包含时间/ELF 哈希，路径/构建时刻改变后不承诺 app SHA 逐字节相同；构建可成功与可重现相同二进制是两件事。
+协议回归提取实际固定上游函数，逐段比较完整波形；UI/键盘回归编译实际应用或驱动并使用硬件替身。它们不能代替实体发射波形、空调响应、LCD、SD 或听音验收。
 
-## 双固件组装边界
+## 双固件与验收边界
 
-`cardputer-adv.bin` 是 factory app，写入地址 `0x340000`，容量上限 `0x400000`。其分区表与 Ekko 一致：`nvs 0x9000/0x5000`、`otadata 0xe000/0x2000`、`app0 0x10000/0x330000`、`factory 0x340000/0x400000`、`spiffs 0x740000/0xc0000`。
+重建的 `build-relinked/cardputer-adv.bin` 只属于 `factory@0x340000`，分区容量为 `0x400000`。Ekko 属于 `app0@0x10000`，容量 `0x330000`；NVS 为 `0x9000/0x5000`，OTA 为 `0xe000/0x2000`，SPIFFS 为 `0x740000/0xc0000`。以发行包的安装教程选择首刷或保留设置的更新流程。
 
-**不要直接执行这里的 `idf.py flash` 或生成的整套 `flash_args`。** 它们包含 ESP-IDF 5.4.2 bootloader 和 OTA 初始选择，不是历史双固件组合。完整包将使用 Ekko/PIO 公开可重建的 IDF 4.4.7 bootloader，再独立组装已核对的分区与两应用。禁止把私有设备 flash/NVS 拷贝进通用镜像；新设备与已安装设备的升级/保留设置流程还需分别验收。
+**不要直接执行此工程的 `idf.py flash` 或整套 `flash_args`。** 它们还包含 SDK 5.4.2 启动器、分区表和 OTA 初始数据，不是既有双固件的应用更新步骤。发行包首次安装整机镜像使用单独核对的公共输入组装，见 `../../evidence/assembly-inputs.json`；没有使用私人 flash/NVS 备份。
 
-## 源码已确认的接口
-
-- `main/apps/app_ekko/app_ekko.cpp` 菜单名固定为 `EkkoStudio`；选中不自动进入，按 Enter 后验证 app0 地址/大小、`arduino-lib-builder` 描述与完整 ESP image，保存设置后重启。
-- 共享 `cardputer/ekko_wifi_v1` 是固定 104 字节独立协议；本版与候选 Ekko 的 `SharedWifiConfig.h` 逐字节相同。只在真正连接成功后单 blob/单 commit 保存；损坏记录不会默默回退至旧凭据。驱动本身使用 RAM storage，不共享跨 SDK 私有 Wi-Fi blob。
-- 原厂开机只自动连接已保存网络一次；失败保留配置。此原厂界面的 Wi-Fi 意外掉线不会持续重连，ESP-NOW 例程主动断网后也不自动抢占恢复。
-- `TZ=CST-8`、`localtime_r` 显示北京时间。默认字体是原厂 `fonts::efontCN_16`、字号 1（16 像素）。
-- 原厂 G0 返回原厂菜单；Ekko 里的 Esc 返回由候选固件的 `FactoryFirmware.cpp`/`returnToFactoryMenu()` 实现，不在本目录里冒称已验证。
-- 本轮只做源码、主机测试和构建；没有 USB、刷写、LCD/键盘/音频验收。历史设备确认仅保存在原目录旧记录，不覆盖新候选的实机需求。
-
-## 许可边界
-
-已有各依赖许可与嵌入声明已保留。上游工程根目录未提供单独 LICENSE，部分自有文件标 MIT SPDX，但 PikaScript/字体等导入代码必须分别核查，不能将整个包概括成 MIT。此材料不作最终分发许可已清理完毕的声明。
+发布 app 为 3,029,536 字节，SHA-256 `d9eb27301696f863041f420a4a2cb76500c54b437414e9823dffce257e71db51`。主机测试、烧录读回与用户实测分别保存在 `../../evidence/factory-ac-v1.7.0/`。调温、风速、上下摆风和退出重进保留设置已有用户确认；其他模式、额外动作与断电后保留尚未逐项验收。完整空白 NVS 首次开机组合尚未实机验证，不能用构建、合并镜像检查或历史运行替代。

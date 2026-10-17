@@ -4,6 +4,8 @@
 #include "NativeEnvelope.h"
 #include "ChatBrowser.h"
 #include "ChatStatus.h"
+#include "UiLocalization.h"
+#include "FusionWebFont.h"
 #include "EkkoPixelFont12.h"
 #include "FactoryFirmware.h"
 #include "SharedWifiConfig.h"
@@ -11,6 +13,7 @@
 #include "WifiRecovery.h"
 #include "McuReauth.h"
 #include "NativeTlsTrust.h"
+#include "AudioByteRing.h"
 #include <mbedtls/sha256.h>
 #include <mbedtls/base64.h>
 #include <HTTPClient.h>
@@ -30,7 +33,7 @@
 
 namespace {
 #ifndef HERMES_MCU_FIRMWARE_VERSION
-#define HERMES_MCU_FIRMWARE_VERSION "cardputer-adv-v8.2.4.1-fusion12"
+#define HERMES_MCU_FIRMWARE_VERSION "cardputer-adv-v8.3.0-zh-fusion"
 #endif
 #ifndef HERMES_MCU_FIRMWARE_MANIFEST_PATH
 #define HERMES_MCU_FIRMWARE_MANIFEST_PATH "/api/studio/mcu/firmware/cardputer-adv/manifest"
@@ -111,7 +114,9 @@ constexpr uint32_t kMcuAudioDrainMaxMs = 650;
 constexpr uint32_t kMcuAudioTailSilenceMs = 120;
 constexpr size_t kMcuAdpcmHeaderBytes = 20;
 constexpr size_t kMcuAdpcmReadChunkBytes = 256;
-constexpr size_t kMcuAdpcmOutputFrames = 256;
+constexpr size_t kMcuAdpcmOutputFrames = 512;
+constexpr size_t kMcuAdpcmReceiveBytes = 16 * 1024;
+constexpr uint32_t kMcuAdpcmPrebufferMs = 1250;
 constexpr uint32_t kBootDebounceMs = 80;
 constexpr uint32_t kBootInputArmDelayMs = 2500;
 constexpr uint32_t kBootLongPressMs = 360;
@@ -171,6 +176,18 @@ WiFiClientSecure mcuAudioSecureClient;
 U8G2_SSD1306_128X64_NONAME_F_HW_I2C oledTextRenderer(U8G2_R0, U8X8_PIN_NONE);
 uint8_t mcuAdpcmInputBuffer[kMcuAdpcmReadChunkBytes];
 int16_t mcuAdpcmStereoBuffer[kMcuAdpcmOutputFrames * 2];
+static_assert(sizeof(mcuAdpcmStereoBuffer) == 2048, "Match the owned speaker source slot");
+struct AdpcmReceiveReport {
+  uint32_t bufferBytes = 0, expectedBytes = 0, receivedBytes = 0;
+  uint32_t prebufferBytes = 0, prebufferMs = 0, playbackMs = 0;
+  uint32_t emptyPolls = 0, maxNetworkWaitMs = 0, taskStackMinFree = 0;
+  uint32_t inputWaitMs = 0, maxInputWaitMs = 0;
+  uint32_t heapAfterHttp = 0, largestAfterHttp = 0, heapWithReceiver = 0;
+  uint32_t heapMinPlayback = 0, largestMinPlayback = 0, maxPollUs = 0;
+  bool complete = false;
+  const char* result = "idle";
+};
+AdpcmReceiveReport lastAdpcmReceive;
 bool wifiReady = false;
 bool setupApMode = false;
 bool oledFound = false;
@@ -182,6 +199,14 @@ bool mcuSocketConnected = false;
 bool mcuSocketNamespaceReady = false;
 bool restartPending = false;
 bool audioBusy = false;
+// Main-task ownership spans connection, prefill, playback and reconnect. Socket
+// callbacks can clear/enqueue while yielding, but cannot reenter the TLS owner.
+bool audioUrlInProgress = false;
+bool audioUrlCancelled = false;
+struct AudioUrlScope {
+  AudioUrlScope() { audioUrlInProgress = true; audioUrlCancelled = false; }
+  ~AudioUrlScope() { audioUrlInProgress = false; audioUrlCancelled = false; }
+};
 bool paEnabled = false;
 bool i2sReady = false;
 bool es8311Found = false;
@@ -246,8 +271,8 @@ uint32_t batteryVoltageMv = 0;
 uint8_t oledProgress = 0;
 uint8_t batteryLevelPercent = 0;
 uint8_t oledAddress = kDefaultOledAddr;
-String oledTitle = "BOOT";
-String oledHint = "starting";
+String oledTitle = "启动中";
+String oledHint = "正在初始化";
 int lastMcuLoginCode = 0;
 String lastMcuLoginDetail;
 String selectedProfile;
@@ -365,6 +390,7 @@ void cancelMcuReauth();
 bool mcuReauthBlocksSocket();
 native_reauth::Target currentMcuReauthTarget();
 void setChatNotice(const String& notice);
+String userFacingDetail(const String& detail, const char* fallback = "请求失败，请在电脑端查看详情");
 void noteMcuActivity();
 void tickIdlePowerSave();
 void tickListeningMode();
@@ -433,10 +459,17 @@ OledMode oledMode = OledMode::Boot;
 
 String fitOledText(String value, size_t maxLen) {
   value.trim();
-  value.toUpperCase();
-  if (value.length() <= maxLen) return value;
-  if (maxLen <= 1) return value.substring(0, maxLen);
-  return value.substring(0, maxLen - 1) + F(".");
+  // Count UTF-8 scalars so Chinese labels never end in a partial character.
+  size_t offset = 0, count = 0, prefix = 0;
+  while (offset < value.length() && count < maxLen) {
+    prefix = offset;
+    const uint8_t lead = static_cast<uint8_t>(value[offset]);
+    const size_t bytes = lead < 0x80 ? 1 : (lead & 0xE0) == 0xC0 ? 2 : (lead & 0xF0) == 0xE0 ? 3 : 4;
+    offset = min(offset + bytes, value.length());
+    ++count;
+  }
+  if (offset == value.length()) return value;
+  return maxLen == 0 ? String() : value.substring(0, prefix) + F("…");
 }
 
 uint8_t clampUiValue(uint32_t value, uint8_t ceiling) {
@@ -595,63 +628,18 @@ void oledDrawSoftBox(int x, int y, int w, int h, int radius, bool on = true) {
   }
 }
 
-const uint8_t *glyph5x7(char c) {
-  static const uint8_t blank[5] = {0, 0, 0, 0, 0};
-  static const uint8_t dash[5] = {0x08, 0x08, 0x08, 0x08, 0x08};
-  static const uint8_t dot[5] = {0x00, 0x60, 0x60, 0x00, 0x00};
-  static const uint8_t slash[5] = {0x20, 0x10, 0x08, 0x04, 0x02};
-  static const uint8_t colon[5] = {0x00, 0x36, 0x36, 0x00, 0x00};
-  static const uint8_t digits[10][5] = {
-      {0x3E, 0x51, 0x49, 0x45, 0x3E}, {0x00, 0x42, 0x7F, 0x40, 0x00},
-      {0x42, 0x61, 0x51, 0x49, 0x46}, {0x21, 0x41, 0x45, 0x4B, 0x31},
-      {0x18, 0x14, 0x12, 0x7F, 0x10}, {0x27, 0x45, 0x45, 0x45, 0x39},
-      {0x3C, 0x4A, 0x49, 0x49, 0x30}, {0x01, 0x71, 0x09, 0x05, 0x03},
-      {0x36, 0x49, 0x49, 0x49, 0x36}, {0x06, 0x49, 0x49, 0x29, 0x1E},
-  };
-  static const uint8_t letters[26][5] = {
-      {0x7E, 0x11, 0x11, 0x11, 0x7E}, {0x7F, 0x49, 0x49, 0x49, 0x36},
-      {0x3E, 0x41, 0x41, 0x41, 0x22}, {0x7F, 0x41, 0x41, 0x22, 0x1C},
-      {0x7F, 0x49, 0x49, 0x49, 0x41}, {0x7F, 0x09, 0x09, 0x09, 0x01},
-      {0x3E, 0x41, 0x49, 0x49, 0x7A}, {0x7F, 0x08, 0x08, 0x08, 0x7F},
-      {0x00, 0x41, 0x7F, 0x41, 0x00}, {0x20, 0x40, 0x41, 0x3F, 0x01},
-      {0x7F, 0x08, 0x14, 0x22, 0x41}, {0x7F, 0x40, 0x40, 0x40, 0x40},
-      {0x7F, 0x02, 0x0C, 0x02, 0x7F}, {0x7F, 0x04, 0x08, 0x10, 0x7F},
-      {0x3E, 0x41, 0x41, 0x41, 0x3E}, {0x7F, 0x09, 0x09, 0x09, 0x06},
-      {0x3E, 0x41, 0x51, 0x21, 0x5E}, {0x7F, 0x09, 0x19, 0x29, 0x46},
-      {0x46, 0x49, 0x49, 0x49, 0x31}, {0x01, 0x01, 0x7F, 0x01, 0x01},
-      {0x3F, 0x40, 0x40, 0x40, 0x3F}, {0x1F, 0x20, 0x40, 0x20, 0x1F},
-      {0x3F, 0x40, 0x38, 0x40, 0x3F}, {0x63, 0x14, 0x08, 0x14, 0x63},
-      {0x07, 0x08, 0x70, 0x08, 0x07}, {0x61, 0x51, 0x49, 0x45, 0x43},
-  };
-  if (c >= 'a' && c <= 'z') c -= 32;
-  if (c >= '0' && c <= '9') return digits[c - '0'];
-  if (c >= 'A' && c <= 'Z') return letters[c - 'A'];
-  if (c == '-') return dash;
-  if (c == '.') return dot;
-  if (c == '/') return slash;
-  if (c == ':') return colon;
-  return blank;
+void oledDrawText(int x, int y, const String &text, uint8_t = 1) {
+  // Legacy RAM text uses the same native 12px Fusion data as the LCD.
+  oledTextRenderer.setFont(ekko_pixel_font::kData);
+  oledTextRenderer.setFontMode(1);
+  oledTextRenderer.setDrawColor(1);
+  oledTextRenderer.setFontPosBaseline();
+  oledTextRenderer.drawUTF8(x, y + ekko_pixel_font::kBaseline, text.c_str());
 }
 
-void oledDrawChar(int x, int y, char c, uint8_t scale = 1) {
-  const uint8_t *glyph = glyph5x7(c);
-  for (uint8_t col = 0; col < 5; ++col) {
-    for (uint8_t row = 0; row < 7; ++row) {
-      if (glyph[col] & (1 << row)) {
-        oledDrawBox(x + col * scale, y + row * scale, scale, scale);
-      }
-    }
-  }
-}
-
-void oledDrawText(int x, int y, const String &text, uint8_t scale = 1) {
-  for (size_t i = 0; i < text.length(); ++i) {
-    oledDrawChar(x + i * 6 * scale, y, text[i], scale);
-  }
-}
-
-int oledTextWidth(const String &text, uint8_t scale) {
-  return text.length() == 0 ? 0 : static_cast<int>(text.length()) * 6 * scale - scale;
+int oledTextWidth(const String &text, uint8_t) {
+  oledTextRenderer.setFont(ekko_pixel_font::kData);
+  return oledTextRenderer.getUTF8Width(text.c_str());
 }
 
 void oledDrawCenteredText(int y, const String &text, uint8_t scale = 1) {
@@ -661,7 +649,6 @@ void oledDrawCenteredText(int y, const String &text, uint8_t scale = 1) {
 
 void oledDrawScrollingText(int y, String text, uint8_t scale = 1) {
   text.trim();
-  text.toUpperCase();
   if (text.length() == 0) return;
 
   int width = oledTextWidth(text, scale);
@@ -829,16 +816,7 @@ void drawEye(int x, int y, bool blink, bool thinking, bool error) {
 }
 
 String interactionStatusLabel() {
-  if (mcuInteractionStatus == F("transcribing")) return F("STT");
-  if (mcuInteractionStatus == F("thinking")) return F("THINK");
-  if (mcuInteractionStatus == F("clearing")) return F("CLEAR");
-  if (mcuInteractionStatus == F("tool")) return F("TOOL");
-  if (mcuInteractionStatus == F("speaking")) return F("SPEAK");
-  if (mcuInteractionStatus == F("completed")) return F("DONE");
-  if (mcuInteractionStatus == F("failed")) return F("FAILED");
-  if (mcuInteractionStatus == F("aborted")) return F("ABORT");
-  if (mcuInteractionStatus == F("listening")) return F("LISTEN");
-  return F("MCU");
+  return String(native_ui::interactionLabel(mcuInteractionStatus.c_str()));
 }
 
 void drawInteractionFrame() {
@@ -851,12 +829,13 @@ void drawInteractionFrame() {
   } else {
     oledDrawCenteredText(17, fitOledText(title, 12), 2);
 
-    String detail = mcuInteractionText;
+    String detail = mcuInteractionStatus == F("failed") ? userFacingDetail(mcuInteractionText) : mcuInteractionText;
+    if (detail.startsWith(F("SESSION CLEAR"))) detail = F("会话已清空");
     if (mcuInteractionStatus == F("tool") && detail.length() == 0) {
       detail = mcuToolName;
       if (mcuToolStatus.length() > 0) {
         detail += F(" ");
-        detail += mcuToolStatus;
+        detail += native_ui::statusLabel(mcuToolStatus.c_str());
       }
     }
     if (detail.length() > 20 || mcuInteractionStatus == F("failed")) {
@@ -867,7 +846,7 @@ void drawInteractionFrame() {
   }
 
   if (!mcuAudioPlaying) {
-    String queue = String(F("QUEUE ")) + mcuAudioCount;
+    String queue = String(F("队列 ")) + mcuAudioCount;
     oledDrawCenteredText(55, queue, 1);
   }
 }
@@ -913,7 +892,7 @@ bool oledFlushPages(uint8_t, uint8_t) {
   conversationView.synchronize(agentSelection, selectedProfile.c_str(),
                                cardputerChatAvailable(), agentSelectionError.length() != 0);
   String address = setupApMode ? String("192.168.4.1") :
-      (wifiReady ? WiFi.localIP().toString() + "/device" : String("Wi-Fi connecting"));
+      (wifiReady ? WiFi.localIP().toString() + "/device" : String("正在连接无线网络"));
   cardputerDraw(oledBuffer, mcuInteractionActive, agentSelection, conversationView, oledTitle,
                 oledHint, address, mcuSocketNamespaceReady, agentSelectionError,
                 chatModel, nativeChatStatusLabel(), chatNotice, chatBottomOffset,
@@ -979,15 +958,16 @@ void refreshOled(bool force = false) {
 
 void setOledStatus(OledMode mode, const String &title, const String &hint, uint8_t progress = 0) {
   noteMcuActivity();
-  String nextTitle = fitOledText(title, 10);
-  String nextHint = fitOledText(hint, 20);
+  String nextTitle = fitOledText(native_ui::statusLabel(title.c_str()), 10);
+  String nextHint = fitOledText(hint.startsWith(F("AUTO ")) ? String(F("自动监听 ")) + hint.substring(5) :
+      String(native_ui::statusLabel(hint.c_str())), 20);
   oledMode = mode;
   oledTitle = nextTitle;
   oledHint = nextHint;
   oledProgress = progress > 100 ? 100 : progress;
   oledStatusReturnAtMs = 0;
-  bool isHomeStatus = nextTitle == F("IP") ||
-                      (listeningModeEnabled && nextTitle == F("LISTEN") && nextHint.startsWith(F("AUTO ")));
+  bool isHomeStatus = title == F("IP") ||
+                      (listeningModeEnabled && title == F("LISTEN") && hint.startsWith(F("AUTO ")));
   if (!isHomeStatus && wifiReady && WiFi.status() == WL_CONNECTED &&
       (mode == OledMode::Ready || mode == OledMode::Error)) {
     uint32_t delayMs = mode == OledMode::Error ? kOledErrorReturnDelayMs : kOledSuccessReturnDelayMs;
@@ -1354,10 +1334,24 @@ String compactDetail(String value) {
   return value;
 }
 
+String userFacingDetail(const String& detail, const char* fallback) {
+  if (!detail.length()) return String(fallback);
+  if (const char* label = native_ui::knownDetailLabel(detail.c_str())) return String(label);
+  for (size_t i = 0; i < detail.length(); ++i) {
+    if (static_cast<uint8_t>(detail[i]) >= 0x80) {
+      String translated = detail;
+      translated.replace("Profile", "配置档");
+      return translated;
+    }
+  }
+  return String(fallback);
+}
+
 void rememberMcuLoginResult(int code, const String &detail) {
   lastMcuLoginCode = code;
   lastMcuLoginAtMs = millis();
   lastMcuLoginDetail = compactDetail(detail);
+  if (code < 200 || code >= 300) Serial.printf("MCU login failed code=%d detail=%s\n", code, lastMcuLoginDetail.c_str());
 }
 
 void clearLoginProfiles() {
@@ -1833,6 +1827,7 @@ void resetListeningMonitor() {
 }
 
 bool shouldInterruptAudioForVoice() {
+  if (audioUrlCancelled) return true;
   cardputerPoll();
   // Audio is pumped synchronously by the inherited transport. Drain edits
   // here as well, without consuming Esc/navigation or recursively playing.
@@ -2073,7 +2068,7 @@ String httpFailureDetail(int code, const String &body) {
 }
 
 String endpointLabel(const String &endpointKind, uint16_t httpPort) {
-  if (endpointKind == F("web")) return F("Web 端");
+  if (endpointKind == F("web")) return F("网页端");
   if (endpointKind == F("desktop")) return F("桌面端");
   return String(F("自定义端口 ")) + httpPort;
 }
@@ -2240,7 +2235,7 @@ String activeDeviceLabel() {
     if (isActiveLanDevice(lanDevices[i])) {
       return endpointLabel(lanDevices[i].endpointKind, lanDevices[i].httpPort) + F(" · ") +
              lanDeviceSourceLabel(lanDevices[i]) + F(" · ") + lanDevices[i].name + F(" · ") +
-             lanDevices[i].profile;
+             native_ui::profileLabel(lanDevices[i].profile.c_str());
     }
   }
   return activeDeviceKey;
@@ -2859,14 +2854,15 @@ String pageStart(const String &title) {
                          "<title>")) +
                 escapeHtml(title) +
                 F("</title><style>"
+                  "@font-face{font-family:CardputerPixel;src:url('/font/fusion-pixel.woff2') format('woff2');font-style:normal;font-weight:400;font-display:swap}"
                   ":root{--bg:#fafafa;--surface:#fff;--line:#e0e0e0;--ink:#1a1a1a;--muted:#666;--accent:#333;--warn:#b4432d;--good:#2f7d4c}"
-                  "*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:'Avenir Next','PingFang SC','Noto Sans CJK SC',sans-serif;letter-spacing:0}"
+                  "*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:CardputerPixel,'PingFang SC','Noto Sans CJK SC',sans-serif;letter-spacing:0}"
 	                  "main{max-width:760px;margin:auto;padding:28px 18px 40px}.panel,.card{background:var(--surface);border:1px solid var(--line);border-radius:6px}.panel{padding:22px}.card{padding:16px;margin-top:12px}"
-	                  "h1{font-size:clamp(28px,5vw,44px);line-height:1.05;margin:0 0 10px}h2{font-size:18px;margin:0 0 10px}.lead,.hint{color:var(--muted);line-height:1.6}.lead{font-size:15px;margin:0 0 18px}.hint{font-size:12px;margin:0}.meta{font:12px/1.4 ui-monospace,'SFMono-Regular',Consolas,monospace;color:var(--muted);word-break:break-all}"
-	                  "form{display:grid;gap:12px}.field{display:grid;gap:7px}.label{font-size:12px;color:var(--muted)}input,select{width:100%;min-height:42px;border:1px solid var(--line);border-radius:6px;background:#fff;padding:10px 11px;font:14px/1.2 ui-monospace,'SFMono-Regular',Consolas,monospace;color:var(--ink)}select{appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);background-position:calc(100% - 18px) 18px,calc(100% - 13px) 18px;background-size:5px 5px,5px 5px;background-repeat:no-repeat;padding-right:34px}input:focus,select:focus{outline:2px solid #cfcfcf;outline-offset:1px}"
-	                  ".choice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.choice{position:relative;display:block}.choice input{position:absolute;opacity:0;pointer-events:none}.choice-card{height:100%;min-height:96px;border:1px solid var(--line);border-radius:6px;background:#fff;padding:14px 14px 14px 42px;display:grid;align-content:start;gap:6px;cursor:pointer;transition:border-color .15s,background .15s,box-shadow .15s}.choice-dot{position:absolute;left:14px;top:16px;width:16px;height:16px;border:1px solid #aaa;border-radius:50%;background:#fff}.choice-title{font:700 15px/1.2 'Avenir Next','PingFang SC','Noto Sans CJK SC',sans-serif}.choice-copy{font-size:12px;line-height:1.5;color:var(--muted)}.choice-meta{margin-top:2px;font:700 10px/1 ui-monospace,'SFMono-Regular',Consolas,monospace;color:#888;text-transform:uppercase}.choice input:checked+.choice-card{border-color:var(--accent);background:#f7f7f7;box-shadow:inset 0 0 0 1px var(--accent)}.choice input:checked+.choice-card .choice-dot{border-color:var(--accent);box-shadow:inset 0 0 0 4px #fff;background:var(--accent)}.choice input:focus+.choice-card{outline:2px solid #cfcfcf;outline-offset:1px}@media(max-width:560px){.choice-grid{grid-template-columns:1fr}.choice-card{min-height:84px}}"
-	                  ".tabs{display:flex;gap:8px;border-bottom:1px solid var(--line);margin:18px -22px 18px;padding:0 22px}.tab{border:1px solid var(--line);border-bottom:0;border-radius:6px 6px 0 0;background:#f4f4f4;min-height:38px;padding:10px 14px;font:600 13px/1 'Avenir Next','PingFang SC','Noto Sans CJK SC',sans-serif;color:inherit;text-decoration:none}.tab.active{background:var(--surface);position:relative;top:1px}.info-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.provision-code{margin-bottom:18px}.info-row{border:1px solid var(--line);border-radius:6px;padding:12px;min-width:0}.info-row span{display:block;color:var(--muted);font-size:12px;margin-bottom:7px}.info-row strong{display:block;font:600 14px/1.35 ui-monospace,'SFMono-Regular',Consolas,monospace;word-break:break-all}@media(max-width:560px){.info-grid{grid-template-columns:1fr}}"
-	                  ".btn{border:1px solid var(--line);background:var(--surface);border-radius:6px;min-height:38px;padding:9px 13px;font:600 13px/1 'Avenir Next','PingFang SC','Noto Sans CJK SC',sans-serif;color:inherit;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}.btn.warn{background:var(--warn);border-color:var(--warn);color:#fff}.btn-row{display:flex;gap:10px;flex-wrap:wrap}.ok{color:var(--good)}.bad{color:var(--warn)}"
+	                  "h1{font-size:clamp(28px,5vw,44px);line-height:1.05;margin:0 0 10px}h2{font-size:18px;margin:0 0 10px}.lead,.hint{color:var(--muted);line-height:1.6}.lead{font-size:15px;margin:0 0 18px}.hint{font-size:12px;margin:0}.meta{font:12px/1.4 CardputerPixel,'PingFang SC','Noto Sans CJK SC',sans-serif;color:var(--muted);word-break:break-all}"
+	                  "form{display:grid;gap:12px}.field{display:grid;gap:7px}.label{font-size:12px;color:var(--muted)}input,select{width:100%;min-height:42px;border:1px solid var(--line);border-radius:6px;background:#fff;padding:10px 11px;font:14px/1.2 CardputerPixel,'PingFang SC','Noto Sans CJK SC',sans-serif;color:var(--ink)}select{appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);background-position:calc(100% - 18px) 18px,calc(100% - 13px) 18px;background-size:5px 5px,5px 5px;background-repeat:no-repeat;padding-right:34px}input:focus,select:focus{outline:2px solid #cfcfcf;outline-offset:1px}"
+	                  ".choice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.choice{position:relative;display:block}.choice input{position:absolute;opacity:0;pointer-events:none}.choice-card{height:100%;min-height:96px;border:1px solid var(--line);border-radius:6px;background:#fff;padding:14px 14px 14px 42px;display:grid;align-content:start;gap:6px;cursor:pointer;transition:border-color .15s,background .15s,box-shadow .15s}.choice-dot{position:absolute;left:14px;top:16px;width:16px;height:16px;border:1px solid #aaa;border-radius:50%;background:#fff}.choice-title{font:700 15px/1.2 CardputerPixel,'PingFang SC','Noto Sans CJK SC',sans-serif}.choice-copy{font-size:12px;line-height:1.5;color:var(--muted)}.choice-meta{margin-top:2px;font:700 10px/1 CardputerPixel,'PingFang SC','Noto Sans CJK SC',sans-serif;color:#888;text-transform:uppercase}.choice input:checked+.choice-card{border-color:var(--accent);background:#f7f7f7;box-shadow:inset 0 0 0 1px var(--accent)}.choice input:checked+.choice-card .choice-dot{border-color:var(--accent);box-shadow:inset 0 0 0 4px #fff;background:var(--accent)}.choice input:focus+.choice-card{outline:2px solid #cfcfcf;outline-offset:1px}@media(max-width:560px){.choice-grid{grid-template-columns:1fr}.choice-card{min-height:84px}}"
+	                  ".tabs{display:flex;gap:8px;border-bottom:1px solid var(--line);margin:18px -22px 18px;padding:0 22px}.tab{border:1px solid var(--line);border-bottom:0;border-radius:6px 6px 0 0;background:#f4f4f4;min-height:38px;padding:10px 14px;font:600 13px/1 CardputerPixel,'PingFang SC','Noto Sans CJK SC',sans-serif;color:inherit;text-decoration:none}.tab.active{background:var(--surface);position:relative;top:1px}.info-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.provision-code{margin-bottom:18px}.info-row{border:1px solid var(--line);border-radius:6px;padding:12px;min-width:0}.info-row span{display:block;color:var(--muted);font-size:12px;margin-bottom:7px}.info-row strong{display:block;font:600 14px/1.35 CardputerPixel,'PingFang SC','Noto Sans CJK SC',sans-serif;word-break:break-all}@media(max-width:560px){.info-grid{grid-template-columns:1fr}}"
+	                  ".btn{border:1px solid var(--line);background:var(--surface);border-radius:6px;min-height:38px;padding:9px 13px;font:600 13px/1 CardputerPixel,'PingFang SC','Noto Sans CJK SC',sans-serif;color:inherit;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}.btn.warn{background:var(--warn);border-color:var(--warn);color:#fff}.btn-row{display:flex;gap:10px;flex-wrap:wrap}.ok{color:var(--good)}.bad{color:var(--warn)}"
 	                  "</style></head><body><main>");
   return html;
 }
@@ -2882,11 +2878,11 @@ void sendWifiPage() {
   }
 
   String html = pageStart(F("连接 Wi-Fi"));
-  html += F("<section class='panel'><p class='meta'>Ekko Studio ESP32-C3</p><h1>连接局域网 Wi-Fi</h1>");
+  html += F("<section class='panel'><p class='meta'>Ekko Studio · Cardputer ADV</p><h1>连接局域网 Wi-Fi</h1>");
   if (wifiReady) {
     html += F("<p class='lead ok'>当前已联网：");
     html += escapeHtml(WiFi.SSID());
-    html += F(" · IP ");
+    html += F(" · 地址 ");
     html += WiFi.localIP().toString();
     html += F("</p>");
   } else {
@@ -2901,7 +2897,7 @@ void sendWifiPage() {
 
   html += F("<form method='post' action='/wifi'>");
   if (scannedNetworkCount > 0) {
-    html += F("<div class='field'><span class='label'>SSID</span><select name='ssid'>");
+    html += F("<div class='field'><span class='label'>网络名称</span><select name='ssid'>");
     html += F("<option value=''>选择 Wi-Fi</option>");
     for (int i = 0; i < scannedNetworkCount; ++i) {
       html += F("<option value='");
@@ -2916,10 +2912,10 @@ void sendWifiPage() {
       html += F("</option>");
     }
     html += F("</select></div>");
-    html += F("<div class='field'><span class='label'>手动 SSID</span><input name='ssid_manual' autocomplete='off' value=''></div>");
+    html += F("<div class='field'><span class='label'>手动输入网络名称</span><input name='ssid_manual' autocomplete='off' value=''></div>");
   } else {
-    html += F("<p class='hint'>没有扫到附近 Wi-Fi，请手动输入 SSID。</p>");
-    html += F("<div class='field'><span class='label'>SSID</span><input name='ssid' autocomplete='off' required value=''></div>");
+    html += F("<p class='hint'>没有扫到附近 Wi-Fi，请手动输入网络名称。</p>");
+    html += F("<div class='field'><span class='label'>网络名称</span><input name='ssid' autocomplete='off' required value=''></div>");
   }
   html += F("<div class='field'><span class='label'>密码</span><input name='pass' type='password' autocomplete='current-password' placeholder='开放网络可留空'></div>");
   html += F("<div class='btn-row'><button class='btn primary' type='submit'>保存并连接</button></div>");
@@ -2939,62 +2935,62 @@ void sendWifiPage() {
 
 void sendStatusPage() {
   String html = pageStart(F("设备已联网"));
-  html += F("<section class='panel'><p class='meta'>Ekko Studio ESP32-C3</p><h1>设备</h1><p class='lead'>");
+  html += F("<section class='panel'><p class='meta'>Ekko Studio · Cardputer ADV</p><h1>设备</h1><p class='lead'>");
   html += escapeHtml(WiFi.SSID());
-  html += F(" · IP ");
+  html += F(" · 地址 ");
   html += WiFi.localIP().toString();
-  html += F("</p><nav class='tabs'><a class='tab active' href='/device'>设备</a><a class='tab' href='/ota'>OTA</a></nav>");
+  html += F("</p><nav class='tabs'><a class='tab active' href='/device'>设备</a><a class='tab' href='/ota'>固件更新</a></nav>");
 
   html += F("<h2>本机</h2><div class='info-grid'>");
   appendInfoRow(html, F("Wi-Fi"), WiFi.SSID());
-  appendInfoRow(html, F("IP"), WiFi.localIP().toString());
-  appendInfoRow(html, F("MAC"), WiFi.macAddress());
+  appendInfoRow(html, F("网络地址"), WiFi.localIP().toString());
+  appendInfoRow(html, F("硬件地址"), WiFi.macAddress());
   appendInfoRow(html, F("设备码"), mcuDeviceCode());
   appendInfoRow(html, F("固件版本"), String(kMcuFirmwareVersion));
   appendInfoRow(html, F("信号"), String(WiFi.RSSI()) + F(" dBm"));
   appendInfoRow(html, F("运行时间"), uptimeText());
-  appendInfoRow(html, F("可用内存"), String(ESP.getFreeHeap()) + F(" bytes"));
+  appendInfoRow(html, F("可用内存"), String(ESP.getFreeHeap()) + F(" 字节"));
   appendInfoRow(html, F("服务连接"), mcuSocketStateLabel());
   if (mcuSocketRelayUrl.length() > 0) {
     appendInfoRow(html, F("远程转发"), mcuSocketRelayUrl);
   }
-  appendInfoRow(html, F("音频硬件"), String(es8311Ready && i2sReady ? F("就绪") : F("未就绪")) + F(" · ") + lastAudioDetail);
+  appendInfoRow(html, F("音频硬件"), String(es8311Ready && i2sReady ? F("就绪") : F("未就绪")) + F(" · ") + userFacingDetail(lastAudioDetail, "音频状态已更新"));
   appendInfoRow(html, F("音量"), String(outputVolumePercent) + F("%"));
   appendInfoRow(html, F("语音模式"), listeningModeEnabled ? F("自动监听") : F("按住说话"));
-  appendInfoRow(html, F("Agent"), mcuAgentRuntimeLabel());
+  appendInfoRow(html, F("智能体"), mcuAgentRuntimeLabel());
   appendInfoRow(html, F("自动待机"), idlePowerSaveMinutes == 0 ? String(F("关闭")) : String(idlePowerSaveMinutes) + F(" 分钟"));
   if (selectedProfile.length() > 0) {
-    appendInfoRow(html, F("最近 Profile"), selectedProfile);
+    appendInfoRow(html, F("最近配置档"), native_ui::profileLabel(selectedProfile.c_str()));
   }
   String activeLabel = activeDeviceLabel();
   if (activeLabel.length() > 0) {
     appendInfoRow(html, F("当前交互"), activeLabel);
   }
-  appendInfoRow(html, F("MCU 状态"), mcuInteractionStatus);
+  appendInfoRow(html, F("设备状态"), interactionStatusLabel());
   appendInfoRow(html, F("音频队列"), String(mcuAudioPlaying ? F("播放中 · ") : F("")) + String(mcuAudioCount));
   html += F("</div>");
 
   html += F("</section>");
 
-  html += F("<section class='card'><h2>Agent</h2><form method='post' action='/device/agent'><select name='runtime'>");
+  html += F("<section class='card'><h2>智能体</h2><form method='post' action='/device/agent'><select name='runtime'>");
   for (size_t i = 0; i < kNativeAgentCount; ++i) {
     html += F("<option value='"); html += kNativeAgents[i].id; html += F("'");
     if (i == agentSelection.active) html += F(" selected");
     html += F(">"); html += kNativeAgents[i].name; html += F("</option>");
   }
-  html += F("</select><button class='btn primary' type='submit'>选择 Agent</button></form><p class='hint'>选择页左 , 或上 ; 选前一个，右 / 或下 . 选后一个，无需 Fn。OK 进入对话，Esc 返回。对话页直接打字、OK发送；Fn+空格或顶部G0长按说话，松开发送；Fn+方向编辑或翻记录。后台确认路由不代表 Agent 已安装或已完成登录。</p></section>");
+  html += F("</select><button class='btn primary' type='submit'>选择智能体</button></form><p class='hint'>选择页左 , 或上 ; 选前一个，右 / 或下 . 选后一个，无需 Fn。OK 进入对话，Esc 返回。对话页直接打字、OK发送；Fn+空格或顶部G0长按说话，松开发送；Fn+方向编辑或翻记录。后台确认路由不代表智能体已安装或已完成登录。</p></section>");
 
   html += F("<section class='card'><h2>语音模式</h2><form method='post' action='/device/voice-mode'>");
   html += F("<div class='choice-grid'><label class='choice'><input type='radio' name='mode' value='push'");
   if (!listeningModeEnabled) html += F(" checked");
   html += F("><span class='choice-card'><span class='choice-dot'></span><span class='choice-title'>按住说话</span>"
             "<span class='choice-copy'>保持现有交互：长按录音，松开后提交。</span>"
-            "<span class='choice-meta'>PUSH TO TALK</span></span></label>");
+            "<span class='choice-meta'>按住录音 · 松开发送</span></span></label>");
   html += F("<label class='choice'><input type='radio' name='mode' value='listen'");
   if (listeningModeEnabled) html += F(" checked");
   html += F("><span class='choice-card'><span class='choice-dot'></span><span class='choice-title'>自动监听</span>"
             "<span class='choice-copy'>空闲时仅在设备本地检测人声，检测到说话后才上传，静音后自动提交。</span>"
-            "<span class='choice-meta'>LOCAL VAD</span></span></label></div>");
+            "<span class='choice-meta'>本地人声检测</span></span></label></div>");
   html += F("<div class='btn-row'><button class='btn primary' type='submit'>保存语音模式</button></div>");
   html += F("<p class='hint'>运行、工具调用和语音播放期间不会监听；单击停止、双击清空和长按说话保持不变。</p></form></section>");
 
@@ -3007,7 +3003,7 @@ void sendStatusPage() {
   html += idlePowerSaveMinutes;
   html += F("' oninput=\"document.getElementById('idle-output').textContent=this.value+' 分钟'\"></div>");
   html += F("<div class='btn-row'><button class='btn primary' type='submit'>保存待机时间</button></div>");
-  html += F("<p class='hint'>默认 3 分钟；设为 0 可关闭自动待机。待机不会断开 Wi-Fi、登录或 Socket。</p></form></section>");
+  html += F("<p class='hint'>默认 3 分钟；设为 0 可关闭自动待机。待机会保持无线网络、登录和后台连接。</p></form></section>");
 
   html += F("<section class='card'><h2>手动添加机器</h2>");
   html += F("<form method='post' action='/device/manual'><div class='field'><span class='label'>地址</span>");
@@ -3056,25 +3052,25 @@ void sendStatusPage() {
       html += F("</strong><p class='hint'>");
       html += escapeHtml(lanDeviceDisplayUrl(device));
       if (device.profile.length() > 0) {
-        html += F("<br>Profile ");
-        html += escapeHtml(device.profile);
+        html += F("<br>配置档 ");
+        html += escapeHtml(native_ui::profileLabel(device.profile.c_str()));
       }
       html += F("<br>响应 ");
       html += device.responseMs;
       html += F(" ms");
       if (device.webVersion.length() > 0) {
-        html += F(" · Web ");
+        html += F(" · 网页端 ");
         html += escapeHtml(device.webVersion);
       }
       if (device.agentVersion.length() > 0) {
-        html += F(" · Agent ");
+        html += F(" · 智能体 ");
         html += escapeHtml(cleanAgentVersion(device.agentVersion));
       }
       html += F("</p><div class='btn-row'>");
       if (isCurrent && device.loggedIn) {
         html += F("<a class='btn' href='/device/profile?i=");
         html += i;
-        html += F("'>切换 Profile</a>");
+        html += F("'>切换配置档</a>");
         html += F("<a class='btn primary' href='/device/logout?i=");
         html += i;
         html += F("'>退出登录</a>");
@@ -3103,14 +3099,14 @@ String otaNextCheckText() {
 
 void sendOtaPage(const String &notice = "") {
   String html = pageStart(F("Cardputer ADV 固件"));
-  html += F("<section class='card'><h2>ESP32-S3 / Cardputer ADV</h2><p>此硬件通过 USB 安装专用固件；已隔离 ESP32-C3 OTA，避免刷入不兼容镜像。</p><a href='/device'>返回设备管理</a></section>");
+  html += F("<section class='card'><h2>ESP32-S3 / Cardputer ADV</h2><p>此硬件通过 USB 安装专用固件；已禁用 ESP32-C3 在线更新，避免刷入不兼容镜像。</p><a href='/device'>返回设备管理</a></section>");
   html += escapeHtml(notice); html += pageEnd();
   server.send(200, F("text/html; charset=utf-8"), html);
 }
 
 void sendOtaUpdatingPage() {
-  String html = pageStart(F("OTA"));
-  html += F("<section class='panel'><p class='meta'>Ekko Studio ESP32-C3</p><h1>OTA</h1><p class='lead'>固件正在更新</p>");
+  String html = pageStart(F("固件更新"));
+  html += F("<section class='panel'><p class='meta'>Ekko Studio · Cardputer ADV</p><h1>固件更新</h1><p class='lead'>固件正在更新</p>");
   html += F("<p class='hint'>固件正在下载并写入，请勿关闭单片机或断开电源。设备会自动重启，页面检测到恢复后会弹窗提示完成。</p>");
   html += F("<div class='info-grid'>");
   appendInfoRow(html, F("固件版本"), String(kMcuFirmwareVersion));
@@ -3207,8 +3203,9 @@ void addManualDevice() {
   String error;
   if (!fetchManualDeviceInfo(url, &error)) {
     String html = pageStart(F("添加失败"));
-    html += F("<section class='panel'><p class='meta'>MANUAL DEVICE</p><h1>添加失败</h1><p class='lead bad'>");
-    html += escapeHtml(error.length() > 0 ? error : String(F("无法获取机器信息")));
+    html += F("<section class='panel'><p class='meta'>手动添加机器</p><h1>添加失败</h1><p class='lead bad'>");
+    Serial.printf("Manual device info failed: %s\n", error.c_str());
+    html += escapeHtml(userFacingDetail(error, "无法获取机器信息，请检查设备地址和网络"));
     html += F("</p><div class='btn-row'><a class='btn primary' href='/device'>返回设备</a></div></section>");
     html += pageEnd();
     server.send(502, F("text/html; charset=utf-8"), html);
@@ -3717,7 +3714,7 @@ void sendMcuLoginPage() {
   }
 
   String html = pageStart(F("登录设备"));
-  html += F("<section class='panel'><p class='meta'>MCU LOGIN</p><h1>登录 ");
+  html += F("<section class='panel'><p class='meta'>设备登录</p><h1>登录 ");
   html += escapeHtml(endpointLabel(device->endpointKind, device->httpPort));
   html += F("</h1><p class='lead'>");
   html += escapeHtml(device->name);
@@ -3736,28 +3733,28 @@ void sendMcuLoginPage() {
 }
 
 void sendProfilePage() {
-  String html = pageStart(F("选择 Profile"));
-  html += F("<section class='panel'><p class='meta'>MCU LOGIN</p><h1>选择 Profile</h1>");
+  String html = pageStart(F("选择配置档"));
+  html += F("<section class='panel'><p class='meta'>设备登录</p><h1>选择配置档</h1>");
   if (lastMcuLoginCode >= 200 && lastMcuLoginCode < 300) {
     html += F("<p class='lead ok'>登录成功</p>");
   } else {
     html += F("<p class='lead bad'>登录失败：");
-    html += escapeHtml(lastMcuLoginDetail);
+    html += escapeHtml(userFacingDetail(lastMcuLoginDetail, "登录失败，请检查账号、设备授权和网络"));
     html += F("</p>");
   }
 
   if (loginProfileCount > 0) {
-    html += F("<form method='post' action='/device/profile'><div class='field'><span class='label'>Profile</span><select name='profile' required>");
+    html += F("<form method='post' action='/device/profile'><div class='field'><span class='label'>配置档</span><select name='profile' required>");
     for (int i = 0; i < loginProfileCount; ++i) {
       html += F("<option value='");
       html += escapeHtml(loginProfiles[i]);
       html += F("'>");
-      html += escapeHtml(loginProfiles[i]);
+      html += escapeHtml(native_ui::profileLabel(loginProfiles[i].c_str()));
       html += F("</option>");
     }
-    html += F("</select></div><div class='btn-row'><button class='btn primary' type='submit'>使用这个 Profile</button><a class='btn' href='/device'>返回设备</a></div></form>");
+    html += F("</select></div><div class='btn-row'><button class='btn primary' type='submit'>使用这个配置档</button><a class='btn' href='/device'>返回设备</a></div></form>");
   } else {
-    html += F("<p class='hint'>没有拿到可选 profile。</p><div class='btn-row'><a class='btn primary' href='/device'>返回设备</a></div>");
+    html += F("<p class='hint'>未获取到可选配置档。</p><div class='btn-row'><a class='btn primary' href='/device'>返回设备</a></div>");
   }
   html += pageEnd();
   server.send(200, F("text/html; charset=utf-8"), html);
@@ -3777,7 +3774,7 @@ void switchProfilePage() {
   }
   if (loginProfileCount == 0) {
     String html = pageStart(F("需要重新登录"));
-    html += F("<section class='panel'><p class='meta'>MCU LOGIN</p><h1>需要重新登录</h1><p class='lead'>Profile 列表没有缓存，请重新登录后切换。</p><div class='btn-row'><a class='btn primary' href='/device/login?i=");
+    html += F("<section class='panel'><p class='meta'>设备登录</p><h1>需要重新登录</h1><p class='lead'>配置档列表没有缓存，请重新登录后切换。</p><div class='btn-row'><a class='btn primary' href='/device/login?i=");
     html += index;
     html += F("'>重新登录</a><a class='btn' href='/device'>返回设备</a></div></section>");
     html += pageEnd();
@@ -3819,7 +3816,7 @@ void handleMcuLogin() {
 void saveProfile() {
   if (remoteLoginStage.active) {
     finishAutoRemoteLogin(false);
-    server.send(409, F("text/plain; charset=utf-8"), F("连接正在切换，请重新选择设备和 Profile"));
+    server.send(409, F("text/plain; charset=utf-8"), F("连接正在切换，请重新选择设备和配置档"));
     return;
   }
   String requestedProfile = server.arg(F("profile"));
@@ -3835,7 +3832,7 @@ void saveProfile() {
     }
   }
   if (!device) {
-    server.send(400, F("text/plain; charset=utf-8"), F("设备或 Profile 无效，请重新选择"));
+    server.send(400, F("text/plain; charset=utf-8"), F("设备或配置档无效，请重新选择"));
     return;
   }
   cancelMcuReauth();
@@ -3846,9 +3843,9 @@ void saveProfile() {
   device->loggedIn = true;
   device->remoteLogin = pendingProfileRemoteSource;
   connectMcuSocketClient();
-  String html = pageStart(F("Profile 已选择"));
-  html += F("<section class='panel'><p class='meta'>MCU LOGIN</p><h1>Profile 已选择</h1><p class='lead ok'>");
-  html += escapeHtml(selectedProfile);
+  String html = pageStart(F("配置档已选择"));
+  html += F("<section class='panel'><p class='meta'>设备登录</p><h1>配置档已选择</h1><p class='lead ok'>");
+  html += escapeHtml(native_ui::profileLabel(selectedProfile.c_str()));
   html += F("</p><div class='btn-row'><a class='btn primary' href='/device'>返回设备</a></div></section>");
   html += pageEnd();
   server.send(200, F("text/html; charset=utf-8"), html);
@@ -4066,12 +4063,8 @@ bool chatDraftMatchesSent(const NativeChatInput* draft) {
 }
 
 String chatFailureNotice(const String& error) {
-  String lower = error; lower.toLowerCase();
-  if (lower.indexOf("429") >= 0 || lower.indexOf("resource-exhausted") >= 0 ||
-      lower.indexOf("too many requests") >= 0 || lower.indexOf("rate limit") >= 0 ||
-      lower.indexOf("quota") >= 0)
-    return String("模型额度或限流，请查看电脑端");
-  return String("请求失败：") + error;
+  Serial.printf("MCU interaction error: %s\n", error.c_str());
+  return userFacingDetail(error);
 }
 
 bool requestChatHistory(const char* messageId, uint32_t offset, const char* beforeMessageId,
@@ -4292,7 +4285,7 @@ void handleNativeChatFrame(const String& type, JsonDocument& doc) {
       if (chatDraftMatchesSent(draft)) draft->clear();
       chatSendUnknown = false; ++chatAcceptedCount; setChatNotice("");
       chatLiveRequest = request;
-    } else setChatNotice(String("发送失败：") + (doc["error"] | "unknown"));
+    } else setChatNotice(chatFailureNotice(doc["error"] | "unknown"));
     chatPendingSend = ""; ++chatUiRevision; oledDirty = true; return;
   }
   if (type == "mcu.chat.error") {
@@ -4480,7 +4473,7 @@ bool prebufferPcmStream(WiFiClient *stream, int *remaining, size_t frameBytes, u
   while (*lengthOut < target) {
     int available = stream->available();
     if (available <= 0) {
-      if (!stream->connected() && *remaining < 0) break;
+      if (!stream->connected()) break;
       if (millis() - startedAt > kMcuAudioPrebufferTimeoutMs) break;
       delay(10);
       yield();
@@ -4489,7 +4482,7 @@ bool prebufferPcmStream(WiFiClient *stream, int *remaining, size_t frameBytes, u
 
     size_t toRead = min(static_cast<size_t>(available), target - *lengthOut);
     if (*remaining > 0) toRead = min(toRead, static_cast<size_t>(*remaining));
-    int bytesRead = stream->readBytes(buffer + *lengthOut, toRead);
+    int bytesRead = stream->read(buffer + *lengthOut, toRead);
     if (bytesRead <= 0) continue;
     *lengthOut += static_cast<size_t>(bytesRead);
     if (*remaining > 0) *remaining -= bytesRead;
@@ -4572,7 +4565,7 @@ bool playPcmStereoStream(WiFiClient *stream, int contentLength, uint32_t sampleR
 
       size_t toRead = min(static_cast<size_t>(available), kChunkBytes);
       if (remaining > 0) toRead = min(toRead, static_cast<size_t>(remaining));
-      bytesRead = stream->readBytes(buffer + pendingBytes, toRead);
+      bytesRead = stream->read(buffer + pendingBytes, toRead);
       if (bytesRead <= 0) continue;
     }
 
@@ -4705,7 +4698,7 @@ bool playPcmMonoStream(WiFiClient *stream, int contentLength, uint32_t sampleRat
 
       size_t toRead = min(static_cast<size_t>(available), kInputChunkBytes);
       if (remaining > 0) toRead = min(toRead, static_cast<size_t>(remaining));
-      bytesRead = stream->readBytes(input + pendingBytes, toRead);
+      bytesRead = stream->read(input + pendingBytes, toRead);
       if (bytesRead <= 0) continue;
     }
 
@@ -4916,10 +4909,19 @@ bool flushAdpcmStereo(int16_t *stereo, size_t *frames, uint32_t *playedBytes, ui
     markMcuInteraction(mcuInteractionId, F("failed"), lastAudioDetail);
     return false;
   }
+  const uint32_t heap = ESP.getFreeHeap(), largest = ESP.getMaxAllocHeap();
+  lastAdpcmReceive.heapMinPlayback = lastAdpcmReceive.heapMinPlayback ?
+      min(lastAdpcmReceive.heapMinPlayback, heap) : heap;
+  lastAdpcmReceive.largestMinPlayback = lastAdpcmReceive.largestMinPlayback ?
+      min(lastAdpcmReceive.largestMinPlayback, largest) : largest;
   *playedBytes += written;
   updateMcuAudioPlaybackProgress(*playedBytes, sampleRate);
   *frames = 0;
   mcuSocketLoop();
+  if (audioUrlCancelled) {
+    lastAudioDetail = F("audio cancelled by queue clear");
+    return false;
+  }
   refreshMcuSubtitlePage();
   yield();
   return true;
@@ -4942,13 +4944,14 @@ bool readExactAudioBytes(WiFiClient *stream, uint8_t *buffer, size_t length, int
   size_t offset = 0;
   uint32_t idleStarted = millis();
   while (offset < length) {
+    if (*remaining == 0) break;
     if (shouldInterruptAudioForVoice()) {
       lastAudioDetail = F("audio interrupted by listen");
       return false;
     }
     int available = stream->available();
     if (available <= 0) {
-      if (!stream->connected() && *remaining < 0) break;
+      if (!stream->connected()) break;
       if (millis() - idleStarted > kMcuAudioHttpTimeoutMs) {
         lastAudioDetail = F("audio header timed out");
         return false;
@@ -4961,31 +4964,119 @@ bool readExactAudioBytes(WiFiClient *stream, uint8_t *buffer, size_t length, int
     }
     size_t toRead = min(static_cast<size_t>(available), length - offset);
     if (*remaining > 0) toRead = min(toRead, static_cast<size_t>(*remaining));
-    int bytesRead = stream->readBytes(buffer + offset, toRead);
+    int bytesRead = stream->read(buffer + offset, toRead);
     if (bytesRead <= 0) continue;
     offset += static_cast<size_t>(bytesRead);
     if (*remaining > 0) *remaining -= bytesRead;
     idleStarted = millis();
     yield();
   }
+  if (offset != length) lastAudioDetail = F("truncated adpcm header");
   return offset == length;
 }
 
-bool playAdpcmStream(WiFiClient *stream, int contentLength, uint32_t fallbackSampleRate) {
+// TLS sockets are nonblocking in the pinned SDK. Prefetch in bounded slices on
+// the existing loop task; the Speaker SDK independently consumes owned PCM.
+// This avoids a second TLS task/stack competing with TCP and speaker memory.
+class AdpcmDownload {
+ public:
+  enum Result : uint32_t { Running, Complete, Cancelled, Truncated, TimedOut };
+  AdpcmDownload(WiFiClient* stream, uint8_t* storage, size_t capacity, uint32_t expected)
+      : ring(storage, capacity), stream_(stream), expected_(expected) {}
+  ~AdpcmDownload() {
+    cancel();
+    lastAdpcmReceive.receivedBytes = received_;
+    lastAdpcmReceive.emptyPolls = emptyPolls_;
+    lastAdpcmReceive.maxNetworkWaitMs = maxWaitMs_;
+    lastAdpcmReceive.maxPollUs = maxPollUs_;
+  }
+  bool start() {
+    if (!ring.valid() || !stream_) return false;
+    started_ = true;
+    progressAt_ = millis();
+    if (!expected_) result_ = Complete;
+    return true;
+  }
+  Result result() const { return result_; }
+  bool done() const { return result_ != Running; }
+  const char* resultName() const {
+    switch (result_) {
+      case Complete: return "complete";
+      case Cancelled: return "cancelled";
+      case Truncated: return "truncated";
+      case TimedOut: return "timed_out";
+      default: return "running";
+    }
+  }
+  void cancel() { if (started_ && !done()) result_ = Cancelled; }
+  void poll() {
+    if (!started_ || done()) return;
+    const uint32_t beganUs = micros();
+    uint8_t block[1024]; // Never alias the decoder's active input buffer.
+    for (unsigned chunk = 0; chunk < 4 && !done(); ++chunk) {
+      const size_t space = ring.freeSpace();
+      if (!space) { progressAt_ = millis(); break; }
+      const int available = stream_->available();
+      if (available > 0) {
+        const size_t count = min(min(space, sizeof(block)),
+            min(static_cast<size_t>(available), static_cast<size_t>(expected_ - received_)));
+        const int countRead = stream_->read(block, count);
+        if (countRead > 0) {
+          const uint32_t now = millis();
+          maxWaitMs_ = max(maxWaitMs_, now - progressAt_);
+          const size_t published = ring.write(block, static_cast<size_t>(countRead));
+          if (published != static_cast<size_t>(countRead)) { result_ = Truncated; break; }
+          received_ += static_cast<uint32_t>(countRead);
+          progressAt_ = now;
+          if (received_ == expected_) result_ = Complete;
+          // The budget bounds calls between TLS operations, not one decrypt.
+          if (micros() - beganUs >= 2000) break;
+          continue;
+        }
+      }
+      maxWaitMs_ = max(maxWaitMs_, static_cast<uint32_t>(millis() - progressAt_));
+      if (!stream_->connected()) { result_ = Truncated; break; }
+      ++emptyPolls_;
+      if (millis() - progressAt_ >= kMcuAudioHttpTimeoutMs) result_ = TimedOut;
+      break;
+    }
+    maxPollUs_ = max(maxPollUs_, static_cast<uint32_t>(micros() - beganUs));
+  }
+  AudioByteRing ring;
+
+ private:
+  WiFiClient* stream_;
+  const uint32_t expected_;
+  uint32_t received_ = 0, emptyPolls_ = 0, maxWaitMs_ = 0, progressAt_ = 0, maxPollUs_ = 0;
+  Result result_ = Running;
+  bool started_ = false;
+};
+
+bool playAdpcmStream(WiFiClient *stream, int contentLength, uint32_t fallbackSampleRate,
+                     uint8_t* receiveBuffer, size_t receiveCapacity) {
+  lastAdpcmReceive = AdpcmReceiveReport();
   if (!stream || audioBusy || !i2sReady || !es8311Ready) {
     lastAudioDetail = F("adpcm stream is not ready");
+    lastAdpcmReceive.result = "not_ready";
     markMcuInteraction(mcuInteractionId, F("failed"), lastAudioDetail);
     return false;
   }
 
   int remaining = contentLength;
+  if (contentLength >= 0 && contentLength < static_cast<int>(kMcuAdpcmHeaderBytes)) {
+    lastAudioDetail = F("truncated adpcm header");
+    lastAdpcmReceive.result = "bad_length";
+    return false;
+  }
   uint8_t header[kMcuAdpcmHeaderBytes] = {};
   if (!readExactAudioBytes(stream, header, kMcuAdpcmHeaderBytes, &remaining)) {
-    markMcuInteraction(mcuInteractionId, F("failed"), lastAudioDetail.length() ? lastAudioDetail : String(F("bad adpcm header")));
+    lastAdpcmReceive.result = audioUrlCancelled || mcuVoiceAfterAudioInterrupt ||
+        mcuAudioStopOnlyAfterInterrupt || mcuSessionClearAfterAudioInterrupt ? "cancelled_header" : "header_failed";
     return false;
   }
   if (memcmp(header, "HADP", 4) != 0 || header[4] != 1 || header[5] != 1) {
     lastAudioDetail = F("bad adpcm header");
+    lastAdpcmReceive.result = "bad_header";
     Serial.printf("ADPCM bad header magic=%02x%02x%02x%02x version=%u channels=%u contentLength=%d heap=%lu\n",
                   header[0], header[1], header[2], header[3], header[4], header[5], contentLength,
                   static_cast<unsigned long>(ESP.getFreeHeap()));
@@ -4996,17 +5087,85 @@ bool playAdpcmStream(WiFiClient *stream, int contentLength, uint32_t fallbackSam
   uint32_t sampleRate = readLe32(header + 8);
   if (sampleRate == 0) sampleRate = fallbackSampleRate > 0 ? fallbackSampleRate : kMcuAudioDefaultSampleRate;
   uint32_t sampleCount = readLe32(header + 12);
-  if (sampleCount > 0) {
-    setMcuAudioTimelineFromFrames(sampleCount, sampleRate);
+  if (sampleRate < 8000 || sampleRate > 96000 || header[18] > 88) {
+    lastAudioDetail = F("invalid adpcm sample rate or index");
+    lastAdpcmReceive.result = "bad_header";
+    return false;
   }
+  // HADP declares its complete sample count even when HTTP length is unknown.
+  // One predictor sample is in the header; each payload byte holds two nibbles.
+  const uint32_t payloadBytes = sampleCount / 2;
+  if (contentLength >= 0 && static_cast<uint64_t>(contentLength) !=
+      static_cast<uint64_t>(kMcuAdpcmHeaderBytes) + payloadBytes) {
+    lastAudioDetail = F("adpcm HTTP length does not match samples");
+    lastAdpcmReceive.result = "bad_length";
+    return false;
+  }
+  if (!sampleCount) {
+    lastAudioDetail = F("empty adpcm audio");
+    lastAdpcmReceive.result = "empty";
+    return false;
+  }
+  if (shouldInterruptAudioForVoice()) {
+    lastAudioDetail = F("audio interrupted by listen");
+    lastAdpcmReceive.result = "cancelled_header";
+    return false;
+  }
+  setMcuAudioTimelineFromFrames(sampleCount, sampleRate);
   int predictor = static_cast<int16_t>(readLe16(header + 16));
   int index = header[18];
-  if (index < 0) index = 0;
-  if (index > 88) index = 88;
   Serial.printf("ADPCM start contentLength=%d remaining=%d rate=%lu samples=%lu predictor=%d index=%d heap=%lu\n",
                 contentLength, remaining, static_cast<unsigned long>(sampleRate),
                 static_cast<unsigned long>(sampleCount), predictor, index,
                 static_cast<unsigned long>(ESP.getFreeHeap()));
+
+  lastAdpcmReceive.expectedBytes = payloadBytes;
+  lastAdpcmReceive.bufferBytes = receiveCapacity;
+  lastAdpcmReceive.heapAfterHttp = ESP.getFreeHeap();
+  lastAdpcmReceive.largestAfterHttp = ESP.getMaxAllocHeap();
+  // Reserve the ring before TLS can fragment the heap. No receive task is
+  // allocated; retain headroom for the Speaker, TCP and normal UI work.
+  if (!receiveBuffer || !receiveCapacity) {
+    lastAudioDetail = F("audio receive buffer reservation failed");
+    lastAdpcmReceive.result = "buffer_alloc_failed";
+    return false;
+  }
+  if (ESP.getFreeHeap() < 16 * 1024) {
+    lastAudioDetail = F("insufficient heap for audio playback");
+    lastAdpcmReceive.result = "memory_budget";
+    return false;
+  }
+  AdpcmDownload receiver(stream, receiveBuffer, receiveCapacity, payloadBytes);
+  if (!receiver.start()) {
+    lastAudioDetail = F("audio receive buffer is invalid");
+    lastAdpcmReceive.result = "invalid_buffer";
+    return false;
+  }
+  lastAdpcmReceive.heapWithReceiver = ESP.getFreeHeap();
+  const size_t prebufferTarget = min(static_cast<size_t>(payloadBytes),
+      min(receiveCapacity, static_cast<size_t>(
+          static_cast<uint64_t>(sampleRate) * kMcuAdpcmPrebufferMs / 2000ULL)));
+  const uint32_t prebufferStarted = millis();
+  while (receiver.ring.available() < prebufferTarget && !receiver.done()) {
+    receiver.poll();
+    if (shouldInterruptAudioForVoice()) {
+      lastAudioDetail = F("audio interrupted by listen");
+      lastAdpcmReceive.result = "cancelled_prebuffer";
+      return false;
+    }
+    mcuSocketLoop();
+    vTaskDelay(1);
+  }
+  lastAdpcmReceive.prebufferBytes = receiver.ring.available();
+  lastAdpcmReceive.prebufferMs = millis() - prebufferStarted;
+  if (receiver.done() && receiver.result() != AdpcmDownload::Complete) {
+    lastAudioDetail = F("adpcm download ended before prebuffer was ready");
+    lastAdpcmReceive.result = receiver.resultName();
+    return false;
+  }
+  Serial.printf("ADPCM buffered bytes=%lu target=%u ms=%lu heap=%lu\n",
+      static_cast<unsigned long>(lastAdpcmReceive.prebufferBytes), static_cast<unsigned>(prebufferTarget),
+      static_cast<unsigned long>(lastAdpcmReceive.prebufferMs), static_cast<unsigned long>(ESP.getFreeHeap()));
 
   NativeAudioPlaybackScope playbackScope;
   audioBusy = true;
@@ -5020,56 +5179,60 @@ bool playAdpcmStream(WiFiClient *stream, int contentLength, uint32_t fallbackSam
   uint32_t streamBytes = kMcuAdpcmHeaderBytes;
   uint32_t playedBytes = 0;
   uint32_t decodedSamples = 0;
-  uint32_t idleStarted = millis();
+  const uint32_t playbackStarted = millis();
+  uint32_t inputWaitStarted = 0;
+  auto recordInputWait = [&]() {
+    if (!inputWaitStarted) return;
+    const uint32_t waitMs = millis() - inputWaitStarted;
+    lastAdpcmReceive.inputWaitMs += waitMs;
+    lastAdpcmReceive.maxInputWaitMs = max(lastAdpcmReceive.maxInputWaitMs, waitMs);
+    inputWaitStarted = 0;
+  };
 
   if (sampleCount > 0) {
     if (!pushAdpcmSample(static_cast<int16_t>(predictor), stereo, &frames, &playedBytes, sampleRate)) {
+      lastAdpcmReceive.result = audioUrlCancelled ? "cancelled_playback" : "write_failed";
       audioBusy = false;
       return false;
     }
     decodedSamples = 1;
   }
 
-  while ((remaining != 0) && (sampleCount == 0 || decodedSamples < sampleCount)) {
+  while (decodedSamples < sampleCount) {
     if (shouldInterruptAudioForVoice()) {
       lastAudioDetail = F("audio interrupted by listen");
+      lastAdpcmReceive.result = "cancelled_playback";
+      recordInputWait();
       audioBusy = false;
       return false;
     }
-    int available = stream->available();
-    if (available <= 0) {
-      if (!stream->connected() && remaining < 0) break;
-      if (millis() - idleStarted > kMcuAudioHttpTimeoutMs) {
-        lastAudioDetail = F("adpcm stream timed out");
+    receiver.poll();
+    // Observe completion before consuming the final published bytes.
+    const AdpcmDownload::Result receiveState = receiver.result();
+    const size_t bytesRead = receiver.ring.read(input, kMcuAdpcmReadChunkBytes);
+    if (!bytesRead) {
+      if (receiveState != AdpcmDownload::Running) {
+        lastAudioDetail = F("adpcm download truncated or timed out");
+        lastAdpcmReceive.result = receiver.resultName();
+        recordInputWait();
         audioBusy = false;
-        Serial.printf("ADPCM timeout remaining=%d streamBytes=%lu decoded=%lu heap=%lu\n",
-                      remaining, static_cast<unsigned long>(streamBytes),
-                      static_cast<unsigned long>(decodedSamples),
-                      static_cast<unsigned long>(ESP.getFreeHeap()));
-        markMcuInteraction(mcuInteractionId, F("failed"), lastAudioDetail);
         return false;
       }
-      delay(10);
-      mcuSocketLoop();
-      yield();
+      if (!inputWaitStarted) inputWaitStarted = millis();
+      vTaskDelay(1);
       continue;
     }
-
-    size_t toRead = min(static_cast<size_t>(available), kMcuAdpcmReadChunkBytes);
-    if (remaining > 0) toRead = min(toRead, static_cast<size_t>(remaining));
-    int bytesRead = stream->readBytes(input, toRead);
-    if (bytesRead <= 0) continue;
-    if (remaining > 0) remaining -= bytesRead;
+    recordInputWait();
     streamBytes += static_cast<uint32_t>(bytesRead);
-    idleStarted = millis();
 
-    for (int i = 0; i < bytesRead; ++i) {
+    for (size_t i = 0; i < bytesRead; ++i) {
       uint8_t byte = input[i];
       for (int half = 0; half < 2; ++half) {
         if (sampleCount > 0 && decodedSamples >= sampleCount) break;
         uint8_t nibble = half == 0 ? (byte & 0x0f) : (byte >> 4);
         int16_t sample = decodeImaAdpcmNibble(nibble, &predictor, &index);
         if (!pushAdpcmSample(sample, stereo, &frames, &playedBytes, sampleRate)) {
+          lastAdpcmReceive.result = audioUrlCancelled ? "cancelled_playback" : "write_failed";
           audioBusy = false;
           return false;
         }
@@ -5079,16 +5242,28 @@ bool playAdpcmStream(WiFiClient *stream, int contentLength, uint32_t fallbackSam
     yield();
   }
 
+  receiver.cancel();
+  if (receiver.result() != AdpcmDownload::Complete) {
+    lastAudioDetail = F("adpcm receive did not complete");
+    lastAdpcmReceive.result = receiver.resultName();
+    audioBusy = false;
+    return false;
+  }
   if (!flushAdpcmStereo(stereo, &frames, &playedBytes, sampleRate)) {
+    lastAdpcmReceive.result = audioUrlCancelled ? "cancelled_playback" : "write_failed";
     audioBusy = false;
     return false;
   }
   if (!drainI2sPlayback(playedBytes, 2, sampleRate)) {
+    lastAdpcmReceive.result = "drain_failed";
     audioBusy = false;
     markMcuInteraction(mcuInteractionId, F("failed"), lastAudioDetail);
     return false;
   }
   lastAudioAtMs = millis();
+  lastAdpcmReceive.playbackMs = millis() - playbackStarted;
+  lastAdpcmReceive.complete = true;
+  lastAdpcmReceive.result = "complete";
   lastAudioDetail = String(F("adpcm played bytes=")) + String(playedBytes) +
                     F(", stream bytes=") + String(streamBytes) +
                     F(", samples=") + String(decodedSamples) +
@@ -5158,6 +5333,8 @@ bool playRecordedWav(uint8_t *wav, size_t wavLen) {
 }
 
 bool playPcmUrl(const String &url, uint8_t channels, uint32_t sampleRate) {
+  if (audioUrlInProgress) return false;
+  AudioUrlScope urlScope;
   cardputerTickKeyClick(false);
   String scheme;
   String host;
@@ -5169,6 +5346,8 @@ bool playPcmUrl(const String &url, uint8_t channels, uint32_t sampleRate) {
     return false;
   }
 
+  std::unique_ptr<uint8_t[]> receiveStorage;
+  size_t receiveCapacity = 0;
   bool releasedSocketForAudio = false;
   auto releaseSocketForAudio = [&]() {
     if (scheme == F("https") && mcuSocketRelayUrl.length() > 0 && (wsReady || mcuSocketConnected)) {
@@ -5186,6 +5365,8 @@ bool playPcmUrl(const String &url, uint8_t channels, uint32_t sampleRate) {
     }
   };
   auto restoreSocketAfterAudio = [&]() {
+    // Every caller reaches this only after playAdpcmStream returned its reader.
+    receiveStorage.reset();
     if (!releasedSocketForAudio) return;
     Serial.printf("Audio HTTPS reconnecting Socket.IO after playback heap=%lu\n",
                   static_cast<unsigned long>(ESP.getFreeHeap()));
@@ -5196,6 +5377,15 @@ bool playPcmUrl(const String &url, uint8_t channels, uint32_t sampleRate) {
   releaseSocketForAudio();
   mcuAudioPlainClient.stop();
   mcuAudioSecureClient.stop();
+  Serial.printf("Audio buffer reserve before TLS heap=%lu largest=%lu\n",
+      static_cast<unsigned long>(ESP.getFreeHeap()), static_cast<unsigned long>(ESP.getMaxAllocHeap()));
+  for (size_t capacity = kMcuAdpcmReceiveBytes; capacity >= 8 * 1024; capacity /= 2) {
+    receiveStorage.reset(new (std::nothrow) uint8_t[capacity]);
+    if (receiveStorage) { receiveCapacity = capacity; break; }
+  }
+  Serial.printf("Audio buffer reserved bytes=%u heap=%lu largest=%lu\n",
+      static_cast<unsigned>(receiveCapacity), static_cast<unsigned long>(ESP.getFreeHeap()),
+      static_cast<unsigned long>(ESP.getMaxAllocHeap()));
   WiFiClient *client = &mcuAudioPlainClient;
   if (scheme == F("https")) {
     native_tls::configureTrust(mcuAudioSecureClient);
@@ -5213,6 +5403,7 @@ bool playPcmUrl(const String &url, uint8_t channels, uint32_t sampleRate) {
         static_cast<unsigned long>(millis() - downloadStarted));
     lastAudioDetail = String(F("cannot connect audio host ")) + host + F(":") + String(port);
     markMcuInteraction(mcuInteractionId, F("failed"), lastAudioDetail);
+    client->stop();
     restoreSocketAfterAudio();
     return false;
   }
@@ -5245,12 +5436,22 @@ bool playPcmUrl(const String &url, uint8_t channels, uint32_t sampleRate) {
   }
   uint32_t playbackRate = sampleRate > 0 ? sampleRate : kMcuAudioDefaultSampleRate;
   if (contentType.indexOf(F("ima-adpcm")) >= 0 || contentType.indexOf(F("adpcm")) >= 0) {
-    bool ok = playAdpcmStream(client, contentLength, playbackRate);
+    const String playbackInteraction = mcuCurrentAudio.interactionId;
+    const bool ok = playAdpcmStream(client, contentLength, playbackRate, receiveStorage.get(), receiveCapacity);
+    const String failureDetail = lastAudioDetail;
+    const bool cancelled = audioUrlCancelled || mcuVoiceAfterAudioInterrupt ||
+        mcuAudioStopOnlyAfterInterrupt || mcuSessionClearAfterAudioInterrupt;
     Serial.printf("Audio playback result format=adpcm ok=%d\n", ok ? 1 : 0);
-    client->stop();
+    client->stop(); // The cooperative reader has returned before TLS can be stopped.
     restoreSocketAfterAudio();
+    if (!ok && !cancelled) {
+      lastAudioDetail = failureDetail;
+      markMcuInteraction(playbackInteraction, F("failed"), failureDetail);
+      setChatNotice("语音播放失败，文字回复已保留");
+    }
     return ok;
   }
+  receiveStorage.reset(); // Non-ADPCM playback does not need the reserved ring.
   if (contentType.indexOf(F("mpeg")) >= 0 || contentType.indexOf(F("mp3")) >= 0) {
     lastAudioDetail = F("mp3 is not supported on MCU; send 24k PCM");
     markMcuInteraction(mcuInteractionId, F("failed"), lastAudioDetail);
@@ -5267,6 +5468,7 @@ bool playPcmUrl(const String &url, uint8_t channels, uint32_t sampleRate) {
 }
 
 void clearMcuAudioQueue() {
+  if (audioUrlInProgress) audioUrlCancelled = true;
   audioResumePending = false;
   audioResumeProfile = audioResumeDeviceKey = "";
   for (int i = 0; i < kMaxMcuAudioQueue; ++i) {
@@ -5376,7 +5578,7 @@ void startNextMcuAudio() {
   // A second HTTPS segment must wait for the first segment's native Agent ACK.
   // Otherwise its disconnect would overwrite the still-valid resume owner with
   // an unconfirmed selection and the late ACK could clear the remaining queue.
-  if (mcuAudioPlaying || mcuAudioCount <= 0 || audioResumePending ||
+  if (audioUrlInProgress || audioBusy || mcuAudioPlaying || mcuAudioCount <= 0 || audioResumePending ||
       mcuReauthAudioCleanupPending || mcuReauthBlocksSocket()) return;
   mcuCurrentAudio = mcuAudioQueue[mcuAudioHead];
   mcuAudioQueue[mcuAudioHead] = McuAudioSegment();
@@ -5748,7 +5950,7 @@ void enqueueMissingSttPrompt(const String &interactionId) {
   McuAudioSegment segment;
   segment.interactionId = interactionId.length() > 0 ? interactionId : String(F("missing-stt"));
   segment.segmentId = String(F("missing-stt-")) + millis();
-  segment.text = F("当前profile没有配置语音转文字，请配置后再使用哦");
+  segment.text = F("当前配置档没有配置语音转文字，请配置后再使用哦");
   segment.url = kMissingSttPromptPcmUrl;
   segment.mimeType = F("audio/x-pcm");
   segment.channels = 1;
@@ -6801,7 +7003,7 @@ void handleSocketIoText(const String &message) {
     if (action == native_reauth::NamespaceAction::RequireManual || action == native_reauth::NamespaceAction::RelayReplaced) {
       mcuReauthPolicy.requireManual(currentMcuReauthTarget());
       lastAudioDetail = F("设备或 Profile 被拒绝，请打开设备网页重新登录");
-      setChatNotice(lastAudioDetail);
+      setChatNotice(userFacingDetail(lastAudioDetail));
       setOledStatus(OledMode::Error, F("LOGIN"), F("OPEN /device"), 0);
       Serial.println(F("MCU namespace denied; manual login required, saved state preserved"));
     } else if (action == native_reauth::NamespaceAction::Reauthenticate && !staged && !mcuSocketReconnectBlocked) {
@@ -7143,10 +7345,10 @@ void connectMcuSocketClient() {
 void sendConnectSuccessPage(const String &ssid, const IPAddress &ip) {
   String target = deviceUrl(ip);
   String html = pageStart(F("Wi-Fi 已连接"));
-  html += F("<section class='panel'><p class='meta'>Ekko Studio ESP32-C3</p><h1>Wi-Fi 已连接</h1>");
+  html += F("<section class='panel'><p class='meta'>Ekko Studio · Cardputer ADV</p><h1>Wi-Fi 已连接</h1>");
   html += F("<p class='lead ok'>");
   html += escapeHtml(ssid);
-  html += F(" · IP ");
+  html += F(" · 地址 ");
   html += ip.toString();
   html += F("</p><p class='hint'>设备将自动重启并关闭配网热点，随后打开局域网地址。如果手机没有自动切回同一个 Wi-Fi，请手动切回后再打开。</p>");
   html += F("<div class='btn-row'><a class='btn primary' href='");
@@ -7163,10 +7365,10 @@ void sendConnectSuccessPage(const String &ssid, const IPAddress &ip) {
 
 void sendConnectFailedPage(const String &ssid) {
   String html = pageStart(F("Wi-Fi 连接失败"));
-  html += F("<section class='panel'><p class='meta'>Ekko Studio ESP32-C3</p><h1>Wi-Fi 连接失败</h1>");
+  html += F("<section class='panel'><p class='meta'>Ekko Studio · Cardputer ADV</p><h1>Wi-Fi 连接失败</h1>");
   html += F("<p class='lead bad'>没有连上 ");
   html += escapeHtml(ssid);
-  html += F("。请检查 SSID 和密码后重试。</p>");
+  html += F("。请检查网络名称和密码后重试。</p>");
   html += F("<div class='btn-row'><a class='btn primary' href='/wifi'>返回配网</a><a class='btn primary' href='/clear'>重新配置</a></div></section>");
   html += pageEnd();
   server.send(200, F("text/html; charset=utf-8"), html);
@@ -7213,7 +7415,7 @@ void saveWifi() {
   }
   String pass = server.arg(F("pass"));
   if (ssid.length() == 0) {
-    server.send(400, F("text/plain; charset=utf-8"), F("缺少 SSID"));
+    server.send(400, F("text/plain; charset=utf-8"), F("缺少网络名称"));
     return;
   }
 
@@ -7231,7 +7433,7 @@ void saveWifi() {
     if (sharedWifiSaveFailed) {
       restartPending = false;
       String html = pageStart(F("Wi-Fi 已连接，共享保存失败"));
-      html += F("<section class='panel'><h1>已联网，共享保存失败</h1><p>当前网络可用，但原厂菜单尚未保存这次配置。设备会保持当前状态，请重新提交，或返回原厂 SetWiFi 保存。</p><a class='btn' href='/wifi'>重新保存</a></section>");
+      html += F("<section class='panel'><h1>已联网，共享保存失败</h1><p>当前网络可用，但原厂菜单尚未保存这次配置。设备会保持当前状态，请重新提交，或返回原厂的无线网络设置保存。</p><a class='btn' href='/wifi'>重新保存</a></section>");
       html += pageEnd();
       server.send(507, F("text/html; charset=utf-8"), html);
       setOledStatus(OledMode::Error, F("WIFI"), F("SHARE SAVE ERROR"), 0);
@@ -7543,7 +7745,29 @@ void handleHealth() {
   json += F(",\"max_submit_gap_us\":"); json += audio.max_submit_gap_us;
   json += F(",\"write_timeouts\":"); json += audio.write_timeouts;
   json += F(",\"buffer_bytes\":"); json += audio.buffer_bytes;
+  json += F(",\"last_stream_source_empty\":"); json += audio.last_stream_source_empty;
+  json += F(",\"last_stream_max_gap_us\":"); json += audio.last_stream_max_gap_us;
+  json += F(",\"last_stream_queued\":"); json += audio.last_stream_queued;
   json += F("}");
+  json += F(",\"adpcm_receive\":{\"mode\":\"cooperative_bulk\",\"buffer_bytes\":"); json += lastAdpcmReceive.bufferBytes;
+  json += F(",\"expected_bytes\":"); json += lastAdpcmReceive.expectedBytes;
+  json += F(",\"received_bytes\":"); json += lastAdpcmReceive.receivedBytes;
+  json += F(",\"heap_after_http\":"); json += lastAdpcmReceive.heapAfterHttp;
+  json += F(",\"largest_after_http\":"); json += lastAdpcmReceive.largestAfterHttp;
+  json += F(",\"heap_with_receiver\":"); json += lastAdpcmReceive.heapWithReceiver;
+  json += F(",\"max_poll_us\":"); json += lastAdpcmReceive.maxPollUs;
+  json += F(",\"heap_min_playback\":"); json += lastAdpcmReceive.heapMinPlayback;
+  json += F(",\"largest_min_playback\":"); json += lastAdpcmReceive.largestMinPlayback;
+  json += F(",\"prebuffer_bytes\":"); json += lastAdpcmReceive.prebufferBytes;
+  json += F(",\"prebuffer_ms\":"); json += lastAdpcmReceive.prebufferMs;
+  json += F(",\"playback_ms\":"); json += lastAdpcmReceive.playbackMs;
+  json += F(",\"max_input_wait_ms\":"); json += lastAdpcmReceive.maxInputWaitMs;
+  json += F(",\"input_wait_ms\":"); json += lastAdpcmReceive.inputWaitMs;
+  json += F(",\"empty_polls\":"); json += lastAdpcmReceive.emptyPolls;
+  json += F(",\"max_network_wait_ms\":"); json += lastAdpcmReceive.maxNetworkWaitMs;
+  json += F(",\"task_stack_min_free_bytes\":"); json += lastAdpcmReceive.taskStackMinFree;
+  json += F(",\"complete\":"); json += lastAdpcmReceive.complete ? F("true") : F("false");
+  json += F(",\"result\":\""); json += lastAdpcmReceive.result; json += F("\"}");
   const CardputerKeyClickStats keyClick = cardputerKeyClickStats();
   json += F(",\"key_click\":{\"enabled\":"); json += keyClick.enabled ? F("true") : F("false");
   json += F(",\"playing\":"); json += keyClick.playing ? F("true") : F("false");
@@ -7661,6 +7885,12 @@ void setupRoutes() {
   // disconnect the device. Only the explicit POST enters provisioning mode.
   server.on(F("/clear"), HTTP_GET, sendWifiPage);
   server.on(F("/clear"), HTTP_POST, clearWifi);
+  server.on(F("/font/fusion-pixel.woff2"), HTTP_GET, []() {
+    server.sendHeader(F("Cache-Control"), F("public, max-age=86400"));
+    // WOFF2 is binary and contains NULs; always send the explicit byte length.
+    server.send_P(200, PSTR("font/woff2"),
+                  reinterpret_cast<const char*>(fusion_web_font::kData), fusion_web_font::kSize);
+  });
   server.on(F("/health"), HTTP_GET, handleHealth);
   server.on(F("/screen.bmp"), HTTP_GET, handleScreenBmp);
   server.onNotFound(handleRoot);

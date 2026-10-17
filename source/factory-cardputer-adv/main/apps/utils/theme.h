@@ -9,6 +9,7 @@
  * 
  */
 #pragma once
+#include <ekko_shared/EkkoPixelFont12.h>
 
 #define THEME_COLOR_BG                      (uint32_t)(0x333333)
 #define THEME_COLOR_SYSTEM_BAR              (uint32_t)(0x99FF00)
@@ -22,8 +23,8 @@
 #define ICON_MARGIN_TOP                     20
 #define ICON_TAG_MARGIN_TOP                 5
 #define ICON_SELECTED_WIDTH                 64
-#define FONT_BASIC                          &fonts::efontCN_16
-#define FONT_HEIGHT                         16
+#define FONT_BASIC                          &ekko_pixel_font::kFont
+#define FONT_HEIGHT                         12
 
 #define THEME_COLOR_KB_CAPS_LOCK            TFT_SKYBLUE
 #define THEME_COLOR_KB_ALT                  TFT_YELLOW
@@ -33,9 +34,9 @@
 
 #define THEME_COLOR_REPL_TEXT               TFT_WHITE
 // #define FONT_REPL                           &fonts::Font0
-#define FONT_REPL                           &fonts::efontCN_16
+#define FONT_REPL                           &ekko_pixel_font::kFont
 #define FONT_SIZE_REPL                      1
 // #define FONT_REPL_WIDTH                     _canvas->fontWidth()
-#define FONT_REPL_WIDTH                     8
-#define FONT_REPL_HEIGHT                    16
+#define FONT_REPL_WIDTH                     6
+#define FONT_REPL_HEIGHT                    12
 

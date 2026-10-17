@@ -1,0 +1,24 @@
+{
+  "checked_at": "2026-10-17T19:06:47.511191+08:00",
+  "git_apply_check": true,
+  "git_apply_actual_reconstruction": true,
+  "reconstructed_files_byte_exact": 57,
+  "original_repository_modified": false,
+  "git_commit_or_push_performed": false,
+  "temporary_verification_copy_removed": true,
+  "strict_sensitive_pattern_counts": {
+    "absolute_personal_home": 0,
+    "literal_api_secret": 0,
+    "jwt_literal": 0,
+    "personal_wifi_marker": 0,
+    "actual_development_lan_ip": 0,
+    "private_key_material": 0
+  },
+  "test_fixture_pattern_counts": {
+    "private_ipv4_in_test_fixtures": 2,
+    "credential_named_strings_in_test_fixtures": 8
+  },
+  "production_credential_or_private_lan_candidates": 0,
+  "sensitive_scan_note": "Only counts are reported. Test fixture addresses and explicitly synthetic tokens are included because they are regression inputs, not machine credentials. No local configuration, credential files, database, logs, personal home paths or real Wi-Fi settings are included.",
+  "validation_scope": "Patch applicability and byte-exact source reconstruction only; compilation, installation, hardware and remote behavior were not re-tested by this archive check."
+}

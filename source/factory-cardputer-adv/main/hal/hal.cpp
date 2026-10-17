@@ -9,6 +9,7 @@
 #include <mooncake_log.h>
 #include <M5Unified.hpp>
 #include <esp_mac.h>
+#include <ekko_shared/SdWriteProbe.h>
 #include <memory>
 #include <cstdlib>
 #include <ctime>
@@ -77,6 +78,10 @@ void Hal::display_init()
 {
     mclog::tagInfo(_tag, "display init");
 
+    display.setFont(&ekko_pixel_font::kFont);
+    canvas.setFont(&ekko_pixel_font::kFont);
+    canvasSystemBar.setFont(&ekko_pixel_font::kFont);
+    canvasKeyboardBar.setFont(&ekko_pixel_font::kFont);
     canvas.createSprite(204, 109);
     canvasKeyboardBar.createSprite(display.width() - canvas.width(), display.height());
     canvasSystemBar.createSprite(canvas.width(), display.height() - canvas.height());
@@ -602,30 +607,53 @@ void Hal::espNowClearReceivedData()
 /* -------------------------------------------------------------------------- */
 #include "utils/ir_nec/ir_helper.h"
 
-void Hal::irInit()
+bool Hal::irInit()
 {
     mclog::tagInfo(_tag, "ir init");
 
     if (_is_ir_inited) {
         mclog::tagInfo(_tag, "ir already inited");
-        return;
+        return true;
     }
 
-    ir_helper_init((gpio_num_t)HAL_PIN_IR_TX);
-
-    _is_ir_inited = true;
+    const auto result = ir_helper_init((gpio_num_t)HAL_PIN_IR_TX);
+    _is_ir_inited = result == ESP_OK;
+    if (!_is_ir_inited) mclog::tagError(_tag, "IR initialization failed: {}", esp_err_to_name(result));
+    return _is_ir_inited;
 }
 
-void Hal::irSend(uint8_t addr, uint8_t cmd)
+bool Hal::irSend(uint8_t addr, uint8_t cmd)
 {
     mclog::tagInfo(_tag, "ir send: addr: {:02X}, cmd: {:02X}", addr, cmd);
 
     if (!_is_ir_inited) {
         mclog::tagError(_tag, "ir not inited");
-        return;
+        return false;
     }
 
-    ir_helper_send(addr, cmd);
+    const auto result = ir_helper_send(addr, cmd);
+    if (result != ESP_OK) mclog::tagError(_tag, "NEC send failed: {}", esp_err_to_name(result));
+    return result == ESP_OK;
+}
+
+esp_err_t Hal::irSendPulses(const uint16_t* durations, size_t count)
+{
+    if (!_is_ir_inited) return ESP_ERR_INVALID_STATE;
+    return ir_helper_send_pulses(durations, count);
+}
+
+esp_err_t Hal::irPoll()
+{
+    if (!_is_ir_inited) return ESP_ERR_INVALID_STATE;
+    return ir_helper_poll();
+}
+
+esp_err_t Hal::irCancel()
+{
+    if (!_is_ir_inited) return ESP_OK;
+    const auto result = ir_helper_cancel();
+    if (result != ESP_OK) _is_ir_inited = false;
+    return result;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -822,6 +850,7 @@ void Hal::sd_card_init()
     if (!_spi_bus_initialized) {
         spi_init();
     }
+    if (!_spi_bus_initialized) return;
 
     // If already mounted successfully, return
     if (_is_sd_card_mounted) {
@@ -868,6 +897,19 @@ void Hal::sd_card_init()
     _is_sd_card_mounted = true;
 }
 
+bool Hal::ensureSdCardMounted()
+{
+    if (_is_sd_card_mounted && sdmmc_get_status(_sd_card) != ESP_OK) {
+        auto* old_card = _sd_card;
+        // IDF may free card before a later VFS cleanup step returns an error.
+        _sd_card = nullptr;
+        _is_sd_card_mounted = false;
+        if (esp_vfs_fat_sdcard_unmount(MOUNT_POINT, old_card) != ESP_OK) return false;
+    }
+    if (!_is_sd_card_mounted) sd_card_init();
+    return _is_sd_card_mounted;
+}
+
 Hal::SdCardProbeResult_t Hal::sdCardProbe()
 {
     SdCardProbeResult_t result;
@@ -883,12 +925,8 @@ Hal::SdCardProbeResult_t Hal::sdCardProbe()
 
     result.is_mounted = true;
 
-    // Try write to sd card
-    FILE* fp = fopen(MOUNT_POINT "/test.txt", "w");
-    if (fp) {
-        fwrite("Hello, World!", 1, 13, fp);
-        fclose(fp);
-
+    // Read/write only a file that this probe created exclusively.
+    if (factory_storage::probeWritable(MOUNT_POINT)) {
         result.size =
             fmt::format("Size: {:.1f} GB",
                         ((float)((uint64_t)_sd_card->csd.capacity) * _sd_card->csd.sector_size) / (1024 * 1024 * 1024));

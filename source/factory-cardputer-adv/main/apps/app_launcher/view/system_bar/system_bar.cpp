@@ -47,7 +47,7 @@ void Launcher::render_system_bar()
         _data.system_state.time = fmt::format("{:02d}:{:02d}", timeinfo.tm_hour, timeinfo.tm_min);
     } else {
         uint32_t mins = GetHAL().millis() / 60000;
-        _data.system_state.time = fmt::format("up {}:{:02d}", mins / 60, mins % 60);
+        _data.system_state.time = fmt::format("运行 {}:{:02d}", mins / 60, mins % 60);
     }
 
     // Bat
@@ -123,10 +123,10 @@ void Launcher::render_system_bar()
     }
 
     // Bat level
-    GetHAL().canvasSystemBar.setFont(&fonts::Font0);
+    GetHAL().canvasSystemBar.setFont(&ekko_pixel_font::kFont);
     GetHAL().canvasSystemBar.setTextColor((uint32_t)0x000000);
     GetHAL().canvasSystemBar.drawCenterString(_data.system_state.bat_level.c_str(), 176,
-                                              GetHAL().canvasSystemBar.height() / 2 - 3);
+                                              GetHAL().canvasSystemBar.height() / 2 - FONT_HEIGHT / 2);
 
     // Push
     GetHAL().pushCanvasSystemBar();

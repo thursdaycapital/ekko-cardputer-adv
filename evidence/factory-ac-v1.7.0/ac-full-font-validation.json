@@ -1,0 +1,2006 @@
+{
+  "hostOnly": true,
+  "fullApplicationOrLcdTest": false,
+  "limitations": [
+    "Host memory drawing sink; the physical LCD, ESP-IDF target and complete application screens are not executed here.",
+    "No IMU, SD card hardware, infrared, LoRa or GPS peripheral was exercised.",
+    "The preview renders actual menu title glyphs, not launcher icons, animation or the complete launcher layout.",
+    "Fixed UI literals and representative formatted GPS bounds are covered; arbitrary user data layout is not claimed."
+  ],
+  "vendorFontSourceSha256": "4ac3b0f778fadf09aaf2fe87edb40cf3a237fc99268081d130dc2e05fbe57d88",
+  "vendorLayoutSourceSha256": "5953ac3e33cd5ee4f1b8e9efa0018315026284734ac5b8ebad1dea36975a557e",
+  "exactCompiledMethodSlicesSha256": "3a479b069cdb632d9a153143476f9fb28aaea807e05be6866c025f9d9e04b37e",
+  "combinedBdfSha256": "23d71814168bb268acbe34925de93f1e26d1fb89b28a67043a291f7e16307bde",
+  "originalFusionBdfSha256": "9cb8f307b8835ff071e62eaa2fd473fa0683d0ae2c5af8583eb9c5a183953f00",
+  "originalFusionGlyphsExact": 23845,
+  "fixedUiLiteralLines": 264,
+  "fixedUiNonAsciiCharacters": 328,
+  "fixedUiCoveredCharacters": "·“”…、一上下不与世东中主也互交京仅他代令件任会传位低使保信修倍候值偏停储兆克入关其具兼内再写冲冷准出分切列初到制刷力加动包化北区十千协单南卡卫厂原双发取变只可台右号名后向启命响器回因固在地址块型声备外多大天失好如始子字存安完定实容宽密察对将小少尚就屏展工左已带常并广应度建开异式强录待态息意感戏成或手打执扩扫扬择持指按换据授接控描插搜摆播支改放效数整文断新方无时星显普暂更最有未本机束条果查样格案检模次止正此步法洁流测清渐温游湿点热版牙状率现生用电界留的盘目眠睡码确示秒称稍空端符等米类索红纬线终经结络绪缓编缺网置美聊联脚自节菜蓝行表装西要观角解认议设证试该误请读调败赫足车输运近返进连退送选通速遥部采释重量钟错键长间附除集需静音页顶项频风验高麦默，：",
+  "fixedUiCoveredCodepoints": [
+    "U+00B7",
+    "U+201C",
+    "U+201D",
+    "U+2026",
+    "U+3001",
+    "U+4E00",
+    "U+4E0A",
+    "U+4E0B",
+    "U+4E0D",
+    "U+4E0E",
+    "U+4E16",
+    "U+4E1C",
+    "U+4E2D",
+    "U+4E3B",
+    "U+4E5F",
+    "U+4E92",
+    "U+4EA4",
+    "U+4EAC",
+    "U+4EC5",
+    "U+4ED6",
+    "U+4EE3",
+    "U+4EE4",
+    "U+4EF6",
+    "U+4EFB",
+    "U+4F1A",
+    "U+4F20",
+    "U+4F4D",
+    "U+4F4E",
+    "U+4F7F",
+    "U+4FDD",
+    "U+4FE1",
+    "U+4FEE",
+    "U+500D",
+    "U+5019",
+    "U+503C",
+    "U+504F",
+    "U+505C",
+    "U+50A8",
+    "U+5146",
+    "U+514B",
+    "U+5165",
+    "U+5173",
+    "U+5176",
+    "U+5177",
+    "U+517C",
+    "U+5185",
+    "U+518D",
+    "U+5199",
+    "U+51B2",
+    "U+51B7",
+    "U+51C6",
+    "U+51FA",
+    "U+5206",
+    "U+5207",
+    "U+5217",
+    "U+521D",
+    "U+5230",
+    "U+5236",
+    "U+5237",
+    "U+529B",
+    "U+52A0",
+    "U+52A8",
+    "U+5305",
+    "U+5316",
+    "U+5317",
+    "U+533A",
+    "U+5341",
+    "U+5343",
+    "U+534F",
+    "U+5355",
+    "U+5357",
+    "U+5361",
+    "U+536B",
+    "U+5382",
+    "U+539F",
+    "U+53CC",
+    "U+53D1",
+    "U+53D6",
+    "U+53D8",
+    "U+53EA",
+    "U+53EF",
+    "U+53F0",
+    "U+53F3",
+    "U+53F7",
+    "U+540D",
+    "U+540E",
+    "U+5411",
+    "U+542F",
+    "U+547D",
+    "U+54CD",
+    "U+5668",
+    "U+56DE",
+    "U+56E0",
+    "U+56FA",
+    "U+5728",
+    "U+5730",
+    "U+5740",
+    "U+5757",
+    "U+578B",
+    "U+58F0",
+    "U+5907",
+    "U+5916",
+    "U+591A",
+    "U+5927",
+    "U+5929",
+    "U+5931",
+    "U+597D",
+    "U+5982",
+    "U+59CB",
+    "U+5B50",
+    "U+5B57",
+    "U+5B58",
+    "U+5B89",
+    "U+5B8C",
+    "U+5B9A",
+    "U+5B9E",
+    "U+5BB9",
+    "U+5BBD",
+    "U+5BC6",
+    "U+5BDF",
+    "U+5BF9",
+    "U+5C06",
+    "U+5C0F",
+    "U+5C11",
+    "U+5C1A",
+    "U+5C31",
+    "U+5C4F",
+    "U+5C55",
+    "U+5DE5",
+    "U+5DE6",
+    "U+5DF2",
+    "U+5E26",
+    "U+5E38",
+    "U+5E76",
+    "U+5E7F",
+    "U+5E94",
+    "U+5EA6",
+    "U+5EFA",
+    "U+5F00",
+    "U+5F02",
+    "U+5F0F",
+    "U+5F3A",
+    "U+5F55",
+    "U+5F85",
+    "U+6001",
+    "U+606F",
+    "U+610F",
+    "U+611F",
+    "U+620F",
+    "U+6210",
+    "U+6216",
+    "U+624B",
+    "U+6253",
+    "U+6267",
+    "U+6269",
+    "U+626B",
+    "U+626C",
+    "U+62E9",
+    "U+6301",
+    "U+6307",
+    "U+6309",
+    "U+6362",
+    "U+636E",
+    "U+6388",
+    "U+63A5",
+    "U+63A7",
+    "U+63CF",
+    "U+63D2",
+    "U+641C",
+    "U+6446",
+    "U+64AD",
+    "U+652F",
+    "U+6539",
+    "U+653E",
+    "U+6548",
+    "U+6570",
+    "U+6574",
+    "U+6587",
+    "U+65AD",
+    "U+65B0",
+    "U+65B9",
+    "U+65E0",
+    "U+65F6",
+    "U+661F",
+    "U+663E",
+    "U+666E",
+    "U+6682",
+    "U+66F4",
+    "U+6700",
+    "U+6709",
+    "U+672A",
+    "U+672C",
+    "U+673A",
+    "U+675F",
+    "U+6761",
+    "U+679C",
+    "U+67E5",
+    "U+6837",
+    "U+683C",
+    "U+6848",
+    "U+68C0",
+    "U+6A21",
+    "U+6B21",
+    "U+6B62",
+    "U+6B63",
+    "U+6B64",
+    "U+6B65",
+    "U+6CD5",
+    "U+6D01",
+    "U+6D41",
+    "U+6D4B",
+    "U+6E05",
+    "U+6E10",
+    "U+6E29",
+    "U+6E38",
+    "U+6E7F",
+    "U+70B9",
+    "U+70ED",
+    "U+7248",
+    "U+7259",
+    "U+72B6",
+    "U+7387",
+    "U+73B0",
+    "U+751F",
+    "U+7528",
+    "U+7535",
+    "U+754C",
+    "U+7559",
+    "U+7684",
+    "U+76D8",
+    "U+76EE",
+    "U+7720",
+    "U+7761",
+    "U+7801",
+    "U+786E",
+    "U+793A",
+    "U+79D2",
+    "U+79F0",
+    "U+7A0D",
+    "U+7A7A",
+    "U+7AEF",
+    "U+7B26",
+    "U+7B49",
+    "U+7C73",
+    "U+7C7B",
+    "U+7D22",
+    "U+7EA2",
+    "U+7EAC",
+    "U+7EBF",
+    "U+7EC8",
+    "U+7ECF",
+    "U+7ED3",
+    "U+7EDC",
+    "U+7EEA",
+    "U+7F13",
+    "U+7F16",
+    "U+7F3A",
+    "U+7F51",
+    "U+7F6E",
+    "U+7F8E",
+    "U+804A",
+    "U+8054",
+    "U+811A",
+    "U+81EA",
+    "U+8282",
+    "U+83DC",
+    "U+84DD",
+    "U+884C",
+    "U+8868",
+    "U+88C5",
+    "U+897F",
+    "U+8981",
+    "U+89C2",
+    "U+89D2",
+    "U+89E3",
+    "U+8BA4",
+    "U+8BAE",
+    "U+8BBE",
+    "U+8BC1",
+    "U+8BD5",
+    "U+8BE5",
+    "U+8BEF",
+    "U+8BF7",
+    "U+8BFB",
+    "U+8C03",
+    "U+8D25",
+    "U+8D6B",
+    "U+8DB3",
+    "U+8F66",
+    "U+8F93",
+    "U+8FD0",
+    "U+8FD1",
+    "U+8FD4",
+    "U+8FDB",
+    "U+8FDE",
+    "U+9000",
+    "U+9001",
+    "U+9009",
+    "U+901A",
+    "U+901F",
+    "U+9065",
+    "U+90E8",
+    "U+91C7",
+    "U+91CA",
+    "U+91CD",
+    "U+91CF",
+    "U+949F",
+    "U+9519",
+    "U+952E",
+    "U+957F",
+    "U+95F4",
+    "U+9644",
+    "U+9664",
+    "U+96C6",
+    "U+9700",
+    "U+9759",
+    "U+97F3",
+    "U+9875",
+    "U+9876",
+    "U+9879",
+    "U+9891",
+    "U+98CE",
+    "U+9A8C",
+    "U+9AD8",
+    "U+9EA6",
+    "U+9ED8",
+    "U+FF0C",
+    "U+FF1A"
+  ],
+  "fixedUiOriginalEfontSupplementCharacters": "",
+  "fixedUiSourcesSha256": {
+    "main/apps/app_chat/view/chat_view.cpp": "b788d46529bc05b0c6403ff8795c08df858053f0fe42aca2c680eed60c7c4664",
+    "main/apps/app_clock/app_clock.cpp": "a2c0103952c4d83926ee9c38681c20a7ac1bb2aad245fe03864c767b53ca5182",
+    "main/apps/app_ekko/app_ekko.cpp": "29a5119d03473ebe028ae8dbef19e7a75b820a31e4f1bf25ddbbe32a0b4a73ea",
+    "main/apps/app_gps/app_gps.cpp": "ea3734d8b787752bfbdba150fd3e2f592021d8c2ce5185338fc951d84010b5dc",
+    "main/apps/app_imu/app_imu.cpp": "df37dd23fa71fc5f8a49821e7b7b2602c3f96850bc53cf8faf0a179a841db03f",
+    "main/apps/app_keyboard/app_keyboard.cpp": "49058934ca95b813c2f014879cbadff79ce7fcfc104d6fe8ca32c54142bcc654",
+    "main/apps/app_keyboard/select_menu.cpp": "898dd80e3b1c4e5ed276838c484d80c9206357868cf6c1dedf401b755d4d0152",
+    "main/apps/app_launcher/app_launcher.cpp": "90fcbb2c4170c7986bc48051db178f49ac8d80637aaa4533028be8b9b8e0bd89",
+    "main/apps/app_launcher/view/boot_anim/boot_anim.cpp": "55ba2982250d65f2356de31fc7b89676bb0ba35e540a702acdb9fab496dbe4af",
+    "main/apps/app_launcher/view/system_bar/system_bar.cpp": "ab0e1fb38f89b1a3b94dec68e490e29fbd093b5179c57ba10870e8d190fcdc12",
+    "main/apps/app_lora_chat/app_lora_chat.cpp": "5f9ebb6296f84f5b8e738b19fefc708fda77b3e76968d5813651d49cc173d347",
+    "main/apps/app_lora_chat/view/lora_chat_view.cpp": "ce6a8beeeba838467b62b404d4c806a3a0acab0f1f29830923a45c8febeb23c7",
+    "main/apps/app_record/app_record.cpp": "0166d6ef111455e2cc275dc0443946d4ba8c69767964586b6246d69beff8d517",
+    "main/apps/app_remote/app_remote.cpp": "8a8267a11a1ead62745dd9bb4596e24234929333e787891490a5f6382ad48388",
+    "main/apps/app_repl/app_repl.cpp": "ccaf98453fd0d7b9d07860b7f50828c902aaf1163556eb223305e20a0616aba1",
+    "main/apps/app_sdcard/app_sdcard.cpp": "c0a9cfd87e18f7441ad6fd5f19ed787f91d50bfa3015eedbe361f84bac7e929f",
+    "main/apps/app_set_wifi/app_set_wifi.cpp": "844cec235158f9db7520e57db5288ac8c7bc9634d6e622f96dbc369670bf2139",
+    "main/apps/app_stringir_toolkit/app_stringir_toolkit.cpp": "2634ed2830c9ccfceb06605311e250c974fc0b1dab3aa4ecbbc649254b2b0080",
+    "main/apps/app_wifi_scan/app_wifi_scan.cpp": "bb8924d61d751c84d5d533565b695278d9b4b376c03cff0bc595c22438c13e34",
+    "main/apps/utils/common.h": "594f6de52fb148756c2de5cf326a706ac79460dd1dbcb9a99034ac3a2138a85c",
+    "main/apps/utils/raylib/arkanoid.cpp": "681aaaf39f4895ab718a4d5be644afeb6c5abe43fe64c0134c8616f92ab5df55",
+    "main/ekko_shared/FactoryUi.h": "53745a83dc27f0bf024fbe3ab33683934a74422c97114dce2674c3949253bdd7"
+  },
+  "missingFixedUiCharacters": [],
+  "sanitizers": [
+    "address",
+    "undefined"
+  ],
+  "callerClipModes": [
+    "12px native line",
+    "narrow parent intersection",
+    "disjoint parent clip"
+  ],
+  "menuWidths": {
+    "EkkoStudio": 60,
+    "Scan": 48,
+    "Record": 48,
+    "Chat": 48,
+    "Remote": 48,
+    "REPL": 48,
+    "SetWiFi": 48,
+    "Clock": 24,
+    "Keyboard": 48,
+    "IMU": 60,
+    "SDCard": 36,
+    "StringIR": 48,
+    "LoRaChat": 48,
+    "GPS": 42
+  },
+  "formattedGpsSampleWidths": {
+    "worldTime": 156.0,
+    "speed": 102.0,
+    "coordinateAt1_5x": 162.0
+  },
+  "glyphsRasterCompared": 24025,
+  "pixelsCompared": 147609600,
+  "actualFactoryEfontGlyphsCompared": 180,
+  "formatTemplatesWiderThan204": [
+    {
+      "file": "main/apps/app_gps/app_gps.cpp",
+      "line": 154,
+      "text": "世界时 {}.{}.{} {:02d}:{:02d}:{:02d}",
+      "actualWidth": 216
+    }
+  ],
+  "literalLinesWiderThan204": [],
+  "fixedUiLiteralWidths": [
+    {
+      "file": "main/apps/app_chat/view/chat_view.cpp",
+      "line": 70,
+      "text": "ESP-NOW 设备聊天",
+      "actualWidth": 96
+    },
+    {
+      "file": "main/apps/app_chat/view/chat_view.cpp",
+      "line": 71,
+      "text": "输入后按回车发送",
+      "actualWidth": 96
+    },
+    {
+      "file": "main/apps/app_chat/view/chat_view.cpp",
+      "line": 98,
+      "text": "…",
+      "actualWidth": 12
+    },
+    {
+      "file": "main/apps/app_chat/view/chat_view.cpp",
+      "line": 104,
+      "text": "…",
+      "actualWidth": 12
+    },
+    {
+      "file": "main/apps/app_clock/app_clock.cpp",
+      "line": 86,
+      "text": "北京时间",
+      "actualWidth": 48
+    },
+    {
+      "file": "main/apps/app_clock/app_clock.cpp",
+      "line": 119,
+      "text": "开机运行时间",
+      "actualWidth": 72
+    },
+    {
+      "file": "main/apps/app_clock/app_clock.cpp",
+      "line": 132,
+      "text": "联网后显示北京时间",
+      "actualWidth": 108
+    },
+    {
+      "file": "main/apps/app_ekko/app_ekko.cpp",
+      "line": 43,
+      "text": "顶部 G0：返回菜单",
+      "actualWidth": 102
+    },
+    {
+      "file": "main/apps/app_ekko/app_ekko.cpp",
+      "line": 63,
+      "text": "正在检查 EkkoStudio…",
+      "actualWidth": 126
+    },
+    {
+      "file": "main/apps/app_ekko/app_ekko.cpp",
+      "line": 67,
+      "text": "缺少 EkkoStudio 分区",
+      "actualWidth": 120
+    },
+    {
+      "file": "main/apps/app_ekko/app_ekko.cpp",
+      "line": 67,
+      "text": "请安装双固件完整包",
+      "actualWidth": 108
+    },
+    {
+      "file": "main/apps/app_ekko/app_ekko.cpp",
+      "line": 73,
+      "text": "无法读取 EkkoStudio",
+      "actualWidth": 114
+    },
+    {
+      "file": "main/apps/app_ekko/app_ekko.cpp",
+      "line": 73,
+      "text": "请重新安装该固件",
+      "actualWidth": 96
+    },
+    {
+      "file": "main/apps/app_ekko/app_ekko.cpp",
+      "line": 77,
+      "text": "EkkoStudio 分区内容不符",
+      "actualWidth": 138
+    },
+    {
+      "file": "main/apps/app_ekko/app_ekko.cpp",
+      "line": 77,
+      "text": "请重新安装该固件",
+      "actualWidth": 96
+    },
+    {
+      "file": "main/apps/app_ekko/app_ekko.cpp",
+      "line": 81,
+      "text": "设置保存失败",
+      "actualWidth": 72
+    },
+    {
+      "file": "main/apps/app_ekko/app_ekko.cpp",
+      "line": 81,
+      "text": "原有联网设置已保留",
+      "actualWidth": 108
+    },
+    {
+      "file": "main/apps/app_ekko/app_ekko.cpp",
+      "line": 88,
+      "text": "切换固件失败",
+      "actualWidth": 72
+    },
+    {
+      "file": "main/apps/app_ekko/app_ekko.cpp",
+      "line": 88,
+      "text": "错误代码：",
+      "actualWidth": 60
+    },
+    {
+      "file": "main/apps/app_ekko/app_ekko.cpp",
+      "line": 92,
+      "text": "正在启动 EkkoStudio…",
+      "actualWidth": 126
+    },
+    {
+      "file": "main/apps/app_gps/app_gps.cpp",
+      "line": 45,
+      "text": "正在初始化 GPS 定位...",
+      "actualWidth": 132
+    },
+    {
+      "file": "main/apps/app_gps/app_gps.cpp",
+      "line": 52,
+      "text": "扩展模块初始化失败",
+      "actualWidth": 108
+    },
+    {
+      "file": "main/apps/app_gps/app_gps.cpp",
+      "line": 54,
+      "text": "需要 Cap LoRa868 模块",
+      "actualWidth": 126
+    },
+    {
+      "file": "main/apps/app_gps/app_gps.cpp",
+      "line": 56,
+      "text": "请连接后重新打开应用",
+      "actualWidth": 120
+    },
+    {
+      "file": "main/apps/app_gps/app_gps.cpp",
+      "line": 105,
+      "text": "速度:待测",
+      "actualWidth": 54
+    },
+    {
+      "file": "main/apps/app_gps/app_gps.cpp",
+      "line": 107,
+      "text": "速度:{:.1f}千米/时",
+      "actualWidth": 108
+    },
+    {
+      "file": "main/apps/app_gps/app_gps.cpp",
+      "line": 115,
+      "text": "卫星:--",
+      "actualWidth": 42
+    },
+    {
+      "file": "main/apps/app_gps/app_gps.cpp",
+      "line": 117,
+      "text": "卫星:{}",
+      "actualWidth": 42
+    },
+    {
+      "file": "main/apps/app_gps/app_gps.cpp",
+      "line": 136,
+      "text": "{} {:.6f}度",
+      "actualWidth": 66
+    },
+    {
+      "file": "main/apps/app_gps/app_gps.cpp",
+      "line": 136,
+      "text": "北纬",
+      "actualWidth": 24
+    },
+    {
+      "file": "main/apps/app_gps/app_gps.cpp",
+      "line": 136,
+      "text": "南纬",
+      "actualWidth": 24
+    },
+    {
+      "file": "main/apps/app_gps/app_gps.cpp",
+      "line": 139,
+      "text": "{} {:.6f}度",
+      "actualWidth": 66
+    },
+    {
+      "file": "main/apps/app_gps/app_gps.cpp",
+      "line": 139,
+      "text": "东经",
+      "actualWidth": 24
+    },
+    {
+      "file": "main/apps/app_gps/app_gps.cpp",
+      "line": 139,
+      "text": "西经",
+      "actualWidth": 24
+    },
+    {
+      "file": "main/apps/app_gps/app_gps.cpp",
+      "line": 144,
+      "text": "等待 GPS 定位",
+      "actualWidth": 78
+    },
+    {
+      "file": "main/apps/app_gps/app_gps.cpp",
+      "line": 152,
+      "text": "世界时:等待卫星授时",
+      "actualWidth": 114
+    },
+    {
+      "file": "main/apps/app_gps/app_gps.cpp",
+      "line": 154,
+      "text": "世界时 {}.{}.{} {:02d}:{:02d}:{:02d}",
+      "actualWidth": 216
+    },
+    {
+      "file": "main/apps/app_gps/app_gps.cpp",
+      "line": 172,
+      "text": "GPS 定位模块不可用",
+      "actualWidth": 108
+    },
+    {
+      "file": "main/apps/app_imu/app_imu.cpp",
+      "line": 77,
+      "text": "加速度(倍重力)",
+      "actualWidth": 84
+    },
+    {
+      "file": "main/apps/app_imu/app_imu.cpp",
+      "line": 86,
+      "text": "角速度(度/秒)",
+      "actualWidth": 78
+    },
+    {
+      "file": "main/apps/app_keyboard/app_keyboard.cpp",
+      "line": 106,
+      "text": "选择键盘连接方式",
+      "actualWidth": 96
+    },
+    {
+      "file": "main/apps/app_keyboard/app_keyboard.cpp",
+      "line": 108,
+      "text": "方向键选择",
+      "actualWidth": 60
+    },
+    {
+      "file": "main/apps/app_keyboard/app_keyboard.cpp",
+      "line": 109,
+      "text": "回车确认",
+      "actualWidth": 48
+    },
+    {
+      "file": "main/apps/app_keyboard/app_keyboard.cpp",
+      "line": 140,
+      "text": "键盘模式已开启",
+      "actualWidth": 84
+    },
+    {
+      "file": "main/apps/app_keyboard/app_keyboard.cpp",
+      "line": 143,
+      "text": "按键将发送到连接设备",
+      "actualWidth": 120
+    },
+    {
+      "file": "main/apps/app_keyboard/app_keyboard.cpp",
+      "line": 145,
+      "text": "G0:退出并重启",
+      "actualWidth": 78
+    },
+    {
+      "file": "main/apps/app_keyboard/app_keyboard.cpp",
+      "line": 161,
+      "text": "蓝牙:已连接",
+      "actualWidth": 66
+    },
+    {
+      "file": "main/apps/app_keyboard/app_keyboard.cpp",
+      "line": 164,
+      "text": "USB:已连接",
+      "actualWidth": 60
+    },
+    {
+      "file": "main/apps/app_keyboard/app_keyboard.cpp",
+      "line": 167,
+      "text": "尚未连接设备",
+      "actualWidth": 72
+    },
+    {
+      "file": "main/apps/app_keyboard/select_menu.cpp",
+      "line": 94,
+      "text": "选择键盘连接方式",
+      "actualWidth": 96
+    },
+    {
+      "file": "main/apps/app_keyboard/select_menu.cpp",
+      "line": 102,
+      "text": "蓝牙键盘",
+      "actualWidth": 48
+    },
+    {
+      "file": "main/apps/app_keyboard/select_menu.cpp",
+      "line": 102,
+      "text": "USB 键盘",
+      "actualWidth": 48
+    },
+    {
+      "file": "main/apps/app_keyboard/select_menu.cpp",
+      "line": 115,
+      "text": "方向键选择  回车确认",
+      "actualWidth": 120
+    },
+    {
+      "file": "main/apps/app_launcher/app_launcher.cpp",
+      "line": 47,
+      "text": "正在连接已保存网络",
+      "actualWidth": 108
+    },
+    {
+      "file": "main/apps/app_launcher/app_launcher.cpp",
+      "line": 48,
+      "text": "请稍候…",
+      "actualWidth": 48
+    },
+    {
+      "file": "main/apps/app_launcher/app_launcher.cpp",
+      "line": 56,
+      "text": "暂未连接",
+      "actualWidth": 48
+    },
+    {
+      "file": "main/apps/app_launcher/app_launcher.cpp",
+      "line": 57,
+      "text": "可在“网络设置”更换网络",
+      "actualWidth": 144
+    },
+    {
+      "file": "main/apps/app_launcher/view/boot_anim/boot_anim.cpp",
+      "line": 73,
+      "text": "顶部 G0：返回菜单",
+      "actualWidth": 102
+    },
+    {
+      "file": "main/apps/app_launcher/view/boot_anim/boot_anim.cpp",
+      "line": 75,
+      "text": "按任意键进入菜单",
+      "actualWidth": 96
+    },
+    {
+      "file": "main/apps/app_launcher/view/boot_anim/boot_anim.cpp",
+      "line": 76,
+      "text": "Q：静音开机",
+      "actualWidth": 66
+    },
+    {
+      "file": "main/apps/app_launcher/view/system_bar/system_bar.cpp",
+      "line": 50,
+      "text": "运行 {}:{:02d}",
+      "actualWidth": 84
+    },
+    {
+      "file": "main/apps/app_lora_chat/app_lora_chat.cpp",
+      "line": 41,
+      "text": "正在初始化 LoRa 电台...",
+      "actualWidth": 138
+    },
+    {
+      "file": "main/apps/app_lora_chat/app_lora_chat.cpp",
+      "line": 48,
+      "text": "扩展模块初始化失败",
+      "actualWidth": 108
+    },
+    {
+      "file": "main/apps/app_lora_chat/app_lora_chat.cpp",
+      "line": 50,
+      "text": "需要 Cap LoRa868 模块",
+      "actualWidth": 126
+    },
+    {
+      "file": "main/apps/app_lora_chat/app_lora_chat.cpp",
+      "line": 52,
+      "text": "请连接后重新打开应用",
+      "actualWidth": 120
+    },
+    {
+      "file": "main/apps/app_lora_chat/view/lora_chat_view.cpp",
+      "line": 33,
+      "text": "频率:{:.0f}兆赫",
+      "actualWidth": 90
+    },
+    {
+      "file": "main/apps/app_lora_chat/view/lora_chat_view.cpp",
+      "line": 37,
+      "text": "带宽:{:.0f}千赫",
+      "actualWidth": 90
+    },
+    {
+      "file": "main/apps/app_lora_chat/view/lora_chat_view.cpp",
+      "line": 41,
+      "text": "扩频因子:{}",
+      "actualWidth": 66
+    },
+    {
+      "file": "main/apps/app_lora_chat/view/lora_chat_view.cpp",
+      "line": 45,
+      "text": "编码率:4/{}",
+      "actualWidth": 66
+    },
+    {
+      "file": "main/apps/app_lora_chat/view/lora_chat_view.cpp",
+      "line": 82,
+      "text": "…",
+      "actualWidth": 12
+    },
+    {
+      "file": "main/apps/app_lora_chat/view/lora_chat_view.cpp",
+      "line": 88,
+      "text": "…",
+      "actualWidth": 12
+    },
+    {
+      "file": "main/apps/app_lora_chat/view/lora_chat_view.cpp",
+      "line": 113,
+      "text": "设备编号: ",
+      "actualWidth": 60
+    },
+    {
+      "file": "main/apps/app_lora_chat/view/lora_chat_view.cpp",
+      "line": 139,
+      "text": "正在广播 GPS 定位...",
+      "actualWidth": 120
+    },
+    {
+      "file": "main/apps/app_lora_chat/view/lora_chat_view.cpp",
+      "line": 141,
+      "text": "电台聊天已就绪",
+      "actualWidth": 84
+    },
+    {
+      "file": "main/apps/app_lora_chat/view/lora_chat_view.cpp",
+      "line": 141,
+      "text": "输入 \"",
+      "actualWidth": 36
+    },
+    {
+      "file": "main/apps/app_lora_chat/view/lora_chat_view.cpp",
+      "line": 147,
+      "text": "\" 并按 Enter",
+      "actualWidth": 72
+    },
+    {
+      "file": "main/apps/app_lora_chat/view/lora_chat_view.cpp",
+      "line": 147,
+      "text": "广播 GPS 位置",
+      "actualWidth": 78
+    },
+    {
+      "file": "main/apps/app_record/app_record.cpp",
+      "line": 50,
+      "text": "未检测到可用的SD卡",
+      "actualWidth": 108
+    },
+    {
+      "file": "main/apps/app_record/app_record.cpp",
+      "line": 56,
+      "text": "内存不足，无法录音",
+      "actualWidth": 108
+    },
+    {
+      "file": "main/apps/app_record/app_record.cpp",
+      "line": 68,
+      "text": "SD卡目录读取失败",
+      "actualWidth": 96
+    },
+    {
+      "file": "main/apps/app_record/app_record.cpp",
+      "line": 150,
+      "text": "内存不足，无法录音",
+      "actualWidth": 108
+    },
+    {
+      "file": "main/apps/app_record/app_record.cpp",
+      "line": 156,
+      "text": "麦克风启动失败",
+      "actualWidth": 84
+    },
+    {
+      "file": "main/apps/app_record/app_record.cpp",
+      "line": 160,
+      "text": "无法新建录音，请检查SD卡",
+      "actualWidth": 144
+    },
+    {
+      "file": "main/apps/app_record/app_record.cpp",
+      "line": 185,
+      "text": "麦克风已停止，请重试",
+      "actualWidth": 120
+    },
+    {
+      "file": "main/apps/app_record/app_record.cpp",
+      "line": 189,
+      "text": "录音缓冲状态异常",
+      "actualWidth": 96
+    },
+    {
+      "file": "main/apps/app_record/app_record.cpp",
+      "line": 200,
+      "text": "写入失败，请检查SD卡空间",
+      "actualWidth": 144
+    },
+    {
+      "file": "main/apps/app_record/app_record.cpp",
+      "line": 209,
+      "text": "录音停止响应，请重试",
+      "actualWidth": 120
+    },
+    {
+      "file": "main/apps/app_record/app_record.cpp",
+      "line": 217,
+      "text": "录音采集失败",
+      "actualWidth": 72
+    },
+    {
+      "file": "main/apps/app_record/app_record.cpp",
+      "line": 227,
+      "text": "保存失败，请检查SD卡",
+      "actualWidth": 120
+    },
+    {
+      "file": "main/apps/app_record/app_record.cpp",
+      "line": 239,
+      "text": "录音文件读取失败",
+      "actualWidth": 96
+    },
+    {
+      "file": "main/apps/app_record/app_record.cpp",
+      "line": 242,
+      "text": "扬声器启动失败",
+      "actualWidth": 84
+    },
+    {
+      "file": "main/apps/app_record/app_record.cpp",
+      "line": 256,
+      "text": "播放缓冲状态异常",
+      "actualWidth": 96
+    },
+    {
+      "file": "main/apps/app_record/app_record.cpp",
+      "line": 263,
+      "text": "播放缓冲状态异常",
+      "actualWidth": 96
+    },
+    {
+      "file": "main/apps/app_record/app_record.cpp",
+      "line": 268,
+      "text": "录音读取中断，请检查SD卡",
+      "actualWidth": 144
+    },
+    {
+      "file": "main/apps/app_record/app_record.cpp",
+      "line": 272,
+      "text": "录音播放失败",
+      "actualWidth": 72
+    },
+    {
+      "file": "main/apps/app_record/app_record.cpp",
+      "line": 280,
+      "text": "播放停止响应，请重试",
+      "actualWidth": 120
+    },
+    {
+      "file": "main/apps/app_record/app_record.cpp",
+      "line": 305,
+      "text": "SD卡录音 · 最新64条",
+      "actualWidth": 120
+    },
+    {
+      "file": "main/apps/app_record/app_record.cpp",
+      "line": 307,
+      "text": "暂无录音，按OK开始",
+      "actualWidth": 108
+    },
+    {
+      "file": "main/apps/app_record/app_record.cpp",
+      "line": 317,
+      "text": "OK回放  N新录音",
+      "actualWidth": 90
+    },
+    {
+      "file": "main/apps/app_record/app_record.cpp",
+      "line": 318,
+      "text": "上下选择  G0返回",
+      "actualWidth": 96
+    },
+    {
+      "file": "main/apps/app_record/app_record.cpp",
+      "line": 327,
+      "text": "正在录音  OK停止保存",
+      "actualWidth": 120
+    },
+    {
+      "file": "main/apps/app_record/app_record.cpp",
+      "line": 327,
+      "text": "正在保存，请稍候…",
+      "actualWidth": 108
+    },
+    {
+      "file": "main/apps/app_record/app_record.cpp",
+      "line": 327,
+      "text": "正在回放  OK停止",
+      "actualWidth": 96
+    },
+    {
+      "file": "main/apps/app_record/app_record.cpp",
+      "line": 333,
+      "text": " 秒",
+      "actualWidth": 18
+    },
+    {
+      "file": "main/apps/app_record/app_record.cpp",
+      "line": 340,
+      "text": "G0保存并返回",
+      "actualWidth": 72
+    },
+    {
+      "file": "main/apps/app_record/app_record.cpp",
+      "line": 341,
+      "text": "G0返回菜单",
+      "actualWidth": 60
+    },
+    {
+      "file": "main/apps/app_record/app_record.cpp",
+      "line": 361,
+      "text": "插好FAT32卡后按OK重试",
+      "actualWidth": 126
+    },
+    {
+      "file": "main/apps/app_record/app_record.cpp",
+      "line": 362,
+      "text": "G0返回，不会格式化卡",
+      "actualWidth": 120
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 25,
+      "text": "方案A  MIDEA",
+      "actualWidth": 72
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 26,
+      "text": "方案B  COOLIX",
+      "actualWidth": 78
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 27,
+      "text": "方案C 新长码 BOSCH144",
+      "actualWidth": 126
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 31,
+      "text": "制冷",
+      "actualWidth": 24
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 31,
+      "text": "除湿",
+      "actualWidth": 24
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 32,
+      "text": "自动",
+      "actualWidth": 24
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 32,
+      "text": "制热",
+      "actualWidth": 24
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 33,
+      "text": "送风",
+      "actualWidth": 24
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 37,
+      "text": "自动",
+      "actualWidth": 24
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 37,
+      "text": "低风",
+      "actualWidth": 24
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 38,
+      "text": "中风",
+      "actualWidth": 24
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 38,
+      "text": "高风",
+      "actualWidth": 24
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 42,
+      "text": "上下摆风 / 切换",
+      "actualWidth": 90
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 42,
+      "text": "摆风切换已发送，无回读",
+      "actualWidth": 132
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 43,
+      "text": "摆风点动 / 一次",
+      "actualWidth": 90
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 43,
+      "text": "摆风点动已发送，无回读",
+      "actualWidth": 132
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 44,
+      "text": "睡眠 / 切换",
+      "actualWidth": 66
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 44,
+      "text": "睡眠切换已发送，无回读",
+      "actualWidth": 132
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 45,
+      "text": "强力 / 切换",
+      "actualWidth": 66
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 45,
+      "text": "强力切换已发送，无回读",
+      "actualWidth": 132
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 46,
+      "text": "屏显 / 切换",
+      "actualWidth": 66
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 46,
+      "text": "屏显切换已发送，无回读",
+      "actualWidth": 132
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 47,
+      "text": "清洁 / 切换",
+      "actualWidth": 66
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 47,
+      "text": "清洁切换已发送，无回读",
+      "actualWidth": 132
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 110,
+      "text": "设定值，无设备状态回读",
+      "actualWidth": 132
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 113,
+      "text": "红外初始化失败，OK重试",
+      "actualWidth": 132
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 127,
+      "text": "设置已发送，偏好未保存",
+      "actualWidth": 132
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 137,
+      "text": "红外发送失败，OK重试",
+      "actualWidth": 120
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 163,
+      "text": "红外就绪，请再次按键发送",
+      "actualWidth": 144
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 163,
+      "text": "红外初始化失败，OK重试",
+      "actualWidth": 132
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 179,
+      "text": "切换指令，无状态回读",
+      "actualWidth": 120
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 186,
+      "text": "候选协议，需实测确认",
+      "actualWidth": 120
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 190,
+      "text": "测试页只用1开机、0关机",
+      "actualWidth": 132
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 214,
+      "text": "美的空调",
+      "actualWidth": 48
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 225,
+      "text": "度",
+      "actualWidth": 12
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 226,
+      "text": "送风不设温",
+      "actualWidth": 60
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 226,
+      "text": "设定温度",
+      "actualWidth": 48
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 228,
+      "text": "模式 ",
+      "actualWidth": 30
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 229,
+      "text": "风速 ",
+      "actualWidth": 30
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 242,
+      "text": "上下选项 左右调整 G0返回",
+      "actualWidth": 144
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 243,
+      "text": "OK应用/开机 1开 0关 Tab更多",
+      "actualWidth": 162
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 250,
+      "text": "更多控制",
+      "actualWidth": 48
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 265,
+      "text": "兼容测试 A/B/C",
+      "actualWidth": 84
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 265,
+      "text": "NEC 手动",
+      "actualWidth": 48
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 268,
+      "text": "上下选择 OK执行 Tab返回",
+      "actualWidth": 138
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 275,
+      "text": "兼容测试 / 固定26度",
+      "actualWidth": 114
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 277,
+      "text": "1  开机 26度制冷 自动风",
+      "actualWidth": 138
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 278,
+      "text": "0  关机",
+      "actualWidth": 42
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 282,
+      "text": "左右切方案 Tab返回主控",
+      "actualWidth": 132
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 289,
+      "text": "送风模式不设温",
+      "actualWidth": 84
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 304,
+      "text": "待发送，OK应用并开机",
+      "actualWidth": 120
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 309,
+      "text": "红外未就绪，OK重试",
+      "actualWidth": 108
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 317,
+      "text": "红外数据生成失败",
+      "actualWidth": 96
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 323,
+      "text": "26度制冷信号已发出",
+      "actualWidth": 108
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 323,
+      "text": "设置已发送，无状态回读",
+      "actualWidth": 132
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 323,
+      "text": "关机信号已发送",
+      "actualWidth": 84
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 327,
+      "text": "红外未就绪，OK重试",
+      "actualWidth": 108
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 331,
+      "text": "红外数据生成失败",
+      "actualWidth": 96
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 350,
+      "text": "发送未开始，请稍后重试",
+      "actualWidth": 132
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 357,
+      "text": "发送中，请稍候…",
+      "actualWidth": 96
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 369,
+      "text": "设定值，无设备状态回读",
+      "actualWidth": 132
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 377,
+      "text": "切换指令，无状态回读",
+      "actualWidth": 120
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 388,
+      "text": "未验证，请对准空调",
+      "actualWidth": 108
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 400,
+      "text": "NEC 手动遥控",
+      "actualWidth": 72
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 401,
+      "text": "地址,命令  十进制0~255",
+      "actualWidth": 132
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 402,
+      "text": "如16,1  回车发送",
+      "actualWidth": 96
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 403,
+      "text": "Tab主控  G0返回原厂",
+      "actualWidth": 114
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 419,
+      "text": "格式错误，请输入地址,命令",
+      "actualWidth": 150
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 420,
+      "text": "红外发送失败，请稍后重试",
+      "actualWidth": 144
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 421,
+      "text": "信号已发出，需观察设备响应",
+      "actualWidth": 156
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 429,
+      "text": "偏好读取失败，暂用默认",
+      "actualWidth": 132
+    },
+    {
+      "file": "main/apps/app_remote/app_remote.cpp",
+      "line": 440,
+      "text": "偏好无效，暂用默认",
+      "actualWidth": 108
+    },
+    {
+      "file": "main/apps/app_repl/app_repl.cpp",
+      "line": 81,
+      "text": "Python 交互终端",
+      "actualWidth": 90
+    },
+    {
+      "file": "main/apps/app_repl/app_repl.cpp",
+      "line": 84,
+      "text": "输入代码后按 Enter 执行",
+      "actualWidth": 138
+    },
+    {
+      "file": "main/apps/app_repl/app_repl.cpp",
+      "line": 151,
+      "text": "错误: Python 解释器未就绪",
+      "actualWidth": 150
+    },
+    {
+      "file": "main/apps/app_sdcard/app_sdcard.cpp",
+      "line": 74,
+      "text": "存储卡信息",
+      "actualWidth": 60
+    },
+    {
+      "file": "main/apps/app_sdcard/app_sdcard.cpp",
+      "line": 81,
+      "text": "名称: %s",
+      "actualWidth": 48
+    },
+    {
+      "file": "main/apps/app_sdcard/app_sdcard.cpp",
+      "line": 84,
+      "text": "写入测试失败",
+      "actualWidth": 72
+    },
+    {
+      "file": "main/apps/app_sdcard/app_sdcard.cpp",
+      "line": 87,
+      "text": "容量: %s",
+      "actualWidth": 48
+    },
+    {
+      "file": "main/apps/app_sdcard/app_sdcard.cpp",
+      "line": 91,
+      "text": "类型: %s",
+      "actualWidth": 48
+    },
+    {
+      "file": "main/apps/app_sdcard/app_sdcard.cpp",
+      "line": 94,
+      "text": "未检测到存储卡",
+      "actualWidth": 84
+    },
+    {
+      "file": "main/apps/app_set_wifi/app_set_wifi.cpp",
+      "line": 116,
+      "text": "搜索 Wi-Fi",
+      "actualWidth": 60
+    },
+    {
+      "file": "main/apps/app_set_wifi/app_set_wifi.cpp",
+      "line": 117,
+      "text": "正在扫描附近网络…",
+      "actualWidth": 108
+    },
+    {
+      "file": "main/apps/app_set_wifi/app_set_wifi.cpp",
+      "line": 118,
+      "text": "仅支持 2.4 GHz Wi-Fi",
+      "actualWidth": 120
+    },
+    {
+      "file": "main/apps/app_set_wifi/app_set_wifi.cpp",
+      "line": 118,
+      "text": "G0:退出",
+      "actualWidth": 42
+    },
+    {
+      "file": "main/apps/app_set_wifi/app_set_wifi.cpp",
+      "line": 121,
+      "text": "选择 Wi-Fi",
+      "actualWidth": 60
+    },
+    {
+      "file": "main/apps/app_set_wifi/app_set_wifi.cpp",
+      "line": 123,
+      "text": "未发现附近网络",
+      "actualWidth": 84
+    },
+    {
+      "file": "main/apps/app_set_wifi/app_set_wifi.cpp",
+      "line": 123,
+      "text": "扫描失败，请重试",
+      "actualWidth": 96
+    },
+    {
+      "file": "main/apps/app_set_wifi/app_set_wifi.cpp",
+      "line": 124,
+      "text": "也可手动输入名称",
+      "actualWidth": 96
+    },
+    {
+      "file": "main/apps/app_set_wifi/app_set_wifi.cpp",
+      "line": 140,
+      "text": ";/.选择  OK:输入密码",
+      "actualWidth": 120
+    },
+    {
+      "file": "main/apps/app_set_wifi/app_set_wifi.cpp",
+      "line": 140,
+      "text": "R:重扫 M:手动 G0:退出",
+      "actualWidth": 126
+    },
+    {
+      "file": "main/apps/app_set_wifi/app_set_wifi.cpp",
+      "line": 145,
+      "text": "手动输入网络名",
+      "actualWidth": 84
+    },
+    {
+      "file": "main/apps/app_set_wifi/app_set_wifi.cpp",
+      "line": 145,
+      "text": "输入 Wi-Fi 密码",
+      "actualWidth": 90
+    },
+    {
+      "file": "main/apps/app_set_wifi/app_set_wifi.cpp",
+      "line": 146,
+      "text": "名称区分大小写",
+      "actualWidth": 84
+    },
+    {
+      "file": "main/apps/app_set_wifi/app_set_wifi.cpp",
+      "line": 149,
+      "text": "无密码网络请留空",
+      "actualWidth": 96
+    },
+    {
+      "file": "main/apps/app_set_wifi/app_set_wifi.cpp",
+      "line": 149,
+      "text": "网络名最多 32 字节",
+      "actualWidth": 108
+    },
+    {
+      "file": "main/apps/app_set_wifi/app_set_wifi.cpp",
+      "line": 150,
+      "text": "OK:下一步 Tab:清空",
+      "actualWidth": 108
+    },
+    {
+      "file": "main/apps/app_set_wifi/app_set_wifi.cpp",
+      "line": 150,
+      "text": "OK:连接 Tab:清空",
+      "actualWidth": 96
+    },
+    {
+      "file": "main/apps/app_set_wifi/app_set_wifi.cpp",
+      "line": 150,
+      "text": "Fn+Esc:列表 G0:退出",
+      "actualWidth": 114
+    },
+    {
+      "file": "main/apps/app_set_wifi/app_set_wifi.cpp",
+      "line": 153,
+      "text": "正在连接…",
+      "actualWidth": 60
+    },
+    {
+      "file": "main/apps/app_set_wifi/app_set_wifi.cpp",
+      "line": 155,
+      "text": "请稍候…",
+      "actualWidth": 48
+    },
+    {
+      "file": "main/apps/app_set_wifi/app_set_wifi.cpp",
+      "line": 158,
+      "text": "已连接并保存",
+      "actualWidth": 72
+    },
+    {
+      "file": "main/apps/app_set_wifi/app_set_wifi.cpp",
+      "line": 160,
+      "text": "EkkoStudio 将使用此网络",
+      "actualWidth": 138
+    },
+    {
+      "file": "main/apps/app_set_wifi/app_set_wifi.cpp",
+      "line": 161,
+      "text": "Fn+Esc:选择其他网络",
+      "actualWidth": 114
+    },
+    {
+      "file": "main/apps/app_set_wifi/app_set_wifi.cpp",
+      "line": 161,
+      "text": "OK / G0:返回菜单",
+      "actualWidth": 96
+    },
+    {
+      "file": "main/apps/app_set_wifi/app_set_wifi.cpp",
+      "line": 164,
+      "text": "已连接，保存失败",
+      "actualWidth": 96
+    },
+    {
+      "file": "main/apps/app_set_wifi/app_set_wifi.cpp",
+      "line": 164,
+      "text": "连接失败",
+      "actualWidth": 48
+    },
+    {
+      "file": "main/apps/app_set_wifi/app_set_wifi.cpp",
+      "line": 166,
+      "text": "请重试保存网络",
+      "actualWidth": 84
+    },
+    {
+      "file": "main/apps/app_set_wifi/app_set_wifi.cpp",
+      "line": 166,
+      "text": "请检查密码或网络",
+      "actualWidth": 96
+    },
+    {
+      "file": "main/apps/app_set_wifi/app_set_wifi.cpp",
+      "line": 167,
+      "text": "OK:修改密码并重试",
+      "actualWidth": 102
+    },
+    {
+      "file": "main/apps/app_set_wifi/app_set_wifi.cpp",
+      "line": 167,
+      "text": "Fn+Esc:列表 G0:退出",
+      "actualWidth": 114
+    },
+    {
+      "file": "main/apps/app_stringir_toolkit/app_stringir_toolkit.cpp",
+      "line": 23,
+      "text": "普通",
+      "actualWidth": 24
+    },
+    {
+      "file": "main/apps/app_stringir_toolkit/app_stringir_toolkit.cpp",
+      "line": 26,
+      "text": "渐变",
+      "actualWidth": 24
+    },
+    {
+      "file": "main/apps/app_stringir_toolkit/app_stringir_toolkit.cpp",
+      "line": 29,
+      "text": "流动",
+      "actualWidth": 24
+    },
+    {
+      "file": "main/apps/app_stringir_toolkit/app_stringir_toolkit.cpp",
+      "line": 115,
+      "text": "待发文字",
+      "actualWidth": 48
+    },
+    {
+      "file": "main/apps/app_stringir_toolkit/app_stringir_toolkit.cpp",
+      "line": 174,
+      "text": "样式: < %s >",
+      "actualWidth": 72
+    },
+    {
+      "file": "main/apps/app_stringir_toolkit/app_stringir_toolkit.cpp",
+      "line": 183,
+      "text": "Fn+上下: 选择文字或样式",
+      "actualWidth": 138
+    },
+    {
+      "file": "main/apps/app_stringir_toolkit/app_stringir_toolkit.cpp",
+      "line": 185,
+      "text": "Fn+左右: 切换样式",
+      "actualWidth": 102
+    },
+    {
+      "file": "main/apps/app_stringir_toolkit/app_stringir_toolkit.cpp",
+      "line": 187,
+      "text": "Enter: 发送",
+      "actualWidth": 66
+    },
+    {
+      "file": "main/apps/app_stringir_toolkit/app_stringir_toolkit.cpp",
+      "line": 319,
+      "text": "红外初始化失败",
+      "actualWidth": 84
+    },
+    {
+      "file": "main/apps/app_stringir_toolkit/app_stringir_toolkit.cpp",
+      "line": 328,
+      "text": "数据编码失败",
+      "actualWidth": 72
+    },
+    {
+      "file": "main/apps/app_stringir_toolkit/app_stringir_toolkit.cpp",
+      "line": 336,
+      "text": "解码自检失败",
+      "actualWidth": 72
+    },
+    {
+      "file": "main/apps/app_stringir_toolkit/app_stringir_toolkit.cpp",
+      "line": 343,
+      "text": "解码结果与原文不符",
+      "actualWidth": 108
+    },
+    {
+      "file": "main/apps/app_stringir_toolkit/app_stringir_toolkit.cpp",
+      "line": 385,
+      "text": "正在发送",
+      "actualWidth": 48
+    },
+    {
+      "file": "main/apps/app_stringir_toolkit/app_stringir_toolkit.cpp",
+      "line": 395,
+      "text": "文字: {}",
+      "actualWidth": 48
+    },
+    {
+      "file": "main/apps/app_stringir_toolkit/app_stringir_toolkit.cpp",
+      "line": 399,
+      "text": "样式: %s",
+      "actualWidth": 48
+    },
+    {
+      "file": "main/apps/app_stringir_toolkit/app_stringir_toolkit.cpp",
+      "line": 404,
+      "text": "数据包: %u/%u",
+      "actualWidth": 78
+    },
+    {
+      "file": "main/apps/app_stringir_toolkit/app_stringir_toolkit.cpp",
+      "line": 417,
+      "text": "发送完成",
+      "actualWidth": 48
+    },
+    {
+      "file": "main/apps/app_stringir_toolkit/app_stringir_toolkit.cpp",
+      "line": 422,
+      "text": "已发送 %u 字节",
+      "actualWidth": 84
+    },
+    {
+      "file": "main/apps/app_stringir_toolkit/app_stringir_toolkit.cpp",
+      "line": 434,
+      "text": "发送失败",
+      "actualWidth": 48
+    },
+    {
+      "file": "main/apps/app_stringir_toolkit/app_stringir_toolkit.cpp",
+      "line": 472,
+      "text": "红外发送失败",
+      "actualWidth": 72
+    },
+    {
+      "file": "main/apps/app_stringir_toolkit/app_stringir_toolkit.cpp",
+      "line": 481,
+      "text": "红外发送失败",
+      "actualWidth": 72
+    },
+    {
+      "file": "main/apps/app_wifi_scan/app_wifi_scan.cpp",
+      "line": 71,
+      "text": "Wi-Fi 扫描",
+      "actualWidth": 60
+    },
+    {
+      "file": "main/apps/app_wifi_scan/app_wifi_scan.cpp",
+      "line": 73,
+      "text": "正在扫描附近网络…",
+      "actualWidth": 108
+    },
+    {
+      "file": "main/apps/app_wifi_scan/app_wifi_scan.cpp",
+      "line": 75,
+      "text": "5秒自动刷新  G0:退出",
+      "actualWidth": 120
+    },
+    {
+      "file": "main/apps/app_wifi_scan/app_wifi_scan.cpp",
+      "line": 89,
+      "text": "Wi-Fi 扫描",
+      "actualWidth": 60
+    },
+    {
+      "file": "main/apps/app_wifi_scan/app_wifi_scan.cpp",
+      "line": 93,
+      "text": "扫描失败，稍后重试",
+      "actualWidth": 108
+    },
+    {
+      "file": "main/apps/app_wifi_scan/app_wifi_scan.cpp",
+      "line": 96,
+      "text": "未发现 Wi-Fi 网络",
+      "actualWidth": 102
+    },
+    {
+      "file": "main/apps/app_wifi_scan/app_wifi_scan.cpp",
+      "line": 122,
+      "text": "5秒自动刷新  G0:退出",
+      "actualWidth": 120
+    },
+    {
+      "file": "main/apps/utils/common.h",
+      "line": 9,
+      "text": "中文版 v1.7.0",
+      "actualWidth": 78
+    },
+    {
+      "file": "main/apps/utils/raylib/arkanoid.cpp",
+      "line": 386,
+      "text": "游戏暂停",
+      "actualWidth": 48
+    },
+    {
+      "file": "main/apps/utils/raylib/arkanoid.cpp",
+      "line": 390,
+      "text": "游戏结束 :)",
+      "actualWidth": 66
+    },
+    {
+      "file": "main/ekko_shared/FactoryUi.h",
+      "line": 8,
+      "text": "无线扫描",
+      "actualWidth": 48
+    },
+    {
+      "file": "main/ekko_shared/FactoryUi.h",
+      "line": 9,
+      "text": "录音回放",
+      "actualWidth": 48
+    },
+    {
+      "file": "main/ekko_shared/FactoryUi.h",
+      "line": 9,
+      "text": "设备聊天",
+      "actualWidth": 48
+    },
+    {
+      "file": "main/ekko_shared/FactoryUi.h",
+      "line": 10,
+      "text": "红外遥控",
+      "actualWidth": 48
+    },
+    {
+      "file": "main/ekko_shared/FactoryUi.h",
+      "line": 10,
+      "text": "脚本终端",
+      "actualWidth": 48
+    },
+    {
+      "file": "main/ekko_shared/FactoryUi.h",
+      "line": 11,
+      "text": "网络设置",
+      "actualWidth": 48
+    },
+    {
+      "file": "main/ekko_shared/FactoryUi.h",
+      "line": 11,
+      "text": "时钟",
+      "actualWidth": 24
+    },
+    {
+      "file": "main/ekko_shared/FactoryUi.h",
+      "line": 12,
+      "text": "键盘控制",
+      "actualWidth": 48
+    },
+    {
+      "file": "main/ekko_shared/FactoryUi.h",
+      "line": 12,
+      "text": "运动传感器",
+      "actualWidth": 60
+    },
+    {
+      "file": "main/ekko_shared/FactoryUi.h",
+      "line": 13,
+      "text": "存储卡",
+      "actualWidth": 36
+    },
+    {
+      "file": "main/ekko_shared/FactoryUi.h",
+      "line": 13,
+      "text": "红外工具",
+      "actualWidth": 48
+    },
+    {
+      "file": "main/ekko_shared/FactoryUi.h",
+      "line": 14,
+      "text": "LoRa电台",
+      "actualWidth": 48
+    },
+    {
+      "file": "main/ekko_shared/FactoryUi.h",
+      "line": 14,
+      "text": "GPS定位",
+      "actualWidth": 42
+    },
+    {
+      "file": "main/ekko_shared/FactoryUi.h",
+      "line": 29,
+      "text": "…",
+      "actualWidth": 12
+    }
+  ],
+  "actualRasterMenuTitlePreview": "work/cardputer-dual-zh-20261017/ac-full-font-validation.png",
+  "storageProbe": "SD probe: 40 real POSIX write/read probes; user files unchanged; no temporary files remain",
+  "passed": true
+}

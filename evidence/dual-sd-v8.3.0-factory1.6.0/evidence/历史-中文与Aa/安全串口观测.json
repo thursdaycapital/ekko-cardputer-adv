@@ -1,0 +1,23 @@
+{
+  "deviceRecords": [
+    {
+      "firmware": "factory-ekko-v1.5-zh",
+      "uptime_ms": 54444,
+      "reset_reason": 3,
+      "current_app": "Launcher",
+      "menu_name": "EkkoStudio"
+    },
+    {
+      "firmware": "factory-ekko-v1.5-zh",
+      "uptime_ms": 56495,
+      "reset_reason": 3,
+      "current_app": "Launcher",
+      "menu_name": "EkkoStudio"
+    }
+  ],
+  "unsafeOpenTriggeredReset": true,
+  "safeOpenSubsequentUptimeMonotonic": true,
+  "screenBytes": 64800,
+  "screenCrc32Verified": true,
+  "screenIsMemoryCanvas": true
+}

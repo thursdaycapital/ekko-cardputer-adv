@@ -1,0 +1,15 @@
+{
+  "acceptedAt": "2026-10-17T15:47:37.475742+08:00",
+  "reportedBy": "user",
+  "response": "两次都能正常回放",
+  "checked": [
+    "录音保存后回放",
+    "G0退出后重新进入列表回放"
+  ],
+  "notChecked": [
+    "关机重开后回放",
+    "异常断电或拔卡恢复",
+    "慢卡写入时序与削顶电平"
+  ],
+  "serialRecordingLogAvailable": false
+}

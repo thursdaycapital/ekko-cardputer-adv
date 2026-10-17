@@ -1,0 +1,13 @@
+{
+  "comparison": "accepted v1.6.0 source to v1.7.0 source",
+  "exactSameFiles": {
+    "main/apps/app_record/app_record.cpp": true,
+    "main/apps/app_record/app_record.h": true,
+    "main/apps/app_record/record_storage.h": true,
+    "components/M5Unified/src/utility/Mic_Class.cpp": true,
+    "components/M5Unified/src/utility/Speaker_Class.cpp": true,
+    "main/apps/utils/audio/audio.cpp": true,
+    "main/ekko_shared/EkkoPixelFont12.h": true
+  },
+  "physicalRetestAfterThisUpdate": "not_yet_performed"
+}

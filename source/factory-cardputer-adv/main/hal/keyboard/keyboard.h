@@ -12,8 +12,8 @@ class Keyboard {
 public:
     struct KeyEventRaw_t {
         bool state  = false;
-        uint8_t row = 0;
-        uint8_t col = 0;
+        uint8_t row = UINT8_MAX;
+        uint8_t col = UINT8_MAX;
     };
 
     struct KeyEvent_t {
@@ -52,7 +52,7 @@ private:
     KeyEventRaw_t _key_event_raw_buffer;
     KeyEvent_t _key_event_buffer;
 
-    KeyEventRaw_t get_key_event_raw(const uint8_t& eventRaw);
-    void remap(KeyEventRaw_t& key);
+    bool get_key_event_raw(uint8_t eventRaw, KeyEventRaw_t& key);
+    bool remap(KeyEventRaw_t& key);
     void update_modifier_mask(const KeyEventRaw_t& key);
 };

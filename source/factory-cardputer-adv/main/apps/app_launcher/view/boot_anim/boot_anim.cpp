@@ -60,10 +60,20 @@ void Launcher::boot_anim()
 
     // Show boot image
     GetHAL().display.pushImage(0, 0, 240, 135, image_data_logo);
-    GetHAL().display.setFont(&fonts::efontCN_16);
-    GetHAL().display.setTextColor((uint32_t)0x999999);
-    int textWidth = GetHAL().display.textWidth(FW_VERSION);
-    GetHAL().display.drawString(FW_VERSION, 235 - textWidth, 115);
+    // The upstream splash bakes English instructions into its pixels. Mask
+    // only those bands; keep the original M5 branding and redraw clear text.
+    constexpr uint32_t bootBackground = 0xe7e7e7;
+    auto& display = GetHAL().display;
+    display.fillRect(0, 0, 240, 25, bootBackground);
+    display.fillRect(0, 104, 240, 31, bootBackground);
+    display.setFont(&ekko_pixel_font::kFont);
+    display.setTextSize(1);
+    display.setTextColor(TFT_DARKGREY, bootBackground);
+    display.drawString(FW_VERSION, 5, 5);
+    const char* home = "顶部 G0：返回菜单";
+    display.drawString(home, 235 - display.textWidth(home), 5);
+    display.drawCenterString("按任意键进入菜单", 120, 106);
+    display.drawCenterString("Q：静音开机", 120, 121);
 
     // Play sfx
 #ifndef NO_BOOT_PLAY

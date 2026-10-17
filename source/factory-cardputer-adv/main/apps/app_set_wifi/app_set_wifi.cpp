@@ -92,9 +92,9 @@ void AppSetWiFi::text(int x, int y, const std::string& value, int width, uint32_
 void AppSetWiFi::footer(const char* first, const char* second)
 {
     auto& canvas = GetHAL().canvas;
-    canvas.setFont(&fonts::Font0);
-    text(4, 87, first, canvas.width() - 8, MUTED);
-    text(4, 99, second, canvas.width() - 8, MUTED);
+    canvas.setFont(&ekko_pixel_font::kFont);
+    text(4, 84, first, canvas.width() - 8, MUTED);
+    text(4, 96, second, canvas.width() - 8, MUTED);
     canvas.setFont(FONT_BASIC);
 }
 
@@ -115,7 +115,7 @@ void AppSetWiFi::render()
     case Model::Scanning:
         text(4, 4, "搜索 Wi-Fi", width - 8, ACCENT);
         text(4, 35, "正在扫描附近网络…", width - 8, TFT_WHITE);
-        footer("2.4 GHz Wi-Fi", "G0: Exit");
+        footer("仅支持 2.4 GHz Wi-Fi", "G0:退出");
         break;
     case Model::Selecting: {
         text(4, 1, "选择 Wi-Fi", width - 8, ACCENT);
@@ -131,13 +131,13 @@ void AppSetWiFi::render()
                 const bool active = i == _model.selected;
                 if (active) canvas.fillRoundRect(2, y - 1, width - 4, 19, 3, ACCENT);
                 text(6, y, network.ssid, width - 34, active ? BACKGROUND : TFT_WHITE);
-                canvas.setFont(&fonts::Font0);
+                canvas.setFont(&ekko_pixel_font::kFont);
                 text(width - 26, y + 5, _model.isSaved(network.ssid) ? "*" : std::to_string(network.rssi), 24,
                      active ? BACKGROUND : MUTED);
                 canvas.setFont(FONT_BASIC);
             }
         }
-        footer(";/. Select  OK: Password", "R: Scan  M: Manual  G0: Exit");
+        footer(";/.选择  OK:输入密码", "R:重扫 M:手动 G0:退出");
         break;
     }
     case Model::Ssid:
@@ -145,26 +145,26 @@ void AppSetWiFi::render()
         text(4, 2, _model.state == Model::Ssid ? "手动输入网络名" : "输入 Wi-Fi 密码", width - 8, ACCENT);
         text(4, 23, _model.state == Model::Ssid ? "名称区分大小写" : _model.ssid, width - 8, MUTED);
         render_input();
-        canvas.setFont(&fonts::Font0);
-        text(4, 73, _model.state == Model::Password ? "Empty password = open Wi-Fi" : "SSID: up to 32 bytes", width - 8, MUTED);
-        footer("OK: Connect/Next  Tab: Clear", "Fn+Esc: Networks  G0: Exit");
+        canvas.setFont(&ekko_pixel_font::kFont);
+        text(4, 71, _model.state == Model::Password ? "无密码网络请留空" : "网络名最多 32 字节", width - 8, MUTED);
+        footer(_model.state == Model::Ssid ? "OK:下一步 Tab:清空" : "OK:连接 Tab:清空", "Fn+Esc:列表 G0:退出");
         break;
     case Model::Connecting:
         text(4, 4, "正在连接…", width - 8, ACCENT);
         text(4, 34, _model.ssid, width - 8, TFT_WHITE);
-        footer("Please wait...", "");
+        footer("请稍候…", "");
         break;
     case Model::Success:
         text(4, 4, "已连接并保存", width - 8, ACCENT);
         text(4, 31, _model.ssid, width - 8, TFT_WHITE);
         text(4, 55, "EkkoStudio 将使用此网络", width - 8, MUTED);
-        footer("Fn+Esc: Choose another Wi-Fi", "OK / G0: Return to menu");
+        footer("Fn+Esc:选择其他网络", "OK / G0:返回菜单");
         break;
     case Model::Failed:
         text(4, 4, _model.saveFailed ? "已连接，保存失败" : "连接失败", width - 8, TFT_ORANGE);
         text(4, 31, _model.ssid, width - 8, TFT_WHITE);
         text(4, 55, _model.saveFailed ? "请重试保存网络" : "请检查密码或网络", width - 8, MUTED);
-        footer("OK: Edit password / Retry", "Fn+Esc: Networks  G0: Exit");
+        footer("OK:修改密码并重试", "Fn+Esc:列表 G0:退出");
         break;
     }
     GetHAL().pushCanvas();

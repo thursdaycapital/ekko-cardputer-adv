@@ -1,0 +1,19 @@
+{
+  "version": "factory-ekko-v1.7.0-ac",
+  "flashReadback": "passed",
+  "runtimeUsbVersion": "no_health_response_yet_waiting_user_enter_menu",
+  "actualTemperatureAndFan": "user_confirmed_both_work",
+  "actualSwingAndPreferences": "user_confirmed_swing_and_preferences_after_exit_reentry",
+  "otherExtraActions": "sleep_turbo_led_clean_and_swing_step_not_individually_confirmed",
+  "automaticApplianceCommands": false,
+  "capturedStateSubmits": 0,
+  "capturedActionSubmits": 0,
+  "userFunctionalResult": "temperature_fan_swing_and_exit_reentry_preferences_passed",
+  "userConfirmedAt": "2026-10-17T17:44:46.870391+08:00",
+  "userReports": [
+    "调温、风速都正常",
+    "摆风正常，设定也保留"
+  ],
+  "powerCyclePreferences": "not_tested",
+  "evidenceSource": "direct_user_physical_test_report; no new USB observation claimed"
+}

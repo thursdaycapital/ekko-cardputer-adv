@@ -1,0 +1,101 @@
+{
+  "project": "IRremoteESP8266",
+  "repository": "https://github.com/crankyoldgit/IRremoteESP8266",
+  "commit": "1e2f0f3ef0a93cbf2a8ddb2e95130f8f4c584b3f",
+  "license": "LGPL-2.1",
+  "purpose": "Pinned unmodified Midea/Coolix/Bosch144 protocol sources, test vectors, send/checksum helpers, and license used to verify the portable adaptation. These reference sources are not linked into firmware.",
+  "sha256": {
+    "LICENSE.txt": "253ab592417971d406ea43868f05ea9987728549ad59c8c8a2b2efcce0c6993e",
+    "src/IRremoteESP8266.h": "1069d6485dab6fb2b5e022a857f9e1086cac7751e49d1513e2d15a2fc081daee",
+    "src/IRsend.cpp": "dda64a0464b66cbab70ad1ef8606c8cba9f2a4172c89af407ed1a5728a3dc2c1",
+    "src/IRsend.h": "9341d788d71edf90f25b368a421c8fd6541e7af7d7738a0ecadb8195c6edfd29",
+    "src/IRutils.cpp": "677ce42fc4b51a838ac4ea6046ae77e88facc981a7548e3899aa47411dbd5081",
+    "src/ir_Coolix.cpp": "57360712e72bfe5cf4663931444f3b0c85c0343b67f2f783a5de458708e32140",
+    "src/ir_Coolix.h": "c4b2ce3e189b46717e98b4b80bf309e1e003d498521f0e431ccf2218a349c863",
+    "src/ir_Midea.cpp": "e6dcfff67f58c354083a3d3ee5b148c91bbc13bcdcbbaf7916e1cb7c4d87beba",
+    "src/ir_Midea.h": "4d9e6d5c879a8fc282c703fe0fdf9133d2fccfe98ef6730622fd49c8c5e695b4",
+    "test/ir_Coolix_test.cpp": "9b7d92c057ef590c37501eb67419ed6d82a26b66401ed736dde2e753f106fef4",
+    "test/ir_Midea_test.cpp": "06cb217b7b5e6074cf0157a1c78e01ad1f716634ef339e8a0e425d6078c9da8c",
+    "src/ir_Bosch.h": "f0406efb6418aa0a47abe45ab0740a7bb18f86a3b643356c200584591281becd",
+    "src/ir_Bosch.cpp": "285c15dfa7c00754b684daf385a81762a594054c5482598f3699deaa0b92c615",
+    "test/ir_Bosch_test.cpp": "f1b356808dce0f8293497828d6de8d19c13c7b8c635a711494826427e187de5c",
+    "src/IRac.cpp": "54d9ac3ac90dd212f0d7c4347a040a0405d768ee2d8eb0c674e1590f7a7e2f50"
+  },
+  "candidate_c_evidence": {
+    "official_manual_url": "https://dsdcp.smartmidea.net/mcsp/prod/20231024/7a703ae0681d4a44a125672976304aed.pdf",
+    "official_manual_remote_family_page": {
+      "pdf_page_one_based": 4,
+      "printed_page": 3,
+      "labels": [
+        "遥控器以实物为准",
+        "RN10L2*",
+        "或",
+        "RN02*"
+      ]
+    },
+    "capture_author_repository": "https://github.com/Aqamoe/IRsendMeidi_ESP8266-RN02S-Midea",
+    "capture_author_commit": "e272202616c2348680cbd28248a7c2ed2dd533ce",
+    "capture_model": "RN02S13",
+    "capture_author_claim": "Logic analyser capture of RN02S13 controlling Midea Lengjingxing AC; this is not a confirmed capture of RN10L2(B2HS)/BG.",
+    "source_vendored": false,
+    "source_not_vendored_reason": "No LICENSE provided. Only research links and reconstructed protocol facts retained; implementation ported from licensed IRremoteESP8266 Bosch144.",
+    "derived_on_cool_26c_auto_wire_bytes": "B2 4D BF 40 D0 2F B2 4D BF 40 D0 2F D5 66 00 00 00 3B",
+    "derived_off_wire_bytes": "B2 4D 7B 84 E0 1F B2 4D 7B 84 E0 1F",
+    "known_boundaries": "Exact RN10L2(B2HS)/BG mapping and device-specific optical waveform unconfirmed. Candidate C requires physical appliance test.",
+    "actual_capture_author_source_check": {
+      "method": "Compiled original fixed-commit RN02S13 .cpp/.h in auto-cleaned temporary directory with mock IRsend::sendData, ASan/UBSan. Called setModes(1), setFanSpeeds(0), cleared prior output, setTemps(26), then setPowers(0).",
+      "result": "Both ON 3-section and OFF 2-section transmitted bytes exactly match derived vectors. GPIO/optical transmission and actual AC response were not tested.",
+      "external_source_retained": false
+    }
+  },
+  "full_coolix_control": {
+    "settings": {
+      "temperature_celsius": "integer 17..30",
+      "modes": [
+        "Cool",
+        "Dry",
+        "Auto",
+        "Heat",
+        "Fan"
+      ],
+      "fans": [
+        "Auto",
+        "Low",
+        "Medium",
+        "High"
+      ],
+      "setter_order": "stateReset -> setTemp -> setMode -> setFan -> setPower -> send(default repeat=1)"
+    },
+    "special_case": "Fan-only uses native Dry mode with temperature code 0xE. Temperature must be set BEFORE mode. Auto fan in Auto/Dry maps to native Auto0=0; explicit manual speeds are accepted by upstream setters.",
+    "actions": {
+      "Swing": "B26BE0, 2 frames",
+      "SwingStep": "B20FE0, 1 frame",
+      "Sleep": "B2E003, 2 frames",
+      "Turbo": "B5F5A2, 2 frames",
+      "Led": "B5F5A5, 2 frames",
+      "Clean": "B5F5AA, 2 frames"
+    },
+    "absolute_state_feedback": false,
+    "unimplemented_boundaries": [
+      "Coolix24 half-degree Celsius",
+      "Timer messages require separate Coolix48 support; no timer setter in IRCoolixAC",
+      "ECO has no official Coolix setting in IRac",
+      "Separate horizontal swing has no IRCoolixAC setter"
+    ],
+    "legacy_candidates": "Midea48/Bosch144 retain previous Cool+Auto payloads only; non-default mode/fan is explicitly rejected.",
+    "upstream_comment_issue": "kCoolixSwingH actual binary constant is B2F5A2, but its hex comment says B5F5A2. Turbo actual constant is B5F5A2; this is a misleading comment, not an actual constant collision.",
+    "host_verification": {
+      "actual_upstream_functions": 59,
+      "legacy_waveforms": 86,
+      "full_settings_waveforms": 560,
+      "action_waveforms": 12,
+      "total_waveforms": 658,
+      "invalid_inputs": 5047,
+      "sanitizers": [
+        "AddressSanitizer",
+        "UndefinedBehaviorSanitizer"
+      ]
+    },
+    "physical_boundary": "User has verified the baseline Coolix24 26C cool/auto control. Newly added modes, fan speeds and actions remain subject to physical appliance acceptance; native waveform comparison is not physical verification."
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "checkedAt": "2026-10-17T07:14:51.895406+00:00",
+  "sourceArchiveCrcPassed": true,
+  "archiveNoPrivateBackupBuildOrEnvPaths": true,
+  "knownLocalWifiAndDeviceIdentityMarkersAbsent": true,
+  "knownTtsCredentialVariableAbsent": true,
+  "fullFlashNvsAndRecordedVoiceExcluded": true,
+  "scope": "source archive allowlist based on prior sanitized package plus new production/test files; firmware app only, not private flash image"
+}

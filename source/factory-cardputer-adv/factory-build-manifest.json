@@ -1,0 +1,59 @@
+{
+  "buildPassed": true,
+  "target": "esp32s3",
+  "sdk": "ESP-IDF 5.4.2",
+  "factoryPartitionOffset": "0x340000",
+  "factoryPartitionSize": 4194304,
+  "appBytes": 3029536,
+  "appSha256": "d9eb27301696f863041f420a4a2cb76500c54b437414e9823dffce257e71db51",
+  "factoryRemainingBytes": 1164768,
+  "warnings": [
+    "managed_components/espressif__esp-now/src/espnow/include/espnow.h:178:5: warning: missing initializer for member 'espnow_frame_head_s::magic' [-Wmissing-field-initializers]",
+    "managed_components/espressif__esp-now/src/espnow/include/espnow.h:178:5: warning: missing initializer for member 'espnow_frame_head_s::channel' [-Wmissing-field-initializers]",
+    "managed_components/espressif__esp-now/src/espnow/include/espnow.h:178:5: warning: missing initializer for member 'espnow_frame_head_s::filter_adjacent_channel' [-Wmissing-field-initializers]",
+    "managed_components/espressif__esp-now/src/espnow/include/espnow.h:178:5: warning: missing initializer for member 'espnow_frame_head_s::filter_weak_signal' [-Wmissing-field-initializers]",
+    "managed_components/espressif__esp-now/src/espnow/include/espnow.h:178:5: warning: missing initializer for member 'espnow_frame_head_s::security' [-Wmissing-field-initializers]",
+    "managed_components/espressif__esp-now/src/espnow/include/espnow.h:178:5: warning: missing initializer for member 'espnow_frame_head_s::group' [-Wmissing-field-initializers]",
+    "managed_components/espressif__esp-now/src/espnow/include/espnow.h:178:5: warning: missing initializer for member 'espnow_frame_head_s::ack' [-Wmissing-field-initializers]",
+    "managed_components/espressif__esp-now/src/espnow/include/espnow.h:178:5: warning: missing initializer for member 'espnow_frame_head_s::forward_ttl' [-Wmissing-field-initializers]",
+    "managed_components/espressif__esp-now/src/espnow/include/espnow.h:178:5: warning: missing initializer for member 'espnow_frame_head_s::forward_rssi' [-Wmissing-field-initializers]",
+    "main/hal/hal.cpp:815:5: warning: missing initializer for member 'spi_bus_config_t::data4_io_num' [-Wmissing-field-initializers]",
+    "main/hal/hal.cpp:815:5: warning: missing initializer for member 'spi_bus_config_t::data5_io_num' [-Wmissing-field-initializers]",
+    "main/hal/hal.cpp:815:5: warning: missing initializer for member 'spi_bus_config_t::data6_io_num' [-Wmissing-field-initializers]",
+    "main/hal/hal.cpp:815:5: warning: missing initializer for member 'spi_bus_config_t::data7_io_num' [-Wmissing-field-initializers]",
+    "main/hal/hal.cpp:815:5: warning: missing initializer for member 'spi_bus_config_t::data_io_default_level' [-Wmissing-field-initializers]",
+    "main/hal/hal.cpp:815:5: warning: missing initializer for member 'spi_bus_config_t::flags' [-Wmissing-field-initializers]",
+    "main/hal/hal.cpp:815:5: warning: missing initializer for member 'spi_bus_config_t::isr_cpu_id' [-Wmissing-field-initializers]",
+    "main/hal/hal.cpp:815:5: warning: missing initializer for member 'spi_bus_config_t::intr_flags' [-Wmissing-field-initializers]"
+  ],
+  "warningsAreZero": false,
+  "version": "factory-ekko-v1.7.0-ac",
+  "sourceSnapshot": "source/factory-cardputer-adv",
+  "physicalAcceptance": "temperature_fan_swing_and_exit_reentry_preferences_user_confirmed",
+  "historicalManifestSuperseded": true,
+  "upstream": {
+    "url": "https://github.com/m5stack/M5Cardputer-UserDemo",
+    "branch": "CardputerADV",
+    "commit": "b549eac0a3c65bc108186c276b8fac0a214aaa4e"
+  },
+  "esp_idf": {
+    "version": "5.4.2",
+    "commit": "f5c3654a1c2d2a01f7f67def7a0dc48e691f63c0",
+    "bundled": false
+  },
+  "dependenciesLockSha256": "f0225a8d9ac5ca76e5b6706d66be45142ec2abb0c9192eeae399b500992684e5",
+  "partitionCsvSha256": "18b52f33204d00d6b15f60ef1cd4d19bbc39c336246f82a36ac9205781984026",
+  "localM5UnifiedAudioSources": {
+    "components/M5Unified/src/utility/Mic_Class.hpp": "75d98d488b62cf3bc2dd7d576ee30c4af6901d2a1cdba5891f2d4d1ddcbe907c",
+    "components/M5Unified/src/utility/Mic_Class.cpp": "ae9fadc8aecc9c62bf7f8676a5f55cbf93ade65ffed63b1801c9df3f150fa944",
+    "components/M5Unified/src/utility/Speaker_Class.cpp": "182d0dcf31414e253bebb17f52ef5c10152a2c20daf71238d2602cc7281ddeec",
+    "patches/m5unified-audio-lifecycle.patch": "a8e6c3b3bfe63b3b81e2ef00e74fd0ba5fa5cef6e60af5d8627e2a3bca830bb0"
+  },
+  "sourceRebuildGuide": "SOURCE-REBUILD.zh-CN.md",
+  "packagingSourceCorrections": {
+    "date": "2026-10-17",
+    "runtimeLogicChanged": false,
+    "acceptedAppRebuilt": false,
+    "scope": "Release documentation and ac_protocol.h modification-date comment. Nonruntime asset/SDK-example sanitization is tracked by release privacy/verification records; accepted app hash remains unchanged."
+  }
+}

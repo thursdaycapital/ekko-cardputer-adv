@@ -1,0 +1,15 @@
+{
+  "upstream_repository": "https://github.com/EKKOLearnAI/ekko-studio",
+  "base_commit": "1242ac63556491c92ba6dd49d89fd19c91a6bdd5",
+  "base_version": "0.7.36",
+  "patched_source_version": "0.7.36-cardputer.5",
+  "patch": "studio-cardputer-0.7.36-cardputer.5.patch",
+  "modified_tracked_files": 48,
+  "added_source_and_test_files": 9,
+  "total_files": 57,
+  "scope": "Computer Studio source only; board firmware directory and private machine state are excluded",
+  "excluded_untracked_top_level": [
+    "packages/esp32-s3/",
+    "CARDPUTER_PROGRESS.zh-CN.md"
+  ]
+}

@@ -54,16 +54,15 @@ PHY init 数据内置。**不要直接运行这份工程输出的 `idf.py flash`
 
 ## 构建
 
-安装官方 ESP-IDF v5.4.2（包含 esp32s3 工具链）及其 Python 环境，然后：
+当前发布源码为 `factory-ekko-v1.7.0-ac`；本文件同时保留较早双固件设计记录。完整当前重建说明见 `SOURCE-REBUILD.zh-CN.md`。安装官方 ESP-IDF v5.4.2（包含 esp32s3 工具链）及其 Python 环境，然后在本源码目录运行：
 
 ```sh
-python3 fetch_repos.py
 . /path/to/esp-idf-v5.4.2/export.sh
-idf.py build
+idf.py -B build-relinked build
 ```
 
-`repos.json` 固定原厂五个源码依赖版本，`dependencies.lock` 固定组件管理器
-解析结果。`build/cardputer-adv.bin` 是原厂 app，地址 `0x340000`。保留原厂
+发布包已经包含 `components/` 和 `managed_components/` 的源码，且 M5Unified 有本地音频修补。不要运行 `fetch_repos.py`：归档没有依赖的 Git 元数据，它会 `git fetch` 失败；也不要用上游原版覆盖本地修补。`repos.json` 记录原厂五个依赖的基线标签，`dependencies.lock` 固定组件管理器
+解析结果。`build-relinked/cardputer-adv.bin` 是原厂 app，地址 `0x340000`。保留原厂
 13 个应用及其代码；不承诺在没有对应配件的情况下验证 LoRa、GPS、红外等
 外部硬件功能。
 

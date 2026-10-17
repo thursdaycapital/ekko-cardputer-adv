@@ -116,7 +116,7 @@ void AppClock::show_system_time()
     GetHAL().canvas.setCursor(10, 5);
     GetHAL().canvas.setTextSize(1);
     GetHAL().canvas.setTextColor(TFT_YELLOW, THEME_COLOR_BG);
-    GetHAL().canvas.print("System Uptime");
+    GetHAL().canvas.print("开机运行时间");
 
     // Format and display uptime
     auto uptime_str = fmt::format("{:02d}:{:02d}:{:02d}", hours, minutes, seconds);
@@ -129,7 +129,7 @@ void AppClock::show_system_time()
     // Show WiFi status hint
     GetHAL().canvas.setTextSize(1);
     GetHAL().canvas.setTextColor(TFT_DARKGREY, THEME_COLOR_BG);
-    GetHAL().canvas.drawCenterString("Set WiFi for real time", GetHAL().canvas.width() / 2,
+    GetHAL().canvas.drawCenterString("联网后显示北京时间", GetHAL().canvas.width() / 2,
                                      GetHAL().canvas.height() / 2 + 30);
 
     GetHAL().pushCanvas();

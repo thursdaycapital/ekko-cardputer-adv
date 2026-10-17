@@ -1,0 +1,2 @@
+UI localization: profile values, status/fallbacks and audio/auth/network diagnostics passed
+Fusion LCD/Webfont UI coverage: 379 non-ASCII characters, zero missing; embedded WOFF2 105692 bytes; actual display boundaries and protocol invariants passed

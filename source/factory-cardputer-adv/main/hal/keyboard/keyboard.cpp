@@ -52,21 +52,29 @@ void Keyboard::update()
 {
     clearKeyEvent();
 
-    if (!_isr_flag) {
+    if (!_isr_flag || !_tca8418) {
         return;
     }
 
-    _key_event_raw_buffer = get_key_event_raw(_tca8418->getEvent());
+    const uint8_t event = _tca8418->getEvent();
 
     //  try to clear the IRQ flag
     //  if there are pending events it is not cleared
     _tca8418->writeRegister8(TCA8418_REG_INT_STAT, 1);
-    int intstat = _tca8418->readRegister8(TCA8418_REG_INT_STAT);
-    if ((intstat & 0x01) == 0) {
+    uint8_t intstat = 0;
+    // readRegister8 returns zero on I2C failure as well as an empty register.
+    // Keep servicing the FIFO after a failed status read instead of treating
+    // that failure as a successfully cleared IRQ.
+    const bool status_read = _tca8418->readRegister(TCA8418_REG_INT_STAT, &intstat, 1);
+    if (status_read && (intstat & 0x01) == 0) {
         _isr_flag = false;
     }
 
-    remap(_key_event_raw_buffer);
+    // TCA8418's full event space includes unused matrix positions and GPIO
+    // events. Only the configured 7x8 physical matrix may reach the 4x14 map.
+    // Do this after IRQ acknowledgement so a discarded event cannot stall a
+    // later valid event already in the FIFO.
+    if (!get_key_event_raw(event, _key_event_raw_buffer) || !remap(_key_event_raw_buffer)) return;
     // mclog::tagDebug(_tag, "key event raw: ({}, {}): {}", _key_event_raw_buffer.row, _key_event_raw_buffer.col,
     //                 _key_event_raw_buffer.state);
     onKeyEventRaw.emit(_key_event_raw_buffer);
@@ -78,21 +86,26 @@ void Keyboard::update()
     onKeyEvent.emit(_key_event_buffer);
 }
 
-Keyboard::KeyEventRaw_t Keyboard::get_key_event_raw(const uint8_t& eventRaw)
+bool Keyboard::get_key_event_raw(uint8_t eventRaw, KeyEventRaw_t& key)
 {
-    KeyEventRaw_t ret;
-    ret.state       = eventRaw & 0x80;
-    uint16_t buffer = eventRaw;
-    buffer &= 0x7F;
-    buffer--;
-    ret.row = buffer / 10;
-    ret.col = buffer % 10;
-    return ret;
+    key = {};
+    const uint8_t code = eventRaw & 0x7F;
+    if (code == 0) return false;
+    const uint8_t index = code - 1;
+    const uint8_t row = index / 10;
+    const uint8_t col = index % 10;
+    if (row >= 7 || col >= 8) return false;
+    key = {static_cast<bool>(eventRaw & 0x80), row, col};
+    return true;
 }
 
 // Remap to the same as cardputer
-void Keyboard::remap(KeyEventRaw_t& key)
+bool Keyboard::remap(KeyEventRaw_t& key)
 {
+    if (key.row >= 7 || key.col >= 8) {
+        key = {};
+        return false;
+    }
     // Col
     uint8_t col = 0;
     col         = key.row * 2;
@@ -102,8 +115,13 @@ void Keyboard::remap(KeyEventRaw_t& key)
     uint8_t row = 0;
     row         = (key.col + 4) % 4;
 
+    if (row >= 4 || col >= 14) {
+        key = {};
+        return false;
+    }
     key.row = row;
     key.col = col;
+    return true;
 }
 
 void Keyboard::update_modifier_mask(const KeyEventRaw_t& key)
@@ -227,6 +245,7 @@ const KeyValue_t _key_value_map[4][14] = {
 Keyboard::KeyEvent_t Keyboard::convertToKeyEvent(const KeyEventRaw_t& key)
 {
     KeyEvent_t ret;
+    if (key.row >= 4 || key.col >= 14) return ret;
     ret.state = key.state;
 
     // Fn key itself - modifier, no keycode
@@ -271,8 +290,6 @@ Keyboard::KeyEvent_t Keyboard::convertToKeyEvent(const KeyEventRaw_t& key)
 
 void Keyboard::clearKeyEvent()
 {
-    _key_event_raw_buffer.state = false;
-    _key_event_raw_buffer.row   = 233;
-    _key_event_raw_buffer.col   = 233;
-    _key_event_buffer.keyCode   = KEY_NONE;
+    _key_event_raw_buffer = {};
+    _key_event_buffer = {};
 }

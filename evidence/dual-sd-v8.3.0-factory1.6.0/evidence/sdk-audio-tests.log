@@ -1,0 +1,24 @@
+PASS: idle Mic.end clears both descriptors and flags
+PASS: Mic.end joins, frees old arrays and reopens empty
+PASS: actual microphone inner loop exits on cancellation
+PASS: actual queue APIs own queued-before-task capture through final PCM write
+PASS: actual speaker queue eligibility prevents transient blocking
+PASS: failed/empty I2S reads yield without emitting stale PCM
+PASS: odd mono/stereo destination lengths stay within 8/16-bit buffers
+PASS: Mic semaphore allocation failure
+PASS: Mic plain task creation failure
+PASS: Mic pinned task creation failure
+PASS: Mic callback and I2S setup failures
+PASS: Speaker semaphore allocation failure
+PASS: Speaker plain task creation failure
+PASS: Speaker pinned task creation failure
+PASS: Speaker callback and I2S setup failures
+PASS: raw playback propagates all begin failures
+PASS: Speaker.end joins and clears playback ownership
+PASS: raw recording failure and descriptor cleanup
+Actual extracted SDK lifecycle/capture methods passed ASan/UBSan host tests.
+Actual Mic_Class.cpp SHA-256: ae9fadc8aecc9c62bf7f8676a5f55cbf93ade65ffed63b1801c9df3f150fa944
+Actual Speaker_Class.cpp SHA-256: 182d0dcf31414e253bebb17f52ef5c10152a2c20daf71238d2602cc7281ddeec
+Actual Mic_Class.hpp SHA-256: 75d98d488b62cf3bc2dd7d576ee30c4af6901d2a1cdba5891f2d4d1ddcbe907c
+Actual Speaker_Class.hpp SHA-256: 663aeffc0e10cb39459b71f8a84cecf495ea33e5ed803efb8af4980b3d48a8fa
+Extracted methods: 619 lines; 17 methods (including actual inline queue APIs)

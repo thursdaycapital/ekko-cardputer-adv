@@ -32,23 +32,24 @@ void AppLoraChat::onOpen()
 
     // Clear screen
     GetHAL().canvas.setBaseColor(THEME_COLOR_BG);
+    GetHAL().canvas.fillScreen(THEME_COLOR_BG);
     GetHAL().canvas.setFont(FONT_REPL);
     GetHAL().canvas.setTextSize(1);
     GetHAL().canvas.setCursor(0, 0);
 
     GetHAL().canvas.setTextColor(TFT_ORANGE);
-    GetHAL().canvas.printf("Init Cap LoRa868...\n");
+    GetHAL().canvas.printf("正在初始化 LoRa 电台...\n");
     GetHAL().pushCanvas();
     _is_cap_available = GetHAL().capLora868.init();
     if (!_is_cap_available) {
         mclog::tagError(getAppInfo().name, "cap not available");
 
         GetHAL().canvas.setTextColor(TFT_ORANGE);
-        GetHAL().canvas.printf("Cap init failed.\n");
+        GetHAL().canvas.printf("扩展模块初始化失败\n");
         GetHAL().canvas.setTextColor(TFT_CYAN);
-        GetHAL().canvas.printf("Cap LoRa868 ");
+        GetHAL().canvas.printf("需要 Cap LoRa868 模块\n");
         GetHAL().canvas.setTextColor(TFT_WHITE);
-        GetHAL().canvas.printf("is required.\nPlease connect it\nto continue.");
+        GetHAL().canvas.printf("请连接后重新打开应用");
 
         GetHAL().pushCanvas();
         return;

@@ -24,6 +24,7 @@ public:
 private:
     std::vector<Hal::ScanResult_t> _scan_result;
     uint32_t _time_count = 0;
+    bool _scan_ok = true;
 
     void render_page_scanning();
     void render_page_result();

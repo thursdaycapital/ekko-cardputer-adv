@@ -114,7 +114,25 @@ namespace m5
 
     /// now in recording or not.
     /// @return 0=not recording / 1=recording (There's room in the queue) / 2=recording (There's no room in the queue.)
-    size_t isRecording(void) const { return _is_recording ? ((bool)_rec_info[0].length) + ((bool)_rec_info[1].length) : 0; }
+    size_t isRecording(void) const { return _is_recording ? recordingQueueSize() : 0; }
+
+    /// Number of buffers still owned by the capture queue, including requests
+    /// submitted before the capture task starts. A released buffer is no longer
+    /// written by that task. Call from the single record() producer thread.
+    size_t recordingQueueSize(void) const
+    {
+      return bool(__atomic_load_n(&_rec_info[0].length, __ATOMIC_ACQUIRE))
+           + bool(__atomic_load_n(&_rec_info[1].length, __ATOMIC_ACQUIRE));
+    }
+
+    /// Whether the next record() request can be queued without waiting for a
+    /// descriptor. Call record() from the same thread; other producers or a
+    /// concurrent config()/end() are not supported by this queue.
+    bool canRecord(void) const
+    {
+      const bool flip = __atomic_load_n(&_rec_flip, __ATOMIC_ACQUIRE);
+      return __atomic_load_n(&_rec_info[flip].length, __ATOMIC_ACQUIRE) == 0;
+    }
 
     /// set recording sampling rate.
     /// @param sample_rate the sampling rate (Hz)

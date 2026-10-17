@@ -1,5 +1,5 @@
 [
-  "<WORKSPACE>/work/cardputer-fusion-font-20261017/font-assets/upstream/u8g2-bdfconv-2.36.18/bdfconv",
+  "upstream/u8g2-bdfconv-2.36.18/bdfconv",
   "-b",
   "0",
   "-f",
@@ -7,9 +7,9 @@
   "-v",
   "-m",
   "0-65535",
-  "<WORKSPACE>/work/cardputer-fusion-font-20261017/font-assets/zh-interface-compat/EkkoPixel12Compatible.bdf",
+  "./EkkoPixel12Compatible.bdf",
   "-n",
   "ekko_fusion_pixel12_compatible_data",
   "-o",
-  "<WORKSPACE>/work/cardputer-fusion-font-20261017/font-assets/zh-interface-compat/EkkoPixel12Compatible.c"
+  "./EkkoPixel12Compatible.c"
 ]

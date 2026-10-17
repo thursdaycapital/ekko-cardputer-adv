@@ -78,7 +78,10 @@ void AppREPL::onOpen()
     _repl_view->onRenderTips = []() {
         auto tips = fmt::format("PikaScript v{}.{}.{}", PIKA_VERSION_MAJOR, PIKA_VERSION_MINOR, PIKA_VERSION_MICRO);
         GetHAL().canvas.setTextColor(TFT_CYAN);
+        GetHAL().canvas.println("Python 交互终端");
         GetHAL().canvas.println(tips.c_str());
+        GetHAL().canvas.setTextColor(TFT_DARKGRAY);
+        GetHAL().canvas.println("输入代码后按 Enter 执行");
     };
     _repl_view->onCommand = [this](const std::string& command) { execute_python_command(command); };
     _repl_view->init();
@@ -145,7 +148,7 @@ void AppREPL::execute_python_command(const std::string& command)
         GetHAL().pushCanvas();
     } else {
         if (_repl_view) {
-            _repl_view->showMessage("Error: Python interpreter not initialized", TFT_RED);
+            _repl_view->showMessage("错误: Python 解释器未就绪", TFT_RED);
         }
     }
 }

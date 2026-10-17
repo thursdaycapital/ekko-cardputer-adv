@@ -566,18 +566,18 @@ if (_cfg.pin_bck < 0 || _cfg.pin_ws < 0) {
 
     while (self->_task_running)
     {
-      bool rec_flip = self->_rec_flip;
+      bool rec_flip = __atomic_load_n(&self->_rec_flip, __ATOMIC_ACQUIRE);
       recording_info_t* current_rec = &(self->_rec_info[!rec_flip]);
       recording_info_t* next_rec    = &(self->_rec_info[ rec_flip]);
 
-      size_t dst_remain = current_rec->length;
+      size_t dst_remain = __atomic_load_n(&current_rec->length, __ATOMIC_ACQUIRE);
       if (dst_remain == 0)
       {
         rec_flip = !rec_flip;
-        self->_rec_flip = rec_flip;
+        __atomic_store_n(&self->_rec_flip, rec_flip, __ATOMIC_RELEASE);
         xSemaphoreGive(self->_task_semaphore);
         std::swap(current_rec, next_rec);
-        dst_remain = current_rec->length;
+        dst_remain = __atomic_load_n(&current_rec->length, __ATOMIC_ACQUIRE);
         if (dst_remain == 0)
         {
           self->_is_recording = false;
@@ -593,11 +593,24 @@ if (_cfg.pin_bck < 0 || _cfg.pin_ws < 0) {
 
       for (;;)
       {
+        // end() must be able to cancel an unfinished capture before its
+        // caller releases the destination buffer.
+        if (!self->_task_running) { break; }
         if (src_idx >= src_len)
         {
-          _i2s_read(self->_cfg.i2s_port, src_buf, dma_buf_len, &src_len, 100 / portTICK_PERIOD_MS);
+          const auto read_result = _i2s_read(self->_cfg.i2s_port, src_buf, dma_buf_len, &src_len, 100 / portTICK_PERIOD_MS);
+          if (!self->_task_running) { break; }
           src_len >>= 1;
           src_idx = 0;
+          // The conversion consumes input in pairs. An empty/failed read must
+          // not turn samples left in the DMA scratch buffer into new PCM.
+          if (read_result != ESP_OK || src_len < 2)
+          {
+            src_len = 0;
+            vTaskDelay(1);
+            continue;
+          }
+          src_len &= ~size_t(1);
         }
 
         do
@@ -667,6 +680,9 @@ if (_cfg.pin_bck < 0 || _cfg.pin_ws < 0) {
             output_num = 4;
           }
         }
+        // record() accepts arbitrary array lengths, including a final odd mono
+        // sample. Do not write a complete conversion group past the buffer.
+        if (size_t(output_num) > dst_remain) { output_num = int(dst_remain); }
         for (int i = 0; i < output_num; ++i)
         {
           auto value = sum_value[i];
@@ -693,7 +709,9 @@ if (_cfg.pin_bck < 0 || _cfg.pin_ws < 0) {
         dst_remain -= output_num;
         if ((int32_t)dst_remain <= 0)
         {
-          current_rec->length = 0;
+          // Publish completion only after the last PCM sample and descriptor
+          // update. No capture path reads this destination again afterwards.
+          __atomic_store_n(&current_rec->length, size_t(0), __ATOMIC_RELEASE);
           break;
         }
       }
@@ -714,30 +732,47 @@ if (_cfg.pin_bck < 0 || _cfg.pin_ws < 0) {
       {
         return true;
       }
-      do { vTaskDelay(1); } while (isRecording());
+      do { vTaskDelay(1); } while (recordingQueueSize());
       end();
-      _rec_sample_rate = rate;
     }
 
     if (_task_semaphore == nullptr) { _task_semaphore = xSemaphoreCreateBinary(); }
+    if (_task_semaphore == nullptr) { return false; }
 
     bool res = true;
     if (_cb_set_enabled) { res = _cb_set_enabled(_cb_set_enabled_args, true); }
 
-    res = (ESP_OK == _setup_i2s()) && res;
+    const auto setup_result = _setup_i2s();
+    res = (ESP_OK == setup_result) && res;
+    if (!res) {
+      if (setup_result == ESP_OK) { _i2s_driver_uninstall(_cfg.i2s_port); }
+      if (_cb_set_enabled) { _cb_set_enabled(_cb_set_enabled_args, false); }
+      return false;
+    }
     if (res)
     {
+      // The first begin() must remember its rate too; otherwise a second
+      // queued record() unnecessarily restarts and cancels the first buffer.
+      _rec_sample_rate = _calc_rec_rate();
       size_t stack_size = 2048 + (_cfg.dma_buf_len * sizeof(uint16_t));
       _task_running = true;
+      BaseType_t created;
 #if portNUM_PROCESSORS > 1
       if (_cfg.task_pinned_core < portNUM_PROCESSORS)
       {
-        xTaskCreatePinnedToCore(mic_task, "mic_task", stack_size, this, _cfg.task_priority, &_task_handle, _cfg.task_pinned_core);
+        created = xTaskCreatePinnedToCore(mic_task, "mic_task", stack_size, this, _cfg.task_priority, &_task_handle, _cfg.task_pinned_core);
       }
       else
 #endif
       {
-        xTaskCreate(mic_task, "mic_task", stack_size, this, _cfg.task_priority, &_task_handle);
+        created = xTaskCreate(mic_task, "mic_task", stack_size, this, _cfg.task_priority, &_task_handle);
+      }
+      if (created != pdPASS) {
+        _task_running = false;
+        _task_handle = nullptr;
+        _i2s_driver_uninstall(_cfg.i2s_port);
+        if (_cb_set_enabled) { _cb_set_enabled(_cb_set_enabled_args, false); }
+        res = false;
       }
     }
 
@@ -746,16 +781,21 @@ if (_cfg.pin_bck < 0 || _cfg.pin_ws < 0) {
 
   void Mic_Class::end(void)
   {
-    if (!_task_running) { return; }
-    _task_running = false;
-    if (_task_handle)
-    {
-      if (_task_handle) { xTaskNotifyGive(_task_handle); }
-      do { vTaskDelay(1); } while (_task_handle);
+    if (_task_running) {
+      _task_running = false;
+      if (_task_handle) {
+        xTaskNotifyGive(_task_handle);
+        do { vTaskDelay(1); } while (_task_handle);
+      }
+      if (_cb_set_enabled) { _cb_set_enabled(_cb_set_enabled_args, false); }
+      _i2s_driver_uninstall(_cfg.i2s_port);
     }
-
-    if (_cb_set_enabled) { _cb_set_enabled(_cb_set_enabled_args, false); }
-    _i2s_driver_uninstall(_cfg.i2s_port);
+    // A cancelled second slot can still reference the caller's old buffer.
+    // Clear only after the task has stopped using both descriptors.
+    _rec_info[0] = recording_info_t{};
+    _rec_info[1] = recording_info_t{};
+    __atomic_store_n(&_rec_flip, false, __ATOMIC_RELEASE);
+    _is_recording = false;
   }
 
   bool Mic_Class::_rec_raw(void* recdata, size_t array_len, bool flg_16bit, uint32_t sample_rate, bool flg_stereo)
@@ -770,8 +810,20 @@ if (_cfg.pin_bck < 0 || _cfg.pin_ws < 0) {
 
     if (!begin()) { return false; }
     if (array_len == 0) { return true; }
-    while (_rec_info[_rec_flip].length) { xSemaphoreTake(_task_semaphore, 1); }
-    _rec_info[_rec_flip] = info;
+    recording_info_t* destination;
+    do {
+      const bool flip = __atomic_load_n(&_rec_flip, __ATOMIC_ACQUIRE);
+      destination = &_rec_info[flip];
+      if (__atomic_load_n(&destination->length, __ATOMIC_ACQUIRE) == 0) { break; }
+      xSemaphoreTake(_task_semaphore, 1);
+    } while (true);
+    // length is the publication marker: the consumer may inspect the other
+    // fields only after its acquire load observes this nonzero length.
+    destination->data = info.data;
+    destination->index = info.index;
+    destination->is_16bit = info.is_16bit;
+    destination->is_stereo = info.is_stereo;
+    __atomic_store_n(&destination->length, info.length, __ATOMIC_RELEASE);
     if (this->_task_handle)
     {
       xTaskNotifyGive(this->_task_handle);

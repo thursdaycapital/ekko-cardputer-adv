@@ -1,0 +1,19 @@
+PASS: full-session WAV save and chronological same-channel streaming
+PASS: published microphone descriptors before task starts
+PASS: canRecord gate and stalled capture
+PASS: G0 drains, saves, closes, restores and reopens
+PASS: persistent selection and non-overwriting names
+PASS: canPlay gate, full queue, OK stop and G0 close
+PASS: missing SD, conflicting user file and retry
+PASS: 24 KiB allocation and microphone begin failure retry
+PASS: microphone queue failure and retry
+PASS: speaker begin and play rejection
+PASS: drain and playback stall cancellation
+PASS: external WAV truncation while reader is open
+PASS: short write retains complete PCM samples
+PASS: fresh app instance reloads SD WAV independent of old RAM
+PASS: waveform throttle and forced close buffer ownership
+15 production AppRecord SD host tests passed under ASan/UBSan. Physical SD/I2S timing and sound are not simulated.
+Production app_record.cpp SHA-256: 0166d6ef111455e2cc275dc0443946d4ba8c69767964586b6246d69beff8d517
+Production app_record.h SHA-256: 3659c2dcc7f749415ef74dff6d53d21bb6448782f1b8319476e5df8a29b59adf
+Production record_storage.h SHA-256: 34d6021a2cfc8102d9daa02a9f5dab142db74332cd8b6e01c5950d61bdb9aa83

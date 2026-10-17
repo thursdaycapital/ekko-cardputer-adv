@@ -1,0 +1,30 @@
+{
+  "buildPassed": true,
+  "target": "esp32s3",
+  "sdk": "ESP-IDF 5.4.2",
+  "factoryPartitionOffset": "0x340000",
+  "factoryPartitionSize": 4194304,
+  "appBytes": 3029536,
+  "appSha256": "d9eb27301696f863041f420a4a2cb76500c54b437414e9823dffce257e71db51",
+  "factoryRemainingBytes": 1164768,
+  "warnings": [
+    "managed_components/espressif__esp-now/src/espnow/include/espnow.h:178:5: warning: missing initializer for member 'espnow_frame_head_s::magic' [-Wmissing-field-initializers]",
+    "managed_components/espressif__esp-now/src/espnow/include/espnow.h:178:5: warning: missing initializer for member 'espnow_frame_head_s::channel' [-Wmissing-field-initializers]",
+    "managed_components/espressif__esp-now/src/espnow/include/espnow.h:178:5: warning: missing initializer for member 'espnow_frame_head_s::filter_adjacent_channel' [-Wmissing-field-initializers]",
+    "managed_components/espressif__esp-now/src/espnow/include/espnow.h:178:5: warning: missing initializer for member 'espnow_frame_head_s::filter_weak_signal' [-Wmissing-field-initializers]",
+    "managed_components/espressif__esp-now/src/espnow/include/espnow.h:178:5: warning: missing initializer for member 'espnow_frame_head_s::security' [-Wmissing-field-initializers]",
+    "managed_components/espressif__esp-now/src/espnow/include/espnow.h:178:5: warning: missing initializer for member 'espnow_frame_head_s::group' [-Wmissing-field-initializers]",
+    "managed_components/espressif__esp-now/src/espnow/include/espnow.h:178:5: warning: missing initializer for member 'espnow_frame_head_s::ack' [-Wmissing-field-initializers]",
+    "managed_components/espressif__esp-now/src/espnow/include/espnow.h:178:5: warning: missing initializer for member 'espnow_frame_head_s::forward_ttl' [-Wmissing-field-initializers]",
+    "managed_components/espressif__esp-now/src/espnow/include/espnow.h:178:5: warning: missing initializer for member 'espnow_frame_head_s::forward_rssi' [-Wmissing-field-initializers]",
+    "main/hal/hal.cpp:815:5: warning: missing initializer for member 'spi_bus_config_t::data4_io_num' [-Wmissing-field-initializers]",
+    "main/hal/hal.cpp:815:5: warning: missing initializer for member 'spi_bus_config_t::data5_io_num' [-Wmissing-field-initializers]",
+    "main/hal/hal.cpp:815:5: warning: missing initializer for member 'spi_bus_config_t::data6_io_num' [-Wmissing-field-initializers]",
+    "main/hal/hal.cpp:815:5: warning: missing initializer for member 'spi_bus_config_t::data7_io_num' [-Wmissing-field-initializers]",
+    "main/hal/hal.cpp:815:5: warning: missing initializer for member 'spi_bus_config_t::data_io_default_level' [-Wmissing-field-initializers]",
+    "main/hal/hal.cpp:815:5: warning: missing initializer for member 'spi_bus_config_t::flags' [-Wmissing-field-initializers]",
+    "main/hal/hal.cpp:815:5: warning: missing initializer for member 'spi_bus_config_t::isr_cpu_id' [-Wmissing-field-initializers]",
+    "main/hal/hal.cpp:815:5: warning: missing initializer for member 'spi_bus_config_t::intr_flags' [-Wmissing-field-initializers]"
+  ],
+  "warningsAreZero": false
+}

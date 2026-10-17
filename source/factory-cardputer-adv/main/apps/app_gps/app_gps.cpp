@@ -35,23 +35,25 @@ void AppGPS::onOpen()
 
     // Clear screen
     GetHAL().canvas.setBaseColor(THEME_COLOR_BG);
+    GetHAL().canvas.fillScreen(THEME_COLOR_BG);
+    GetHAL().canvas.setFont(FONT_BASIC);
     GetHAL().canvas.setTextScroll(true);
     GetHAL().canvas.setTextSize(1);
     GetHAL().canvas.setCursor(0, 0);
 
     GetHAL().canvas.setTextColor(TFT_ORANGE);
-    GetHAL().canvas.printf("Init Cap LoRa868...\n");
+    GetHAL().canvas.printf("正在初始化 GPS 定位...\n");
     GetHAL().pushCanvas();
     _is_cap_available = GetHAL().capLora868.init();
     if (!_is_cap_available) {
         mclog::tagError(getAppInfo().name, "cap not available");
 
         GetHAL().canvas.setTextColor(TFT_ORANGE);
-        GetHAL().canvas.printf("Cap init failed.\n");
+        GetHAL().canvas.printf("扩展模块初始化失败\n");
         GetHAL().canvas.setTextColor(TFT_CYAN);
-        GetHAL().canvas.printf("Cap LoRa868 ");
+        GetHAL().canvas.printf("需要 Cap LoRa868 模块\n");
         GetHAL().canvas.setTextColor(TFT_WHITE);
-        GetHAL().canvas.printf("is required.\nPlease connect it\nto continue.");
+        GetHAL().canvas.printf("请连接后重新打开应用");
 
         GetHAL().pushCanvas();
     }
@@ -100,9 +102,9 @@ void AppGPS::render_gps_data()
             std::string buffer;
 
             // Speed
-            buffer = "..";
+            buffer = "速度:待测";
             if (gps->speed.isValid()) {
-                buffer = fmt::format("{:.1f} km/h", gps->speed.kmph());
+                buffer = fmt::format("速度:{:.1f}千米/时", gps->speed.kmph());
             }
             GetHAL().canvas.fillRect(2, 7, 3, 5, (uint32_t)0xB3B6DD);
             GetHAL().canvas.setTextColor((uint32_t)0xB3B6DD);
@@ -110,9 +112,9 @@ void AppGPS::render_gps_data()
             GetHAL().canvas.drawString(buffer.c_str(), 12, 9);
 
             // Satellite
-            buffer = "..";
+            buffer = "卫星:--";
             if (gps->satellites.isValid()) {
-                buffer = fmt::format("{}", gps->satellites.value());
+                buffer = fmt::format("卫星:{}", gps->satellites.value());
             }
             GetHAL().canvas.setTextColor((uint32_t)0x7EF8B0);
             GetHAL().canvas.setTextDatum(textdatum_t::middle_right);
@@ -131,15 +133,15 @@ void AppGPS::render_gps_data()
                 GetHAL().canvas.setTextColor((uint32_t)0x60FFF5);
                 GetHAL().canvas.setTextDatum(textdatum_t::middle_left);
 
-                buffer = fmt::format("{:.6f} {}", gps->location.lat(), gps->location.lat() > 0 ? "N" : "S");
+                buffer = fmt::format("{} {:.6f}度", gps->location.lat() > 0 ? "北纬" : "南纬", gps->location.lat());
                 GetHAL().canvas.drawString(buffer.c_str(), 12, 37);
 
-                buffer = fmt::format("{:.6f} {}", gps->location.lng(), gps->location.lng() > 0 ? "E" : "W");
+                buffer = fmt::format("{} {:.6f}度", gps->location.lng() > 0 ? "东经" : "西经", gps->location.lng());
                 GetHAL().canvas.drawString(buffer.c_str(), 12, 66);
             } else {
                 GetHAL().canvas.setTextColor((uint32_t)0xFFFEB4);
                 GetHAL().canvas.setTextDatum(textdatum_t::middle_center);
-                GetHAL().canvas.drawString("No GPS Fix", 98, 52);
+                GetHAL().canvas.drawString("等待 GPS 定位", 98, 52);
             }
 
             // Divider
@@ -147,9 +149,9 @@ void AppGPS::render_gps_data()
 
             // Date time
             GetHAL().canvas.setTextSize(1);
-            buffer = "..";
+            buffer = "世界时:等待卫星授时";
             if (gps->date.isValid() && gps->time.isValid()) {
-                buffer = fmt::format("{}.{}.{} / {:02d}:{:02d}:{:02d}", gps->date.year(), gps->date.month(),
+                buffer = fmt::format("世界时 {}.{}.{} {:02d}:{:02d}:{:02d}", gps->date.year(), gps->date.month(),
                                      gps->date.day(), gps->time.hour(), gps->time.minute(), gps->time.second());
 
                 sync_gps_time_to_system(gps);
@@ -167,7 +169,7 @@ void AppGPS::render_gps_data()
         } else {
             GetHAL().canvas.setCursor(0, 0);
             GetHAL().canvas.setTextColor(TFT_RED);
-            GetHAL().canvas.println("gps not available");
+            GetHAL().canvas.println("GPS 定位模块不可用");
             mclog::tagError(getAppInfo().name, "gps not available");
         }
 

@@ -1,0 +1,32 @@
+{
+  "factory": {
+    "version": "factory-ekko-v1.5-zh",
+    "menuItems": 14,
+    "displayLanguage": "zh-CN",
+    "displayFont": "Fusion Pixel 12px compatible",
+    "wifiAutomaticallyConnected": true,
+    "physicalDisplayAcceptance": "passed",
+    "userFeedback": "原厂中文和字体正常",
+    "labelRevision": "大小 → Aa",
+    "priorPhysicalAcceptanceScope": "User accepted the underlying Chinese/Fusion display before this one-string revision",
+    "AaRevisionVerification": "source/build/full readback passed; previous display acceptance retained for unchanged font/layout",
+    "currentFactorySha256": "76fc88d8ad7408b377978c132049fea06d1c89aa698b090ff8e446cf805771df"
+  },
+  "ekko": {
+    "version": "cardputer-adv-v8.3.0-zh-fusion",
+    "audioAlgorithmsUnchangedFrom": "cardputer-adv-v8.2.4.4-audio-buffer",
+    "lcdWebfontFixedUiMissingGlyphs": 0,
+    "physicalDisplayAndLiveVoiceAcceptance": "passed",
+    "userFeedback": "显示正常，文字和声音都顺畅"
+  },
+  "sourcePrivacy": {
+    "includesPrivateFlashOrNvs": false,
+    "includesLiveAccountsAndBindingData": false,
+    "includesDatabaseOrBuildCaches": false
+  },
+  "releaseScope": "Existing dual-firmware application update only; not a first-install full image",
+  "acceptedAt": "2026-10-17T14:19:46.995758+08:00",
+  "acceptanceAuthority": "Direct user reply to two hardware verification questions",
+  "softwareCanvasIsNotPhysicalLcdReadback": true,
+  "nativeWebBrowserAcceptance": "Not additionally repeated on final hardware; source/build/host validated"
+}

@@ -16,4 +16,4 @@ $ ninja.exe -C build
 
 eg.
 
-> /home/example/.espressif/python_env/idf4.4_py3.8_env/bin/python ../../../../esp-idf/components/esptool_py/esptool/esptool.py -p /dev/ttyUSB0 -b 460800 --before default_reset --after hard_reset --chip esp32s3  write_flash --flash_mode dio --flash_size detect --flash_freq 80m 0x0 _build/espressif_s3_devkitc/bootloader/bootloader.bin 0x8000 _build/espressif_s3_devkitc/partition_table/partition-table.bin 0x10000 _build/espressif_s3_devkitc/audio_test_freertos.bin
+> /home/kaspernyhus/.espressif/python_env/idf4.4_py3.8_env/bin/python ../../../../esp-idf/components/esptool_py/esptool/esptool.py -p /dev/ttyUSB0 -b 460800 --before default_reset --after hard_reset --chip esp32s3  write_flash --flash_mode dio --flash_size detect --flash_freq 80m 0x0 _build/espressif_s3_devkitc/bootloader/bootloader.bin 0x8000 _build/espressif_s3_devkitc/partition_table/partition-table.bin 0x10000 _build/espressif_s3_devkitc/audio_test_freertos.bin

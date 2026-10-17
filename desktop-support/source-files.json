@@ -1,0 +1,404 @@
+{
+  "base_commit": "1242ac63556491c92ba6dd49d89fd19c91a6bdd5",
+  "files": [
+    {
+      "path": "docs/openapi.json",
+      "kind": "modified",
+      "base_git_blob": "4864b6a4d98326164819a791d7028a20f2a46b38",
+      "bytes": 692654,
+      "sha256": "a446850b3e99888dc822e303fb6fd58e13f4251832e60fc2cb0c0fec8668a3a4"
+    },
+    {
+      "path": "package-lock.json",
+      "kind": "modified",
+      "base_git_blob": "981f71399413d42dbcf3a488f0396700610562d6",
+      "bytes": 476518,
+      "sha256": "257bd3eb30adb1cbc3c4ff2720f511be639f2f368f0f1d8f5d6798fa2c8758f7"
+    },
+    {
+      "path": "package.json",
+      "kind": "modified",
+      "base_git_blob": "3f5d673e888c0df70758cdd7a86481619ca411d7",
+      "bytes": 7449,
+      "sha256": "fc9c6a76cb184837351891c5573e1f1b39ba6896ea3e6379a21a35f0b5591873"
+    },
+    {
+      "path": "packages/client/src/api/studio/mcu-devices.ts",
+      "kind": "modified",
+      "base_git_blob": "2e85dbf9b248706c17ec8b15cd752c24d14073e4",
+      "bytes": 1672,
+      "sha256": "221f894452b9340fa4f73318d4b1c8a65d834d0d3eed6ccb66c57ad364b42ad1"
+    },
+    {
+      "path": "packages/client/src/components/hermes/connections/McuDevicesPanel.vue",
+      "kind": "modified",
+      "base_git_blob": "e5c092df62bfe8e1e0bcaccc260fbcb9e3d38ff3",
+      "bytes": 11617,
+      "sha256": "f0d5126dd67d74fb75fee90844d96ac4117cbc7abe34749e4b6a527331e5156f"
+    },
+    {
+      "path": "packages/client/src/i18n/locales/ar.ts",
+      "kind": "modified",
+      "base_git_blob": "98f9862ba11c2e673e2c0e18a6b2df5d28b09719",
+      "bytes": 261836,
+      "sha256": "2d6cb167964691c3a04e76bbe887ed03fe95f7a31d5f4d3d060365a529bcf491"
+    },
+    {
+      "path": "packages/client/src/i18n/locales/de.ts",
+      "kind": "modified",
+      "base_git_blob": "220b91ec5d5b8f74f62ecf37f60d8dd03ce04db0",
+      "bytes": 203611,
+      "sha256": "fea5bc38809c904a69eb59a8d4b5c24c694cb967e89249f5b8923b1f48300dfc"
+    },
+    {
+      "path": "packages/client/src/i18n/locales/en.ts",
+      "kind": "modified",
+      "base_git_blob": "497b8a6780550611fea39c67bab13e78bd9dfd60",
+      "bytes": 195481,
+      "sha256": "dcca4a388d94238903f212df86de5c0fc4930acff614bd7f899d86ef2a312d08"
+    },
+    {
+      "path": "packages/client/src/i18n/locales/es.ts",
+      "kind": "modified",
+      "base_git_blob": "2c6b54028ad93155a1e52fff0edc7bf6d692534e",
+      "bytes": 202410,
+      "sha256": "22afaafb59e70803ab738cd72c888e5fbd00ac04198d0e0751a2d9f3bbd81cb0"
+    },
+    {
+      "path": "packages/client/src/i18n/locales/fr.ts",
+      "kind": "modified",
+      "base_git_blob": "59c04717fd78ad253e9707b41940be32ec370456",
+      "bytes": 208750,
+      "sha256": "908c46b81fb4edb84e649dc551547ca595e60a2fe05611688f9a5a76626c838b"
+    },
+    {
+      "path": "packages/client/src/i18n/locales/ja.ts",
+      "kind": "modified",
+      "base_git_blob": "aa24783d7e0672abd6063a51a481e6e8c9336c1f",
+      "bytes": 226673,
+      "sha256": "3d0efb037fe6a10d746cef09b0d103322d8cdeaaf108cb65a0e1ffdcff77b6a3"
+    },
+    {
+      "path": "packages/client/src/i18n/locales/ko.ts",
+      "kind": "modified",
+      "base_git_blob": "4fbb876a2b918555fb088c381327a999a71f4c54",
+      "bytes": 207870,
+      "sha256": "017293705691ce425d3009df949da7d508e4e3e1ed83daa5dbb665155ec226e1"
+    },
+    {
+      "path": "packages/client/src/i18n/locales/pt.ts",
+      "kind": "modified",
+      "base_git_blob": "0bec37e6ae4f989dcba436af567c3350b1db3845",
+      "bytes": 199332,
+      "sha256": "cf0e46218aad9a43ffbee14ba0c2491d659f37b343a7874b19b19de5f1484a9d"
+    },
+    {
+      "path": "packages/client/src/i18n/locales/ru.ts",
+      "kind": "modified",
+      "base_git_blob": "f3eafe9428bc2164f8dddd522087d0fc910e1c1c",
+      "bytes": 272343,
+      "sha256": "47e29322e6c9d6c4f46f0481b8319797ec17bc9ae6e9e5193ab09fbb620258ef"
+    },
+    {
+      "path": "packages/client/src/i18n/locales/tr.ts",
+      "kind": "modified",
+      "base_git_blob": "2b7624b23f0ab753aad78ce0ec3d6eeeaaba313a",
+      "bytes": 61461,
+      "sha256": "a13543f0e638a7a8ac311512e437081b1cbb2078820b185fe114d7470cf0b785"
+    },
+    {
+      "path": "packages/client/src/i18n/locales/zh-TW.ts",
+      "kind": "modified",
+      "base_git_blob": "981a2927873338f0a127d845a717c59459f1730b",
+      "bytes": 189675,
+      "sha256": "2daf795b54f07f17076f3a0b2117ba4bc0cb305a7512ef0c27826af1338a1eba"
+    },
+    {
+      "path": "packages/client/src/i18n/locales/zh.ts",
+      "kind": "modified",
+      "base_git_blob": "aaa91c02bd4ff0a16e4a810f1b918f8fadea05f7",
+      "bytes": 192041,
+      "sha256": "8f1907f364183d963a6c416252a0f42f098a96f5afba49c5569f6eb521998600"
+    },
+    {
+      "path": "packages/server/src/modules/coding-agents/services/dsh/chat-turn.ts",
+      "kind": "modified",
+      "base_git_blob": "09fa774af6c1d01d8765710ee35f4ab43de8cd7e",
+      "bytes": 7097,
+      "sha256": "350a3ead6d1a2c8575e8cadce3363afc902d6ad78cc4659b9f1dc1da7f6b3b37"
+    },
+    {
+      "path": "packages/server/src/modules/coding-agents/services/grok/config.ts",
+      "kind": "modified",
+      "base_git_blob": "35bcb384ba295b08820c1df764bae0d92bd656cb",
+      "bytes": 13285,
+      "sha256": "653536bd0ba68fe8bd9459f58e95394d1d91c2b7cbab313f2b2b04c4d3f35a8c"
+    },
+    {
+      "path": "packages/server/src/modules/coding-agents/services/index.ts",
+      "kind": "modified",
+      "base_git_blob": "3542f3be2cc570602c7f546a0c32ad993c6da974",
+      "bytes": 154834,
+      "sha256": "3037f6b6d4d9e23a0450efcb045d3b1e886743427bf73351d8b44f333fb00496"
+    },
+    {
+      "path": "packages/server/src/modules/coding-agents/services/opencode/chat-turn.ts",
+      "kind": "modified",
+      "base_git_blob": "e80d09393a18ccc746ac6c69cafe6da375971788",
+      "bytes": 3738,
+      "sha256": "05210a649a110c7807676609fe3ede48f499f9a7a4d983dbd06fad143c5c5701"
+    },
+    {
+      "path": "packages/server/src/modules/coding-agents/services/runtime/native-turn-process.ts",
+      "kind": "modified",
+      "base_git_blob": "37d5ef7ad00caaf46e837ef2bc1420c8627a100f",
+      "bytes": 2946,
+      "sha256": "ae451b782a8ff125e72dbf215edb23df4039479aa10aaf4b5040a695e841f8a0"
+    },
+    {
+      "path": "packages/server/src/modules/coding-agents/services/runtime/run-manager.ts",
+      "kind": "modified",
+      "base_git_blob": "592345559efa849ae698bfa2f7805905592b79a7",
+      "bytes": 160653,
+      "sha256": "ba86d343832732ebb44863fc38dc94cba0d3890bcc8ecadd39b6abf233e087d3"
+    },
+    {
+      "path": "packages/server/src/modules/studio/controllers/auth.ts",
+      "kind": "modified",
+      "base_git_blob": "d949a5ec6230c94080367c421d12cec85f2a4a7a",
+      "bytes": 26008,
+      "sha256": "522f3dc506ca174737936debb92b44c9a6b946b184c35cfd6f0a3ff52934c96e"
+    },
+    {
+      "path": "packages/server/src/modules/studio/controllers/mcu-devices.ts",
+      "kind": "modified",
+      "base_git_blob": "9e4f5dc284c2b2c8777ef81bad7e24c4e1f08654",
+      "bytes": 8753,
+      "sha256": "6415c5fa3f09f38b6f729fef18d798db52e1d92c1be8d3780ba8bfb482ffd2c3"
+    },
+    {
+      "path": "packages/server/src/modules/studio/controllers/mcu-firmware.ts",
+      "kind": "modified",
+      "base_git_blob": "4eda2f6279f5d5b825aa2d3066f5606f2064e660",
+      "bytes": 5757,
+      "sha256": "957628a9511f4620e5d078adaa7edd6944e07bc331470e5ba2fe8afdf89d4cb2"
+    },
+    {
+      "path": "packages/server/src/modules/studio/controllers/stt.ts",
+      "kind": "modified",
+      "base_git_blob": "f7de16587f6df211f471d36f32bbc66ff7282209",
+      "bytes": 29893,
+      "sha256": "a2e1ac5c808fc95b7dfaa04f0403a09137f51e7b4cfb963c46db5cd12f2e21b9"
+    },
+    {
+      "path": "packages/server/src/modules/studio/public/mcu-voice.ts",
+      "kind": "modified",
+      "base_git_blob": "a1bf50fff0108f48f95b83b220ec917a10908df4",
+      "bytes": 990,
+      "sha256": "98b485668f99b2100d2ca8a295425f4762d31b5b0786cc0be028dc5c5347470e"
+    },
+    {
+      "path": "packages/server/src/modules/studio/repositories/mcu-devices-store.ts",
+      "kind": "modified",
+      "base_git_blob": "99165646fd56b27f11aaa7eabe3233e5d276d8bd",
+      "bytes": 5029,
+      "sha256": "a410877cb9fdeddff1db244e24ee4645624a7423be29d090759d962b4102da3d"
+    },
+    {
+      "path": "packages/server/src/modules/studio/repositories/session-store.ts",
+      "kind": "modified",
+      "base_git_blob": "00534d5de99ea87c4c6f606b4c7f265054e6cde9",
+      "bytes": 45727,
+      "sha256": "d4fac807d922b6fac9853b23f2e151eb5608b10b0796ebd19cbb82f19dab76bf"
+    },
+    {
+      "path": "packages/server/src/modules/studio/routes/mcu-devices.ts",
+      "kind": "modified",
+      "base_git_blob": "79641fb9bfd57ce5568f23a4f929ba94e705cfb3",
+      "bytes": 712,
+      "sha256": "db3ad5eed457d5e97c52907fd98f2c83bb6b1f777adbe1e69bea2d629e2a6fa5"
+    },
+    {
+      "path": "packages/server/src/modules/studio/services/chat-run/handle-coding-agent-run.ts",
+      "kind": "modified",
+      "base_git_blob": "16c2ba7a245061d02b259b8ffb139186e7810f93",
+      "bytes": 9905,
+      "sha256": "8a246c14167a1e9add4dbb3a627886a5d503b33bf8005a552ed7b52797638175"
+    },
+    {
+      "path": "packages/server/src/modules/studio/services/global-agent/mcu-agent-runtime.ts",
+      "kind": "modified",
+      "base_git_blob": "2275c2b0ac51dcdad5e920c42ada31594902ecfc",
+      "bytes": 4821,
+      "sha256": "0accd735207a7b21174049834d7ec4dfb1d3def5f63c31654cf44e3a2ab818b2"
+    },
+    {
+      "path": "packages/server/src/modules/studio/services/global-agent/outbound-relay-client.ts",
+      "kind": "modified",
+      "base_git_blob": "0bca6a015131098688d7b4109c1119bb5edbd364",
+      "bytes": 98171,
+      "sha256": "7da2c6b908f6ebed874b3e563863653bd868ec1e057da8477037be993731734e"
+    },
+    {
+      "path": "packages/server/src/modules/studio/sockets/chat-run.ts",
+      "kind": "modified",
+      "base_git_blob": "3304bb710618d3dacb700f1cb3e63e0d95b4b490",
+      "bytes": 143020,
+      "sha256": "6f9c2903a093de9bab9ae11e973e4ca0b41da7223ed9306b158039941aa45029"
+    },
+    {
+      "path": "packages/server/src/modules/studio/sockets/global-agent.ts",
+      "kind": "modified",
+      "base_git_blob": "8fe4867f58c2cfda8eecd61a1c4810bc49da8495",
+      "bytes": 111097,
+      "sha256": "50217b2fb4dc34b919b68e047052a695bf07e2cf8173e9fa9a31172ad8441682"
+    },
+    {
+      "path": "scripts/build-server.mjs",
+      "kind": "modified",
+      "base_git_blob": "2ffdbd0d86a29af604d6cffef8318e2830227ab8",
+      "bytes": 4065,
+      "sha256": "c24ee0f475d7161c895190c283e34567145993f401c773304e09db7dc5dd2a63"
+    },
+    {
+      "path": "tests/server/agent-runner/grok/grok-runtime.test.ts",
+      "kind": "modified",
+      "base_git_blob": "5c5e9f885613771b74f67c4df42e231a4ed5a14a",
+      "bytes": 19327,
+      "sha256": "4c2b3e7a71a7b725c75b75e0f6ab1a5e61f088f067d81d85abc549a8709a6b39"
+    },
+    {
+      "path": "tests/server/chat-run-bridge-readiness.test.ts",
+      "kind": "modified",
+      "base_git_blob": "e53d112ada4d892ccbdd4de7b09ebc28b1b096df",
+      "bytes": 63619,
+      "sha256": "6c0676b4ff70f5e180dfd28ba5a7df74c8d223c9978d1f62fe118c66f4705515"
+    },
+    {
+      "path": "tests/server/coding-agent-run-manager-windows.test.ts",
+      "kind": "modified",
+      "base_git_blob": "c11a72552ef33d5773fcd0c1c240ff0e704f8833",
+      "bytes": 70570,
+      "sha256": "a80eba2192ae86d1dfa46fe1b792773fca356e576ae3a1850d0b85629273a13b"
+    },
+    {
+      "path": "tests/server/global-agent-server.test.ts",
+      "kind": "modified",
+      "base_git_blob": "05bf5170a162ddc1428d7bf25c543447ca46c85d",
+      "bytes": 111732,
+      "sha256": "0c4940510e2f87e65b2d599aa42e5784e0b8b77613f833cbc9edb9b7822a6e83"
+    },
+    {
+      "path": "tests/server/handle-coding-agent-run.test.ts",
+      "kind": "modified",
+      "base_git_blob": "c5a099bfa0fb4bbe99fbb168a4f00d6387484a9a",
+      "bytes": 27560,
+      "sha256": "3a29ab29702a0e337cf8cae5aafdeb66548723564f2eb0d254bca2bf60ded8c8"
+    },
+    {
+      "path": "tests/server/mcu-devices-store.test.ts",
+      "kind": "modified",
+      "base_git_blob": "1f3fe7e3bfb0610d7345128289109b621fce34be",
+      "bytes": 5344,
+      "sha256": "ffa90b951ee8f209e2d3753ec990c4d0da63f78e8f71bf7b50f0179abb76dec1"
+    },
+    {
+      "path": "tests/server/mcu-firmware-controller.test.ts",
+      "kind": "modified",
+      "base_git_blob": "d8331055535f299c636a9113d22b19ff2c408726",
+      "bytes": 4754,
+      "sha256": "6b2a736f755195cbd7bdbc5f21d8a618d9d266ade9b91544997516bbb8cd7395"
+    },
+    {
+      "path": "tests/server/mcu-firmware-source.test.ts",
+      "kind": "modified",
+      "base_git_blob": "78ec55fb5cde1f12f0e3a29057111d65599414c8",
+      "bytes": 6393,
+      "sha256": "51756df893b2674920735ad49dee1b5212191e8a70b8dffe425e6e402f465f29"
+    },
+    {
+      "path": "tests/server/mcu-login-controller.test.ts",
+      "kind": "modified",
+      "base_git_blob": "0fb6315530315535f6cfee87e65e758791a05da9",
+      "bytes": 12164,
+      "sha256": "e66eba9718f291248bba55bca6669597d22e71db29a62dd97fb8780f1e53493c"
+    },
+    {
+      "path": "tests/server/outbound-relay-client.test.ts",
+      "kind": "modified",
+      "base_git_blob": "5019a231df70c4600be6a3751a1f17247a3d6169",
+      "bytes": 88863,
+      "sha256": "687723fe5bd4b4615aebe87579256aa69df0bc55a157cec7bb81248674025dd5"
+    },
+    {
+      "path": "tests/server/stt-transcribe-controller.test.ts",
+      "kind": "modified",
+      "base_git_blob": "9cfbb96d4a41f86126f4aebd00da1659ac549e84",
+      "bytes": 27388,
+      "sha256": "1c364098c3c70142488a23d4b07ee83caefd64673738e8b18a50e98ebe030dd9"
+    },
+    {
+      "path": "packages/server/src/modules/studio/services/devices/mcu-device-verification.ts",
+      "kind": "added",
+      "base_git_blob": null,
+      "bytes": 2415,
+      "sha256": "5d06d70f8e57fbc20ef768d9433f9e096216e437e18189a387a4ed6de25c3fd0"
+    },
+    {
+      "path": "packages/server/src/modules/studio/services/global-agent/mcu-chat.ts",
+      "kind": "added",
+      "base_git_blob": null,
+      "bytes": 5123,
+      "sha256": "61fba1f204080ee61e67430b11e1e76245f0f4d03283a14f181d211ef2e45d6d"
+    },
+    {
+      "path": "tests/client/mcu-devices-panel.test.ts",
+      "kind": "added",
+      "base_git_blob": null,
+      "bytes": 7523,
+      "sha256": "628e8343bae6b2ac51af6357bb2f806edcca7f211758f73b9527e8f87c8619ac"
+    },
+    {
+      "path": "tests/e2e/mcu-official-verification.spec.ts",
+      "kind": "added",
+      "base_git_blob": null,
+      "bytes": 7531,
+      "sha256": "2c81b42be7b1e320bfc9ee74a42e6a055ad4098c9faca71175eb18b9f197eab9"
+    },
+    {
+      "path": "tests/server/mcu-agent-runtime.test.ts",
+      "kind": "added",
+      "base_git_blob": null,
+      "bytes": 6849,
+      "sha256": "95bdd1ce52fc20e5722db1c66a9e59c95d254258c265227d27c00867dff21b10"
+    },
+    {
+      "path": "tests/server/mcu-chat-history-store.test.ts",
+      "kind": "added",
+      "base_git_blob": null,
+      "bytes": 4245,
+      "sha256": "3bb1ae43666fb0e41aac35f5b81340da45091253c31df9fb50589c83b58c436b"
+    },
+    {
+      "path": "tests/server/mcu-chat-protocol.test.ts",
+      "kind": "added",
+      "base_git_blob": null,
+      "bytes": 4574,
+      "sha256": "da40935b48677aae80e60514241212f8857df1c1e2fe8e190a232b6c5c3826ec"
+    },
+    {
+      "path": "tests/server/mcu-device-verification.test.ts",
+      "kind": "added",
+      "base_git_blob": null,
+      "bytes": 6515,
+      "sha256": "8ce287a86376b0ec3f3422df67530e2dafb6d99333761ebcd5cd4be922a6e6b0"
+    },
+    {
+      "path": "tests/server/mcu-devices-controller.test.ts",
+      "kind": "added",
+      "base_git_blob": null,
+      "bytes": 12232,
+      "sha256": "dd6fbbd46952e8dcb3e7c16b8c7469933fa2f056c8159ae9604a420cafb10ab9"
+    }
+  ]
+}

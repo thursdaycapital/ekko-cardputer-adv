@@ -91,7 +91,7 @@ void KeyboardSelectorMenu::onRender()
     GetHAL().canvas.setTextColor(TFT_ORANGE, THEME_COLOR_BG);
     GetHAL().canvas.setCursor(0, 0);
     GetHAL().canvas.setTextSize(1);
-    GetHAL().canvas.println("[Select Keyboard Type]");
+    GetHAL().canvas.println("选择键盘连接方式");
 
     // Render selector
     auto selector_frame = getSelectorCurrentFrame();
@@ -99,7 +99,7 @@ void KeyboardSelectorMenu::onRender()
                                         4, (uint32_t)0x69B38C);
 
     // Render options directly
-    const char* option_names[] = {"BLE Keyboard", "USB Keyboard"};
+    const char* option_names[] = {"蓝牙键盘", "USB 键盘"};
 
     int i = 0;
     for (auto& option : getOptionList()) {
@@ -109,6 +109,10 @@ void KeyboardSelectorMenu::onRender()
 
         i++;
     }
+
+    GetHAL().canvas.setTextColor(TFT_WHITE, THEME_COLOR_BG);
+    GetHAL().canvas.setCursor(10, 88);
+    GetHAL().canvas.print("方向键选择  回车确认");
 
     GetHAL().pushCanvas();
 }

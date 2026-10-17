@@ -54,7 +54,7 @@ void Launcher::connect_saved_wifi()
         // Failure never erases credentials or prevents entry to SetWiFi.
         display.fillScreen(THEME_COLOR_BG);
         display.drawCenterString("暂未连接", display.width() / 2, 45);
-        display.drawCenterString("可在 SetWiFi 更换网络", display.width() / 2, 72);
+        display.drawCenterString("可在“网络设置”更换网络", display.width() / 2, 72);
         GetHAL().delay(700);
     }
 }

@@ -1,0 +1,6 @@
+SD probe: 40 real POSIX write/read probes; user files unchanged; no temporary files remain
+Original BDF + actual vendor raster: 24025 glyphs, 180 original factory efont glyphs, zero pixel mismatches
+Fixed UI coverage: 197 literal lines, 286 non-ASCII characters, zero missing
+Menu widths: {'EkkoStudio': 60, 'Scan': 48, 'Record': 48, 'Chat': 48, 'Remote': 48, 'REPL': 48, 'SetWiFi': 48, 'Clock': 24, 'Keyboard': 48, 'IMU': 60, 'SDCard': 36, 'StringIR': 48, 'LoRaChat': 48, 'GPS': 42}
+Long literal lines requiring application wrapping review: 0
+${WORKSPACE}/work/cardputer-dual-zh-20261017/factory/tests/font-storage-validation.json

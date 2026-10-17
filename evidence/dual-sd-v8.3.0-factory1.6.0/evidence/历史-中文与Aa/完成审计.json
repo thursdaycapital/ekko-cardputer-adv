@@ -1,0 +1,72 @@
+{
+  "objective": "两个固件汉化，使用Fusion Pixel",
+  "requirements": [
+    {
+      "requirement": "原厂14项固定界面汉化",
+      "evidence": [
+        "factory source display mapping and localized app literals",
+        "factory-font-storage-validation.json",
+        "user factory physical confirmation"
+      ],
+      "status": "passed"
+    },
+    {
+      "requirement": "Ekko选择/聊天/状态/输入界面中文化",
+      "evidence": [
+        "ekko source and UI localization tests",
+        "actual app0 full-readback verification",
+        "user Ekko physical and live voice confirmation"
+      ],
+      "status": "passed"
+    },
+    {
+      "requirement": "两份设备固件使用Fusion Pixel",
+      "evidence": [
+        "actual linked MCU font data same SHA in both sources",
+        "24025 actual glyph raster oracle",
+        "fixed UI missing glyphs zero",
+        "user both physical display confirmations"
+      ],
+      "status": "passed"
+    },
+    {
+      "requirement": "保留配网绑定、双固件与已验收音频逻辑",
+      "evidence": [
+        "full8MiB readback exact expected app updates; NVS/OTA preserved at flash verification",
+        "61 audio functions and production audio digest unchanged",
+        "factory automatic network log",
+        "user live voice smooth"
+      ],
+      "status": "passed"
+    },
+    {
+      "requirement": "可烧录应用、脱敏源码、中文教程与校验值",
+      "evidence": [
+        "two target builds and image bytes within partitions",
+        "source ZIP integrity/privacy audit",
+        "installation guide and menu guide",
+        "refreshed SHA256SUMS and ZIP integrity"
+      ],
+      "status": "passed"
+    }
+  ],
+  "userAccepted": true,
+  "unrelatedKnownIssuesDocumented": true,
+  "scopeLimitationsDocumented": true,
+  "completedAt": "2026-10-17T14:19:46.995758+08:00",
+  "AaRevision": {
+    "change": "原厂侧栏 大小 → Aa",
+    "productionSourceFilesChanged": 1,
+    "sourceChangeOnlyLabelLiteral": true,
+    "buildPassed": true,
+    "factoryBytes": 3002448,
+    "factorySha256": "76fc88d8ad7408b377978c132049fea06d1c89aa698b090ff8e446cf805771df",
+    "freshPrivateFullBackupSaved": true,
+    "full8MiBReadbackMatchesExpected": true,
+    "ekkoAndAllNonFactoryBytesUnchanged": true,
+    "fixedUiMissingGlyphs": [],
+    "softwareCanvasAfterRevision": "not captured; serial query returned no factory diagnostic data",
+    "physicalDisplayAfterRevision": "not claimed; previous user acceptance covers unchanged font/layout",
+    "completedAt": "2026-10-17T14:27:33.059025+08:00"
+  }
+}

@@ -16,8 +16,10 @@
       "upstream_path": "packages/client/public/coding-agents/ekko-agent.png",
       "license": "Asset-specific permission not established; brand trademarks belong to their respective owners.",
       "attribution_note": "Exact asset adopted by Ekko Studio upstream; this does not assert that the SVG was authored or supplied directly by the brand owner.",
-      "sha256": "7751f4d07155e217ba9d85e6a791597e142190c3a4dec89c0577132dd720be5d",
-      "ekko_reference_commit": "1242ac63556491c92ba6dd49d89fd19c91a6bdd5"
+      "sha256": "30d202626b7114bd92730323c062c15b25b129563f0a45d2019399c26b61ec1d",
+      "ekko_reference_commit": "1242ac63556491c92ba6dd49d89fd19c91a6bdd5",
+      "downloaded_source_sha256": "7751f4d07155e217ba9d85e6a791597e142190c3a4dec89c0577132dd720be5d",
+      "published_image_metadata_stripped": true
     },
     {
       "id": "hermes",
@@ -56,8 +58,10 @@
       "upstream_path": "packages/client/public/coding-agents/codex-openai.png",
       "license": "Asset-specific permission not established; brand trademarks belong to their respective owners.",
       "attribution_note": "Exact asset adopted by Ekko Studio upstream; this does not assert that the SVG was authored or supplied directly by the brand owner.",
-      "sha256": "eaa70fa3982c2a6932d349d1033445e2d428a1589fc5dd9b1797d8051c698750",
-      "ekko_reference_commit": "1242ac63556491c92ba6dd49d89fd19c91a6bdd5"
+      "sha256": "b684f7d40ab752393efc15791070f8ce0746441cd2d6c53dda3aaa9f9358f3e4",
+      "ekko_reference_commit": "1242ac63556491c92ba6dd49d89fd19c91a6bdd5",
+      "downloaded_source_sha256": "eaa70fa3982c2a6932d349d1033445e2d428a1589fc5dd9b1797d8051c698750",
+      "published_image_metadata_stripped": true
     },
     {
       "id": "pi",
@@ -96,8 +100,10 @@
       "upstream_path": "packages/client/public/coding-agents/opencode.png",
       "license": "Asset-specific permission not established; brand trademarks belong to their respective owners.",
       "attribution_note": "Exact asset adopted by Ekko Studio upstream; this does not assert that the SVG was authored or supplied directly by the brand owner.",
-      "sha256": "c283c40b9d54f37854050f87b9e1122cea18113830f579cef6e5be4b119423ba",
-      "ekko_reference_commit": "1242ac63556491c92ba6dd49d89fd19c91a6bdd5"
+      "sha256": "30f1cf3016919c793ced5d1fd2318a61379729b7fa3941d9f332724ae922a0e0",
+      "ekko_reference_commit": "1242ac63556491c92ba6dd49d89fd19c91a6bdd5",
+      "downloaded_source_sha256": "c283c40b9d54f37854050f87b9e1122cea18113830f579cef6e5be4b119423ba",
+      "published_image_metadata_stripped": true
     },
     {
       "id": "dsh",
@@ -137,8 +143,10 @@
       "upstream_path": "packages/client/public/coding-agents/antigravity.png",
       "license": "Asset-specific permission not established; brand trademarks belong to their respective owners.",
       "attribution_note": "Exact asset adopted by Ekko Studio upstream; this does not assert that the SVG was authored or supplied directly by the brand owner.",
-      "sha256": "8f0b95d2d21dbf930b4d100e2fdc4505673e900a731aa56ea633a4b59c312799",
-      "ekko_reference_commit": "1242ac63556491c92ba6dd49d89fd19c91a6bdd5"
+      "sha256": "3445825d839b45ecedf0ed8bc6fa1a0c089c0370592bc40a5be1fc7d92e87a90",
+      "ekko_reference_commit": "1242ac63556491c92ba6dd49d89fd19c91a6bdd5",
+      "downloaded_source_sha256": "8f0b95d2d21dbf930b4d100e2fdc4505673e900a731aa56ea633a4b59c312799",
+      "published_image_metadata_stripped": true
     },
     {
       "id": "qwen",

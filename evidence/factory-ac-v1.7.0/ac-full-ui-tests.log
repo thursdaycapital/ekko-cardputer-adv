@@ -1,0 +1,6 @@
+PASS: 29 production AppRemote UI/routing/lifecycle/NVS test groups under ASan/UBSan
+Includes all 20 mode/fan selections, 6 repeated actions, 3 compatibility protocols, NVS faults and reboot restore.
+Host fakes do not establish physical IR emission or appliance compatibility.
+Production app_remote.cpp SHA-256: 8a8267a11a1ead62745dd9bb4596e24234929333e787891490a5f6382ad48388
+Production app_remote.h SHA-256: b91f03f252d8dc7fbcea2dba684b77f6fa1b24aa90e2ff57a937f10070ca053f
+Production ac_protocol.h SHA-256: 5a80c37d90cdb6a0f4b3f211eb4e5c7bdd18f1918e29704bf8dc21d881f5a422

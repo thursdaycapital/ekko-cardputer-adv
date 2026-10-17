@@ -383,11 +383,11 @@ void DrawGame(void)
 
         if (_data->pause) {
             GetHAL().canvas.setTextColor(TFT_DARKGRAY);
-            GetHAL().canvas.drawCenterString("GAME PAUSED", 120, 56);
+            GetHAL().canvas.drawCenterString("游戏暂停", 120, 56);
         }
     } else {
         GetHAL().canvas.setTextColor(TFT_DARKGRAY);
-        GetHAL().canvas.drawCenterString("GAME OVER :)", 126, screenHeight / 2 - 24);
+        GetHAL().canvas.drawCenterString("游戏结束 :)", 126, screenHeight / 2 - 24);
     }
 
     EndDrawing();

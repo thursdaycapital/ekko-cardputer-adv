@@ -1,7 +1,7 @@
-<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>EkkoStudio · Cardputer-Adv 固件安装教程</title><style>*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#ece9df;color:#252f30;font-family:"LXGW WenKai","Kaiti SC","KaiTi",serif;font-size:17px;line-height:1.9}a{color:#205e5b;text-underline-offset:4px}header{max-width:1120px;margin:0 auto;padding:42px 32px 22px;display:flex;gap:18px;justify-content:space-between;align-items:center;border-bottom:2px solid #253a38}.wordmark{font-family:"Avenir Next","Trebuchet MS",sans-serif;letter-spacing:2px;font-size:15px;font-weight:700}.tag{background:#d7e0d6;padding:5px 12px;font-size:14px;border-radius:2px}.layout{max-width:1120px;margin:auto;display:grid;grid-template-columns:190px minmax(0,1fr);gap:40px;padding:36px 32px 80px}nav{position:sticky;top:28px;align-self:start;font-size:14px}nav strong{display:block;color:#8d592c;margin-bottom:12px}nav a{display:block;margin:9px 0;text-decoration:none}article{min-width:0}h1{font-size:39px;line-height:1.35;margin:0 0 24px;letter-spacing:-.5px}h2{font-size:26px;margin:46px 0 18px;padding:0 0 10px;border-bottom:1px solid #c8c9b9;color:#214d48}h3{font-size:21px;margin:30px 0 12px}p{margin:16px 0}strong{font-weight:700}pre{margin:19px 0;padding:18px 20px;background:#233231;color:#f2f0e4;border-left:4px solid #bf8246;border-radius:2px;white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px;line-height:1.8}code{font-family:"JetBrains Mono","Menlo","Consolas",monospace}p code,td code{font-size:.83em;background:#dedfd3;padding:2px 5px;overflow-wrap:anywhere}table{width:100%;border-collapse:collapse;font-size:14px;margin:22px 0}th,td{text-align:left;vertical-align:top;padding:12px 10px;border-bottom:1px solid #c7cbbf;overflow-wrap:anywhere}th{background:#dce2d6;color:#25443d}tr:nth-child(even) td{background:#e7e7dc}ul,ol{padding-left:24px}li{margin:10px 0}img{max-width:100%;height:auto;border:1px solid #abb3a3}.lead{font-size:15px;color:#596660}.footer{margin:30px 0 0;font-size:14px;color:#667069}.print{font:inherit;font-size:13px;border:1px solid #8b9b8b;background:transparent;border-radius:2px;color:#244e48;padding:7px 13px;cursor:pointer}@media(max-width:850px){header{padding:24px 18px}.layout{display:block;padding:24px 18px}nav{position:static;border-bottom:1px solid #bbc5b8;padding-bottom:16px;margin-bottom:26px;display:flex;gap:10px;flex-wrap:wrap}nav strong{width:100%}nav a{margin:0;padding-right:12px}h1{font-size:30px}table{font-size:12px}th,td{padding:9px 6px}pre{font-size:12px;padding:14px}}@media print{body{background:white;font-size:11pt;line-height:1.6}.layout{display:block;padding:0}header,nav,.print{display:none}h1{font-size:23pt}h2{break-after:avoid;font-size:17pt}pre{background:#eee;color:#111;border-left:2px solid #444;font-size:8.5pt}table{font-size:9pt}a{color:inherit}tr,pre{break-inside:avoid}}
-article>table:first-of-type th:nth-child(3),article>table:first-of-type td:nth-child(3){white-space:nowrap;min-width:78px}article>table:first-of-type th:nth-child(1){width:25%}article>table:first-of-type th:nth-child(2){width:31%}</style><header><span class="wordmark">EKKO STUDIO / CARDPUTER ADV</span><span class="tag">v8.2.4.1 · 12px</span><button class="print" onclick="window.print()">打印／另存PDF</button></header><div class="layout"><nav><strong>安装目录</strong><a href="#1">选择方式</a><a href="#2">工具与下载模式</a><a href="#3">私人备份</a><a href="#4-a">保留设置升级</a><a href="#5-b">首次安装</a><a href="#6">Wi-Fi与Studio</a><a href="#7">按键速查</a><a href="#8">常见问题</a><a href="#9">校验与源码</a></nav><article><h1 id="ekkostudio-cardputer-adv">EkkoStudio · Cardputer-Adv 安装教程</h1>
-<p>版本：<strong>v8.2.4.1 · Fusion Pixel 12px</strong>　整理日期：2026-10-17</p>
-<p><strong>开发样机上的本版应用已安装并验收完成。</strong> 本包供同型号设备保留设置升级、备份恢复或首次安装；新读者请按自己的设备状态选择安装方式。先选对安装方式，再复制对应命令。</p>
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>EkkoStudio · Cardputer-Adv v8.3.0-factory1.7.0 安装教程</title><style>*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#ece9df;color:#252f30;font-family:"LXGW WenKai","Kaiti SC","KaiTi",serif;font-size:17px;line-height:1.9}a{color:#205e5b;text-underline-offset:4px}header{max-width:1120px;margin:0 auto;padding:42px 32px 22px;display:flex;gap:18px;justify-content:space-between;align-items:center;border-bottom:2px solid #253a38}.wordmark{font-family:"Avenir Next","Trebuchet MS",sans-serif;letter-spacing:2px;font-size:15px;font-weight:700}.tag{background:#d7e0d6;padding:5px 12px;font-size:14px;border-radius:2px}.layout{max-width:1120px;margin:auto;display:grid;grid-template-columns:190px minmax(0,1fr);gap:40px;padding:36px 32px 80px}nav{position:sticky;top:28px;align-self:start;font-size:14px}nav strong{display:block;color:#8d592c;margin-bottom:12px}nav a{display:block;margin:9px 0;text-decoration:none}article{min-width:0}h1{font-size:39px;line-height:1.35;margin:0 0 24px;letter-spacing:-.5px}h2{font-size:26px;margin:46px 0 18px;padding:0 0 10px;border-bottom:1px solid #c8c9b9;color:#214d48}h3{font-size:21px;margin:30px 0 12px}p{margin:16px 0}strong{font-weight:700}pre{margin:19px 0;padding:18px 20px;background:#233231;color:#f2f0e4;border-left:4px solid #bf8246;border-radius:2px;white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px;line-height:1.8}code{font-family:"JetBrains Mono","Menlo","Consolas",monospace}p code,td code{font-size:.83em;background:#dedfd3;padding:2px 5px;overflow-wrap:anywhere}table{width:100%;border-collapse:collapse;font-size:14px;margin:22px 0}th,td{text-align:left;vertical-align:top;padding:12px 10px;border-bottom:1px solid #c7cbbf;overflow-wrap:anywhere}th{background:#dce2d6;color:#25443d}tr:nth-child(even) td{background:#e7e7dc}ul,ol{padding-left:24px}li{margin:10px 0}img{max-width:100%;height:auto;border:1px solid #abb3a3}.lead{font-size:15px;color:#596660}.footer{margin:30px 0 0;font-size:14px;color:#667069}.print{font:inherit;font-size:13px;border:1px solid #8b9b8b;background:transparent;border-radius:2px;color:#244e48;padding:7px 13px;cursor:pointer}@media(max-width:850px){header{padding:24px 18px}.layout{display:block;padding:24px 18px}nav{position:static;border-bottom:1px solid #bbc5b8;padding-bottom:16px;margin-bottom:26px;display:flex;gap:10px;flex-wrap:wrap}nav strong{width:100%}nav a{margin:0;padding-right:12px}h1{font-size:30px}table{font-size:12px}th,td{padding:9px 6px}pre{font-size:12px;padding:14px}}@media print{body{background:white;font-size:11pt;line-height:1.6}.layout{display:block;padding:0}header,nav,.print{display:none}h1{font-size:23pt}h2{break-after:avoid;font-size:17pt}pre{background:#eee;color:#111;border-left:2px solid #444;font-size:8.5pt}table{font-size:9pt}a{color:inherit}tr,pre{break-inside:avoid}}
+article>table:first-of-type th:nth-child(3),article>table:first-of-type td:nth-child(3){white-space:nowrap;min-width:78px}article>table:first-of-type th:nth-child(1){width:25%}article>table:first-of-type th:nth-child(2){width:31%}</style></head><body><header><span class="wordmark">EKKO STUDIO / CARDPUTER ADV</span><span class="tag">v8.3.0 / Factory 1.7.0 · 预发布</span><button class="print" onclick="window.print()">打印／另存PDF</button></header><div class="layout"><nav><strong>安装目录</strong><a href="#1">选择方式</a><a href="#2">工具与下载模式</a><a href="#3">私人备份</a><a href="#4-a">保留设置升级</a><a href="#5-b">首次安装</a><a href="#6">Wi-Fi与Studio</a><a href="#7">聊天按键</a><a href="#8">SD录音</a><a href="#9">空调遥控</a><a href="#10">常见问题</a><a href="#11">校验与源码</a></nav><article><h1 id="ekkostudio-cardputer-adv">EkkoStudio · Cardputer-Adv 安装教程</h1>
+<p>版本：<strong>v8.3.0-factory1.7.0 · Ekko v8.3.0 ＋ 原厂中文 v1.7.0</strong>　整理日期：2026-10-17</p>
+<p><strong>开发样机已安装这两套应用，并通过完整闪存读回。</strong> 用户已确认中文、聊天文字与语音、SD 录音两次回放，以及空调调温／风速／摆风和退出重进偏好正常。首次安装的空 NVS 整机镜像仍只有离线验证，因此本次为<strong>预发布</strong>。请按自己的设备状态选择安装方式。</p>
 <h2 id="1">1. 先选安装方式</h2>
 <table>
 <thead>
@@ -14,10 +14,16 @@ article>table:first-of-type th:nth-child(3),article>table:first-of-type td:nth-c
 </thead>
 <tbody>
 <tr>
-<td>已装本项目双固件，原厂菜单有 EkkoStudio，想保留设置更新</td>
+<td>已装本项目同布局双固件，要更新 Ekko</td>
 <td><code>firmware/ekko-update-0x10000.bin</code></td>
 <td><code>0x10000</code></td>
-<td>更新 Ekko 应用，保留原厂菜单、Wi-Fi 与登录</td>
+<td>只更新 Ekko，保留原厂应用与设置</td>
+</tr>
+<tr>
+<td>已装本项目同布局双固件，要更新中文原厂、SD 录音和空调遥控</td>
+<td><code>firmware/factory-update-0x340000.bin</code></td>
+<td><code>0x340000</code></td>
+<td>只更新原厂应用，保留 Ekko 与设置</td>
 </tr>
 <tr>
 <td>同型号新机／其他分区布局，或明确要清空后重装</td>
@@ -28,7 +34,7 @@ article>table:first-of-type th:nth-child(3),article>table:first-of-type td:nth-c
 </tbody>
 </table>
 <p><strong>适用：M5Stack Cardputer-Adv，ESP32-S3，8MiB Flash。</strong> 普通 Cardputer、ESP32-C3 或其他外形相似的板子，不按本教程刷。</p>
-<p>已验收的是当前设备上的 Fusion12 应用及原有双固件运行。新合成的空 NVS 首刷镜像已通过结构、来源和校验检查，<strong>尚未在空白设备上做首次开机实测</strong>。不要把这项离线检查理解为新机首启已验收。</p>
+<p>已验收的是现有设备上保留设置更新后的 Ekko v8.3.0 与原厂中文 v1.7.0。空 NVS 首刷镜像由公开引导程序、分区表和这两份应用重新组合，未从私人整机备份提取；已做结构、来源和校验检查，<strong>尚未在空白设备上做首次开机实测</strong>。应用运行验收不能代替整机首启验收。</p>
 <h2 id="2">2. 准备工具和数据线</h2>
 <p>准备可传数据的 USB-C 线。先退出 M5Burner、Arduino 串口监视器、PlatformIO 监视器和其他占用设备串口的窗口；电脑 Studio 可以继续开着。</p>
 <p>Mac：如果已经能运行 <code>uv</code>／<code>uvx</code>，跳过安装。已安装 Homebrew 的电脑可运行：</p>
@@ -42,15 +48,15 @@ article>table:first-of-type th:nth-child(3),article>table:first-of-type td:nth-c
 </code></pre>
 <p>应显示 <code>4.11.0</code>。本教程固定使用该版本，避免命令随新版本更名。烧录命令以 <a href="https://docs.espressif.com/projects/esptool/en/release-v4/esp32s3/esptool/basic-commands.html">Espressif 官方 esptool v4 文档</a> 为依据；本机版本和参数帮助已实际核对。</p>
 <h3 id="_1">打开包目录</h3>
-<p>Mac 打开「终端」，输入 <code>cd</code>（后面有一个空格），把解压后的 <strong>EkkoStudio-CardputerADV-v8.2.4.1</strong> 文件夹拖进终端，再按回车。</p>
+<p>Mac 打开「终端」，输入 <code>cd</code>（后面有一个空格），把解压后包含 <code>firmware/</code> 和本教程的文件夹拖进终端，再按回车。</p>
 <p>Windows 解压到本地文件夹，在该文件夹空白处右键选择「在终端中打开」。不要在 ZIP 压缩包里面直接执行。</p>
 <h3 id="_2">找到自己的串口</h3>
 <p>插线后运行：</p>
 <pre><code class="language-sh">uv run --with pyserial python -m serial.tools.list_ports -v
 </code></pre>
-<p>找到 M5 对应的端口。Mac 常见为 <code>/dev/cu.usbmodem...</code>，Windows 为 <code>COM...</code>；本机曾用的 <code>/dev/cu.usbmodem3101</code> 只是示例，其他电脑可能不同。</p>
+<p>找到 M5 对应的端口。Mac 常见为 <code>/dev/cu.usbmodem...</code>，Windows 为 <code>COM...</code>；本机曾用的 <code>/dev/cu.usbmodem1234</code> 只是示例，其他电脑可能不同。</p>
 <p>Mac 设置端口变量，<strong>将示例换成实际端口</strong>：</p>
-<pre><code class="language-sh">M5_PORT=&quot;/dev/cu.usbmodem3101&quot;
+<pre><code class="language-sh">M5_PORT=&quot;/dev/cu.usbmodem1234&quot;
 </code></pre>
 <p>Windows PowerShell 设置端口变量，<strong>将示例换成实际端口</strong>：</p>
 <pre><code class="language-powershell">$M5_PORT=&quot;COM5&quot;
@@ -88,20 +94,34 @@ article>table:first-of-type th:nth-child(3),article>table:first-of-type td:nth-c
 <pre><code class="language-text">CA0C296C78733EF25A84D9077F534DC90ADF32D510A9D6D0704E4B86A39EE479
 </code></pre>
 <p>若不一致，停止方式 A；不要把 app 文件写到其他布局里。对应布局为 app0=<code>0x10000/0x330000</code>，factory=<code>0x340000/0x400000</code>。</p>
-<h3 id="_5">写入升级文件</h3>
-<pre><code class="language-sh">uvx --from esptool==4.11.0 esptool.py --chip esp32s3 --port &quot;$M5_PORT&quot; --baud 460800 write_flash 0x10000 firmware/ekko-update-0x10000.bin
+<h3 id="_5">同时更新两套应用</h3>
+<p>若两套都要更新，运行：</p>
+<pre><code class="language-sh">uvx --from esptool==4.11.0 esptool.py --chip esp32s3 --port &quot;$M5_PORT&quot; --baud 460800 write_flash 0x10000 firmware/ekko-update-0x10000.bin 0x340000 firmware/factory-update-0x340000.bin
 </code></pre>
-<p>这一步只更新 Ekko 应用。<strong>不要附加 <code>erase_flash</code> 或 <code>--erase-all</code>，不要同时写 components 目录。</strong> 看到 <code>Hash of data verified</code> 等正常完成信息后，再校验一次：</p>
+<p>只写两个应用分区，不写 Wi-Fi／绑定所在的 NVS、启动选择、分区表或数据区。<strong>不要附加 <code>erase_flash</code> 或 <code>--erase-all</code>，不要同时刷 components。</strong> 看到正常完成信息后，分别核对：</p>
 <pre><code class="language-sh">uvx --from esptool==4.11.0 esptool.py --chip esp32s3 --port &quot;$M5_PORT&quot; --baud 460800 verify_flash 0x10000 firmware/ekko-update-0x10000.bin
+uvx --from esptool==4.11.0 esptool.py --chip esp32s3 --port &quot;$M5_PORT&quot; --baud 460800 verify_flash 0x340000 firmware/factory-update-0x340000.bin
+</code></pre>
+<h3 id="sd">只更新原厂中文／SD 录音／空调遥控</h3>
+<p>已在用本次 Ekko v8.3.0、只想更新原厂工具时，改用下面一条写入命令：</p>
+<pre><code class="language-sh">uvx --from esptool==4.11.0 esptool.py --chip esp32s3 --port &quot;$M5_PORT&quot; --baud 460800 write_flash 0x340000 firmware/factory-update-0x340000.bin
+</code></pre>
+<p>然后核对原厂分区：</p>
+<pre><code class="language-sh">uvx --from esptool==4.11.0 esptool.py --chip esp32s3 --port &quot;$M5_PORT&quot; --baud 460800 verify_flash 0x340000 firmware/factory-update-0x340000.bin
+</code></pre>
+<h3 id="ekko">只更新 Ekko</h3>
+<p>不更新原厂工具时，只运行：</p>
+<pre><code class="language-sh">uvx --from esptool==4.11.0 esptool.py --chip esp32s3 --port &quot;$M5_PORT&quot; --baud 460800 write_flash 0x10000 firmware/ekko-update-0x10000.bin
+uvx --from esptool==4.11.0 esptool.py --chip esp32s3 --port &quot;$M5_PORT&quot; --baud 460800 verify_flash 0x10000 firmware/ekko-update-0x10000.bin
 </code></pre>
 <p>完成后正常重启。若仍停在黑屏下载状态，松开 G0、拔线，将开关拨 ON 后重新供电。设备通常先回原厂菜单；看到原厂 Logo 时按任意键继续，选择 <strong>EkkoStudio → OK</strong>。</p>
-<p>现有配网与绑定应保留。开发样机的 v8.2.4.1 实际升级已通过完整读回：app0 之外的原厂、NVS、启动选择和数据区字节全部保持一致。</p>
+<p>现有配网与绑定应保留。开发样机当前两套应用均有完整读回核对记录；对应应用更新时，另一个应用、NVS、启动选择、分区表和其他数据区均与刷前备份保持一致。这个结论以项目记录中的实际更新操作为准，不表示可以跳过备份或随意改写分区。</p>
 <h2 id="5-b">5. 方式 B：首次安装／清空重装</h2>
 <p><strong>本方式会覆盖完整 8MiB Flash，清除旧 Wi-Fi、登录绑定、会话缓存及其他设备设置。</strong> 必须先备份；想保留设置时用方式 A。</p>
 <p>确认设备型号、容量和端口后，只写这一份整机文件：</p>
 <pre><code class="language-sh">uvx --from esptool==4.11.0 esptool.py --chip esp32s3 --port &quot;$M5_PORT&quot; --baud 460800 write_flash 0x0000 firmware/first-install-dual-8MiB-0x0000.bin
 </code></pre>
-<p>这个完整文件已包含引导程序、分区表、原厂菜单与当前 Fusion12 Ekko 应用，并把设置区留空；无需另行擦除整机，也不用再分别刷 components。</p>
+<p>这个完整文件已包含引导程序、分区表、原厂中文 v1.7.0 与 Ekko v8.3.0 应用，并把设置区留空；无需另行擦除整机，也不用再分别刷 components。</p>
 <p>完成后验证：</p>
 <pre><code class="language-sh">uvx --from esptool==4.11.0 esptool.py --chip esp32s3 --port &quot;$M5_PORT&quot; --baud 460800 verify_flash 0x0000 firmware/first-install-dual-8MiB-0x0000.bin
 </code></pre>
@@ -110,21 +130,21 @@ article>table:first-of-type th:nth-child(3),article>table:first-of-type td:nth-c
 <h2 id="6">6. 首次配网和绑定电脑</h2>
 <h3 id="m5-wi-fi">在 M5 配 Wi-Fi</h3>
 <ol>
-<li>原厂 Logo 出现后按任意键进菜单，选择 <strong>SetWiFi</strong>，按键盘 <strong>OK</strong>。</li>
+<li>原厂 Logo 出现后按任意键进菜单，选择 <strong>网络设置</strong>（旧版名为 SetWiFi），按键盘 <strong>OK</strong>。</li>
 <li><code>;</code> 或 <code>,</code> 选上一个；<code>.</code> 或 <code>/</code> 选下一个，OK 进入密码页。</li>
 <li>输入密码，再按 OK。看到 <strong>已连接并保存</strong>后，按 OK 或顶部 G0 回菜单。</li>
 <li>选择 <strong>EkkoStudio</strong>，按 OK，播放启动视频后进入 16 Agent 页。</li>
 </ol>
-<p>SetWiFi 内 <strong>R 重扫、M 手动输入网络名、Tab 清空密码</strong>。同一个已保存网络会带入密码；选其他网络时密码为空。两套固件共享成功保存的 Wi-Fi，不必进入 Ekko 再配一次。支持 <strong>2.4GHz</strong>；手机热点可开启最大兼容性／2.4GHz。需要浏览器二次认证的公共 Wi-Fi 不能只凭无线连接状态判断联网成功。</p>
-<p>原厂开机只尝试一次已保存网络；在原厂应用中掉线，必要时重新 SetWiFi。不要把它与 Ekko 内的后台恢复机制混为一谈。</p>
+<p>「网络设置」内 <strong>R 重扫、M 手动输入网络名、Tab 清空密码</strong>。同一个已保存网络会带入密码；选其他网络时密码为空。两套固件共享成功保存的 Wi-Fi，不必进入 Ekko 再配一次。支持 <strong>2.4GHz</strong>；手机热点可开启最大兼容性／2.4GHz。需要浏览器二次认证的公共 Wi-Fi 不能只凭无线连接状态判断联网成功。</p>
+<p>原厂开机自动尝试连接已保存网络；这是启动时的一次尝试，在原厂应用中掉线时必要可重新打开「网络设置」。不要把它与 Ekko 内的后台恢复机制混为一谈。</p>
 <h3 id="studio">第一次绑定 Studio</h3>
 <p>电脑和 M5 先接同一局域网。电脑打开配套 Studio，并确认要使用的 Agent、模型和账号本身可正常对话。</p>
-<p>在同网手机／电脑浏览器打开 <strong>M5 当时显示的 IP + <code>/device</code></strong>，例如 <code>http://192.168.0.102/device</code>（仅示例，以设备实际 IP 为准）。在设备页发现并选择电脑，使用自己的 Studio 账号登录，选择 Profile，例如 <code>default</code>。密码和 API Key 不需要写进固件，也不要发到聊天里。</p>
-<p><strong>电脑端兼容边界：</strong>本包是设备固件与源码，不包含电脑 Studio 安装程序或电脑端补丁。当前16 Agent 与打字聊天使用配套 MCU 扩展协议，电脑需支持 Agent 确认及 <code>chatProtocol:1</code>。本机已验收环境为 <code>0.7.36-cardputer.5</code>；不能把任意未适配的官方原版 Studio 视为直接兼容。若显示“需要更新后台”或长期等待后台，先检查电脑端兼容性，不要反复刷 M5。</p>
+<p>在同网手机／电脑浏览器打开 <strong>M5 当时显示的 IP + <code>/device</code></strong>，例如 <code>http://192.168.0.123/device</code>（仅示例，以设备实际 IP 为准）。在设备页发现并选择电脑，使用自己的 Studio 账号登录，选择 Profile，例如 <code>default</code>。密码和 API Key 不需要写进固件，也不要发到聊天里。</p>
+<p><strong>电脑端兼容边界：</strong>本包不包含电脑 Studio 安装程序；新增的 <code>desktop-support/</code> 提供配套补丁与说明，使用前先读 <a href="desktop-support/README.zh-CN.md">电脑端配套说明</a>。当前 16 Agent 和打字聊天使用 MCU 扩展协议，电脑端需支持 Agent 确认及 <code>chatProtocol:1</code>。本机已验收环境为 <code>0.7.36-cardputer.5</code>，<strong>不承诺任意未适配的原版 Studio 直接兼容</strong>。补丁有来源版本及适配范围，不能当成通用一键安装器。若显示“需要更新后台”或长期等待后台，先检查电脑端兼容性，不要反复刷 M5。</p>
 <p>首次安装没有任何人的绑定资料，需自己完成这一次登录。保留设置升级则继续使用原绑定。16项菜单存在不代表所有Agent已配置；各Agent仍需自己的CLI、账号、API Key和可用模型。</p>
 <h3 id="_6">出门使用远程</h3>
 <p>电脑保持开机联网、Studio 和 Agent 可用，并开启远程中继；在设备管理中完成该电脑远程入口的首次绑定／Profile保存。以后连接能访问官方中继的2.4GHz网络，可使用保存的绑定自动恢复，不需每换一次网络重登。</p>
-<p>已有实测：手机热点跨网文字、语音与重启恢复正常；另一路 测试网络 A 存在连接超时。不要将该结果理解为“任何Wi-Fi都保证可用”。账号退出、凭据撤销或真实认证失败时仍可能需要重新登录；公共Wi-Fi的网页认证也需另外完成。</p>
+<p>已有实测：手机热点跨网文字、语音、设备重启与短暂断网后自动恢复正常；另一路宽带测试网络存在官方中继访问超时。不要将该结果理解为“任何Wi-Fi都保证可用”。账号退出、凭据撤销或真实认证失败时仍可能需要重新登录；公共Wi-Fi的网页认证也需另外完成。</p>
 <h2 id="7">7. 日常按键速查</h2>
 <p>屏幕不支持触摸，使用实体键盘。</p>
 <table>
@@ -177,18 +197,81 @@ article>table:first-of-type th:nth-child(3),article>table:first-of-type td:nth-c
 </tr>
 </tbody>
 </table>
-<p>正文、输入框、状态均为原生12px；菜单项名称是 <strong>EkkoStudio</strong>。Fn＋空格提示保留在空输入框，按键音和语音沿用已验收稳定版。</p>
-<h2 id="8">8. 常见问题</h2>
+<p>正文、输入框、状态均为原生12px；菜单项名称是 <strong>EkkoStudio</strong>。Fn＋空格提示保留在空输入框，按键音和语音沿用已验收的省内存缓冲版本：局域网 → 官方中继 → 局域网三轮实听均顺畅，真实聊天识别、文字与声音也已确认正常。</p>
+<h2 id="8">8. SD 卡录音与回放</h2>
+<p>这是原厂菜单里的<strong>「录音回放」</strong>，与 Ekko 聊天的 Fn＋空格语音分开使用。屏幕不支持触摸。</p>
+<ol>
+<li>关机后插入可读写的 <strong>FAT32 microSD 卡</strong>，再开机。固件不会格式化卡，也不会覆盖旧录音。</li>
+<li>原厂菜单 →「录音回放」→ 按 <strong>N</strong> 开始新录音。首次没有文件时也可按 OK 开始。</li>
+<li>说话后按 <strong>OK</strong> 停止保存，等返回文件列表。录音时按顶部 <strong>G0</strong> 会先保存，再退出。</li>
+<li>列表用上 <code>;</code>／下 <code>.</code> 选择，按 <strong>OK</strong> 回放；播放时按 OK 停止，G0 回原厂菜单。</li>
+<li>退出后重新进入，仍可从列表找到已保存的录音。关机后取卡，可在电脑复制或播放 <code>/RECORD/REC00001.WAV</code> 等文件。</li>
+</ol>
+<p>格式为 <strong>16kHz、16-bit、单声道 PCM WAV</strong>，约 1.92MB／分钟。录音和回放使用固定 24KiB PCM 缓冲，整段声音留在 SD 卡，不随录音时长持续占用 RAM。列表显示最新 64 条有效录音，更早的文件仍留在卡上。</p>
+<p>样机已确认正常保存、首次回放、G0 退出后重进再次回放。<strong>尚未单独验收断电重开后的回放。</strong> 正常停止会完成 WAV 头部和同步；突然断电、强制退出或录音中拔卡，仍可能损失最后一段或损坏当前文件。没有卡、卡满或读写失败时按屏幕错误处理，再按 OK 重试。</p>
+<h2 id="9">9. 美的空调遥控</h2>
+<p>原厂菜单 → <strong>「红外遥控」</strong>，默认进入 <strong>B COOLIX 正式主控页</strong>。请把 M5 红外发射端对准空调接收位置，先在较近距离测试。</p>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>按键与含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>选温度／模式／风速</td>
+<td>上 <code>;</code>／下 <code>.</code>，或 Fn＋方向键</td>
+</tr>
+<tr>
+<td>调整选中项</td>
+<td>左 <code>,</code>／右 <code>/</code>，或 Fn＋方向键；只改屏幕设定，不自动发射</td>
+</tr>
+<tr>
+<td>应用当前全部设定并开机</td>
+<td><strong>OK</strong>（回车）；这一步会发送开机指令</td>
+</tr>
+<tr>
+<td>按当前设定开机／关机</td>
+<td><strong>1</strong> 开机、<strong>0</strong> 关机</td>
+</tr>
+<tr>
+<td>更多功能</td>
+<td><strong>Tab</strong> 打开滚动菜单，上下选择、OK 执行</td>
+</tr>
+<tr>
+<td>更多／兼容／NEC 返回主控</td>
+<td><strong>Tab 或 Esc</strong></td>
+</tr>
+<tr>
+<td>返回原厂菜单</td>
+<td>顶部 <strong>G0</strong>；发送中也可取消退出</td>
+</tr>
+</tbody>
+</table>
 <ul>
-<li><strong>找不到串口：</strong>确认是数据线，换电脑直连USB口；按前面的G0流程进入下载模式，再列端口。下载前后端口可能变化。</li>
-<li><strong>串口被占用：</strong>关闭串口监视器、M5Burner和其他终端连接后重试。</li>
-<li><strong>连接或写入超时：</strong>手动下载模式后重试；将命令中的460800降为115200，换线或接口。先保留报错，不用强制绕过检查。</li>
-<li><strong>刷完先出现原厂菜单：</strong>是双固件设计；选EkkoStudio，按OK。顶部G0与键盘OK不是同一个键。</li>
-<li><strong>Wi-Fi显示已连但没有回复：</strong>还需电脑Studio、对应Agent及后台协议可用。远程还需中继可达；无线连接并不证明已连接后台。</li>
-<li><strong>只有原厂菜单，没有EkkoStudio：</strong>先确认安装的是本包完整双固件，而不是M5官方未改动原厂包。普通官方原厂菜单不会自动获得此入口。</li>
-<li><strong>想用M5Burner官方目录找这版：</strong>本包是本地适配安装包，不会因打包就自动上架官方目录。本教程统一用固定esptool，避免混选其他固件。</li>
+<li>温度 <strong>17～30℃</strong>；模式为制冷、除湿、自动、制热、送风；风速为自动、低风、中风、高风。</li>
+<li>送风模式显示 <strong><code>--</code></strong>，不发送设定温度；先前温度偏好仍保留，切回其他模式后恢复。</li>
+<li>更多菜单包含上下摆风、摆风点动、睡眠、强力、屏显、清洁，以及兼容测试 A/B/C 和 NEC 手动地址／命令输入。<strong>切换指令不是绝对开／关：</strong>重复按 OK 可能把功能再次切回，点动是再走一步。</li>
+<li>屏幕显示的是<strong>待发设定／已发信号</strong>，不是空调回传状态；不会把“已发送”当成“空调已经执行”。拿原遥控器修改后，M5 也不会自动知道。</li>
+<li>温度、模式、风速偏好保存在设备，成功发送或正常退出时尝试保存；不保存未经回读的摆风／睡眠等开关真值。正常退出再进入恢复偏好已实测，<strong>断电后恢复尚未另做实体测试</strong>。退出时保存失败目前只记日志，下次可能继续用旧值；不会阻止遥控或退出。</li>
+<li>兼容测试页仍是 A MIDEA、B COOLIX、C BOSCH144：左右换候选，<code>1</code> 发送固定 26℃制冷自动风，<code>0</code> 发关机；进入、切换方案和 OK 都不自动发射。测试设定不会覆盖正式 B 主控的偏好。</li>
 </ul>
-<h2 id="9">9. 版本、校验和源码</h2>
+<p><strong>实测边界：</strong>用户这台美的空调已确认调温、风速、摆风和退出重进偏好正常。睡眠、强力、屏显、清洁及其余模式未逐项实机验收；其他型号也需对照实际响应。协议与主机测试通过不能替代你家空调的兼容测试。本版不提供定时、半度、ECO 或红外学习功能。</p>
+<h2 id="10">10. 常见问题</h2>
+<ul>
+<li><strong>找不到串口：</strong>确认是数据线，换电脑直连 USB 口；按前面的 G0 流程进入下载模式，再列端口。下载前后端口可能变化。</li>
+<li><strong>串口被占用：</strong>关闭串口监视器、M5Burner 和其他终端连接后重试。</li>
+<li><strong>连接或写入超时：</strong>手动下载模式后重试；将 460800 降为 115200，换线或接口。保留报错，不强制绕过检查。</li>
+<li><strong>刷完先出现原厂菜单：</strong>是双固件设计；选 EkkoStudio，按 OK。顶部 G0 与键盘 OK 不是同一个键。</li>
+<li><strong>Wi-Fi 显示已连但没有回复：</strong>还需电脑 Studio、对应 Agent 及配套协议可用。远程还需中继可达；无线连接不等于后台连接。</li>
+<li><strong>只有原厂菜单，没有 EkkoStudio：</strong>先确认安装的是本包同布局双固件，而不是未改动的 M5 官方原厂包。普通原厂菜单不会自动获得此入口。</li>
+<li><strong>更新后还是旧原厂功能：</strong>检查是否也更新了 <code>factory-update-0x340000.bin</code>。只刷 Ekko app 不会更新原厂录音／遥控工具。</li>
+<li><strong>SD 卡不能用：</strong>检查 FAT32、卡是否可写及剩余空间，关机后重新插卡。固件不会自动格式化或删除旧文件。</li>
+<li><strong>红外提示发出但空调没反应：</strong>检查方向／距离；这只是发射完成，没有回执，不代表该型号支持所有命令。正式 B 与 A/C 候选测试分开使用。</li>
+<li><strong>想用 M5Burner 官方目录找这版：</strong>这是社区适配包，不会因打包或发布 GitHub 就自动上架官方目录。</li>
+</ul>
+<h2 id="11">11. 版本、校验和源码</h2>
 <table>
 <thead>
 <tr>
@@ -200,25 +283,31 @@ article>table:first-of-type th:nth-child(3),article>table:first-of-type td:nth-c
 <tbody>
 <tr>
 <td><code>firmware/ekko-update-0x10000.bin</code></td>
-<td>3,185,392B</td>
-<td><code>1840130458d4329a055f5981b76ec9805958e0f6191ccccfaacd634cf4923e4f</code></td>
+<td>3,300,528B</td>
+<td><code>c5898d0e79d600aec884c5be7c2e08a15a3301bc6a983b19ed5cd389546e7448</code></td>
+</tr>
+<tr>
+<td><code>firmware/factory-update-0x340000.bin</code></td>
+<td>3,029,536B</td>
+<td><code>d9eb27301696f863041f420a4a2cb76500c54b437414e9823dffce257e71db51</code></td>
 </tr>
 <tr>
 <td><code>firmware/first-install-dual-8MiB-0x0000.bin</code></td>
 <td>8,388,608B</td>
-<td><code>9b8d7e6cbfeac14e060e7eff71a3868445c5c419c814198952b0e6122cfac7dd</code></td>
+<td><code>78af7824379af493cce2c212e8e7520c42e53958e1eb6eda02a6a3822e7c1723</code></td>
 </tr>
 </tbody>
 </table>
 <p>Mac 可在包目录检查所有文件：</p>
 <pre><code class="language-sh">shasum -a 256 -c SHA256SUMS.txt
 </code></pre>
-<p>Windows 可用 <code>Get-FileHash 文件路径 -Algorithm SHA256</code> 检查上述关键文件。它是文件完整性校验，不是发布者数字签名。</p>
+<p>Windows 可用 <code>Get-FileHash 文件路径 -Algorithm SHA256</code> 检查关键文件。文件完整性校验不是发布者数字签名。</p>
 <ul>
-<li><code>source/ekko-cardputer-adv/</code>：当前 Fusion12 板级源码、固定 PlatformIO 依赖、字体／头像来源与许可。</li>
-<li><code>source/factory-cardputer-adv/</code>：原厂菜单适配源码与固定依赖。其独立干净重建与历史已验收factory构建件的哈希不同，未宣称逐字节可复现。</li>
-<li><code>components/</code>：公开构建来源的引导程序／共同分区表，以及历史已验收原厂app；不是让新手逐个刷写的目录。</li>
-<li><code>evidence/</code>：Fusion 实机验收、首刷离线组装检查、版本和来源记录；没有私人整机备份。</li>
-<li><code>preview/</code>：真实字形布局预览，非实机照片。</li>
+<li><code>source/ekko-cardputer-adv/</code>：Ekko v8.3.0 板级源码、固定依赖、字体／头像来源与许可。</li>
+<li><code>source/factory-cardputer-adv/</code>：原厂中文 v1.7.0 源码、SD WAV、空调遥控、测试和依赖。未宣称任意电脑重建均逐字节一致。</li>
+<li><code>desktop-support/</code>：电脑端配套补丁和适配说明，不是完整 Studio 安装程序。</li>
+<li><code>components/</code>：公开引导程序、共同分区表与原厂应用构建材料。新手按本教程使用 <code>firmware/</code> 文件，不逐个猜地址刷 components。</li>
+<li><code>evidence/</code>：应用读回、功能反馈、离线组装和来源记录；没有私人整机备份。</li>
+<li><code>preview/</code>：<strong>旧版历史布局参考</strong>，由真实字形与绘制指令生成，非实机照片，不代表本次全部页面。</li>
 </ul>
-<p>这是基于开源项目适配的 Cardputer-Adv 固件。品牌头像保留原来源与许可说明；保留原厂应用菜单不等于 LoRa／GPS／红外等全部外设已逐一实测。</p><h2>字体布局预览</h2><p class="lead">真实字形与界面绘制指令生成；非实机照片。</p><img src="preview/Fusion12-chat-preview.png" alt="12px聊天布局预览"><p class="footer">本地离线教程 · 固件已验收与新整机离线检查分别记录 · 首次安装前请确认型号和备份</p></article></div></html>
+<p>本包不包含私人 Wi-Fi 密码、登录凭据、API Key、私人整机备份或用户录音。首次使用须绑定自己的电脑并配置 Agent。品牌头像与字体保留原来源和许可；原厂菜单存在不代表 LoRa／GPS 等外设都已逐项实测。许可与来源见 <a href="THIRD_PARTY_NOTICES.md">第三方说明</a>。</p><h2 id="history-preview">历史字体布局参考</h2><p class="lead">以下是旧版历史字形与界面绘制指令生成的参考，非实机照片，不代表本次全部页面。</p><img src="preview/Fusion12-chat-preview.png" alt="历史12px聊天布局参考，非实拍"><p class="footer">本地离线教程 · 现机应用验收与空NVS整机离线验证分别记录 · 首次安装前确认型号和备份</p></article></div></body></html>

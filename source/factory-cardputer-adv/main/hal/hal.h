@@ -9,6 +9,7 @@
 #include "utils/settings/settings.h"
 #include <M5Unified.hpp>
 #include <M5GFX.h>
+#include <ekko_shared/EkkoPixelFont12.h>
 #include <memory>
 #include <atomic>
 #include <cstdint>
@@ -101,8 +102,11 @@ public:
     void espNowClearReceivedData();
 
     /* ----------------------------------- IR ----------------------------------- */
-    void irInit();
-    void irSend(uint8_t addr, uint8_t cmd);
+    bool irInit();
+    bool irSend(uint8_t addr, uint8_t cmd);
+    esp_err_t irSendPulses(const uint16_t* durations, size_t count);
+    esp_err_t irPoll();
+    esp_err_t irCancel();
 
     /* ----------------------------------- BLE ---------------------------------- */
     void bleKeyboardInit();
@@ -135,6 +139,9 @@ public:
     };
 
     SdCardProbeResult_t sdCardProbe();
+    // Mount without formatting. Call only when no app holds open SD files.
+    bool ensureSdCardMounted();
+    const char* sdCardMountPoint() const { return "/sdcard"; }
 
     /* ----------------------------------- Cap ---------------------------------- */
     CapLoRa868 capLora868;

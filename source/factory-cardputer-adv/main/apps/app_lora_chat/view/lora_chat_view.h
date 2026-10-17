@@ -19,7 +19,7 @@ public:
     }
 
 private:
-    static constexpr int LORA_CONFIG_PANEL_HEIGHT = 14;
+    static constexpr int LORA_CONFIG_PANEL_HEIGHT = 28;
 
     bool _is_gps_mode = false;
     std::string _device_id;

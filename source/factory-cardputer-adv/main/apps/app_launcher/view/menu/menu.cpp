@@ -13,6 +13,7 @@
 #include <hal/hal.h>
 #include <string>
 #include <ekko_shared/FactoryDiagnostics.h>
+#include <ekko_shared/FactoryUi.h>
 
 using namespace mooncake;
 using namespace smooth_ui_toolkit;
@@ -142,7 +143,7 @@ void LauncherMenu::onRender()
 
             // Draw name
             GetHAL().canvas.drawCenterString(
-                _option_infos[index].name.c_str(), i.keyframe.x + i.keyframe.width / 2 + x_offset,
+                factory_ui::appTitle(_option_infos[index].name), i.keyframe.x + i.keyframe.width / 2 + x_offset,
                 i.keyframe.y + i.keyframe.height + ICON_TAG_MARGIN_TOP + (ICON_SELECTED_WIDTH - i.keyframe.width) / 2);
         } else {
             // Icon bg
@@ -156,7 +157,7 @@ void LauncherMenu::onRender()
             }
 
             // Draw tag
-            GetHAL().canvas.drawCenterString(_option_infos[index].name.c_str(),
+            GetHAL().canvas.drawCenterString(factory_ui::appTitle(_option_infos[index].name),
                                              i.keyframe.x + i.keyframe.width / 2 + x_offset,
                                              i.keyframe.y + i.keyframe.height + ICON_TAG_MARGIN_TOP);
         }

@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "algorithm": "sha256",
-  "created_at": "2026-10-17T00:00:00+08:00",
+  "created_at": "2025-05-21T17:08:36.113599+00:00",
   "files": [
     {
       "path": "User_Guide.md",
@@ -545,78 +545,78 @@
     },
     {
       "path": "examples/coin_cell_demo/switch/docs/img/pc_03-one-tx-2.png",
-      "size": 159546,
-      "hash": "652e25cfe21a9c9f83dfde90e7762c4d72eb37f4370af1de6bbd36a1a160c274"
+      "size": 155745,
+      "hash": "d62cae3c99ba137629af1a4fd8693c43444f2145642c9043514bdab8b4df0b38"
     },
     {
       "path": "examples/coin_cell_demo/switch/docs/img/coin_cell_button_back.png",
-      "size": 4476271,
-      "hash": "0c50c5f357a24fbf6720258178967f7749c9246ce5e1a8e8101d48b8368e11c5"
+      "size": 4475836,
+      "hash": "75a372cb86c329a4e0880f66e0367c63094267fb91fa1fc047099114bda07ffa"
     },
     {
       "path": "examples/coin_cell_demo/switch/docs/img/pc_07-tx-details.png",
-      "size": 215285,
-      "hash": "479f5439f606f341e630f9e8da02b840611948e0cb285b8e0b4473fe76be16b1"
+      "size": 211485,
+      "hash": "cddfb129f5ba13edd007834597b4b44b4d0a6cdc13b8726ff50add1d6862cf74"
     },
     {
       "path": "examples/coin_cell_demo/switch/docs/img/pc_07-tx-details-2.png",
-      "size": 193080,
-      "hash": "b288c6bbd2b1537a24319f74b176b19f3fe52ebdb254b2fc265c719b0f3be085"
+      "size": 189280,
+      "hash": "302baa79704d41157a7cb2896aba51df73c9b6e46b253f70de3d778b63ffb77f"
     },
     {
       "path": "examples/coin_cell_demo/switch/docs/img/hardware-diagram.png",
-      "size": 42663,
-      "hash": "3ceeeee58f2063fda819247b0332051cf9be6b1d44b88d2d6dc7818b55ef3bb5"
+      "size": 42058,
+      "hash": "ce9746e3bfba378e4a1fb0f6f01592c16d4aa9b32045d9740577e1aa17dfc7e9"
     },
     {
       "path": "examples/coin_cell_demo/switch/docs/img/pc_04-three-tx-2.png",
-      "size": 155243,
-      "hash": "6e3f4a85922eb2acf3dedfeb8e81ad89ffd93c8ee9f9557c8cfdaebe11e09ef4"
+      "size": 151442,
+      "hash": "60580c3f0302f19cee9c6d5333c4a33e04fd9098afcc015a0b17279f74347d46"
     },
     {
       "path": "examples/coin_cell_demo/switch/docs/img/pc_05-unbind.png",
-      "size": 146233,
-      "hash": "d3b7e9a3a9b89e79211bf8f67ab33ca1c2af486296fc60194a1e0ca2d96a1675"
+      "size": 142433,
+      "hash": "ba82ff5f1ab8d8aab1a0e9083e1c55fbd0e09e38e1cef4f3793f8b7b4cc39515"
     },
     {
       "path": "examples/coin_cell_demo/switch/docs/img/pc_04-three-tx.png",
-      "size": 153456,
-      "hash": "8507ab23521b52180d59dff6cc6941531a32f127a79e26edeb15c4158317c904"
+      "size": 149655,
+      "hash": "24129114aac60b833483f5ac30c40d10964af26a1b322783e2bd4d2756eb71e4"
     },
     {
       "path": "examples/coin_cell_demo/switch/docs/img/pc_02-bind-2.png",
-      "size": 108451,
-      "hash": "68fd03ef414d87d6971a807ed01660e8625f3075c91ee5a1f0cdeef14d830d1b"
+      "size": 104651,
+      "hash": "2b509f52f0ad2471713141d96643b492bd7b1f269b96b0650bf1e0a1b61b6d57"
     },
     {
       "path": "examples/coin_cell_demo/switch/docs/img/pc_06-switch-channel-10-success.png",
-      "size": 205818,
-      "hash": "be06de7309b19e82f3591ad018e58c3a78a39d5c8dca812768006174afca306c"
+      "size": 202018,
+      "hash": "7073fc432a5e717925530152f4f6dce192208c5f28bcfdff620db99e485620b4"
     },
     {
       "path": "examples/coin_cell_demo/switch/docs/img/coin_cell_schematic.png",
-      "size": 805838,
-      "hash": "c1dadeca4df97e45ca5ea60e96302a28617f82204e241f8ae81e62d4a9ce4fd7"
+      "size": 802505,
+      "hash": "dec6407328457c3becd1ba5b816e5a37f6f9bf79c440bb620dac54dd3496d9ad"
     },
     {
       "path": "examples/coin_cell_demo/switch/docs/img/pc_03-one-tx.png",
-      "size": 154232,
-      "hash": "f17faf6686f97c214b1c6fbd9b8a55db3ebb0326cc9314b2d9211bb78eb774f1"
+      "size": 150431,
+      "hash": "af1f03494a2f3b5cbd82ff39d61a1798512085cf9bc8f2d508e45b255e367d31"
     },
     {
       "path": "examples/coin_cell_demo/switch/docs/img/coin_cell_button_front.png",
-      "size": 4288895,
-      "hash": "d11faeed45be79572305c0360d07f5b38789300bbd8a6316a6ec88b965df91a5"
+      "size": 4288460,
+      "hash": "c90bff2dab85a62c41e2724aaa6c50f62f53a5243d61489e73214af057b69f1a"
     },
     {
       "path": "examples/coin_cell_demo/switch/docs/img/pc_01-tx-then-bind.png",
-      "size": 117865,
-      "hash": "9554ec9757999cbbfefbfc00a187f5f07da448fc1d0b502e221a8426daf6913e"
+      "size": 114065,
+      "hash": "2cd84ab132262b336000e736e691538cf523d22e17dbd48459a61e7366f44b2e"
     },
     {
       "path": "examples/coin_cell_demo/switch/docs/img/pc_06-switch-channel-10-success-2.png",
-      "size": 166561,
-      "hash": "9c941f99b645af8b662b74183389cc7b69c2604d6afc69a9f3d40550c04fc3c0"
+      "size": 162761,
+      "hash": "1c687c15a7470bec14a75594708473e98bd82fd319648e1560dbeb7ed02d410d"
     },
     {
       "path": "examples/coin_cell_demo/switch/docs/img/button-software-flow.drawio.svg",
@@ -625,8 +625,8 @@
     },
     {
       "path": "examples/coin_cell_demo/switch/docs/img/pc_02-bind.png",
-      "size": 116326,
-      "hash": "cb9abbfe0e0b6718a515354096d7bd8daa7b5217d3400a78a471c2e95807131b"
+      "size": 112526,
+      "hash": "32aa3db58af11aef79bbca140d88996e50c1066fbe5771699831890212fb96de"
     },
     {
       "path": "examples/coin_cell_demo/bulb/main/CMakeLists.txt",
@@ -810,8 +810,8 @@
     },
     {
       "path": "examples/wireless_debug/components/web_server/front/static/img/bg.bd693bf.png",
-      "size": 44452,
-      "hash": "9adf319cf6767f430868838ddb7979ace0b2c616fd16d9502f76d7a25b97c2e8"
+      "size": 44431,
+      "hash": "d980e6e39849395e1116cbd611e47051a8becdc69efb2d799701f7ba3e2b6a0b"
     },
     {
       "path": "examples/wireless_debug/components/espnow_device/include/monitor.h",
@@ -865,13 +865,13 @@
     },
     {
       "path": "docs/_static/yes-checkm.png",
-      "size": 1326,
-      "hash": "78f539ffb9b8c208da48e46a0dad6a150fdf2bec1674c9628c09906433f24c6c"
+      "size": 898,
+      "hash": "747b11fba295683e6b291db74b6a604513fbe80aba83593e99561a5bae68c1b5"
     },
     {
       "path": "docs/_static/no-icon.png",
-      "size": 1595,
-      "hash": "9f691b2fa90d9f5f049f075e4441c4be049d9f95ec3d59942e4ddad1310b1238"
+      "size": 1255,
+      "hash": "6e6733fd41d12cf6810c756db6ea059371e17b3a5af5d061b33bc77a42d41c1e"
     },
     {
       "path": "docs/en/index.rst",
@@ -985,68 +985,68 @@
     },
     {
       "path": "docs/_static/zh_CN/web_server.png",
-      "size": 181695,
-      "hash": "0b44b581aaddbff4579f7e55515ae170d455a190626738be098b6cfbe477f16d"
+      "size": 181667,
+      "hash": "3357573d81777e804c4c582386bbb028d5e2a02ea1606e836090fd510cc2fd7e"
     },
     {
       "path": "docs/_static/zh_CN/protocol_stack.jpg",
-      "size": 127534,
-      "hash": "34ed45d36ab46aa3a89977b9657cf7d1be8f9374d032f0e2d80182c71307fecb"
+      "size": 126872,
+      "hash": "18d5261cab14b852c9b5966183ad2b78c6addac216ce29db0902154288bc1b02"
     },
     {
       "path": "docs/_static/zh_CN/function_list.jpg",
-      "size": 137465,
-      "hash": "8c586d2298a7367d9ed51a27906a7b7a6bfa5194882ba2af774b6f2b60823fc4"
+      "size": 136803,
+      "hash": "ea0bf29e065d519fc56c743f7fc1ec75ee48641ccbcf95ae415af39d7a60c951"
     },
     {
       "path": "docs/_static/zh_CN/device_type.png",
-      "size": 35321,
-      "hash": "e497d4f1fcb10caef85e6c2a33c96233a59e9a4a4f832842305e8425ec625074"
+      "size": 31988,
+      "hash": "108c4a1a96d463096944d9b2ed0494fbf3ee11ce033842b6340b9cefd0421144"
     },
     {
       "path": "docs/_static/zh_CN/network_configuration.jpg",
-      "size": 105047,
-      "hash": "a4a694b1a792a3d9facc72da4e5a2aba4d345ddf96c1f8cab8b11fe13de7ed02"
+      "size": 104385,
+      "hash": "549009c81515760c45332e29dc56b37dbf8eef39642484ec5fb8ba471cea8dc8"
     },
     {
       "path": "docs/_static/en/device_log.png",
-      "size": 217758,
-      "hash": "b6c6bacd72a41f4aac3e211772fbb50d28ff3b1321e69edbdb6e379d9f9cd24a"
+      "size": 217350,
+      "hash": "e747307ad5dc4d9f9784b28be00991c31b4b6af1ca7f1fb3c14ec20b86d7ee49"
     },
     {
       "path": "docs/_static/en/esp-wrover-kit-v3-layout-back.jpg",
-      "size": 34911,
-      "hash": "552c5da578fce5997107959d45a747b2b824c299f124ec663b29126e26ae6824"
+      "size": 34893,
+      "hash": "24aac84f8e2312f9bdc480d81fdacf456b2c28cd9f6c29cb3ebb8def74317953"
     },
     {
       "path": "docs/_static/en/device_role.png",
-      "size": 418697,
-      "hash": "5ed54b27aa6aa60f3071f76ed34c9c31d422a31a148a2218317505337218537a"
+      "size": 415364,
+      "hash": "e5cefa2f4833aed3a3070ff2115359519183a3f904fe9b89e4e43290d2aaa2f3"
     },
     {
       "path": "docs/_static/en/serial_port.png",
-      "size": 827889,
-      "hash": "00f5a70fea422505cbea97b1958cefd8f920df3ab2598c45eb066d18c858920f"
+      "size": 824556,
+      "hash": "cd0287a744e1e14636949091fb3459036f0ed79e269e8ee0e03f3a255e879483"
     },
     {
       "path": "docs/_static/en/function_list.png",
-      "size": 900225,
-      "hash": "833668dcd558623360fd3f369c9126c591c2bdf22a9c1e328de281a2e577d4da"
+      "size": 847353,
+      "hash": "5bcf8c59b8e6ec667145481cdcad022595345da65783edf3394a68115569b2f6"
     },
     {
       "path": "docs/_static/en/protocol_stack.png",
-      "size": 246727,
-      "hash": "07c011a7bfcf5982bfcd1db61dd1e82111c3eda6064cf13b4a7a2cc3b80c8aad"
+      "size": 227141,
+      "hash": "d2ed610b53c26b7ebb64fb1fd3d920ffdfb16d5f611202f738f4d51e0457a8e0"
     },
     {
       "path": "docs/_static/en/OTA_workflow.png",
-      "size": 170660,
-      "hash": "120b7a268f5b85b1f5bf5cecc5a09bddbe6f679b3d7eea7afc2f28ded58e4d44"
+      "size": 167327,
+      "hash": "29cae54a8a487b66179b1d3b5ebb61c39052fe2f223d1d44480e16c200a4e47d"
     },
     {
       "path": "docs/_static/en/espnow_security_en.png",
-      "size": 40135,
-      "hash": "5ab8de1d55ef63552cbe991499691aa5ad509bcebb73577d3c2bc4b6cd2eb2ef"
+      "size": 37731,
+      "hash": "9d40ca96c72002c398f264e0de76f0fdb1a319f60f5bfd612726e196a7eea75a"
     },
     {
       "path": "docs/_static/en/esp32-s2-saola-1.png",

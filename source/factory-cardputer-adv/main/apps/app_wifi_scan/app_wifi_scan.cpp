@@ -9,6 +9,7 @@
 #include <apps/utils/audio/audio.h>
 #include <apps/utils/common.h>
 #include <apps/utils/theme.h>
+#include <ekko_shared/FactoryUi.h>
 #include <mooncake_log.h>
 #include <assets.h>
 
@@ -38,7 +39,7 @@ void AppWifiScan::onRunning()
 {
     // Scan in every 6 seconds
     if (GetHAL().millis() - _time_count > 5000) {
-        GetHAL().wifiScan(_scan_result);
+        _scan_ok = GetHAL().wifiScan(_scan_result);
         render_page_result();
         _time_count = GetHAL().millis();
     }
@@ -53,35 +54,50 @@ void AppWifiScan::onRunning()
 void AppWifiScan::onClose()
 {
     mclog::tagInfo(getAppInfo().name, "on close");
+    GetHAL().canvas.setTextWrap(true);
 }
 
 void AppWifiScan::render_page_scanning()
 {
-    GetHAL().canvas.setBaseColor(THEME_COLOR_BG);
-    GetHAL().canvas.setTextScroll(false);
-    GetHAL().canvas.setTextSize(1);
-    GetHAL().canvas.fillScreen(THEME_COLOR_BG);
-    GetHAL().canvas.setCursor(10, 5);
-    GetHAL().canvas.setTextColor(TFT_ORANGE, THEME_COLOR_BG);
-    GetHAL().canvas.println("Scanning WiFi...");
+    auto& canvas = GetHAL().canvas;
+    canvas.setBaseColor(THEME_COLOR_BG);
+    canvas.setFont(FONT_BASIC);
+    canvas.setTextScroll(false);
+    canvas.setTextWrap(false);
+    canvas.setTextSize(1);
+    canvas.setTextDatum(lgfx::textdatum_t::top_left);
+    canvas.fillScreen(THEME_COLOR_BG);
+    canvas.setTextColor(TFT_ORANGE, THEME_COLOR_BG);
+    canvas.drawString("Wi-Fi 扫描", 0, 0);
+    canvas.setTextColor(TFT_WHITE, THEME_COLOR_BG);
+    canvas.drawString("正在扫描附近网络…", 0, 28);
+    canvas.setTextColor(TFT_DARKGRAY, THEME_COLOR_BG);
+    canvas.drawString("5秒自动刷新  G0:退出", 0, 96);
     GetHAL().pushCanvas();
 }
 
 void AppWifiScan::render_page_result()
 {
-    // Clear screen and display results
-    GetHAL().canvas.fillScreen(THEME_COLOR_BG);
-    GetHAL().canvas.setCursor(0, 0);
-    GetHAL().canvas.setTextSize(1);
+    auto& canvas = GetHAL().canvas;
+    canvas.setFont(FONT_BASIC);
+    canvas.setTextSize(1);
+    canvas.setTextWrap(false);
+    canvas.setTextScroll(false);
+    canvas.setTextDatum(lgfx::textdatum_t::top_left);
+    canvas.fillScreen(THEME_COLOR_BG);
+    canvas.setTextColor(TFT_ORANGE, THEME_COLOR_BG);
+    canvas.drawString("Wi-Fi 扫描", 0, 0);
 
-    if (_scan_result.empty()) {
-        GetHAL().canvas.setTextColor(TFT_RED, THEME_COLOR_BG);
-        GetHAL().canvas.println("No WiFi networks found");
+    if (!_scan_ok) {
+        canvas.setTextColor(TFT_RED, THEME_COLOR_BG);
+        canvas.drawString("扫描失败，稍后重试", 0, 28);
+    } else if (_scan_result.empty()) {
+        canvas.setTextColor(TFT_RED, THEME_COLOR_BG);
+        canvas.drawString("未发现 Wi-Fi 网络", 0, 28);
     } else {
-        int max_count = 0;
+        int row = 0;
         for (const auto& result : _scan_result) {
-            max_count++;
-            if (max_count > 6) {
+            if (row >= 6) {
                 break;
             }
 
@@ -89,17 +105,20 @@ void AppWifiScan::render_page_result()
 
             // Set color based on signal strength
             if (result.first > -60) {
-                GetHAL().canvas.setTextColor(TFT_GREEN, THEME_COLOR_BG);
+                canvas.setTextColor(TFT_GREEN, THEME_COLOR_BG);
             } else if (result.first > -70) {
-                GetHAL().canvas.setTextColor(TFT_YELLOW, THEME_COLOR_BG);
+                canvas.setTextColor(TFT_YELLOW, THEME_COLOR_BG);
             } else {
-                GetHAL().canvas.setTextColor(TFT_RED, THEME_COLOR_BG);
+                canvas.setTextColor(TFT_RED, THEME_COLOR_BG);
             }
 
-            GetHAL().canvas.printf("%d ", result.first);
-            GetHAL().canvas.println(result.second.c_str());
+            const int y = 14 + 13 * row++;
+            canvas.drawString(factory_ui::fitText(canvas, std::to_string(result.first), 30).c_str(), 0, y);
+            canvas.drawString(factory_ui::fitText(canvas, result.second, canvas.width() - 36).c_str(), 36, y);
         }
     }
 
+    canvas.setTextColor(TFT_DARKGRAY, THEME_COLOR_BG);
+    canvas.drawString("5秒自动刷新  G0:退出", 0, 96);
     GetHAL().pushCanvas();
 }

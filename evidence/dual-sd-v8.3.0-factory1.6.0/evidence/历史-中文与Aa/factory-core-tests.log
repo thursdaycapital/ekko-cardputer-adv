@@ -1,0 +1,4 @@
+WiFi setup model: selection, credential isolation, retries, limits, UTF-8 and hidden/open networks passed
+test_shared_wifi_store passed
+test_wifi_setup_model passed
+test_bounded_serial_writer passed

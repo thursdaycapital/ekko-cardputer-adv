@@ -1,0 +1,16 @@
+{
+  "checkedAt": "2026-10-17T07:13:59.635661+00:00",
+  "full8MiBReadback": true,
+  "exactExpectedSectorPaddedWrite": true,
+  "factoryOffset": "0x340000",
+  "appBytes": 3019376,
+  "appSha256": "9f8485967f7dccf4b0f52e9070893a31f87b1819bf27749e33e2a6d1dc0fbecc",
+  "preservedRegions": {
+    "bootloader_and_table": true,
+    "nvs": true,
+    "otadata": true,
+    "ekko_app": true,
+    "rest_after_written_factory_sectors": true
+  },
+  "privateImageIncluded": false
+}

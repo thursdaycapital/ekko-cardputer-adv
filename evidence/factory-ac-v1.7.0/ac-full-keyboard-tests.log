@@ -1,0 +1,11 @@
+PASS: all 256 raw values; 112 legal press/release mappings; 144 rejected values
+PASS: invalid inputs do not emit normal/modifier events or change held modifiers/Fn
+PASS: empty FIFO, invalid-before-valid FIFO, I2C event/status failure retries and IRQ clear
+PASS: Shift/Aa, Fn letters/arrows/Esc/Delete, normal punctuation, Ctrl+Space and complete event clearing
+PASS: public converter bounds across all 65,536 row/column pairs
+PASS: actual keyboard.cpp + actual Adafruit_TCA8418.cpp; ASan/UBSan
+Actual keyboard.cpp SHA-256: e446d7d6ad5f7b1f36b2513bc6e4ca0f73996b8e03a11bad39de706be6b5bb3d
+Actual keyboard.h SHA-256: 682bd42b64387e343e20526ced2e5a29d88e8f2402f22e9beffc7e7782a97c39
+Actual Adafruit_TCA8418.cpp SHA-256: 101fcbbfa49fe879e058f82d5147128289df8ca511cad53b573fdef27e883ce9
+Actual Adafruit_TCA8418.h SHA-256: f70c9f114010f99f552855676b1a4f3b9a824d8e64f9003c37573d0c2da55a7d
+I2C/GPIO are test doubles; real hardware key operation needs device confirmation.

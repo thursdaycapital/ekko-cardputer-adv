@@ -67,7 +67,8 @@ void ChatView::render_chat_interface()
     // 设置初始光标位置在输入面板下方
     GetHAL().canvas.setCursor(0, INPUT_PANEL_HEIGHT + 2);
     GetHAL().canvas.setTextColor(TFT_DARKGRAY);
-    GetHAL().canvas.println("Chat ready...");
+    GetHAL().canvas.println("ESP-NOW 设备聊天");
+    GetHAL().canvas.println("输入后按回车发送");
 
     render_input_panel();
 }
@@ -88,12 +89,19 @@ void ChatView::render_input_panel()
     GetHAL().canvas.setCursor(5, 0);
     GetHAL().canvas.setTextSize(1);
 
-    std::string display_text = ">>> " + _input_buffer;
-    if (_cursor_state) {
-        display_text += "_";
-    } else {
-        display_text += " ";
+    const std::string prefix = ">>> ";
+    const std::string cursor = _cursor_state ? "_" : " ";
+    std::string visible_input = _input_buffer;
+    bool trimmed = false;
+    const int available_width = GetHAL().canvas.width() - 10;
+    while (!visible_input.empty() &&
+           GetHAL().canvas.textWidth((prefix + (trimmed ? "…" : "") + visible_input + cursor).c_str()) > available_width) {
+        size_t next = 1;
+        while (next < visible_input.size() && (static_cast<unsigned char>(visible_input[next]) & 0xc0) == 0x80) ++next;
+        visible_input.erase(0, next);
+        trimmed = true;
     }
+    const std::string display_text = prefix + (trimmed ? "…" : "") + visible_input + cursor;
 
     GetHAL().canvas.print(display_text.c_str());
 

@@ -1,0 +1,9 @@
+Compared 56 complete waveforms with actual upstream setters and send loops
+Compared 30 Bosch144 ON/OFF complete waveforms; verified third-section checksum and RN02S13 26C capture facts
+Compared 560 full Coolix settings waveforms (5 modes x 4 fans x 14 temperatures x power), including Fan synthetic code
+Compared 12 actual Coolix action sends (6 actions x 2 presses), including single-frame SwingStep
+Rejected 5047 invalid settings without retaining stale transmission
+PASS: pulse timing, inverted frames/bytes, temperature boundaries, power-off, checksum, repeat, 15-bit splitting
+Compared 59 actual upstream methods/helpers, native bitfields, constants and temperature maps
+Upstream commit: 1e2f0f3ef0a93cbf2a8ddb2e95130f8f4c584b3f
+Production ac_protocol.h SHA-256: 5a80c37d90cdb6a0f4b3f211eb4e5c7bdd18f1918e29704bf8dc21d881f5a422

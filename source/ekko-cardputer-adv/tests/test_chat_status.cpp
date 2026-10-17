@@ -40,8 +40,8 @@ int main() {
   for (const char* recording : {"listening", "recording"}) {
     state.interactionStatus = recording; expect("正在录音");
   }
-  const char* inputs[] = {"transcribing", "speaking", "tool", "failed", "completed", "aborted", "thinking", nullptr};
-  const char* outputs[] = {"正在识别", "正在播放", "正在执行", "请求失败", "已完成", "已停止", "正在回复", "正在回复"};
+  const char* inputs[] = {"transcribing", "speaking", "tool", "failed", "completed", "aborted", "clearing", "thinking", nullptr};
+  const char* outputs[] = {"正在识别", "正在播放", "正在执行", "请求失败", "已完成", "已停止", "清空会话", "正在回复", "正在回复"};
   for (size_t i = 0; i < sizeof(inputs) / sizeof(*inputs); ++i) {
     state.interactionStatus = inputs[i]; expect(outputs[i]);
   }

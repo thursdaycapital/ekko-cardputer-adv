@@ -103,10 +103,10 @@ void AppKeyboard::select_keyboard_type()
     GetHAL().canvas.setTextColor(TFT_ORANGE, THEME_COLOR_BG);
     GetHAL().canvas.setCursor(0, 0);
     GetHAL().canvas.setTextSize(1);
-    GetHAL().canvas.println("[Select Keyboard Type]");
+    GetHAL().canvas.println("选择键盘连接方式");
     GetHAL().canvas.setTextColor(TFT_WHITE, THEME_COLOR_BG);
-    GetHAL().canvas.println("Use arrow keys to select");
-    GetHAL().canvas.println("Press Enter to confirm");
+    GetHAL().canvas.println("方向键选择");
+    GetHAL().canvas.println("回车确认");
     GetHAL().pushCanvas();
 }
 
@@ -137,10 +137,12 @@ void AppKeyboard::render_keyboard_interface()
     GetHAL().canvas.setTextColor(TFT_GREEN, THEME_COLOR_BG);
     GetHAL().canvas.setCursor(0, 0);
     GetHAL().canvas.setTextSize(1);
-    GetHAL().canvas.println("Keyboard Mode Active");
+    GetHAL().canvas.println("键盘模式已开启");
 
     GetHAL().canvas.setTextColor(TFT_CYAN, THEME_COLOR_BG);
-    GetHAL().canvas.println("Type to send keys...");
+    GetHAL().canvas.println("按键将发送到连接设备");
+    GetHAL().canvas.setCursor(0, 60);
+    GetHAL().canvas.println("G0:退出并重启");
     GetHAL().pushCanvas();
 }
 
@@ -156,13 +158,13 @@ void AppKeyboard::render_connection_status()
 
     if (ble_connected) {
         GetHAL().canvas.setTextColor(TFT_GREEN, THEME_COLOR_BG);
-        GetHAL().canvas.printf("BLE: Connected");
+        GetHAL().canvas.printf("蓝牙:已连接");
     } else if (usb_connected) {
         GetHAL().canvas.setTextColor(TFT_GREEN, THEME_COLOR_BG);
-        GetHAL().canvas.printf("USB: Connected");
+        GetHAL().canvas.printf("USB:已连接");
     } else {
         GetHAL().canvas.setTextColor(TFT_RED, THEME_COLOR_BG);
-        GetHAL().canvas.printf("Disconnected");
+        GetHAL().canvas.printf("尚未连接设备");
     }
 
     GetHAL().pushCanvas();

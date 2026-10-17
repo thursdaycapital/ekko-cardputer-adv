@@ -1,6 +1,6 @@
 # Build, modify and relink
 
-The shipped Ekko app is the accepted ESP32-S3 build, not the experimental stock-protocol candidate. It is not cryptographically locked to this release. Use the supplied source and fixed PlatformIO dependencies to rebuild, debug, modify or replace applicable libraries under their own terms.
+This release pairs Ekko `cardputer-adv-v8.3.0-zh-fusion` and factory `factory-ekko-v1.7.0-ac` as independent ESP32-S3 applications. Use the supplied full modified source and fixed dependencies to rebuild, debug, modify or replace applicable libraries under their own terms. This project adds no prohibition on modifying the LGPL components or reverse engineering for debugging such modifications.
 
 ## Ekko application
 
@@ -18,6 +18,15 @@ Build objects/ELF/map and the app image are generated under`source/ekko-cardpute
 
 ## Factory application
 
-The complete factory source snapshot, dependencies/lock, config and tracked patch are included under`source/factory-cardputer-adv/`. Use its`SOURCE-REBUILD.zh-CN.md` and fixed ESP-IDF5.4.2 environment to build only the app. Rebuilt factory app belongs at`0x340000`; do not flash that project's bootloader/OTA args as the entire paired system. Original SDK/toolchain notices are in`licenses/`.
+The current complete factory source snapshot, vendored dependencies, lock, config and local M5Unified audio patch are under `source/factory-cardputer-adv/`. Use its `SOURCE-REBUILD.zh-CN.md` with ESP-IDF **5.4.2**, commit `f5c3654a1c2d2a01f7f67def7a0dc48e691f63c0`, and the matching esp32s3 tools/Python environment. From that source directory:
 
-The shared partition table, bootloader inputs and app images are included for offline verification. The full merged clean image is8MiB with emptyNVS/otadata/SPIFFS. Personal device flash backups and credentials are not included.
+```sh
+. /path/to/esp-idf-v5.4.2/export.sh
+idf.py -B build-relinked build
+```
+
+Do not run `fetch_repos.py` on this archive: vendored dependencies have no Git metadata and include local patches that must be retained. `build-relinked/cardputer-adv.bin` belongs at **`0x340000`** with capacity `0x400000`. Do not flash this project's bootloader/OTA arguments as the entire paired system. The existing Ekko app belongs at `0x10000` with capacity `0x330000`. Original SDK/toolchain notices are in `licenses/`.
+
+The factory app includes the LGPL-2.1-only portable library `main/apps/app_remote/ac_protocol.h`, adapted from IRremoteESP8266, and LGPL-covered TinyGPS++ code. The complete library modifications and full application source are included. Modify the portable header or other covered library, then rebuild with the command above to generate a replacement executable/ELF/map containing your modified library. No prebuilt factory object files are required for this full-source route. Keep each library's original author notices and applicable license; the complete IRremoteESP8266 LGPL text and pinned reference sources are in `third_party/irremoteesp8266-reference/`. The root BSL license for the separate Ekko work does not replace these notices or restrict modifications to these covered libraries.
+
+The shared partition table, public bootloader input and app images are included for offline verification, with sizes and hashes in `evidence/assembly-inputs.json`. The merged clean image is 8 MiB with blank NVS/otadata/SPIFFS; private device backups and credentials are not included. Blank-NVS first boot has not been physically accepted. Runtime, user-observed behavior and host tests are separate evidence. Release-only documentation and the protocol-header date comment were corrected without changing runtime logic or rebuilding the accepted app images. Different paths, build dates and ELF hashes can change rebuilt bytes; byte-for-byte reproducibility is not promised.

@@ -38,6 +38,7 @@ inline const char* nativeChatStatus(const NativeChatStatusState& state) {
   if (state.interactionActive &&
       (std::strcmp(status, "listening") == 0 || std::strcmp(status, "recording") == 0))
     return "正在录音";
+  if (state.interactionActive && std::strcmp(status, "clearing") == 0) return "清空会话";
   if (state.historyPending) return "读取记录";
   if (!state.modelReady) return "同步会话";
   if (state.sendPending) return "发送中";

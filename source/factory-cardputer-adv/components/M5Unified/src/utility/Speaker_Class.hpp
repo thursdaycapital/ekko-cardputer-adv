@@ -110,7 +110,23 @@ namespace m5
     /// now in playing or not.
     /// @param channel virtual channel number. (0~7), (default = automatically selected)
     /// @return 0=not playing / 1=playing (There's room in the queue) / 2=playing (There's no room in the queue.)
-    size_t isPlaying(uint8_t channel) const volatile { return (channel < sound_channel_max) ? ((bool)_ch_info[channel].wavinfo[0].repeat) + ((bool)_ch_info[channel].wavinfo[1].repeat) : 0; }
+    size_t isPlaying(uint8_t channel) const volatile
+    {
+      return (channel < sound_channel_max)
+           ? bool(__atomic_load_n(&_ch_info[channel].wavinfo[0].repeat, __ATOMIC_ACQUIRE))
+           + bool(__atomic_load_n(&_ch_info[channel].wavinfo[1].repeat, __ATOMIC_ACQUIRE)) : 0;
+    }
+
+    /// Whether the next non-replacing playRaw() call can be queued without
+    /// waiting. Use an explicit channel from one producer thread, with no
+    /// concurrent stop()/end(). A count below two alone is not sufficient while
+    /// the speaker task is advancing its current/next descriptor.
+    bool canPlay(uint8_t channel) const volatile
+    {
+      if (channel >= sound_channel_max) { return false; }
+      const bool flip = __atomic_load_n(&_ch_info[channel].flip, __ATOMIC_ACQUIRE);
+      return __atomic_load_n(&_ch_info[channel].wavinfo[flip].repeat, __ATOMIC_ACQUIRE) == 0;
+    }
 
     /// Get the number of channels that are playing.
     /// @return number of channels that are playing.
@@ -260,6 +276,7 @@ namespace m5
         };
       };
       void clear(void);
+      void assign(const wav_info_t& source);
     };
 
     struct channel_info_t

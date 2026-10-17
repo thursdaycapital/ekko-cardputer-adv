@@ -8,7 +8,7 @@ static void nativeTypographyAndStatusRegions() {
   assert(model.activate("hermes", "default", 1) == NativeChatResult::Ok);
   const char* labels[] = {"网络断开", "需要登录", "验证登录", "连接后台", "恢复连接", "正在播放",
       "确认选择", "需更新", "读取记录", "同步会话", "发送中", "正在回复", "就绪", "正在录音",
-      "正在识别", "正在执行", "请求失败", "已完成", "已停止", "等待会话"};
+      "正在识别", "正在执行", "清空会话", "请求失败", "已完成", "已停止", "等待会话"};
   static_assert(ekko_pixel_font::kPixels == 12, "Original Fusion pixel grid");
   static_assert(ekko_pixel_font::kDataSize < 700000, "Chinese pixel font fits the existing app slot");
   for (const char* label : labels) {

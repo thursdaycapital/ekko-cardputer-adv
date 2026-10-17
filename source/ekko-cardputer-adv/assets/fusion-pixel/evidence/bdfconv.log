@@ -1,4 +1,4 @@
-Parse File <WORKSPACE>/work/cardputer-fusion-font-20261017/font-assets/zh-interface-compat/EkkoPixel12Compatible.bdf: 24025 glyph(s) found
+Parse File ./EkkoPixel12Compatible.bdf: 24025 glyph(s) found
 Map: map_cmd_list='0-65535'
 Map: exclude=0 from=0/$0 to=65535/$ffff map=0/$0
 Reduce: Start
@@ -18,4 +18,4 @@ RLE Compress: Unicode lookup table last entry: delta=2463, encoding=65535
 RLE Compress: Unicode glyphs written=23834
 RLE Compress: 'A' pos = 390, 'a' pos = 790
 RLE Compress: Font size 654185
-bf_WriteU8G2CByFilename: Write file '<WORKSPACE>/work/cardputer-fusion-font-20261017/font-assets/zh-interface-compat/EkkoPixel12Compatible.c'
+bf_WriteU8G2CByFilename: Write file './EkkoPixel12Compatible.c'

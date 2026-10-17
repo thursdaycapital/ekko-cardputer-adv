@@ -25,6 +25,7 @@ size_t microphoneSamples = 0;
 bool capturePending = false;
 AudioStreamQueue audioQueue;
 uint32_t audioSourceEmpty = 0, audioMaxSubmitGapUs = 0, audioWriteTimeouts = 0;
+uint32_t audioLastStreamEmpty = 0, audioLastStreamMaxGapUs = 0, audioLastStreamQueued = 0;
 uint32_t audioLastSubmitUs = 0;
 bool audioStreamStarted = false;
 native_key_click::Input keyClickInput;
@@ -94,7 +95,7 @@ bool ensureRenderCanvas() {
   if (!nativeSpriteMemoryAvailable(renderStats.free_heap, renderStats.largest_dma_block)) {
     ++renderStats.allocation_failures;
     renderStats.last_error = "insufficient_internal_ram";
-    showStableRenderFailure("DISPLAY RAM LOW");
+    showStableRenderFailure("显示内存不足");
     return false;
   }
   auto& canvas = renderCanvas();
@@ -104,7 +105,7 @@ bool ensureRenderCanvas() {
   if (!canvas.createSprite(kNativeFrameWidth, kNativeFrameHeight)) {
     ++renderStats.allocation_failures;
     renderStats.last_error = "sprite_allocation_failed";
-    showStableRenderFailure("DISPLAY RAM LOW");
+    showStableRenderFailure("显示内存不足");
     return false;
   }
   renderStats.ready = true;
@@ -117,7 +118,7 @@ const char* selectionMessage(const NativeAgentSelection& selection, const String
   return selection.pending ? "等待后台确认" :
       error == "factory_unavailable" ? "原厂固件不可用" :
       error == "native_agent_ack_timeout" ? "后台不支持或确认超时" :
-      error == "native_agent_rejected" ? "后台拒绝此 Agent" :
+      error == "native_agent_rejected" ? "后台拒绝此智能体" :
       error == "send_failed" ? "选择发送失败" :
       error.length() ? "后台未确认选择" :
       selection.browse != selection.active ? "方向键选择" :
@@ -294,7 +295,7 @@ void cardputerDraw(const uint8_t* bitmap, bool interaction,
   if (!ensureRenderCanvas()) return;
   if (selection.active >= kNativeAgentCount || selection.browse >= kNativeAgentCount) {
     renderStats.last_error = "invalid_agent_index";
-    showStableRenderFailure("DISPLAY STATE ERROR");
+    showStableRenderFailure("显示状态异常");
     return;
   }
   const char* message = view.waiting() ? (socketReady ? "正在打开对话" : "等待后台连接") :
@@ -334,7 +335,7 @@ void cardputerDraw(const uint8_t* bitmap, bool interaction,
   frame.setTextSize(1);
   frame.drawString("EKKO STUDIO", 9, 4);
   frame.setTextColor(socketReady ? amber : muted, ink);
-  frame.drawRightString(socketReady ? "NATIVE / ONLINE" : "NATIVE / SETUP", 231, 4);
+  frame.drawRightString(socketReady ? "原生 · 已连接" : "原生 · 待连接", 231, 4);
   frame.drawFastHLine(8, 24, 224, muted);
   if (view.conversation()) {
     NativeChatRenderOptions options;
@@ -435,6 +436,9 @@ CardputerAudioStats cardputerAudioStats() {
   result.source_empty_before_submit = audioSourceEmpty;
   result.max_submit_gap_us = audioMaxSubmitGapUs; result.write_timeouts = audioWriteTimeouts;
   result.buffer_bytes = queue.buffer_bytes;
+  result.last_stream_source_empty = audioLastStreamEmpty;
+  result.last_stream_max_gap_us = audioLastStreamMaxGapUs;
+  result.last_stream_queued = audioLastStreamQueued;
   return result;
 }
 CardputerKeyClickStats cardputerKeyClickStats() {
@@ -544,15 +548,21 @@ esp_err_t cardputerAudioWrite(const void* data, size_t length, size_t* written, 
       audioQueue.abandon(claim); return ESP_FAIL;
     }
     const uint32_t now = micros();
+    if (!audioStreamStarted) {
+      audioLastStreamEmpty = audioLastStreamMaxGapUs = audioLastStreamQueued = 0;
+    }
     if (audioStreamStarted) {
-      audioMaxSubmitGapUs = std::max(audioMaxSubmitGapUs, uint32_t(now - audioLastSubmitUs));
+      const uint32_t gap = now - audioLastSubmitUs;
+      audioMaxSubmitGapUs = std::max(audioMaxSubmitGapUs, gap);
+      audioLastStreamMaxGapUs = std::max(audioLastStreamMaxGapUs, gap);
       // Diagnostic source-slot state only: DMA may still hold audible samples.
-      if (M5Cardputer.Speaker.isPlaying(0) == 0) ++audioSourceEmpty;
+      if (M5Cardputer.Speaker.isPlaying(0) == 0) { ++audioSourceEmpty; ++audioLastStreamEmpty; }
     }
     if (!M5Cardputer.Speaker.playRaw(claim.data, bytes / sizeof(int16_t), audioRate, true, 1, 0)) {
       audioQueue.cancelUnqueued(claim); return ESP_FAIL;
     }
     audioLastSubmitUs = now; audioStreamStarted = true;
+    ++audioLastStreamQueued;
     *written += bytes;
   }
   return ESP_OK;

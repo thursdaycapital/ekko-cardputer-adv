@@ -1,0 +1,70 @@
+{
+  "imageBytes": 8388608,
+  "imageSha256": "9b8d7e6cbfeac14e060e7eff71a3868445c5c419c814198952b0e6122cfac7dd",
+  "sourceSegmentsExact": [
+    {
+      "file": "components/bootloader.bin",
+      "offset": "0x0",
+      "exactMatch": true
+    },
+    {
+      "file": "components/partitions.bin",
+      "offset": "0x8000",
+      "exactMatch": true
+    },
+    {
+      "file": "components/factory-menu-v1.4.bin",
+      "offset": "0x340000",
+      "exactMatch": true
+    },
+    {
+      "file": "firmware/ekko-update-0x10000.bin",
+      "offset": "0x10000",
+      "exactMatch": true
+    }
+  ],
+  "allUnoccupiedBytesFF": true,
+  "nvsBlank": true,
+  "otadataBlank": true,
+  "spiffsBlankUnusedByThisStableApp": true,
+  "privateFlashUsedAsSource": false,
+  "partitions": [
+    {
+      "label": "nvs",
+      "offset": "0x9000",
+      "size": "0x5000",
+      "type": 1,
+      "subtype": 2
+    },
+    {
+      "label": "otadata",
+      "offset": "0xe000",
+      "size": "0x2000",
+      "type": 1,
+      "subtype": 0
+    },
+    {
+      "label": "app0",
+      "offset": "0x10000",
+      "size": "0x330000",
+      "type": 0,
+      "subtype": 16
+    },
+    {
+      "label": "factory",
+      "offset": "0x340000",
+      "size": "0x400000",
+      "type": 0,
+      "subtype": 0
+    },
+    {
+      "label": "spiffs",
+      "offset": "0x740000",
+      "size": "0xc0000",
+      "type": 1,
+      "subtype": 130
+    }
+  ],
+  "physicalFirstBootWithBlankNvsTested": false,
+  "deviceModifiedForPackaging": false
+}

@@ -8,17 +8,6 @@
 #include <apps/utils/theme.h>
 #include <apps/utils/common.h>
 
-#include "assets/Aa.h"
-#include "assets/Aa0.h"
-#include "assets/alt.h"
-#include "assets/alt0.h"
-#include "assets/crtl.h"
-#include "assets/ctrl0.h"
-#include "assets/fn.h"
-#include "assets/fn0.h"
-#include "assets/opt.h"
-#include "assets/opt1.h"
-
 void Launcher::render_keyboard_bar()
 {
     // Backgound
@@ -31,45 +20,21 @@ void Launcher::render_keyboard_bar()
         GetHAL().canvasKeyboardBar.height() - margin_y * 2, (GetHAL().canvasKeyboardBar.height() - margin_y * 2) / 2,
         THEME_COLOR_KB_BAR);
 
-    // render state
-    int x      = 7;
-    int y      = 20;
-    int width  = 22;
-    int height = 17;
-    int gap_y  = 3;
-
-    if (_data.keyboard_state.shift) {
-        GetHAL().canvasKeyboardBar.pushImage(x, y, width, height, image_data_Aa);
-    } else {
-        GetHAL().canvasKeyboardBar.pushImage(x, y, width, height, image_data_Aa0);
-    }
-
-    y = y + height + gap_y;
-    if (_data.keyboard_state.fn) {
-        GetHAL().canvasKeyboardBar.pushImage(x, y, width, height, image_data_fn);
-    } else {
-        GetHAL().canvasKeyboardBar.pushImage(x, y, width, height, image_data_fn0);
-    }
-
-    y = y + height + gap_y;
-    if (_data.keyboard_state.ctrl) {
-        GetHAL().canvasKeyboardBar.pushImage(x, y, width, height, image_data_crtl);
-    } else {
-        GetHAL().canvasKeyboardBar.pushImage(x, y, width, height, image_data_ctrl0);
-    }
-
-    y = y + height + gap_y;
-    if (_data.keyboard_state.opt) {
-        GetHAL().canvasKeyboardBar.pushImage(x, y, width, height, image_data_opt);
-    } else {
-        GetHAL().canvasKeyboardBar.pushImage(x, y, width, height, image_data_opt1);
-    }
-
-    y = y + height + gap_y;
-    if (_data.keyboard_state.alt) {
-        GetHAL().canvasKeyboardBar.pushImage(x, y, width, height, image_data_alt);
-    } else {
-        GetHAL().canvasKeyboardBar.pushImage(x, y, width, height, image_data_alt0);
+    // Use the same native pixel font as every menu and application label.
+    auto& canvas = GetHAL().canvasKeyboardBar;
+    canvas.setFont(FONT_BASIC);
+    canvas.setTextSize(1);
+    const char* labels[] = {"Aa", "Fn", "Ctrl", "Opt", "Alt"};
+    const bool active[] = {_data.keyboard_state.shift, _data.keyboard_state.fn,
+        _data.keyboard_state.ctrl, _data.keyboard_state.opt, _data.keyboard_state.alt};
+    const uint32_t colors[] = {THEME_COLOR_KB_CAPS_LOCK, THEME_COLOR_KB_FN,
+        THEME_COLOR_KB_CTRL, THEME_COLOR_KB_OPT, THEME_COLOR_KB_ALT};
+    for (int i = 0; i < 5; ++i) {
+        const int top = 20 + i * 20;
+        const uint32_t bg = active[i] ? colors[i] : THEME_COLOR_KB_BAR_ICON_BG;
+        canvas.fillRoundRect(4, top, canvas.width() - 8, 17, 3, bg);
+        canvas.setTextColor(active[i] ? TFT_BLACK : THEME_COLOR_KB_BAR_ICON_TEXT, bg);
+        canvas.drawCenterString(labels[i], canvas.width() / 2, top + 2);
     }
 
     // Push

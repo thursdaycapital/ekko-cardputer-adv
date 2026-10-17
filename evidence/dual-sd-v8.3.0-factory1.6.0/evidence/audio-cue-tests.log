@@ -1,0 +1,11 @@
+PASS returned tone PCM stays alive with bit-identical factory waveform/rate/mode
+PASS two independent live buffers; a 1000-key burst drops new cues without overwriting
+PASS completed channel can resize/reuse while another channel still consumes old PCM
+PASS returned melody PCM, duplicated waveform and silence/rest timing remain valid
+PASS negative/zero/NaN/overflow durations, invalid MIDI/rate, oversize cues rejected safely
+PASS shorter-than-fade and single-frame cues avoid unsigned underflow
+PASS combined PCM budget drops oversize overlap and reclaims idle capacity after cancellation
+PASS disabling callbacks retains live PCM; Speaker.end plus re-enable permits safe reclaim/reuse
+PASS quiet/mute, unavailable queue and failed play do not break later sounds
+9 production audio cue checks passed
+Production audio.cpp SHA-256: 8881f8b866d5fd431c4b3b8f9d301ae638af9dafc0ee60726285932655b4e4b5

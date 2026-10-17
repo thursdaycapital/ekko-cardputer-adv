@@ -1,5 +1,6 @@
 #include "FactoryDiagnostics.h"
 #include "SharedWifiStore.h"
+#include "FactoryUi.h"
 #include "BoundedSerialWriter.h"
 #include <hal/hal.h>
 #include <mooncake.h>
@@ -78,7 +79,8 @@ void health()
     if (!driver_ready) return;
     auto* json = cJSON_CreateObject();
     auto* names = cJSON_CreateArray();
-    if (!json || !names) { cJSON_Delete(json); cJSON_Delete(names); return; }
+    auto* labels = cJSON_CreateArray();
+    if (!json || !names || !labels) { cJSON_Delete(json); cJSON_Delete(names); cJSON_Delete(labels); return; }
     const auto* partition = esp_ota_get_running_partition();
     const auto* description = esp_app_get_description();
     wifi_ap_record_t access_point = {};
@@ -98,13 +100,21 @@ void health()
         if (app->getAppInfo().name == "Launcher") continue;
         auto* name = cJSON_CreateString(app->getAppInfo().name.c_str());
         if (!name || !cJSON_AddItemToArray(names, name)) {
-            cJSON_Delete(name); cJSON_Delete(names); cJSON_Delete(json); return;
+            cJSON_Delete(name); cJSON_Delete(names); cJSON_Delete(labels); cJSON_Delete(json); return;
+        }
+        auto* label = cJSON_CreateString(factory_ui::appTitle(app->getAppInfo().name));
+        if (!label || !cJSON_AddItemToArray(labels, label)) {
+            cJSON_Delete(label); cJSON_Delete(names); cJSON_Delete(labels); cJSON_Delete(json); return;
         }
         ++menu_items;
         if (mooncake::GetMooncake().getAppCurrentState(app->getId()) == mooncake::AppAbility::StateRunning) {
             current_app = app->getAppInfo().name.c_str();
         }
     }
+    cJSON_AddStringToObject(json, "display_language", "zh-CN");
+    cJSON_AddStringToObject(json, "display_font", "Fusion Pixel 12px compatible");
+    cJSON_AddNumberToObject(json, "display_font_pixels", ekko_pixel_font::kPixels);
+    cJSON_AddItemToObject(json, "menu_labels", labels);
     cJSON_AddStringToObject(json, "firmware", description->version);
     cJSON_AddStringToObject(json, "idf", description->idf_ver);
     cJSON_AddStringToObject(json, "partition", partition ? partition->label : "");

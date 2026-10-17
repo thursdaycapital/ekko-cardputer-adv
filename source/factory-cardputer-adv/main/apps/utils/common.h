@@ -6,7 +6,7 @@
 #pragma once
 #include <hal/hal.h>
 
-#define FW_VERSION "V0.3"
+#define FW_VERSION "中文版 v1.7.0"
 
 #define ANIM_APP_OPEN()                                                                                     \
     for (int i = 10; i < 123; i += 8) {                                                                     \

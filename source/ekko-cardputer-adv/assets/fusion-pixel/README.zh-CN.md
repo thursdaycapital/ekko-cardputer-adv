@@ -46,3 +46,36 @@ upstream/u8g2-bdfconv-2.36.18/bdfconv -b 0 -f 1 -v -m '0-65535' EkkoPixel12Compa
 | 转换器链接时common对齐由0x8000降至0x4000 | P3 | 100% | 转换成功，实际运行decoder与像素验证通过 |
 
 完整字体许可见NOTICE、OFL、EFONT-LICENSE和LICENSES，分发时必须保留。
+
+## 原生管理网页字体
+
+`web/CardputerPixelWeb.woff2` 是官方 2026.09.01 的 12px 简中 WOFF2 的派生子集，保留本次固定界面、ASCII 和可用的 GB2312 一级汉字，共 3869 个码点。为遵守 OFL 的保留名称要求，派生字体改名为 Cardputer Pixel Web。字体由设备本地 `/font/fusion-pixel.woff2` 提供；无外部 CDN，超出子集的动态文字由浏览器后备字体处理。379 个固定界面非 ASCII 字符均在此子集内。
+
+上游下载地址与输入/输出 SHA256 见 `web/provenance.json`。解压官方 ZIP，取 `fusion-pixel-12px-monospaced-zh_hans.otf.woff2` 放在当前目录，再用 FontTools 4.67.0、Brotli 1.2.0 执行以下标准 API。固定 head.modified 是发布产物已有的 OpenType 时间戳，只用于得到可逐字节核对的压缩结果。
+
+```sh
+uvx --from 'fonttools[woff]==4.67.0' --with 'brotli==1.2.0' python - <<'PY'
+from pathlib import Path
+from fontTools.ttLib import TTFont
+from fontTools import subset
+import hashlib
+
+font = TTFont('fusion-pixel-12px-monospaced-zh_hans.otf.woff2', recalcTimestamp=False)
+subsetter = subset.Subsetter(options=subset.Options())
+subsetter.populate(unicodes=[int(value[2:], 16) for value in Path('web/codepoints.txt').read_text().splitlines()])
+subsetter.subset(font)
+names = {1: 'Cardputer Pixel Web', 3: 'CardputerPixelWeb-2026.09.01-zh',
+         4: 'Cardputer Pixel Web Regular', 6: 'CardputerPixelWeb-Regular'}
+for record in font['name'].names:
+    if record.nameID in names:
+        record.string = names[record.nameID].encode(record.getEncoding())
+font['head'].modified = 3875061243
+font.flavor = 'woff2'
+font.save('web/CardputerPixelWeb.rebuilt.woff2')
+data = Path('web/CardputerPixelWeb.rebuilt.woff2').read_bytes()
+assert len(data) == 105692
+assert hashlib.sha256(data).hexdigest() == '55818900b983245627daf6ccdad8eee9a0988196b540b8d7d496654993ee8936'
+PY
+```
+
+以上步骤已从官方原文件重新执行并取得与固件嵌入资产逐字节相同的结果。源码 `src/FusionWebFont.cpp` 是该 WOFF2 的只读字节数组，构建时无需安装字体工具；测试会核对二者完全一致。

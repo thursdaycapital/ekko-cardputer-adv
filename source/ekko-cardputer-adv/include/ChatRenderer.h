@@ -151,7 +151,7 @@ inline NativeChatRenderMetrics nativeDrawChat(M5Canvas& frame, const NativeChatM
   }
   frame.setTextColor(paper, ink);
   frame.setFont(&ekko_pixel_font::kFont);
-  drawClipped(frame, options.agentIndex < kNativeAgentCount ? kNativeAgents[options.agentIndex].name : "Agent?", 32, 2, 124);
+  drawClipped(frame, options.agentIndex < kNativeAgentCount ? kNativeAgents[options.agentIndex].name : "未知智能体", 32, 2, 124);
   frame.setFont(&ekko_pixel_font::kFont);
   frame.setTextColor(statusWhite, ink);
   const char* status = options.status && *options.status ? options.status : (model.ready() ? "就绪" : "等待会话");

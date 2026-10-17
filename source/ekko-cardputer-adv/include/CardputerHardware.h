@@ -71,6 +71,8 @@ struct CardputerAudioStats {
   uint32_t cancelled_unqueued = 0, rejected_releases = 0, discarded_after_join = 0;
   uint32_t source_empty_before_submit = 0, max_submit_gap_us = 0, write_timeouts = 0;
   uint32_t buffer_bytes = 0;
+  uint32_t last_stream_source_empty = 0, last_stream_max_gap_us = 0;
+  uint32_t last_stream_queued = 0;
 };
 CardputerAudioStats cardputerAudioStats();
 struct CardputerKeyClickStats {

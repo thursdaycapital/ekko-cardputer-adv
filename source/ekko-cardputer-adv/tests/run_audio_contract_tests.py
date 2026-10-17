@@ -1,4 +1,5 @@
 """Compare production C++ decode functions with production TS ADPCM, offline."""
+import argparse
 import base64
 import hashlib
 import json
@@ -10,6 +11,16 @@ import tempfile
 
 firmware = Path(__file__).resolve().parents[1]
 repository = firmware.parents[2]
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument(
+    "--server-decoder", type=Path,
+    default=repository / "packages/server/src/modules/studio/services/voice/mcu/adpcm.ts",
+    help="Production Studio ADPCM TypeScript module (defaults to the original monorepo layout).",
+)
+arguments = parser.parse_args()
+server_decoder = arguments.server_decoder.expanduser().resolve()
+if not server_decoder.is_file():
+    parser.error(f"Production Studio decoder not found: {server_decoder}; pass --server-decoder")
 compiler = shutil.which("clang++") or shutil.which("g++")
 node = shutil.which("node")
 if not compiler or not node:
@@ -73,7 +84,7 @@ process.stdout.write(JSON.stringify({cases,rejected}));
 """
 encoded_result = subprocess.run([
     node, "--experimental-strip-types", "--input-type=module", "-e", javascript,
-    str(repository / "packages/server/src/modules/studio/services/voice/mcu/adpcm.ts"),
+    str(server_decoder),
 ], check=True, capture_output=True, text=True)
 fixtures = json.loads(encoded_result.stdout)
 with tempfile.TemporaryDirectory(prefix="cardputer-audio-contract-") as directory:
